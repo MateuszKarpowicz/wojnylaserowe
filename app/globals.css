@@ -177,3 +177,46 @@ h1, h2, h3 {
 .contact-link:hover {
   background-color: #a855f7;
 }
+
+@layer utilities {
+  /* Hamburger menu animation */
+  .hamburger-active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .hamburger-active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger-active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+  
+  /* Smooth transitions for hamburger animation */
+  button span {
+    transition: all 0.3s ease;
+  }
+  
+              /* Neon glow animation */
+              @keyframes neon-pulse {
+                0%, 100% {
+                  box-shadow: 0 0 20px rgba(0, 224, 255, 0.3);
+                }
+                50% {
+                  box-shadow: 0 0 30px rgba(0, 224, 255, 0.5);
+                }
+              }
+              
+              .neon-glow {
+                animation: neon-pulse 3s ease-in-out infinite;
+              }
+              
+              /* Color cycle animation */
+              @keyframes colorCycle {
+                0% { color: #FFFFFF; }      /* biały */
+                25% { color: #00E0FF; }     /* neon niebieski */
+                50% { color: #FFFFFF; }     /* biały */
+                75% { color: #C084FC; }     /* neon fioletowy */
+                100% { color: #FFFFFF; }    /* biały */
+              }
+}

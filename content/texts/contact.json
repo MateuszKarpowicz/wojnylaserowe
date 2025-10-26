@@ -1,0 +1,22 @@
+{
+  "title": "Kontakt",
+  "subtitle": "Skontaktuj się z nami",
+  "description": "Masz pytania? Chcesz umówić wizytę? Nasz zespół chętnie odpowie na wszystkie Twoje pytania.",
+  "form": {
+    "name": "Imię",
+    "email": "Email",
+    "phone": "Telefon",
+    "message": "Wiadomość",
+    "submit": "Wyślij wiadomość"
+  },
+  "contactInfo": {
+    "address": "ul. Przykładowa 123, 00-000 Warszawa",
+    "phone": "+48 123 456 789",
+    "email": "kontakt@wojny-laserowe.pl",
+    "hours": "Pon-Pt 9:00-18:00, Sob 9:00-14:00"
+  },
+  "social": {
+    "facebook": "https://facebook.com/wojny-laserowe",
+    "instagram": "https://instagram.com/wojny_laserowe"
+  }
+}

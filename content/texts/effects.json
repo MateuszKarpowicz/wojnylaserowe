@@ -1,0 +1,25 @@
+{
+  "title": "Efekty Przed i Po",
+  "subtitle": "Zobacz rezultaty naszych zabiegów",
+  "description": "Przedstawiamy przykłady skutecznego usuwania tatuaży przy użyciu naszych zaawansowanych technologii laserowych.",
+  "gallery": [
+    {
+      "id": 1,
+      "before": "/images/effects/before-1.jpg",
+      "after": "/images/effects/after-1.jpg",
+      "description": "Tatuaż czarny - 8 sesji"
+    },
+    {
+      "id": 2,
+      "before": "/images/effects/before-2.jpg",
+      "after": "/images/effects/after-2.jpg",
+      "description": "Tatuaż kolorowy - 12 sesji"
+    },
+    {
+      "id": 3,
+      "before": "/images/effects/before-3.jpg",
+      "after": "/images/effects/after-3.jpg",
+      "description": "Tatuaż duży - 15 sesji"
+    }
+  ]
+}

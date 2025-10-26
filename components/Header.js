@@ -1,11 +1,21 @@
+import Link from 'next/link';
+
 export default function Header() {
   return (
     <header>
       <nav>
-
-        <a href="#oferta">Oferta</a>
-        {/* HAMBURGER ICON PLACEHOLDER */}
-        <div>☰</div>
+        <button aria-label="Toggle menu">
+          ☰
+        </button>
+        
+        {/* MOBILE MENU - zawsze widoczne na razie */}
+        <div>
+          <Link href="/efekty">Efekty</Link>
+          <Link href="/kontakt">Kontakt</Link>
+          <Link href="/faq">FAQ</Link>
+          <Link href="/regulamin">Regulamin</Link>
+          <a href="#oferta">Oferta</a>
+        </div>
       </nav>
     </header>
   );

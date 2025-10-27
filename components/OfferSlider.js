@@ -65,7 +65,7 @@ export default function OfferSlider() {
                   className="w-full text-left p-4 rounded-lg hover:bg-neonBlue/10 transition-colors duration-300 group"
                 >
                   <div className="flex items-center">
-                    <span className="text-textLight font-semibold group-hover:text-neonBlue transition-colors">
+                    <span className="text-textLight font-semibold text-lg group-hover:text-neonBlue transition-colors">
                       {option.title}
                     </span>
                   </div>

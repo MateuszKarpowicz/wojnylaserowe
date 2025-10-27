@@ -1,5 +1,7 @@
 'use client';
 import { useState } from 'react';
+import ErrorMessage from './ui/ErrorMessage';
+import { simulateAsyncOperation } from '../utils/asyncSimulator';
 
 export default function ContactForm({ onSubmit }) {
   const [formData, setFormData] = useState({
@@ -36,8 +38,8 @@ export default function ContactForm({ onSubmit }) {
     setError(null);
 
     try {
-      // Simulate async operation
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Use async simulator instead of direct setTimeout
+      await simulateAsyncOperation(1000);
       
       if (onSubmit) {
         await onSubmit(formData);
@@ -65,11 +67,7 @@ export default function ContactForm({ onSubmit }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       {/* ERROR MESSAGE */}
-      {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg">
-          {error}
-        </div>
-      )}
+      <ErrorMessage error={error} />
 
       {/* IMIĘ I NAZWISKO */}
       <div>

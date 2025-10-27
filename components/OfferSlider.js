@@ -1,6 +1,8 @@
 'use client';
 import { useState } from 'react';
 import ContactForm from './ContactForm';
+import ErrorMessage from './ui/ErrorMessage';
+import { simulateAsyncOperation } from '../utils/asyncSimulator';
 
 export default function OfferSlider() {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,8 +39,8 @@ export default function OfferSlider() {
     setError(null);
 
     try {
-      // Simulate async operation
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Use async simulator instead of direct setTimeout
+      await simulateAsyncOperation(1500);
       
       console.log('Formularz z rozsuwaka wysłany:', formData);
       
@@ -94,11 +96,7 @@ export default function OfferSlider() {
             </div>
             
             {/* ERROR MESSAGE */}
-            {error && (
-              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-6">
-                {error}
-              </div>
-            )}
+            <ErrorMessage error={error} className="mb-6" />
             
             <div className="space-y-3">
               {options.map((option) => (
@@ -136,11 +134,7 @@ export default function OfferSlider() {
             </div>
 
             {/* ERROR MESSAGE */}
-            {error && (
-              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-6">
-                {error}
-              </div>
-            )}
+            <ErrorMessage error={error} className="mb-6" />
 
             <ContactForm onSubmit={handleFormSubmit} />
           </div>

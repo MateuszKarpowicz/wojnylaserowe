@@ -2,6 +2,9 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import LoadingSpinner from './ui/LoadingSpinner';
+import ErrorContainer from './ui/ErrorContainer';
+import { simulateAsyncOperation } from '../utils/asyncSimulator';
 
 export default function EffectsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -41,8 +44,8 @@ export default function EffectsSection() {
     const loadEffects = async () => {
       try {
         setIsLoading(true);
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 800));
+        // Use async simulator instead of direct setTimeout
+        await simulateAsyncOperation(800);
         setIsLoading(false);
       } catch (err) {
         console.error('Error loading effects:', err);
@@ -87,12 +90,7 @@ export default function EffectsSection() {
       <section className="py-8 bg-lightBg">
         <div className="max-w-screen-lg mx-auto px-4">
           <div className="text-center">
-            <div className="loading-container">
-              <div className="loading-spinner">
-                <div className="spinner"></div>
-              </div>
-              <p>Ładowanie efektów...</p>
-            </div>
+            <LoadingSpinner message="Ładowanie efektów..." />
           </div>
         </div>
       </section>
@@ -104,20 +102,10 @@ export default function EffectsSection() {
       <section className="py-8 bg-lightBg">
         <div className="max-w-screen-lg mx-auto px-4">
           <div className="text-center">
-            <div className="error-container">
-              <div className="error-content">
-                <h2>Ups! Nie udało się załadować efektów</h2>
-                <p>{error}</p>
-                <div className="error-actions">
-                  <button 
-                    onClick={() => window.location.reload()}
-                    className="retry-button"
-                  >
-                    Spróbuj ponownie
-                  </button>
-                </div>
-              </div>
-            </div>
+            <ErrorContainer 
+              error={error}
+              title="Ups! Nie udało się załadować efektów"
+            />
           </div>
         </div>
       </section>

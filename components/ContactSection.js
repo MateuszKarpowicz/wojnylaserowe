@@ -1,8 +1,11 @@
 'use client';
-import { FaFacebook, FaInstagram, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 import ContactForm from './ContactForm';
 import MapComponent from './MapComponent';
+import SocialMediaIcons from './ui/SocialMediaIcons';
+import ErrorMessage from './ui/ErrorMessage';
 import { useState } from 'react';
+import { simulateAsyncOperation } from '../utils/asyncSimulator';
 
 export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -15,8 +18,8 @@ export default function ContactSection() {
     setSuccess(false);
 
     try {
-      // Simulate async operation
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Use async simulator instead of direct setTimeout
+      await simulateAsyncOperation(2000);
       
       console.log('Formularz kontaktowy wysłany:', formData);
       
@@ -57,11 +60,7 @@ export default function ContactSection() {
         )}
 
         {/* ERROR MESSAGE */}
-        {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-8 text-center">
-            ❌ {error}
-          </div>
-        )}
+        <ErrorMessage error={error} className="mb-8 text-center" />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* FORMULARZ */}
@@ -80,29 +79,7 @@ export default function ContactSection() {
                 Skontaktuj się z nami
               </h3>
               
-              <div className="flex items-center gap-6 mb-6">
-                <a
-                  href="#"
-                  aria-label="Facebook"
-                  className="text-4xl text-gray-600 hover:text-neonBlue transition-colors duration-300"
-                >
-                  <FaFacebook />
-                </a>
-                <a
-                  href="#"
-                  aria-label="Instagram"
-                  className="text-4xl text-gray-600 hover:text-neonBlue transition-colors duration-300"
-                >
-                  <FaInstagram />
-                </a>
-                <a
-                  href="#"
-                  aria-label="Telefon"
-                  className="text-4xl text-gray-600 hover:text-neonBlue transition-colors duration-300"
-                >
-                  <FaPhone />
-                </a>
-              </div>
+              <SocialMediaIcons size="text-4xl" className="mb-6" />
 
               {/* ADRES */}
               <div className="flex items-start gap-3 mb-6">

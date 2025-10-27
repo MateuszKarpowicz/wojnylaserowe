@@ -1,6 +1,9 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { FaStar, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import LoadingSpinner from './ui/LoadingSpinner';
+import ErrorContainer from './ui/ErrorContainer';
+import { simulateAsyncOperation } from '../utils/asyncSimulator';
 
 export default function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -58,8 +61,8 @@ export default function TestimonialsSection() {
     const loadTestimonials = async () => {
       try {
         setIsLoading(true);
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        // Use async simulator instead of direct setTimeout
+        await simulateAsyncOperation(1000);
         setIsLoading(false);
       } catch (err) {
         console.error('Error loading testimonials:', err);
@@ -116,12 +119,7 @@ export default function TestimonialsSection() {
       <section className="py-8 bg-gray-50">
         <div className="max-w-screen-lg mx-auto px-4">
           <div className="text-center">
-            <div className="loading-container">
-              <div className="loading-spinner">
-                <div className="spinner"></div>
-              </div>
-              <p>Ładowanie opinii...</p>
-            </div>
+            <LoadingSpinner message="Ładowanie opinii..." />
           </div>
         </div>
       </section>
@@ -133,20 +131,10 @@ export default function TestimonialsSection() {
       <section className="py-8 bg-gray-50">
         <div className="max-w-screen-lg mx-auto px-4">
           <div className="text-center">
-            <div className="error-container">
-              <div className="error-content">
-                <h2>Ups! Nie udało się załadować opinii</h2>
-                <p>{error}</p>
-                <div className="error-actions">
-                  <button 
-                    onClick={() => window.location.reload()}
-                    className="retry-button"
-                  >
-                    Spróbuj ponownie
-                  </button>
-                </div>
-              </div>
-            </div>
+            <ErrorContainer 
+              error={error}
+              title="Ups! Nie udało się załadować opinii"
+            />
           </div>
         </div>
       </section>

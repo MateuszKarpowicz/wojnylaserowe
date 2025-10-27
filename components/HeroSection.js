@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { FaFacebook, FaInstagram, FaPhone } from 'react-icons/fa';
+import SocialMediaIcons from './ui/SocialMediaIcons';
 
 export default function HeroSection() {
   return (
@@ -53,29 +53,7 @@ export default function HeroSection() {
         </div>
 
         {/* IKONY SOCIAL */}
-        <div className="flex items-center justify-center gap-6">
-          <a
-            href="#"
-            aria-label="Facebook"
-            className="text-3xl text-gray-600 hover:text-neonBlue transition-colors duration-300"
-          >
-            <FaFacebook />
-          </a>
-          <a
-            href="#"
-            aria-label="Instagram"
-            className="text-3xl text-gray-600 hover:text-neonBlue transition-colors duration-300"
-          >
-            <FaInstagram />
-          </a>
-          <a
-            href="#"
-            aria-label="Telefon"
-            className="text-3xl text-gray-600 hover:text-neonBlue transition-colors duration-300"
-          >
-            <FaPhone />
-          </a>
-        </div>
+              <SocialMediaIcons size="text-3xl" />
       </div>
     </section>
   );

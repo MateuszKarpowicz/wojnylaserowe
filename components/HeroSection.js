@@ -1,12 +1,80 @@
+import Image from 'next/image';
+import { FaFacebook, FaInstagram, FaPhone } from 'react-icons/fa';
+
 export default function HeroSection() {
   return (
-    <section id="hero">
-      <div>
-        <div>LOGO WOJNY LASEROWE</div>
-        <div>
-          <div>Facebook</div>
-          <div>Instagram</div>
-          <div>Telefon</div>
+    <section className="min-h-screen bg-lightBg text-textDark px-4 py-8 mx-auto max-w-screen-md">
+      {/* CYTAT Z WIEDŹMINA */}
+      <div className="text-center mb-6">
+        <p className="italic text-lg md:text-xl text-gray-600 font-serif">
+          "Coś się kończy, coś się zaczyna"
+        </p>
+      </div>
+
+      {/* GŁÓWNY TYTUŁ */}
+      <div className="text-center mb-6">
+        <h1 className="font-bold text-3xl md:text-5xl text-textDark leading-tight">
+          ZAMIEŃ PRZESZŁOŚĆ<br />
+          NA NOWY POCZĄTEK
+        </h1>
+      </div>
+
+      {/* PODTYTUŁ */}
+      <div className="text-center mb-8">
+        <p className="text-lg md:text-xl text-gray-700">
+          Laserowe usuwanie tatuaży i blizn
+        </p>
+      </div>
+
+      {/* ZDJĘCIE HERO */}
+      <div className="text-center mb-8">
+        <div className="w-full max-w-md mx-auto">
+          <Image
+            src="/images/hero/hero.webp"
+            alt="Przed i po - laserowe usuwanie tatuaży"
+            width={400}
+            height={300}
+            className="rounded-lg shadow-lg w-full h-auto"
+            priority
+          />
+        </div>
+      </div>
+
+      {/* CTA + SOCIAL */}
+      <div className="text-center">
+        {/* PRZYCISK CENNIK */}
+        <div className="mb-6">
+          <a
+            href="#oferta"
+            className="inline-block bg-neonBlue text-white px-8 py-4 rounded-lg hover:bg-neonPurple transition-colors duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105"
+          >
+            CENNIK
+          </a>
+        </div>
+
+        {/* IKONY SOCIAL */}
+        <div className="flex items-center justify-center gap-6">
+          <a
+            href="#"
+            aria-label="Facebook"
+            className="text-3xl text-gray-600 hover:text-neonBlue transition-colors duration-300"
+          >
+            <FaFacebook />
+          </a>
+          <a
+            href="#"
+            aria-label="Instagram"
+            className="text-3xl text-gray-600 hover:text-neonBlue transition-colors duration-300"
+          >
+            <FaInstagram />
+          </a>
+          <a
+            href="#"
+            aria-label="Telefon"
+            className="text-3xl text-gray-600 hover:text-neonBlue transition-colors duration-300"
+          >
+            <FaPhone />
+          </a>
         </div>
       </div>
     </section>

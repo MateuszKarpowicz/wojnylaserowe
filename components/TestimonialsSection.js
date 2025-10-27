@@ -142,7 +142,7 @@ export default function TestimonialsSection() {
   }
 
   return (
-    <section className="py-8 bg-gray-50">
+    <section id="opinie" className="py-8 bg-gray-50">
       <div className="max-w-screen-lg mx-auto px-4">
         {/* NAGŁÓWEK SEKCJI */}
         <div className="text-center mb-12">

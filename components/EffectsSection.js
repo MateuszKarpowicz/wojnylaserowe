@@ -113,7 +113,7 @@ export default function EffectsSection() {
   }
 
   return (
-    <section className="py-8 bg-lightBg">
+    <section id="efekty" className="py-8 bg-lightBg">
       <div className="max-w-screen-lg mx-auto px-4">
         {/* NAGŁÓWEK SEKCJI */}
         <div className="text-center mb-12">

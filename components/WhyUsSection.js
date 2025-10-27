@@ -1,6 +1,6 @@
 export default function WhyUsSection() {
   return (
-    <section className="py-8 bg-gray-50">
+    <section id="dlaczego-my" className="py-8 bg-gray-50">
       <div className="max-w-screen-lg mx-auto px-4">
         {/* NAGŁÓWEK */}
         <div className="text-center mb-8">

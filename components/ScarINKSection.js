@@ -1,6 +1,6 @@
 export default function ScarINKSection() {
   return (
-    <section className="py-8 bg-white">
+    <section id="scarink" className="py-8 bg-white">
       <div className="max-w-screen-lg mx-auto px-4">
         {/* NAGŁÓWEK */}
         <div className="text-center mb-12">

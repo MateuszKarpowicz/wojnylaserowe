@@ -58,7 +58,7 @@ export default function HeroSection() {
         </div>
 
         {/* TEKST POD IKONKAMI */}
-        <div className="text-center">
+        <div className="text-center mb-8">
           <p className="text-gray-600 text-sm mb-2">
             Śledź nas w mediach społecznościowych
           </p>
@@ -66,6 +66,51 @@ export default function HeroSection() {
             Zobacz najnowsze efekty naszych zabiegów i opinie klientów. 
             Regularnie publikujemy zdjęcia przed i po oraz porady dotyczące pielęgnacji skóry.
           </p>
+        </div>
+
+        {/* ODYŁACZE DO SEKCJI */}
+        <div className="text-center">
+          <p className="text-gray-600 text-sm mb-4">
+            Dowiedz się więcej o naszych usługach:
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <a
+              href="#opinie"
+              className="inline-block bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-neonBlue hover:text-white transition-colors duration-300 text-sm font-medium"
+            >
+              Opinie klientów
+            </a>
+            <a
+              href="#efekty"
+              className="inline-block bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-neonBlue hover:text-white transition-colors duration-300 text-sm font-medium"
+            >
+              Nasze efekty
+            </a>
+            <a
+              href="#o-nas"
+              className="inline-block bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-neonBlue hover:text-white transition-colors duration-300 text-sm font-medium"
+            >
+              O nas
+            </a>
+            <a
+              href="#dlaczego-my"
+              className="inline-block bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-neonBlue hover:text-white transition-colors duration-300 text-sm font-medium"
+            >
+              Dlaczego my
+            </a>
+            <a
+              href="#scarink"
+              className="inline-block bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-neonBlue hover:text-white transition-colors duration-300 text-sm font-medium"
+            >
+              ScarINK
+            </a>
+            <a
+              href="#kontakt"
+              className="inline-block bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-neonBlue hover:text-white transition-colors duration-300 text-sm font-medium"
+            >
+              Kontakt
+            </a>
+          </div>
         </div>
       </div>
     </section>

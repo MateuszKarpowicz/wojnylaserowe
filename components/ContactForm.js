@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import ErrorMessage from './ui/ErrorMessage';
 import { simulateAsyncOperation } from '../utils/asyncSimulator';
+import contactFormData from '../content/texts/contactform.json';
 
 export default function ContactForm({ onSubmit }) {
   const [formData, setFormData] = useState({
@@ -58,7 +59,7 @@ export default function ContactForm({ onSubmit }) {
       });
     } catch (err) {
       console.error('Error submitting form:', err);
-      setError('Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.');
+      setError(contactFormData.validation.required);
     } finally {
       setIsLoading(false);
     }
@@ -72,7 +73,7 @@ export default function ContactForm({ onSubmit }) {
       {/* IMIĘ I NAZWISKO */}
       <div>
         <label className="block text-textDark text-sm font-semibold mb-2">
-          Imię i nazwisko *
+          {contactFormData.fields.name.label} *
         </label>
         <input
           type="text"
@@ -82,14 +83,14 @@ export default function ContactForm({ onSubmit }) {
           required
           disabled={isLoading}
           className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          placeholder="Jan Kowalski"
+          placeholder={contactFormData.fields.name.placeholder}
         />
       </div>
 
       {/* NUMER TELEFONU */}
       <div>
         <label className="block text-textDark text-sm font-semibold mb-2">
-          Numer telefonu *
+          {contactFormData.fields.phone.label} *
         </label>
         <input
           type="tel"
@@ -99,14 +100,14 @@ export default function ContactForm({ onSubmit }) {
           required
           disabled={isLoading}
           className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          placeholder="+48 123 456 789"
+          placeholder={contactFormData.fields.phone.placeholder}
         />
       </div>
 
       {/* RODZAJ USŁUGI */}
       <div>
         <label className="block text-textDark text-sm font-semibold mb-2">
-          Rodzaj usługi *
+          {contactFormData.fields.service.label} *
         </label>
         <select
           name="service"
@@ -116,17 +117,17 @@ export default function ContactForm({ onSubmit }) {
           disabled={isLoading}
           className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <option value="">Wybierz usługę</option>
-          <option value="blizna">Chcę usunąć bliznę</option>
-          <option value="tatuaz">Chcę usunąć tatuaż</option>
-          <option value="konsultacje">Konsultacje</option>
+          <option value="">{contactFormData.fields.service.placeholder}</option>
+          {contactFormData.fields.service.options.map((option, index) => (
+            <option key={index} value={option}>{option}</option>
+          ))}
         </select>
       </div>
 
       {/* OPIS PROBLEMU */}
       <div>
         <label className="block text-textDark text-sm font-semibold mb-2">
-          Opis problemu *
+          {contactFormData.fields.description.label} *
         </label>
         <textarea
           name="description"
@@ -136,14 +137,14 @@ export default function ContactForm({ onSubmit }) {
           rows="4"
           disabled={isLoading}
           className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
-          placeholder="Opisz szczegółowo co chcesz usunąć..."
+          placeholder={contactFormData.fields.description.placeholder}
         />
       </div>
 
       {/* PREFEROWANE DATY */}
       <div>
         <label className="block text-textDark text-sm font-semibold mb-2">
-          Preferowane daty
+          {contactFormData.fields.dates.label}
         </label>
         <textarea
           name="dates"
@@ -152,14 +153,14 @@ export default function ContactForm({ onSubmit }) {
           rows="2"
           disabled={isLoading}
           className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
-          placeholder="zakres dat, z uwzględnieniem czy w tygodniu / wieczorem / w weekend"
+          placeholder={contactFormData.fields.dates.placeholder}
         />
       </div>
 
       {/* ZDJĘCIA */}
       <div>
         <label className="block text-textDark text-sm font-semibold mb-2">
-          Zdjęcia (opcjonalnie)
+          {contactFormData.fields.photos.label}
         </label>
         <input
           type="file"
@@ -181,10 +182,10 @@ export default function ContactForm({ onSubmit }) {
         {isLoading ? (
           <>
             <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-            Wysyłanie...
+            {contactFormData.submit.loading}
           </>
         ) : (
-          'Wyślij zapytanie'
+          contactFormData.submit.text
         )}
       </button>
     </form>

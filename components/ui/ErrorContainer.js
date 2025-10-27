@@ -1,8 +1,10 @@
+import uiData from '../../content/texts/ui.json';
+
 export default function ErrorContainer({ 
   error, 
-  title = "Ups! Coś poszło nie tak", 
+  title = uiData.error.default, 
   onRetry = () => window.location.reload(),
-  retryText = "Spróbuj ponownie",
+  retryText = uiData.error.retry,
   className = "" 
 }) {
   if (!error) return null;

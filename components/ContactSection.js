@@ -4,8 +4,11 @@ import ContactForm from './ContactForm';
 import MapComponent from './MapComponent';
 import SocialMediaIcons from './ui/SocialMediaIcons';
 import ErrorMessage from './ui/ErrorMessage';
+import SectionHeader from './ui/SectionHeader';
 import { useState } from 'react';
 import { simulateAsyncOperation } from '../utils/asyncSimulator';
+import { BaseSection } from './base';
+import contactData from '../content/texts/contact.json';
 
 export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,69 +36,80 @@ export default function ContactSection() {
       
     } catch (err) {
       console.error('Error submitting contact form:', err);
-      setError('Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.');
+      setError(contactData.form.error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <section id="kontakt" className="py-8 bg-white">
-      <div className="max-w-screen-lg mx-auto px-4">
-        {/* NAGŁÓWEK */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-textDark mb-4">
-            Kontakt
-          </h2>
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-            Skontaktuj się z nami, aby umówić się na konsultację lub zabieg
-          </p>
+    <BaseSection id="kontakt" className="py-8 bg-white">
+      {/* NAGŁÓWEK */}
+      <SectionHeader 
+        title={contactData.title}
+        subtitle={contactData.subtitle}
+        className="text-center mb-12"
+        subtitleClassName="text-lg text-gray-700 max-w-2xl mx-auto"
+      />
+
+      {/* SUCCESS MESSAGE */}
+      {success && (
+        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-8 text-center">
+          ✅ {contactData.form.success}
+        </div>
+      )}
+
+      {/* ERROR MESSAGE */}
+      <ErrorMessage error={error} className="mb-8" />
+
+      {/* FORMULARZ I MAPA */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        {/* FORMULARZ */}
+        <div>
+          <ContactForm onSubmit={handleFormSubmit} />
         </div>
 
-        {/* SUCCESS MESSAGE */}
-        {success && (
-          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-8 text-center">
-            ✅ Formularz został wysłany pomyślnie! Skontaktujemy się z Tobą wkrótce.
-          </div>
-        )}
-
-        {/* ERROR MESSAGE */}
-        <ErrorMessage error={error} className="mb-8 text-center" />
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* FORMULARZ */}
+        {/* MAPA I INFORMACJE */}
+        <div className="space-y-8">
+          {/* MAPA */}
           <div>
-
-            <ContactForm onSubmit={handleFormSubmit} />
+            <MapComponent />
           </div>
 
-          {/* DANE KONTAKTOWE I MAPA */}
-          <div>
-            {/* IKONY SOCIAL */}
-            <div className="mb-8">
-   
-              <div className="flex items-center justify-center">
-              <SocialMediaIcons size="text-4xl" className="mb-6" />
+          {/* INFORMACJE KONTAKTOWE */}
+          <div className="bg-gray-50 rounded-lg p-6">
+            <h3 className="text-xl font-semibold text-textDark mb-4">
+              {contactData.info.title}
+            </h3>
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <FaMapMarkerAlt className="text-neonBlue text-lg" />
+                <span className="text-gray-700">{contactData.info.address}</span>
               </div>
-              {/* ADRES */}
-              <div className="flex items-start gap-3 mb-6">
-                <FaMapMarkerAlt className="text-neonBlue text-xl mt-1" />
-                <div>
-                  <p className="font-semibold text-textDark">
-                    Kult Tattoo & Piercing | Studio tatuażu i piercingu Kraków
-                  </p>
-                  <p className="text-gray-700">
-                    Aleja Zygmunta Krasińskiego 1, 31-111 Kraków
-                  </p>
-                </div>
+              <div className="flex items-center gap-3">
+                <span className="text-neonBlue text-lg">📞</span>
+                <span className="text-gray-700">{contactData.info.phone}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-neonBlue text-lg">✉️</span>
+                <span className="text-gray-700">{contactData.info.email}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-neonBlue text-lg">🕒</span>
+                <span className="text-gray-700">{contactData.info.hours}</span>
               </div>
             </div>
+          </div>
 
-            {/* MAPA */}
-            <MapComponent />
+          {/* SOCIAL MEDIA */}
+          <div className="text-center">
+            <h3 className="text-lg font-semibold text-textDark mb-4">
+              {contactData.social.title}
+            </h3>
+            <SocialMediaIcons size="text-2xl" />
           </div>
         </div>
       </div>
-    </section>
+    </BaseSection>
   );
 }

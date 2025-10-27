@@ -1,0 +1,25 @@
+{
+  "button": {
+    "text": "OFERTA",
+    "icon": "📋"
+  },
+  "options": [
+    {
+      "id": "blizna",
+      "title": "Chcę usunąć bliznę",
+      "icon": "🔧"
+    },
+    {
+      "id": "tatuaz", 
+      "title": "Chcę usunąć tatuaż",
+      "icon": "🎨"
+    },
+    {
+      "id": "konsultacja",
+      "title": "Konsultacje",
+      "icon": "💬"
+    }
+  ],
+  "error": "Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.",
+  "success": "Formularz został wysłany pomyślnie!"
+}

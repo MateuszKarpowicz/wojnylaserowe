@@ -1,0 +1,47 @@
+{
+  "fields": {
+    "name": {
+      "label": "Imię i nazwisko",
+      "placeholder": "Wprowadź swoje imię i nazwisko",
+      "required": true
+    },
+    "phone": {
+      "label": "Numer telefonu",
+      "placeholder": "Wprowadź numer telefonu",
+      "required": true
+    },
+    "service": {
+      "label": "Rodzaj usługi",
+      "placeholder": "Wybierz rodzaj usługi",
+      "options": [
+        "Usunięcie tatuażu",
+        "Usunięcie blizny",
+        "Konsultacja",
+        "Inne"
+      ],
+      "required": true
+    },
+    "description": {
+      "label": "Opis problemu",
+      "placeholder": "Opisz szczegółowo swój problem lub pytanie",
+      "required": true
+    },
+    "dates": {
+      "label": "Preferowane terminy",
+      "placeholder": "Podaj preferowane dni i godziny wizyty"
+    },
+    "photos": {
+      "label": "Zdjęcia (opcjonalnie)",
+      "placeholder": "Dodaj zdjęcia do wyceny"
+    }
+  },
+  "submit": {
+    "text": "Wyślij zapytanie",
+    "loading": "Wysyłanie..."
+  },
+  "validation": {
+    "required": "To pole jest wymagane",
+    "email": "Wprowadź poprawny adres email",
+    "phone": "Wprowadź poprawny numer telefonu"
+  }
+}

@@ -3,18 +3,13 @@ import { useState } from 'react';
 import ContactForm from './ContactForm';
 import ErrorMessage from './ui/ErrorMessage';
 import { simulateAsyncOperation } from '../utils/asyncSimulator';
+import offerSliderData from '../content/texts/offerslider.json';
 
 export default function OfferSlider() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
-
-  const options = [
-    { id: 'blizna', title: 'Chcę usunąć bliznę', icon: '🔧' },
-    { id: 'tatuaz', title: 'Chcę usunąć tatuaż', icon: '🎨' },
-    { id: 'konsultacja', title: 'Konsultacje', icon: '💬' }
-  ];
 
   const toggleSlider = () => {
     setIsOpen(!isOpen);
@@ -49,11 +44,11 @@ export default function OfferSlider() {
       setSelectedOption(null);
       
       // Show success message (could be a toast notification)
-      console.log('Formularz został wysłany pomyślnie!');
+      console.log(offerSliderData.success);
       
     } catch (err) {
       console.error('Error submitting offer form:', err);
-      setError('Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.');
+      setError(offerSliderData.error);
     } finally {
       setIsSubmitting(false);
     }
@@ -62,83 +57,80 @@ export default function OfferSlider() {
   return (
     <>
       {/* PRZYCISK OFERTA - pod headerem po prawej */}
-      <div className="fixed top-16 right-0 z-40">
+      <div className="fixed top-20 right-4 z-50">
         <button
           onClick={toggleSlider}
-          disabled={isSubmitting}
-          className="bg-darkBg/95 text-textLight hover:text-neonBlue transition-colors duration-300 focus:outline-none font-display text-lg font-bold w-20 h-12 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+          className="bg-neonBlue text-white px-6 py-3 rounded-lg shadow-lg hover:bg-neonPurple transition-colors duration-300 font-semibold flex items-center gap-2"
         >
-          {isSubmitting ? (
-            <div className="w-4 h-4 border-2 border-textLight border-t-transparent rounded-full animate-spin"></div>
-          ) : (
-            'OFERTA'
-          )}
+          <span className="text-xl">{offerSliderData.button.icon}</span>
+          {offerSliderData.button.text}
         </button>
       </div>
 
-      {/* ROZSUWAK PANEL */}
-      <div className={`fixed top-16 left-0 right-0 z-50 bg-darkBg/95 border-l border-neonBlue/20 shadow-[0_0_20px_rgba(0,224,255,0.3)] transition-all duration-500 ease-in-out ${
-        isOpen ? 'translate-x-0' : 'translate-x-full'
-      }`}>
-        
-        {/* WYBÓR OPCJI */}
-        {!selectedOption && (
-          <div className="max-w-md mx-auto h-screen p-6 pb-24 overflow-y-auto">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-textLight font-display text-xl font-bold">Wybierz usługę</h2>
-              <button
-                onClick={toggleSlider}
-                disabled={isSubmitting}
-                className="text-textLight hover:text-neonBlue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                ✕
-              </button>
+      {/* ROZSUWAK */}
+      <div
+        className={`fixed top-0 right-0 h-full w-full md:w-96 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-40 ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="h-full flex flex-col">
+          {/* HEADER */}
+          <div className="bg-neonBlue text-white p-6 flex items-center justify-between">
+            <h2 className="text-xl font-bold">
+              {offerSliderData.button.text}
+            </h2>
+            <button
+              onClick={toggleSlider}
+              className="text-white hover:text-gray-200 transition-colors"
+            >
+              ✕
+            </button>
+          </div>
+
+          {/* OPCJE */}
+          {!selectedOption && (
+            <div className="flex-1 p-6 overflow-y-auto">
+              <h3 className="text-lg font-semibold text-textDark mb-6">
+                Wybierz rodzaj usługi:
+              </h3>
+              <div className="space-y-4">
+                {offerSliderData.options.map((option) => (
+                  <button
+                    key={option.id}
+                    onClick={() => selectOption(option.id)}
+                    className="w-full bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg p-4 text-left transition-colors duration-200 flex items-center gap-3"
+                  >
+                    <span className="text-2xl">{option.icon}</span>
+                    <span className="text-textDark font-medium">{option.title}</span>
+                  </button>
+                ))}
+              </div>
             </div>
-            
-            {/* ERROR MESSAGE */}
-            <ErrorMessage error={error} className="mb-6" />
-            
-            <div className="space-y-3">
-              {options.map((option) => (
+          )}
+
+          {/* FORMULARZE */}
+          {selectedOption && (
+            <div className="max-w-md mx-auto h-screen p-6 pb-24 overflow-y-auto">
+              <div className="flex items-center gap-3 mb-6">
                 <button
-                  key={option.id}
-                  onClick={() => selectOption(option.id)}
+                  onClick={goBack}
                   disabled={isSubmitting}
-                  className="w-full text-left p-4 rounded-lg hover:bg-neonBlue/10 transition-colors duration-300 group disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="text-textLight hover:text-neonBlue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <div className="flex items-center">
-                    <span className="text-textLight font-semibold text-lg group-hover:text-neonBlue transition-colors">
-                      {option.title}
-                    </span>
-                  </div>
+                  ←
                 </button>
-              ))}
+                <h2 className="text-textLight font-display text-xl font-bold">
+                  {offerSliderData.options.find(opt => opt.id === selectedOption)?.title}
+                </h2>
+              </div>
+
+              {/* ERROR MESSAGE */}
+              <ErrorMessage error={error} className="mb-6" />
+
+              <ContactForm onSubmit={handleFormSubmit} />
             </div>
-          </div>
-        )}
-
-        {/* FORMULARZE */}
-        {selectedOption && (
-          <div className="max-w-md mx-auto h-screen p-6 pb-24 overflow-y-auto">
-            <div className="flex items-center gap-3 mb-6">
-              <button
-                onClick={goBack}
-                disabled={isSubmitting}
-                className="text-textLight hover:text-neonBlue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                ←
-              </button>
-              <h2 className="text-textLight font-display text-xl font-bold">
-                {options.find(opt => opt.id === selectedOption)?.title}
-              </h2>
-            </div>
-
-            {/* ERROR MESSAGE */}
-            <ErrorMessage error={error} className="mb-6" />
-
-            <ContactForm onSubmit={handleFormSubmit} />
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
       {/* OVERLAY */}

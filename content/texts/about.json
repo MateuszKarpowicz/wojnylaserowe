@@ -1,19 +1,9 @@
 {
-  "title": "Dlaczego Wojny Laserowe",
-  "subtitle": "Profesjonalne podejście do usuwania tatuaży",
-  "description": "Wybierz naszą klinikę i doświadcz najwyższej jakości usług laserowego usuwania tatuaży. Nasz zespół specjalistów wykorzystuje najnowocześniejsze technologie, aby zapewnić Ci bezpieczne i skuteczne zabiegi.",
-  "features": [
-    {
-      "title": "Nowoczesny sprzęt",
-      "description": "Używamy najnowszych laserów Q-switched"
-    },
-    {
-      "title": "Doświadczony zespół",
-      "description": "Specjaliści z wieloletnim doświadczeniem"
-    },
-    {
-      "title": "Bezpieczne zabiegi",
-      "description": "Najwyższe standardy bezpieczeństwa i higieny"
-    }
+  "title": "O nas",
+  "subtitle": "Skutecznie, bezpiecznie i profesjonalnie – od 2019 roku",
+  "content": [
+    "Niechciany tatuaż nie musi zostać z Tobą na zawsze.",
+    "W Wojnach Laserowych specjalizuję się w laserowym usuwaniu tatuaży w Krakowie od 2019 roku. Dzięki doświadczeniu i pracy na nowoczesnym laserze pikosekundowym, pomagam bezpiecznie pozbyć się niechcianych wzorów – bez blizn i bez nadmiernego bólu.",
+    "Każdy zabieg wykonuję z pełnym skupieniem na bezpieczeństwie, higienie i komforcie klienta. Dodatkowo, podczas zabiegu korzystam z chłodziarki do skóry, która znacznie zmniejsza dyskomfort, zaczerwienienie i obrzęk."
   ]
 }

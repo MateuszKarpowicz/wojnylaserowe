@@ -1,25 +1,47 @@
 {
-  "title": "Efekty Przed i Po",
-  "subtitle": "Zobacz rezultaty naszych zabiegów",
-  "description": "Przedstawiamy przykłady skutecznego usuwania tatuaży przy użyciu naszych zaawansowanych technologii laserowych.",
-  "gallery": [
+  "title": "Nasze efekty",
+  "subtitle": "Zobacz jak wyglądają nasze prace - prawdziwe efekty przed i po zabiegach laserowego usuwania tatuaży",
+  "loading": {
+    "message": "Ładowanie efektów..."
+  },
+  "error": {
+    "title": "Ups! Nie udało się załadować efektów"
+  },
+  "navigation": {
+    "previous": "Poprzednie zdjęcie",
+    "next": "Następne zdjęcie",
+    "goTo": "Przejdź do zdjęcia"
+  },
+  "cta": {
+    "text": "Chcesz zobaczyć więcej efektów? Skontaktuj się z nami!",
+    "button": "Zapytaj o wycenę",
+    "href": "#oferta"
+  },
+  "images": [
     {
       "id": 1,
-      "before": "/images/effects/before-1.jpg",
-      "after": "/images/effects/after-1.jpg",
-      "description": "Tatuaż czarny - 8 sesji"
+      "src": "/images/effects/efekty1.jpg",
+      "alt": "Efekt przed i po - usuwanie tatuażu"
     },
     {
       "id": 2,
-      "before": "/images/effects/before-2.jpg",
-      "after": "/images/effects/after-2.jpg",
-      "description": "Tatuaż kolorowy - 12 sesji"
+      "src": "/images/effects/efekty2.jpg",
+      "alt": "Efekt przed i po - usuwanie tatuażu"
     },
     {
       "id": 3,
-      "before": "/images/effects/before-3.jpg",
-      "after": "/images/effects/after-3.jpg",
-      "description": "Tatuaż duży - 15 sesji"
+      "src": "/images/effects/efekty3.jpg",
+      "alt": "Efekt przed i po - usuwanie tatuażu"
+    },
+    {
+      "id": 4,
+      "src": "/images/effects/efekty4.jpg",
+      "alt": "Efekt przed i po - usuwanie tatuażu"
+    },
+    {
+      "id": 5,
+      "src": "/images/effects/efekty5.jpg",
+      "alt": "Efekt przed i po - usuwanie tatuażu"
     }
   ]
 }

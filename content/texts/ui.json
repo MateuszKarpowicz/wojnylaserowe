@@ -1,0 +1,19 @@
+{
+  "loading": {
+    "default": "Ładowanie...",
+    "effects": "Ładowanie efektów...",
+    "testimonials": "Ładowanie opinii...",
+    "form": "Wysyłanie..."
+  },
+  "error": {
+    "default": "Ups! Coś poszło nie tak",
+    "retry": "Spróbuj ponownie",
+    "effects": "Ups! Nie udało się załadować efektów",
+    "testimonials": "Ups! Nie udało się załadować opinii",
+    "form": "Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie."
+  },
+  "success": {
+    "form": "Formularz został wysłany pomyślnie!",
+    "contact": "Dziękujemy za wiadomość! Odpowiemy w ciągu 24 godzin."
+  }
+}

@@ -1,6 +1,43 @@
 {
-  "title": "Wojny Laserowe",
-  "subtitle": "Profesjonalne usuwanie tatuaży",
-  "description": "Najnowocześniejsze technologie laserowe do bezpiecznego i skutecznego usuwania tatuaży. Doświadczony zespół, nowoczesny sprzęt, doskonałe efekty.",
-  "cta": "Umów konsultację"
+  "quote": "Coś się kończy, coś się zaczyna",
+  "title": "ZAMIEŃ PRZESZŁOŚĆ NA NOWY POCZĄTEK",
+  "subtitle": "Laserowe usuwanie tatuaży i blizn",
+  "imageAlt": "Przed i po - laserowe usuwanie tatuaży",
+  "cta": {
+    "text": "CENNIK",
+    "href": "#oferta"
+  },
+  "social": {
+    "title": "Śledź nas w mediach społecznościowych",
+    "description": "Zobacz najnowsze efekty naszych zabiegów i opinie klientów. Regularnie publikujemy zdjęcia przed i po oraz porady dotyczące pielęgnacji skóry."
+  },
+  "navigation": {
+    "title": "Dowiedz się więcej o naszych usługach:",
+    "links": [
+      {
+        "text": "Opinie klientów",
+        "href": "#opinie"
+      },
+      {
+        "text": "Nasze efekty",
+        "href": "#efekty"
+      },
+      {
+        "text": "O nas",
+        "href": "#o-nas"
+      },
+      {
+        "text": "Dlaczego my",
+        "href": "#dlaczego-my"
+      },
+      {
+        "text": "ScarINK",
+        "href": "#scarink"
+      },
+      {
+        "text": "Kontakt",
+        "href": "#kontakt"
+      }
+    ]
+  }
 }

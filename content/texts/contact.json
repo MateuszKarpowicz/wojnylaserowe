@@ -1,22 +1,18 @@
 {
   "title": "Kontakt",
-  "subtitle": "Skontaktuj się z nami",
-  "description": "Masz pytania? Chcesz umówić wizytę? Nasz zespół chętnie odpowie na wszystkie Twoje pytania.",
+  "subtitle": "Skontaktuj się z nami, aby umówić się na konsultację lub zabieg",
   "form": {
-    "name": "Imię",
-    "email": "Email",
-    "phone": "Telefon",
-    "message": "Wiadomość",
-    "submit": "Wyślij wiadomość"
+    "success": "Dziękujemy za wiadomość! Odpowiemy w ciągu 24 godzin.",
+    "error": "Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie."
   },
-  "contactInfo": {
-    "address": "ul. Przykładowa 123, 00-000 Warszawa",
-    "phone": "+48 123 456 789",
-    "email": "kontakt@wojny-laserowe.pl",
-    "hours": "Pon-Pt 9:00-18:00, Sob 9:00-14:00"
+  "info": {
+    "title": "Informacje kontaktowe",
+    "address": "Kraków, Polska",
+    "hours": "Poniedziałek - Piątek: 9:00 - 18:00",
+    "phone": "Telefon: +48 XXX XXX XXX",
+    "email": "Email: kontakt@wojny-laserowe.pl"
   },
   "social": {
-    "facebook": "https://facebook.com/wojny-laserowe",
-    "instagram": "https://instagram.com/wojny_laserowe"
+    "title": "Śledź nas w mediach społecznościowych"
   }
 }

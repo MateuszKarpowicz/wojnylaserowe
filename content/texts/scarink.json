@@ -1,0 +1,35 @@
+{
+  "title": "ScarINK – regeneracja i redukcja blizn Kraków",
+  "subtitle": "Naturalna regeneracja skóry i poprawa wyglądu blizn",
+  "description": "Blizny pooperacyjne, potrądzikowe, po tatuażu czy innych urazach nie muszą być trwałym problemem. W Wojnach Laserowych w Krakowie oferuję profesjonalne zabiegi ScarINK – metodę, która stymuluje naturalne procesy naprawcze skóry i pomaga poprawić jej strukturę, elastyczność oraz koloryt.",
+  "method": {
+    "title": "Na czym polega metoda ScarINK?",
+    "description": "ScarINK to nowoczesna technika pracy ze skórą polegająca na mikropunkturze – czyli wykonywaniu bardzo drobnych, kontrolowanych nakłuć w obrębie blizny.",
+    "process": "W wyniku tego procesu skóra zostaje pobudzona do produkcji kolagenu i elastyny, co poprawia jej strukturę i wygląd.",
+    "results": {
+      "title": "Z czasem blizna staje się:",
+      "items": [
+        "gładsza",
+        "mniej widoczna", 
+        "bardziej zbliżona kolorem do otaczającej skóry"
+      ]
+    },
+    "conclusion": "Metoda ta znacznie poprawia jej estetykę i wygląd skóry.",
+    "additional": "ScarINK może być również skutecznie łączony z innymi terapiami (np. masażem blizny lub terapią manualną), co często wzmacnia efekty, choć sam zabieg tego nie obejmuje."
+  },
+  "benefits": {
+    "title": "Korzyści z zabiegów ScarINK",
+    "items": [
+      "Poprawa struktury i elastyczności skóry",
+      "Redukcja widoczności blizn",
+      "Naturalne procesy regeneracyjne",
+      "Bezpieczna i skuteczna metoda",
+      "Możliwość łączenia z innymi terapiami"
+    ]
+  },
+  "cta": {
+    "text": "Chcesz poprawić wygląd swoich blizn?",
+    "button": "Umów konsultację",
+    "href": "#kontakt"
+  }
+}

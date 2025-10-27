@@ -1,4 +1,4 @@
-import EffectsGallery from '@/components/sections/EffectsGallery';
+import EffectsGallery from '@/components/ui/EffectsGallery';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import effectsPageData from '@/content/texts/effects-page.json';
 

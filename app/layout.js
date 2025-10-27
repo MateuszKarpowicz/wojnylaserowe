@@ -1,7 +1,7 @@
 import './globals.css';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import OfferSlider from '@/components/sections/OfferSlider';
+import Header from '@/components/ui/Header';
+import Footer from '@/components/ui/Footer';
+import OfferSlider from '@/components/ui/OfferSlider';
 
 export const metadata = { 
   title: "Wojny Laserowe" 

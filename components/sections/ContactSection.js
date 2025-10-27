@@ -1,7 +1,7 @@
 'use client';
 import { FaMapMarkerAlt } from 'react-icons/fa';
-import ContactForm from '@/components/sections/ContactForm';
-import MapComponent from '@/components/sections/MapComponent';
+import ContactForm from '@/components/ui/ContactForm';
+import MapComponent from '@/components/ui/MapComponent';
 import SocialMediaIcons from '@/components/ui/SocialMediaIcons';
 import ErrorMessage from '@/components/ui/ErrorMessage';
 import SectionHeader from '@/components/ui/SectionHeader';

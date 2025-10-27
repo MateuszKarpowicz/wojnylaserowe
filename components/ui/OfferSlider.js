@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import ContactForm from '@/components/sections/ContactForm';
+import ContactForm from '@/components/ui/ContactForm';
 import ErrorMessage from '@/components/ui/ErrorMessage';
 import { simulateAsyncOperation } from '@/utils/asyncSimulator';
 import offerSliderData from '@/content/texts/offerslider.json';

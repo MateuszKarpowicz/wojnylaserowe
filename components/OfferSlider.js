@@ -1,6 +1,6 @@
 'use client';
-
 import { useState } from 'react';
+import ContactForm from './ContactForm';
 
 export default function OfferSlider() {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,6 +24,14 @@ export default function OfferSlider() {
   };
 
   const goBack = () => {
+    setSelectedOption(null);
+  };
+
+  const handleFormSubmit = (formData) => {
+    console.log('Formularz z rozsuwaka wysłany:', formData);
+    // Tutaj będzie logika wysyłania formularza
+    // Po wysłaniu można zamknąć rozsuwak
+    setIsOpen(false);
     setSelectedOption(null);
   };
 
@@ -90,73 +98,7 @@ export default function OfferSlider() {
               </h2>
             </div>
 
-            <form className="space-y-4">
-              <div>
-                <label className="block text-textLight text-sm font-semibold mb-2">
-                  Imię i nazwisko *
-                </label>
-                <input
-                  type="text"
-                  required
-                  className="w-full bg-darkBg border border-black/10 rounded-lg px-4 py-2 text-textLight focus:outline-none focus:border-neonBlue transition-colors"
-                  placeholder="Jan Kowalski"
-                />
-              </div>
-
-              <div>
-                <label className="block text-textLight text-sm font-semibold mb-2">
-                  Numer telefonu *
-                </label>
-                <input
-                  type="tel"
-                  required
-                  className="w-full bg-darkBg border border-black/10 rounded-lg px-4 py-2 text-textLight focus:outline-none focus:border-neonBlue transition-colors"
-                  placeholder="+48 123 456 789"
-                />
-              </div>
-
-              <div>
-                <label className="block text-textLight text-sm font-semibold mb-2">
-                  Opis problemu *
-                </label>
-                <textarea
-                  required
-                  rows="4"
-                  className="w-full bg-darkBg border border-black/10 rounded-lg px-4 py-2 text-textLight focus:outline-none focus:border-neonBlue transition-colors resize-none"
-                  placeholder="Opisz szczegółowo co chcesz usunąć..."
-                />
-              </div>
-
-              <div>
-                <label className="block text-textLight text-sm font-semibold mb-2">
-                  Preferowane daty
-                </label>
-                <textarea
-                  rows="2"
-                  className="w-full bg-darkBg border border-black/10 rounded-lg px-4 py-2 text-textLight focus:outline-none focus:border-neonBlue transition-colors resize-none"
-                  placeholder="zakres dat, z uwzględnieniem czy w tygodniu / wieczorem / w weekend"
-                />
-              </div>
-
-              <div>
-                <label className="block text-textLight text-sm font-semibold mb-2">
-                  Zdjęcia (opcjonalnie)
-                </label>
-                <input
-                  type="file"
-                  multiple
-                  accept="image/*"
-                  className="w-full bg-darkBg border border-black/10 rounded-lg px-4 py-2 text-textLight focus:outline-none focus:border-neonBlue transition-colors"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-neonBlue text-textLight font-semibold py-2 rounded-lg hover:bg-neonPurple transition-colors duration-300"
-              >
-                Wyślij zapytanie
-              </button>
-            </form>
+            <ContactForm onSubmit={handleFormSubmit} />
           </div>
         )}
       </div>

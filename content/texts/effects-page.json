@@ -1,0 +1,53 @@
+{
+  "header": {
+    "title": "Nasze efekty",
+    "subtitle": "Zobacz przykładowe efekty naszych zabiegów laserowego usuwania tatuaży. Nasze zaawansowane technologie pozwalają na skuteczne i bezpieczne usuwanie tatuaży przy minimalnym dyskomforcie dla klienta."
+  },
+  "cta": {
+    "text": "Zobacz etapy usuwania ↓",
+    "href": "#etapy-usuwania"
+  },
+  "stages": {
+    "title": "Etapy usuwania tatuażu",
+    "items": [
+      {
+        "number": 1,
+        "title": "Konsultacja",
+        "description": "Ocena tatuażu, analiza skóry i ustalenie planu zabiegów"
+      },
+      {
+        "number": 2,
+        "title": "Pierwsza sesja",
+        "description": "Zabieg laserowy z chłodziarką do skóry dla minimalizacji bólu"
+      },
+      {
+        "number": 3,
+        "title": "Gojenie",
+        "description": "4-8 tygodni przerwy między sesjami dla pełnego wygojenia skóry"
+      },
+      {
+        "number": 4,
+        "title": "Kolejne sesje",
+        "description": "Powtarzanie zabiegów aż do osiągnięcia zadowalających efektów"
+      }
+    ]
+  },
+  "additional": {
+    "title": "Co się dzieje podczas zabiegu?",
+    "items": [
+      {
+        "title": "Mechanizm działania:",
+        "content": "Laser podgrzewa barwnik w skórze, rozbijając komórki zawierające pigment. Rozbity pigment zostaje pochłonięty przez makrofagi i przesuwany ku górze naskórka."
+      },
+      {
+        "title": "Reakcje skóry:",
+        "content": "Miejsce poddane działaniu lasera staje się białe, po ok. 1h robi się czerwone. Może powstać obrzęk, który samoistnie zanika po 2-3 dniach."
+      }
+    ]
+  },
+  "footer": {
+    "text": "Chcesz zobaczyć więcej efektów? Skontaktuj się z nami!",
+    "button": "Zapytaj o wycenę",
+    "href": "#oferta"
+  }
+}

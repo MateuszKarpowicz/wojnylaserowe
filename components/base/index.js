@@ -10,6 +10,7 @@ export { default as BaseSection } from './BaseSection';
 export { default as BaseCard } from './BaseCard';
 export { default as BaseModal } from './BaseModal';
 export { default as BaseForm } from './BaseForm';
+export { default as BaseCarousel } from './BaseCarousel';
 
 // TODO: Dodaj pozostałe komponenty w kolejnych etapach
 // export { default as BaseForm } from './BaseForm';

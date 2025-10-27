@@ -5,18 +5,21 @@ import ErrorMessage from '@/components/ui/ErrorMessage';
 import { simulateAsyncOperation } from '@/utils/asyncSimulator';
 import offerSliderData from '@/content/texts/offerslider.json';
 import { BaseModal } from '@/components/base';
+import { useModal } from '@/components/hooks/useModal';
 
 export default function OfferSlider() {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, open, close } = useModal();
   const [selectedOption, setSelectedOption] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
 
   const toggleSlider = () => {
-    setIsOpen(!isOpen);
     if (isOpen) {
+      close();
       setSelectedOption(null);
       setError(null);
+    } else {
+      open();
     }
   };
 
@@ -41,7 +44,7 @@ export default function OfferSlider() {
       console.log('Formularz z rozsuwaka wysłany:', formData);
       
       // Close slider after successful submission
-      setIsOpen(false);
+      close();
       setSelectedOption(null);
       
       // Show success message (could be a toast notification)

@@ -1,14 +1,13 @@
 'use client';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { useEffect } from 'react';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import ErrorContainer from '@/components/ui/ErrorContainer';
 import SectionHeader from '@/components/ui/SectionHeader';
 import CTAButton from '@/components/ui/CTAButton';
 import { useCarousel } from '@/components/hooks/useCarousel';
 import { useAsyncOperation } from '@/components/hooks/useAsyncOperation';
-import { BaseSection } from '@/components/base';
+import { BaseSection, BaseCarousel } from '@/components/base';
 import effectsData from '@/content/texts/effects.json';
 
 export default function EffectsSection() {
@@ -66,60 +65,26 @@ export default function EffectsSection() {
       />
 
       {/* KARUZELA ZDJĘĆ */}
-      <div className="relative">
-        {/* ZDJĘCIE */}
-        <div className="overflow-hidden rounded-lg shadow-lg">
-          <div 
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-          >
-            {effectsData.images.map((effect) => (
-              <div key={effect.id} className="w-full flex-shrink-0">
-                <Image
-                  src={effect.src}
-                  alt={effect.alt}
-                  width={800}
-                  height={600}
-                  className="w-full h-96 md:h-[500px] object-cover"
-                />
-              </div>
-            ))}
+      <BaseCarousel
+        items={effectsData.images}
+        currentIndex={currentIndex}
+        onNext={next}
+        onPrev={prev}
+        onGoTo={goTo}
+        arrowClassName="bg-white bg-opacity-80 hover:bg-opacity-100"
+      >
+        {(effect) => (
+          <div className="overflow-hidden rounded-lg shadow-lg">
+            <Image
+              src={effect.src}
+              alt={effect.alt}
+              width={800}
+              height={600}
+              className="w-full h-96 md:h-[500px] object-cover"
+            />
           </div>
-        </div>
-
-        {/* NAWIGACJA STRZAŁKAMI */}
-        <button
-          onClick={prev}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-3 shadow-lg transition-all duration-300"
-          aria-label={effectsData.navigation.previous}
-        >
-          <FaChevronLeft className="text-gray-800 text-xl" />
-        </button>
-
-        <button
-          onClick={next}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-3 shadow-lg transition-all duration-300"
-          aria-label={effectsData.navigation.next}
-        >
-          <FaChevronRight className="text-gray-800 text-xl" />
-        </button>
-      </div>
-
-      {/* KROPKI NAWIGACYJNE */}
-      <div className="flex justify-center gap-2 mt-8">
-        {effectsData.images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goTo(index)}
-            className={`w-3 h-3 rounded-full transition-colors ${
-              index === currentIndex 
-                ? 'bg-neonBlue' 
-                : 'bg-gray-300 hover:bg-gray-400'
-            }`}
-            aria-label={`${effectsData.navigation.goTo} ${index + 1}`}
-          />
-        ))}
-      </div>
+        )}
+      </BaseCarousel>
 
       {/* CTA */}
       <div className="text-center mt-12">

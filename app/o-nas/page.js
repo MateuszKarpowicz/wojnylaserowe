@@ -1,6 +1,6 @@
-import AboutSection from '../../components/AboutSection';
-import WhyUsSection from '../../components/WhyUsSection';
-import ScarINKSection from '../../components/ScarINKSection';
+import AboutSection from '@/components/sections/AboutSection';
+import WhyUsSection from '@/components/sections/WhyUsSection';
+import ScarINKSection from '@/components/sections/ScarINKSection';
 
 export default function ONas() {
   return (

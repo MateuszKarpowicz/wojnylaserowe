@@ -1,0 +1,29 @@
+{
+  "header": {
+    "title": "Skontaktuj się z nami",
+    "subtitle": "Zostaw wiadomość lub umów się na wizytę. Nasz zespół ekspertów chętnie odpowie na wszystkie Twoje pytania dotyczące zabiegów laserowego usuwania tatuaży i ScarINK."
+  },
+  "contactInfo": {
+    "title": "Dane kontaktowe",
+    "address": {
+      "title": "Adres",
+      "businessName": "Kult Tattoo & Piercing | Studio tatuażu i piercingu Kraków",
+      "street": "Aleja Zygmunta Krasińskiego 1",
+      "city": "31-111 Kraków"
+    },
+    "hours": {
+      "title": "Godziny otwarcia",
+      "mondayFriday": "Poniedziałek - Piątek: 9:00 - 18:00",
+      "saturday": "Sobota: 9:00 - 14:00",
+      "sunday": "Niedziela: Zamknięte"
+    },
+    "phone": {
+      "title": "Telefon",
+      "number": "+48 123 456 789"
+    },
+    "email": {
+      "title": "Email",
+      "address": "kontakt@wojny-laserowe.pl"
+    }
+  }
+}

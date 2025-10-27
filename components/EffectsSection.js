@@ -5,6 +5,8 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 export default function EffectsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const effects = [
     {
@@ -36,6 +38,25 @@ export default function EffectsSection() {
 
   // Auto-scroll co 4 sekundy
   useEffect(() => {
+    const loadEffects = async () => {
+      try {
+        setIsLoading(true);
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 800));
+        setIsLoading(false);
+      } catch (err) {
+        console.error('Error loading effects:', err);
+        setError('Wystąpił błąd podczas ładowania efektów.');
+        setIsLoading(false);
+      }
+    };
+
+    loadEffects();
+  }, []);
+
+  useEffect(() => {
+    if (isLoading || error) return;
+
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => 
         prevIndex === effects.length - 1 ? 0 : prevIndex + 1
@@ -43,7 +64,7 @@ export default function EffectsSection() {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [effects.length]);
+  }, [effects.length, isLoading, error]);
 
   const nextImage = () => {
     setCurrentIndex((prevIndex) => 
@@ -60,6 +81,48 @@ export default function EffectsSection() {
   const goToImage = (index) => {
     setCurrentIndex(index);
   };
+
+  if (isLoading) {
+    return (
+      <section className="py-8 bg-lightBg">
+        <div className="max-w-screen-lg mx-auto px-4">
+          <div className="text-center">
+            <div className="loading-container">
+              <div className="loading-spinner">
+                <div className="spinner"></div>
+              </div>
+              <p>Ładowanie efektów...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="py-8 bg-lightBg">
+        <div className="max-w-screen-lg mx-auto px-4">
+          <div className="text-center">
+            <div className="error-container">
+              <div className="error-content">
+                <h2>Ups! Nie udało się załadować efektów</h2>
+                <p>{error}</p>
+                <div className="error-actions">
+                  <button 
+                    onClick={() => window.location.reload()}
+                    className="retry-button"
+                  >
+                    Spróbuj ponownie
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-8 bg-lightBg">

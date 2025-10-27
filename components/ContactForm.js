@@ -10,6 +10,8 @@ export default function ContactForm({ onSubmit }) {
     dates: '',
     photos: null
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -17,6 +19,8 @@ export default function ContactForm({ onSubmit }) {
       ...prev,
       [name]: value
     }));
+    // Clear error when user starts typing
+    if (error) setError(null);
   };
 
   const handleFileChange = (e) => {
@@ -26,17 +30,47 @@ export default function ContactForm({ onSubmit }) {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (onSubmit) {
-      onSubmit(formData);
-    } else {
-      console.log('Formularz wysłany:', formData);
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      // Simulate async operation
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      if (onSubmit) {
+        await onSubmit(formData);
+      } else {
+        console.log('Formularz wysłany:', formData);
+      }
+      
+      // Reset form on success
+      setFormData({
+        name: '',
+        phone: '',
+        service: '',
+        description: '',
+        dates: '',
+        photos: null
+      });
+    } catch (err) {
+      console.error('Error submitting form:', err);
+      setError('Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {/* ERROR MESSAGE */}
+      {error && (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg">
+          {error}
+        </div>
+      )}
+
       {/* IMIĘ I NAZWISKO */}
       <div>
         <label className="block text-textDark text-sm font-semibold mb-2">
@@ -48,7 +82,8 @@ export default function ContactForm({ onSubmit }) {
           value={formData.name}
           onChange={handleInputChange}
           required
-          className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors"
+          disabled={isLoading}
+          className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           placeholder="Jan Kowalski"
         />
       </div>
@@ -64,7 +99,8 @@ export default function ContactForm({ onSubmit }) {
           value={formData.phone}
           onChange={handleInputChange}
           required
-          className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors"
+          disabled={isLoading}
+          className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           placeholder="+48 123 456 789"
         />
       </div>
@@ -79,7 +115,8 @@ export default function ContactForm({ onSubmit }) {
           value={formData.service}
           onChange={handleInputChange}
           required
-          className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors"
+          disabled={isLoading}
+          className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <option value="">Wybierz usługę</option>
           <option value="blizna">Chcę usunąć bliznę</option>
@@ -99,7 +136,8 @@ export default function ContactForm({ onSubmit }) {
           onChange={handleInputChange}
           required
           rows="4"
-          className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors resize-none"
+          disabled={isLoading}
+          className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
           placeholder="Opisz szczegółowo co chcesz usunąć..."
         />
       </div>
@@ -114,7 +152,8 @@ export default function ContactForm({ onSubmit }) {
           value={formData.dates}
           onChange={handleInputChange}
           rows="2"
-          className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors resize-none"
+          disabled={isLoading}
+          className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
           placeholder="zakres dat, z uwzględnieniem czy w tygodniu / wieczorem / w weekend"
         />
       </div>
@@ -130,16 +169,25 @@ export default function ContactForm({ onSubmit }) {
           onChange={handleFileChange}
           multiple
           accept="image/*"
-          className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors"
+          disabled={isLoading}
+          className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         />
       </div>
 
       {/* PRZYCISK WYŚLIJ */}
       <button
         type="submit"
-        className="w-full bg-neonBlue text-white font-semibold py-3 rounded-lg hover:bg-neonPurple transition-colors duration-300"
+        disabled={isLoading}
+        className="w-full bg-neonBlue text-white font-semibold py-3 rounded-lg hover:bg-neonPurple transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
-        Wyślij zapytanie
+        {isLoading ? (
+          <>
+            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+            Wysyłanie...
+          </>
+        ) : (
+          'Wyślij zapytanie'
+        )}
       </button>
     </form>
   );

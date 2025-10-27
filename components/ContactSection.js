@@ -2,11 +2,38 @@
 import { FaFacebook, FaInstagram, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 import ContactForm from './ContactForm';
 import MapComponent from './MapComponent';
+import { useState } from 'react';
 
 export default function ContactSection() {
-  const handleFormSubmit = (formData) => {
-    console.log('Formularz kontaktowy wysłany:', formData);
-    // Tutaj będzie logika wysyłania formularza
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
+
+  const handleFormSubmit = async (formData) => {
+    setIsSubmitting(true);
+    setError(null);
+    setSuccess(false);
+
+    try {
+      // Simulate async operation
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      console.log('Formularz kontaktowy wysłany:', formData);
+      
+      // Show success message
+      setSuccess(true);
+      
+      // Hide success message after 3 seconds
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
+      
+    } catch (err) {
+      console.error('Error submitting contact form:', err);
+      setError('Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -21,6 +48,20 @@ export default function ContactSection() {
             Skontaktuj się z nami, aby umówić się na konsultację lub zabieg
           </p>
         </div>
+
+        {/* SUCCESS MESSAGE */}
+        {success && (
+          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-8 text-center">
+            ✅ Formularz został wysłany pomyślnie! Skontaktujemy się z Tobą wkrótce.
+          </div>
+        )}
+
+        {/* ERROR MESSAGE */}
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-8 text-center">
+            ❌ {error}
+          </div>
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* FORMULARZ */}

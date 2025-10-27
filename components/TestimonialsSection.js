@@ -4,6 +4,8 @@ import { FaStar, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 export default function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // Przykładowe opinie (można rozszerzyć)
   const testimonials = [
@@ -53,6 +55,25 @@ export default function TestimonialsSection() {
 
   // Auto-scroll co 5 sekund
   useEffect(() => {
+    const loadTestimonials = async () => {
+      try {
+        setIsLoading(true);
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        setIsLoading(false);
+      } catch (err) {
+        console.error('Error loading testimonials:', err);
+        setError('Wystąpił błąd podczas ładowania opinii.');
+        setIsLoading(false);
+      }
+    };
+
+    loadTestimonials();
+  }, []);
+
+  useEffect(() => {
+    if (isLoading || error) return;
+
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => 
         prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
@@ -60,7 +81,7 @@ export default function TestimonialsSection() {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [testimonials.length]);
+  }, [testimonials.length, isLoading, error]);
 
   const nextTestimonial = () => {
     setCurrentIndex((prevIndex) => 
@@ -89,6 +110,48 @@ export default function TestimonialsSection() {
       />
     ));
   };
+
+  if (isLoading) {
+    return (
+      <section className="py-8 bg-gray-50">
+        <div className="max-w-screen-lg mx-auto px-4">
+          <div className="text-center">
+            <div className="loading-container">
+              <div className="loading-spinner">
+                <div className="spinner"></div>
+              </div>
+              <p>Ładowanie opinii...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="py-8 bg-gray-50">
+        <div className="max-w-screen-lg mx-auto px-4">
+          <div className="text-center">
+            <div className="error-container">
+              <div className="error-content">
+                <h2>Ups! Nie udało się załadować opinii</h2>
+                <p>{error}</p>
+                <div className="error-actions">
+                  <button 
+                    onClick={() => window.location.reload()}
+                    className="retry-button"
+                  >
+                    Spróbuj ponownie
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-8 bg-gray-50">

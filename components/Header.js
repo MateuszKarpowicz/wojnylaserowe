@@ -46,6 +46,12 @@ export default function Header() {
         {/* DESKTOP MENU - ukryte na mobile */}
         <div className="hidden md:flex items-center gap-6">
           <Link 
+            href="/o-nas" 
+            className="text-textLight hover:text-neonBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonBlue ring-offset-2 ring-offset-darkBg"
+          >
+            O nas
+          </Link>
+          <Link 
             href="/efekty" 
             className="text-textLight hover:text-neonBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonBlue ring-offset-2 ring-offset-darkBg"
           >
@@ -101,6 +107,13 @@ export default function Header() {
             </div>
             
             <nav className="flex flex-col p-4 gap-4">
+              <Link 
+                href="/o-nas" 
+                onClick={closeMenu}
+                className="text-textLight hover:text-neonBlue transition-colors duration-300 py-2"
+              >
+                O nas
+              </Link>
               <Link 
                 href="/efekty" 
                 onClick={closeMenu}

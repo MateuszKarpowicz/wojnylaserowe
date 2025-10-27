@@ -3,6 +3,7 @@ import TestimonialsSection from '../components/TestimonialsSection';
 import EffectsSection from '../components/EffectsSection';
 import AboutSection from '../components/AboutSection';
 import WhyUsSection from '../components/WhyUsSection';
+import ScarINKSection from '../components/ScarINKSection';
 import ContactSection from '../components/ContactSection';
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <EffectsSection />
       <AboutSection />
       <WhyUsSection />
+      <ScarINKSection />
       <ContactSection />
     </main>
   );

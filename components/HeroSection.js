@@ -53,7 +53,9 @@ export default function HeroSection() {
         </div>
 
         {/* IKONY SOCIAL */}
-              <SocialMediaIcons size="text-3xl" />
+        <div className="flex items-center justify-center">
+          <SocialMediaIcons size="text-3xl" />
+        </div>
       </div>
     </section>
   );

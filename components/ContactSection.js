@@ -65,9 +65,7 @@ export default function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* FORMULARZ */}
           <div>
-            <h3 className="text-2xl font-bold text-textDark mb-6">
-              Wyślij zapytanie
-            </h3>
+
             <ContactForm onSubmit={handleFormSubmit} />
           </div>
 
@@ -75,12 +73,10 @@ export default function ContactSection() {
           <div>
             {/* IKONY SOCIAL */}
             <div className="mb-8">
-              <h3 className="text-2xl font-bold text-textDark mb-6">
-                Skontaktuj się z nami
-              </h3>
-              
+   
+              <div className="flex items-center justify-center">
               <SocialMediaIcons size="text-4xl" className="mb-6" />
-
+              </div>
               {/* ADRES */}
               <div className="flex items-start gap-3 mb-6">
                 <FaMapMarkerAlt className="text-neonBlue text-xl mt-1" />

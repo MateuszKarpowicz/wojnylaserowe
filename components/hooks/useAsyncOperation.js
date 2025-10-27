@@ -14,7 +14,7 @@
 
 'use client';
 import { useState, useCallback } from 'react';
-import { simulateAsyncOperation } from '../../utils/asyncSimulator';
+import { simulateAsyncOperation } from '@/utils/asyncSimulator';
 
 export const useAsyncOperation = (operation, delay = 1000, errorMessage = 'Wystąpił błąd') => {
   const [isLoading, setIsLoading] = useState(true);

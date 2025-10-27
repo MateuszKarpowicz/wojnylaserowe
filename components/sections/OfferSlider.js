@@ -1,9 +1,10 @@
 'use client';
 import { useState } from 'react';
-import ContactForm from './ContactForm';
-import ErrorMessage from './ui/ErrorMessage';
-import { simulateAsyncOperation } from '../utils/asyncSimulator';
-import offerSliderData from '../content/texts/offerslider.json';
+import ContactForm from '@/components/sections/ContactForm';
+import ErrorMessage from '@/components/ui/ErrorMessage';
+import { simulateAsyncOperation } from '@/utils/asyncSimulator';
+import offerSliderData from '@/content/texts/offerslider.json';
+import { BaseModal } from '@/components/base';
 
 export default function OfferSlider() {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,15 +68,16 @@ export default function OfferSlider() {
         </button>
       </div>
 
-      {/* ROZSUWAK */}
-      <div
-        className={`fixed top-0 right-0 h-full w-full md:w-96 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-40 ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+      {/* MODAL */}
+      <BaseModal 
+        isOpen={isOpen} 
+        onClose={toggleSlider}
+        className="max-w-md mx-auto"
+        overlayClassName="bg-black bg-opacity-50"
       >
-        <div className="h-full flex flex-col">
+        <div className="h-full flex flex-col bg-white rounded-lg shadow-2xl">
           {/* HEADER */}
-          <div className="bg-neonBlue text-white p-6 flex items-center justify-between">
+          <div className="bg-neonBlue text-white p-6 flex items-center justify-between rounded-t-lg">
             <h2 className="text-xl font-bold">
               {offerSliderData.button.text}
             </h2>
@@ -131,15 +133,7 @@ export default function OfferSlider() {
             </div>
           )}
         </div>
-      </div>
-
-      {/* OVERLAY */}
-      {isOpen && (
-        <div
-          onClick={toggleSlider}
-          className="fixed inset-0 bg-black/50 z-30"
-        />
-      )}
+      </BaseModal>
     </>
   );
 }

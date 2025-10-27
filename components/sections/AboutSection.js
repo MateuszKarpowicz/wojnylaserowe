@@ -1,6 +1,6 @@
-import { BaseSection } from './base';
-import SectionHeader from './ui/SectionHeader';
-import aboutData from '../content/texts/about.json';
+import { BaseSection } from '@/components/base';
+import SectionHeader from '@/components/ui/SectionHeader';
+import aboutData from '@/content/texts/about.json';
 
 export default function AboutSection() {
   return (

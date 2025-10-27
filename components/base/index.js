@@ -8,6 +8,8 @@
 // Komponenty strukturalne (tylko te które już istnieją)
 export { default as BaseSection } from './BaseSection';
 export { default as BaseCard } from './BaseCard';
+export { default as BaseModal } from './BaseModal';
+export { default as BaseForm } from './BaseForm';
 
 // TODO: Dodaj pozostałe komponenty w kolejnych etapach
 // export { default as BaseForm } from './BaseForm';

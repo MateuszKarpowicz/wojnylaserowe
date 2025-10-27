@@ -1,14 +1,14 @@
 'use client';
 import { FaMapMarkerAlt } from 'react-icons/fa';
-import ContactForm from './ContactForm';
-import MapComponent from './MapComponent';
-import SocialMediaIcons from './ui/SocialMediaIcons';
-import ErrorMessage from './ui/ErrorMessage';
-import SectionHeader from './ui/SectionHeader';
+import ContactForm from '@/components/sections/ContactForm';
+import MapComponent from '@/components/sections/MapComponent';
+import SocialMediaIcons from '@/components/ui/SocialMediaIcons';
+import ErrorMessage from '@/components/ui/ErrorMessage';
+import SectionHeader from '@/components/ui/SectionHeader';
 import { useState } from 'react';
-import { simulateAsyncOperation } from '../utils/asyncSimulator';
-import { BaseSection } from './base';
-import contactData from '../content/texts/contact.json';
+import { simulateAsyncOperation } from '@/utils/asyncSimulator';
+import { BaseSection } from '@/components/base';
+import contactData from '@/content/texts/contact.json';
 
 export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);

@@ -1,4 +1,4 @@
-import uiData from '../../content/texts/ui.json';
+import uiData from '@/content/texts/ui.json';
 
 export default function ErrorContainer({ 
   error, 

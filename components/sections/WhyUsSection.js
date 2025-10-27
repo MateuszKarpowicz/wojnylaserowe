@@ -1,6 +1,6 @@
-import { BaseSection, BaseCard } from './base';
-import SectionHeader from './ui/SectionHeader';
-import whyUsData from '../content/texts/whyus.json';
+import { BaseSection, BaseCard } from '@/components/base';
+import SectionHeader from '@/components/ui/SectionHeader';
+import whyUsData from '@/content/texts/whyus.json';
 
 export default function WhyUsSection() {
   return (

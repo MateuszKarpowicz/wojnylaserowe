@@ -2,14 +2,14 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import LoadingSpinner from './ui/LoadingSpinner';
-import ErrorContainer from './ui/ErrorContainer';
-import SectionHeader from './ui/SectionHeader';
-import CTAButton from './ui/CTAButton';
-import { useCarousel } from './hooks/useCarousel';
-import { useAsyncOperation } from './hooks/useAsyncOperation';
-import { BaseSection } from './base';
-import effectsData from '../content/texts/effects.json';
+import LoadingSpinner from '@/components/ui/LoadingSpinner';
+import ErrorContainer from '@/components/ui/ErrorContainer';
+import SectionHeader from '@/components/ui/SectionHeader';
+import CTAButton from '@/components/ui/CTAButton';
+import { useCarousel } from '@/components/hooks/useCarousel';
+import { useAsyncOperation } from '@/components/hooks/useAsyncOperation';
+import { BaseSection } from '@/components/base';
+import effectsData from '@/content/texts/effects.json';
 
 export default function EffectsSection() {
   // Hook useAsyncOperation

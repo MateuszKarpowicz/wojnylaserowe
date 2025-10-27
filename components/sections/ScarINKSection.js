@@ -1,7 +1,7 @@
-import { BaseSection } from './base';
-import SectionHeader from './ui/SectionHeader';
-import CTAButton from './ui/CTAButton';
-import scarinkData from '../content/texts/scarink.json';
+import { BaseSection } from '@/components/base';
+import SectionHeader from '@/components/ui/SectionHeader';
+import CTAButton from '@/components/ui/CTAButton';
+import scarinkData from '@/content/texts/scarink.json';
 
 export default function ScarINKSection() {
   return (

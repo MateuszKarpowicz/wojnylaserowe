@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import SocialMediaIcons from './ui/SocialMediaIcons';
-import CTAButton from './ui/CTAButton';
-import { BaseSection } from './base';
-import heroData from '../content/texts/hero.json';
+import SocialMediaIcons from '@/components/ui/SocialMediaIcons';
+import CTAButton from '@/components/ui/CTAButton';
+import { BaseSection } from '@/components/base';
+import heroData from '@/content/texts/hero.json';
 
 export default function HeroSection() {
   return (

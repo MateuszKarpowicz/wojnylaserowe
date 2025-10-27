@@ -1,14 +1,14 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { FaStar, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import LoadingSpinner from './ui/LoadingSpinner';
-import ErrorContainer from './ui/ErrorContainer';
-import SectionHeader from './ui/SectionHeader';
-import CTAButton from './ui/CTAButton';
-import { useCarousel } from './hooks/useCarousel';
-import { useAsyncOperation } from './hooks/useAsyncOperation';
-import { BaseSection, BaseCard } from './base';
-import testimonialsData from '../content/texts/testimonials.json';
+import LoadingSpinner from '@/components/ui/LoadingSpinner';
+import ErrorContainer from '@/components/ui/ErrorContainer';
+import SectionHeader from '@/components/ui/SectionHeader';
+import CTAButton from '@/components/ui/CTAButton';
+import { useCarousel } from '@/components/hooks/useCarousel';
+import { useAsyncOperation } from '@/components/hooks/useAsyncOperation';
+import { BaseSection, BaseCard } from '@/components/base';
+import testimonialsData from '@/content/texts/testimonials.json';
 
 export default function TestimonialsSection() {
   // Hook useAsyncOperation

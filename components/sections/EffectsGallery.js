@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { BaseModal } from '@/components/base';
 
 export default function EffectsGallery() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -56,12 +57,6 @@ export default function EffectsGallery() {
     );
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === 'Escape') closeModal();
-    if (e.key === 'ArrowRight') nextImage();
-    if (e.key === 'ArrowLeft') prevImage();
-  };
-
   return (
     <>
       {/* GALERIA KAFELKÓW */}
@@ -97,66 +92,57 @@ export default function EffectsGallery() {
       </div>
 
       {/* MODAL */}
-      {selectedImage && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
-          onClick={closeModal}
-          onKeyDown={handleKeyDown}
-          tabIndex={0}
-        >
-          <div className="relative max-w-4xl max-h-full">
-            {/* ZDJĘCIE W MODALU */}
-            <div className="relative">
-              <Image
-                src={effects[currentIndex].src}
-                alt={effects[currentIndex].alt}
-                width={800}
-                height={600}
-                className="rounded-lg shadow-2xl max-h-[80vh] w-auto mx-auto"
-              />
-              
-              {/* PRZYCISK ZAMKNIĘCIA */}
-              <button
-                onClick={closeModal}
-                className="absolute top-4 right-4 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-2 transition-all duration-300"
-                aria-label="Zamknij"
-              >
-                <FaTimes className="w-6 h-6 text-gray-800" />
-              </button>
-              
-              {/* NAWIGACJA STRZAŁKAMI */}
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  prevImage();
-                }}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-3 transition-all duration-300"
-                aria-label="Poprzednie zdjęcie"
-              >
-                <FaChevronLeft className="w-6 h-6 text-gray-800" />
-              </button>
-              
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  nextImage();
-                }}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-3 transition-all duration-300"
-                aria-label="Następne zdjęcie"
-              >
-                <FaChevronRight className="w-6 h-6 text-gray-800" />
-              </button>
-            </div>
-            
-            {/* NUMER ZDJĘCIA */}
-            <div className="mt-4 text-center text-white">
-              <p className="text-sm text-gray-400">
-                {currentIndex + 1} z {effects.length}
-              </p>
-            </div>
-          </div>
+      <BaseModal isOpen={!!selectedImage} onClose={closeModal}>
+        {/* ZDJĘCIE W MODALU */}
+        <div className="relative">
+          <Image
+            src={effects[currentIndex].src}
+            alt={effects[currentIndex].alt}
+            width={800}
+            height={600}
+            className="rounded-lg shadow-2xl max-h-[80vh] w-auto mx-auto"
+          />
+          
+          {/* PRZYCISK ZAMKNIĘCIA */}
+          <button
+            onClick={closeModal}
+            className="absolute top-4 right-4 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-2 transition-all duration-300"
+            aria-label="Zamknij"
+          >
+            <FaTimes className="w-6 h-6 text-gray-800" />
+          </button>
+          
+          {/* NAWIGACJA STRZAŁKAMI */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              prevImage();
+            }}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-3 transition-all duration-300"
+            aria-label="Poprzednie zdjęcie"
+          >
+            <FaChevronLeft className="w-6 h-6 text-gray-800" />
+          </button>
+          
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              nextImage();
+            }}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-3 transition-all duration-300"
+            aria-label="Następne zdjęcie"
+          >
+            <FaChevronRight className="w-6 h-6 text-gray-800" />
+          </button>
         </div>
-      )}
+        
+        {/* NUMER ZDJĘCIA */}
+        <div className="mt-4 text-center text-white">
+          <p className="text-sm text-gray-400">
+            {currentIndex + 1} z {effects.length}
+          </p>
+        </div>
+      </BaseModal>
     </>
   );
 }

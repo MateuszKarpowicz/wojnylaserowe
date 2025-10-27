@@ -16,11 +16,21 @@ export default function Efekty() {
         </p>
       </div>
 
+      {/* LINK DO ETAPÓW */}
+      <div className="text-center mb-8">
+        <a
+          href="#etapy-usuwania"
+          className="inline-block bg-neonBlue text-white px-6 py-3 rounded-lg hover:bg-neonPurple transition-colors duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
+        >
+          Zobacz etapy usuwania ↓
+        </a>
+      </div>
+
       {/* GALERIA */}
       <EffectsGallery />
 
       {/* ETAPY USUWANIA TATUAŻU */}
-      <section className="py-12 bg-white">
+      <section id="etapy-usuwania" className="py-12 bg-white">
         <div className="max-w-screen-lg mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold text-textDark mb-8 text-center">
             Etapy usuwania tatuażu

@@ -53,8 +53,19 @@ export default function HeroSection() {
         </div>
 
         {/* IKONY SOCIAL */}
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center mb-6">
           <SocialMediaIcons size="text-3xl" />
+        </div>
+
+        {/* TEKST POD IKONKAMI */}
+        <div className="text-center">
+          <p className="text-gray-600 text-sm mb-2">
+            Śledź nas w mediach społecznościowych
+          </p>
+          <p className="text-gray-500 text-xs max-w-md mx-auto">
+            Zobacz najnowsze efekty naszych zabiegów i opinie klientów. 
+            Regularnie publikujemy zdjęcia przed i po oraz porady dotyczące pielęgnacji skóry.
+          </p>
         </div>
       </div>
     </section>

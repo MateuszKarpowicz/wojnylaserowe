@@ -4,10 +4,9 @@ import { useEffect } from 'react';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import ErrorContainer from '@/components/ui/ErrorContainer';
 import SectionHeader from '@/components/ui/SectionHeader';
-import CTAButton from '@/components/ui/CTAButton';
 import { useCarousel } from '@/components/hooks/useCarousel';
 import { useAsyncOperation } from '@/components/hooks/useAsyncOperation';
-import { BaseSection, BaseCarousel } from '@/components/base';
+import { BaseSection, BaseCarousel, BaseCTA } from '@/components/base';
 import effectsData from '@/content/texts/effects.json';
 
 export default function EffectsSection() {
@@ -87,14 +86,12 @@ export default function EffectsSection() {
       </BaseCarousel>
 
       {/* CTA */}
-      <div className="text-center mt-12">
-        <p className="text-gray-700 mb-6">
-          {effectsData.cta.text}
-        </p>
-        <CTAButton href={effectsData.cta.href}>
-          {effectsData.cta.button}
-        </CTAButton>
-      </div>
+      <BaseCTA
+        text={effectsData.cta.text}
+        buttonText={effectsData.cta.button}
+        buttonHref={effectsData.cta.href}
+        variant="default"
+      />
     </BaseSection>
   );
 }

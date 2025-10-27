@@ -3,11 +3,10 @@ import { useEffect } from 'react';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import ErrorContainer from '@/components/ui/ErrorContainer';
 import SectionHeader from '@/components/ui/SectionHeader';
-import CTAButton from '@/components/ui/CTAButton';
 import TestimonialCard from '@/components/ui/TestimonialCard';
 import { useCarousel } from '@/components/hooks/useCarousel';
 import { useAsyncOperation } from '@/components/hooks/useAsyncOperation';
-import { BaseSection, BaseCarousel } from '@/components/base';
+import { BaseSection, BaseCarousel, BaseCTA } from '@/components/base';
 import testimonialsData from '@/content/texts/testimonials.json';
 
 export default function TestimonialsSection() {
@@ -79,14 +78,12 @@ export default function TestimonialsSection() {
       </BaseCarousel>
 
       {/* CTA */}
-      <div className="text-center mt-12">
-        <p className="text-gray-700 mb-6">
-          {testimonialsData.cta.text}
-        </p>
-        <CTAButton href={testimonialsData.cta.href}>
-          {testimonialsData.cta.button}
-        </CTAButton>
-      </div>
+      <BaseCTA
+        text={testimonialsData.cta.text}
+        buttonText={testimonialsData.cta.button}
+        buttonHref={testimonialsData.cta.href}
+        variant="default"
+      />
     </BaseSection>
   );
 }

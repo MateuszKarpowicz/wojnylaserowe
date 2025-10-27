@@ -1,0 +1,156 @@
+/**
+ * BaseFormField - Komponent bazowy dla pól formularza
+ * 
+ * Eliminuje duplikację stylów pól formularza poprzez:
+ * - Jednolite style dla wszystkich typów pól
+ * - Spójną obsługę błędów
+ * - Accessibility (aria, focus, validation)
+ * - Elastyczne opcje konfiguracji
+ * 
+ * @param {string} type - Typ pola (text, email, tel, textarea, select, file)
+ * @param {string} name - Nazwa pola
+ * @param {string} label - Etykieta pola
+ * @param {string} value - Wartość pola
+ * @param {Function} onChange - Funkcja zmiany wartości
+ * @param {boolean} required - Czy pole jest wymagane
+ * @param {string} placeholder - Placeholder
+ * @param {string} error - Komunikat błędu
+ * @param {boolean} disabled - Czy pole jest wyłączone
+ * @param {Array} options - Opcje dla select
+ * @param {string} className - Dodatkowe klasy CSS
+ * @param {object} ...props - Dodatkowe props
+ * @returns {JSX.Element} Pole formularza z obsługą błędów
+ */
+
+'use client';
+import { classNames } from '@/lib/classNames';
+import { getFormFieldAria } from '@/lib/a11y';
+import { utilityClasses } from '@/styles/utilityClasses';
+
+export default function BaseFormField({
+  type = 'text',
+  name,
+  label,
+  value,
+  onChange,
+  required = false,
+  placeholder = '',
+  error = null,
+  disabled = false,
+  options = [],
+  className = '',
+  ...props
+}) {
+  const fieldId = `${name}-field`;
+  const errorId = `${name}-error`;
+  
+  const ariaProps = getFormFieldAria(fieldId, label, required, error);
+  
+  const fieldClasses = classNames(
+    utilityClasses.form.field,
+    utilityClasses.form.fieldDisabled,
+    error && 'border-red-500',
+    className
+  );
+  
+  const labelClasses = classNames(
+    utilityClasses.form.label,
+    required && 'after:content-["*"] after:text-red-500 after:ml-1'
+  );
+
+  const renderField = () => {
+    switch (type) {
+      case 'textarea':
+        return (
+          <textarea
+            id={fieldId}
+            name={name}
+            value={value}
+            onChange={onChange}
+            required={required}
+            disabled={disabled}
+            placeholder={placeholder}
+            className={fieldClasses}
+            rows="4"
+            {...ariaProps}
+            {...props}
+          />
+        );
+        
+      case 'select':
+        return (
+          <select
+            id={fieldId}
+            name={name}
+            value={value}
+            onChange={onChange}
+            required={required}
+            disabled={disabled}
+            className={fieldClasses}
+            {...ariaProps}
+            {...props}
+          >
+            <option value="">{placeholder}</option>
+            {options.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        );
+        
+      case 'file':
+        return (
+          <input
+            type="file"
+            id={fieldId}
+            name={name}
+            onChange={onChange}
+            required={required}
+            disabled={disabled}
+            accept="image/*"
+            multiple
+            className={fieldClasses}
+            {...ariaProps}
+            {...props}
+          />
+        );
+        
+      default:
+        return (
+          <input
+            type={type}
+            id={fieldId}
+            name={name}
+            value={value}
+            onChange={onChange}
+            required={required}
+            disabled={disabled}
+            placeholder={placeholder}
+            className={fieldClasses}
+            {...ariaProps}
+            {...props}
+          />
+        );
+    }
+  };
+
+  return (
+    <div className="space-y-2">
+      {/* LABEL */}
+      <label htmlFor={fieldId} className={labelClasses}>
+        {label}
+      </label>
+      
+      {/* FIELD */}
+      {renderField()}
+      
+      {/* ERROR MESSAGE */}
+      {error && (
+        <div id={errorId} className={utilityClasses.form.error} role="alert">
+          {error}
+        </div>
+      )}
+    </div>
+  );
+}

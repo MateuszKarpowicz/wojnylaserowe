@@ -57,6 +57,12 @@ export default function Header() {
           >
             Efekty
           </Link>
+          <a 
+            href="#oferta" 
+            className="text-textLight hover:text-neonPurple transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonPurple ring-offset-2 ring-offset-darkBg"
+          >
+            Cennik
+          </a>
           <Link 
             href="/kontakt" 
             className="text-textLight hover:text-neonBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonBlue ring-offset-2 ring-offset-darkBg"
@@ -69,18 +75,6 @@ export default function Header() {
           >
             FAQ
           </Link>
-          <Link 
-            href="/regulamin" 
-            className="text-textLight hover:text-neonBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonBlue ring-offset-2 ring-offset-darkBg"
-          >
-            Regulamin
-          </Link>
-          <a 
-            href="#oferta" 
-            className="text-textLight hover:text-neonPurple transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonPurple ring-offset-2 ring-offset-darkBg"
-          >
-            Oferta
-          </a>
         </div>
       </nav>
 
@@ -121,6 +115,13 @@ export default function Header() {
               >
                 Efekty
               </Link>
+              <a 
+                href="#oferta" 
+                onClick={closeMenu}
+                className="text-textLight hover:text-neonPurple transition-colors duration-300 py-2"
+              >
+                Cennik
+              </a>
               <Link 
                 href="/kontakt" 
                 onClick={closeMenu}
@@ -135,20 +136,6 @@ export default function Header() {
               >
                 FAQ
               </Link>
-              <Link 
-                href="/regulamin" 
-                onClick={closeMenu}
-                className="text-textLight hover:text-neonBlue transition-colors duration-300 py-2"
-              >
-                Regulamin
-              </Link>
-              <a 
-                href="#oferta" 
-                onClick={closeMenu}
-                className="text-textLight hover:text-neonPurple transition-colors duration-300 py-2"
-              >
-                Oferta
-              </a>
             </nav>
           </div>
         </div>

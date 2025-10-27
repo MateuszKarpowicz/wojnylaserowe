@@ -11,37 +11,27 @@ export default function EffectsGallery() {
     {
       id: 1,
       src: '/images/effects/efekty1.jpg',
-      alt: 'Efekt przed i po - usuwanie tatuażu',
-      title: 'Tatuaż na ramieniu',
-      description: 'Kompletne usunięcie po 3 sesjach'
+      alt: 'Efekt przed i po - usuwanie tatuażu'
     },
     {
       id: 2,
       src: '/images/effects/efekty2.jpg',
-      alt: 'Efekt przed i po - usuwanie tatuażu',
-      title: 'Tatuaż na plecach',
-      description: 'Znaczne rozjaśnienie po 2 sesjach'
+      alt: 'Efekt przed i po - usuwanie tatuażu'
     },
     {
       id: 3,
       src: '/images/effects/efekty3.jpg',
-      alt: 'Efekt przed i po - usuwanie tatuażu',
-      title: 'Tatuaż na nodze',
-      description: 'Prawie całkowite usunięcie po 4 sesjach'
+      alt: 'Efekt przed i po - usuwanie tatuażu'
     },
     {
       id: 4,
       src: '/images/effects/efekty4.jpg',
-      alt: 'Efekt przed i po - usuwanie tatuażu',
-      title: 'Tatuaż na ręce',
-      description: 'Skuteczne usunięcie po 3 sesjach'
+      alt: 'Efekt przed i po - usuwanie tatuażu'
     },
     {
       id: 5,
       src: '/images/effects/efekty5.jpg',
-      alt: 'Efekt przed i po - usuwanie tatuażu',
-      title: 'Tatuaż na klatce piersiowej',
-      description: 'Kompletne usunięcie po 5 sesjach'
+      alt: 'Efekt przed i po - usuwanie tatuażu'
     }
   ];
 
@@ -102,12 +92,6 @@ export default function EffectsGallery() {
                 </div>
               </div>
             </div>
-            
-            {/* OPIS */}
-            <div className="p-4">
-              <h3 className="font-semibold text-textDark mb-1">{effect.title}</h3>
-              <p className="text-sm text-gray-600">{effect.description}</p>
-            </div>
           </div>
         ))}
       </div>
@@ -164,11 +148,9 @@ export default function EffectsGallery() {
               </button>
             </div>
             
-            {/* OPIS POD ZDJĘCIEM */}
+            {/* NUMER ZDJĘCIA */}
             <div className="mt-4 text-center text-white">
-              <h3 className="text-xl font-semibold mb-2">{effects[currentIndex].title}</h3>
-              <p className="text-gray-300">{effects[currentIndex].description}</p>
-              <p className="text-sm text-gray-400 mt-2">
+              <p className="text-sm text-gray-400">
                 {currentIndex + 1} z {effects.length}
               </p>
             </div>

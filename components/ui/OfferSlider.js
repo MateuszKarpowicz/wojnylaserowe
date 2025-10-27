@@ -61,7 +61,7 @@ export default function OfferSlider() {
   return (
     <>
       {/* PRZYCISK OFERTA - pod headerem po prawej */}
-      <div className="fixed top-20 right-4 z-50">
+      <div className="fixed top-24 right-4 z-50">
         <button
           onClick={toggleSlider}
           className="bg-neonBlue text-white px-6 py-3 rounded-lg shadow-lg hover:bg-neonPurple transition-colors duration-300 font-semibold flex items-center gap-2"

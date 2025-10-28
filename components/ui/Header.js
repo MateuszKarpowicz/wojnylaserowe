@@ -16,19 +16,13 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-darkBg/95 border-b border-neonBlue/20 shadow-[0_0_20px_rgba(0,224,255,0.3)]">
-      <nav className="max-w-screen-lg mx-auto px-4 h-20 flex items-center justify-between">
+      <nav className="max-w-screen-lg mx-auto px-4 h-24 flex items-center justify-between">
         {/* LOGO - po lewej stronie */}
         <Link href="/" className="flex items-center w-1/3">
           <img
             src="/images/logo/logo.svg"
             alt="Wojny Laserowe"
-            className="h-16 w-auto"
-            style={{ 
-              height: '64px', 
-              width: 'auto',
-              objectFit: 'contain',
-              display: 'block'
-            }}
+            className="h-20 w-auto object-contain block"
           />
         </Link>
         

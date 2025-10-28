@@ -32,7 +32,7 @@ export default function EffectsSection() {
 
   if (isLoading) {
     return (
-      <BaseSection className="py-8 bg-lightBg">
+      <BaseSection className="py-8 bg-white">
         <div className="text-center">
           <LoadingSpinner message={effectsData.loading.message} />
         </div>
@@ -42,7 +42,7 @@ export default function EffectsSection() {
 
   if (error) {
     return (
-      <BaseSection className="py-8 bg-lightBg">
+      <BaseSection className="py-8 bg-white">
         <div className="text-center">
           <ErrorContainer 
             error={error}
@@ -54,7 +54,7 @@ export default function EffectsSection() {
   }
 
   return (
-    <BaseSection id="efekty" className="py-8 bg-lightBg">
+    <BaseSection id="efekty" className="py-8 bg-white">
       {/* NAGŁÓWEK SEKCJI */}
       <SectionHeader 
         title={effectsData.title}

@@ -1,8 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/**
+ * Design Tokens - CSS Custom Properties
+ * 
+ * Zawiera wszystkie tokeny projektowe:
+ * - Wysokości komponentów (header, footer)
+ * - Kolory (z mapowania hardcoded hex)
+ * - Spacing, radius, shadows
+ * - Breakpoints i inne wartości
+ */
 
-/* === DESIGN TOKENS === */
 :root {
   /* === WYSOKOŚCI KOMPONENTÓW === */
   --header-h: 6rem;        /* 96px - wysokość header (h-24) */
@@ -76,88 +81,3 @@
   }
 }
 
-/* === BASE STYLES === */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Respect user's motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}
-
-body {
-  background-color: var(--color-light-bg);
-  color: var(--color-text-dark);
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-h1, h2, h3 {
-  font-family: "Orbitron", sans-serif;
-}
-
-/* === ACCESSIBILITY === */
-/* Focus styles for better accessibility */
-:focus-visible {
-  outline: 2px solid var(--color-neon-blue);
-  outline-offset: 2px;
-}
-
-/* Skip link for screen readers */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* === SMOOTH SCROLLING === */
-html {
-  scroll-padding-top: var(--header-h);
-}
-
-@layer utilities {
-  /* Hamburger menu animation - uzasadnione jako utility */
-  .hamburger-active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  
-  .hamburger-active span:nth-child(2) {
-    opacity: 0;
-  }
-  
-  .hamburger-active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
-  }
-  
-  /* Smooth transitions for hamburger animation */
-  button span {
-    transition: all 0.3s ease;
-  }
-
-  /* === SECTION GRID CONTAINER === */
-  .sections-grid-mobile {
-    @apply flex flex-col;
-  }
-  
-  .sections-grid-tablet {
-    @apply md:grid md:grid-cols-2 md:gap-0;
-  }
-  
-  .sections-grid-desktop {
-    @apply lg:grid-cols-3 lg:gap-0;
-  }
-  
-  .sections-grid-auto {
-    @apply flex flex-col md:grid md:grid-cols-2 md:gap-0 lg:grid-cols-3 lg:gap-0;
-  }
-}

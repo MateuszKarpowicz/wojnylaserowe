@@ -5,7 +5,8 @@ import heroData from '@/content/texts/hero.json';
 export default function HeroSection() {
   return (
     <BaseSection 
-      className="min-h-screen bg-lightBg text-textDark px-4 pt-20 pb-8 mx-auto max-w-screen-md"
+      id="hero"
+      className="bg-lightBg text-textDark px-4 mx-auto max-w-screen-md"
       maxWidth="max-w-screen-md"
     >
       {/* GŁÓWNY TYTUŁ */}

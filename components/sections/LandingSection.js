@@ -5,7 +5,7 @@ import heroData from '@/content/texts/hero.json';
 
 export default function LandingSection() {
   return (
-    <BaseSection className="py-8 bg-white">
+    <BaseSection id="landing" className="py-8 bg-white">
       <div className="max-w-screen-md mx-auto px-4">
         {/* CTA + SOCIAL */}
         <div className="text-center">

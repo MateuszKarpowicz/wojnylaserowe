@@ -32,7 +32,7 @@ export default function TestimonialsSection() {
 
   if (isLoading) {
     return (
-      <BaseSection className="section-pad bg-gray-50">
+      <BaseSection className="section-pad bg-gray-50 container-sm">
         <div className="text-center">
           <LoadingSpinner message={testimonialsData.loading.message} />
         </div>
@@ -42,7 +42,7 @@ export default function TestimonialsSection() {
 
   if (error) {
     return (
-      <BaseSection className="section-pad bg-gray-50">
+      <BaseSection className="section-pad bg-gray-50 container-sm">
         <div className="text-center">
           <ErrorContainer
             error={error}
@@ -54,13 +54,13 @@ export default function TestimonialsSection() {
   }
 
   return (
-    <BaseSection id="opinie" className="section-pad bg-gray-50">
+    <BaseSection id="opinie" className="section-pad bg-gray-50 container-sm">
       {/* NAGŁÓWEK SEKCJI */}
       <SectionHeader 
         title={testimonialsData.title}
         subtitle={testimonialsData.subtitle}
         className="text-center mb-12"
-        subtitleClassName="text-lg text-gray-700 max-w-2xl mx-auto"
+        subtitleClassName="text-lg text-gray-700"
       />
 
       {/* KARUZELA OPINII */}

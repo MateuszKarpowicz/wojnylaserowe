@@ -18,6 +18,7 @@ module.exports = {
       fontFamily: {
         sans: ["Poppins", "sans-serif"],
         display: ["Orbitron", "sans-serif"],
+        yantramanav: ["Yantramanav", "sans-serif"],
       },
       spacing: {
         section: "var(--spacing-section)",

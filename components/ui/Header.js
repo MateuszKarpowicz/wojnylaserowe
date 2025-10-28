@@ -30,7 +30,7 @@ export default function Header() {
         <button 
           onClick={toggleMenu}
           aria-label="Toggle menu"
-          className="md:hidden link-focus-neon ring-offset-darkBg"
+          className="btn-hamburger"
         >
           <span className="block w-6 h-0.5 bg-current mb-1"></span>
           <span className="block w-6 h-0.5 bg-current mb-1"></span>
@@ -87,7 +87,7 @@ export default function Header() {
               <h2 className="text-textLight font-semibold">Menu</h2>
               <button
                 onClick={closeMenu}
-                className="text-textLight hover:text-neonBlue transition-colors"
+                className="btn-close"
                 aria-label="Zamknij menu"
               >
                 <FaTimes className="w-6 h-6" />

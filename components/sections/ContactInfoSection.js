@@ -24,7 +24,7 @@ export default function ContactInfoSection() {
 
         {/* INFORMACJE KONTAKTOWE */}
         <div className="bg-white rounded-lg p-6 shadow-sm">
-          <h3 className="text-xl font-semibold text-textDark mb-4">
+          <h3 className="text-xl font-normal text-textDark mb-4">
             {contactData.info.title}
           </h3>
           <div className="space-y-3">
@@ -49,7 +49,7 @@ export default function ContactInfoSection() {
 
         {/* SOCIAL MEDIA */}
         <div className="text-center">
-          <h3 className="text-lg font-semibold text-textDark mb-4">
+          <h3 className="text-lg font-normal text-textDark mb-4">
             {contactData.social.title}
           </h3>
           <SocialMediaIcons size="text-2xl" />

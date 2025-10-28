@@ -14,11 +14,11 @@ export default function WhyUsSection() {
           <BaseCard key={index} variant="feature">
             <div className="flex-shrink-0">
               <div className="w-8 h-8 bg-neonBlue rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-sm">✓</span>
+                <span className="text-white font-normal text-sm">✓</span>
               </div>
             </div>
             <div>
-              <p className="text-gray-800 font-medium">
+              <p className="text-gray-800 font-normal">
                 {feature}
               </p>
             </div>

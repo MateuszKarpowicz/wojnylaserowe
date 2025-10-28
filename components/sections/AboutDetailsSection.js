@@ -3,7 +3,7 @@ import SectionHeader from '@/components/ui/SectionHeader';
 
 export default function AboutDetailsSection() {
   return (
-    <BaseSection id="about-details" className="section-pad bg-white">
+    <BaseSection id="about-details" className="section-pad bg-white container-sm">
       {/* NAGŁÓWEK */}
       <SectionHeader 
         title="Szczegóły Metody"
@@ -11,7 +11,7 @@ export default function AboutDetailsSection() {
       />
 
       {/* TREŚĆ */}
-      <div className="max-w-3xl mx-auto text-center">
+      <div className="text-center">
         <p className="text-lg text-gray-700 mb-6 leading-relaxed">
           Wykorzystuję najnowocześniejszy laser pikosekundowy, który zapewnia najwyższą skuteczność w usuwaniu tatuaży. Ta zaawansowana technologia pozwala na precyzyjne usuwanie pigmentów bez uszkadzania otaczających tkanek.
         </p>

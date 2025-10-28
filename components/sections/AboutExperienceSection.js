@@ -3,7 +3,7 @@ import SectionHeader from '@/components/ui/SectionHeader';
 
 export default function AboutExperienceSection() {
   return (
-    <BaseSection id="about-experience" className="section-pad bg-gray-50">
+    <BaseSection id="about-experience" className="section-pad bg-gray-50 container-sm">
       {/* NAGŁÓWEK */}
       <SectionHeader 
         title="Doświadczenie i Sprzęt"
@@ -11,7 +11,7 @@ export default function AboutExperienceSection() {
       />
 
       {/* TREŚĆ */}
-      <div className="max-w-3xl mx-auto text-center">
+      <div className="text-center">
         <p className="text-lg text-gray-700 mb-6 leading-relaxed">
           W Wojnach Laserowych specjalizuję się w laserowym usuwaniu tatuaży w Krakowie od 2019 roku. Dzięki doświadczeniu i pracy na nowoczesnym laserze pikosekundowym, pomagam bezpiecznie pozbyć się niechcianych wzorów – bez blizn i bez nadmiernego bólu.
         </p>

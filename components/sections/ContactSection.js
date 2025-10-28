@@ -40,13 +40,13 @@ export default function ContactSection() {
   };
 
   return (
-    <BaseSection id="kontakt" className="section-pad bg-white">
+    <BaseSection id="kontakt" className="section-pad bg-white container-sm">
       {/* NAGŁÓWEK */}
       <SectionHeader 
         title={contactData.title}
         subtitle={contactData.subtitle}
         className="text-center mb-12"
-        subtitleClassName="text-lg text-gray-700 max-w-2xl mx-auto"
+        subtitleClassName="text-lg text-gray-700"
       />
 
       {/* SUCCESS MESSAGE */}
@@ -60,7 +60,7 @@ export default function ContactSection() {
       <ErrorMessage error={error} className="mb-8" />
 
       {/* FORMULARZ */}
-      <div className="max-w-2xl mx-auto">
+      <div className="mx-auto">
         <ContactForm onSubmit={handleFormSubmit} />
       </div>
     </BaseSection>

@@ -1,6 +1,5 @@
 /* Import design tokens */
 @import '../styles/tokens.css';
-@import '../styles/utilities.css';
 
 @tailwind base;
 @tailwind components;
@@ -14,13 +13,14 @@
 
 body {
   color: var(--color-text-dark);
-  font-family: "Poppins", sans-serif;
+  font-family: "Yantramanav", sans-serif;
   margin: 0;
   padding: 0;
 }
 
 h1, h2, h3 {
-  font-family: "Orbitron", sans-serif;
+  font-family: "Yantramanav", sans-serif;
+  font-weight: 400;
 }
 
 /* === ACCESSIBILITY === */
@@ -50,6 +50,328 @@ html {
 }
 
 @layer utilities {
+  /* === SMOOTH SCROLLING === */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* === CONTAINER PATTERNS === */
+  .container {
+    @apply max-w-4xl mx-auto px-4;
+  }
+  
+  .container-sm {
+    @apply max-w-screen-md mx-auto px-4;
+  }
+  
+  .container-lg {
+    @apply max-w-screen-lg mx-auto px-4;
+  }
+  
+  .container-xl {
+    @apply max-w-6xl mx-auto px-4;
+  }
+  
+  /* === SECTION PATTERNS === */
+  .section-pad {
+    @apply py-8;
+  }
+  
+  .section-pad-sm {
+    @apply py-4;
+  }
+  
+  .section-pad-lg {
+    @apply py-12;
+  }
+  
+  .section-pad-xl {
+    @apply py-16;
+  }
+  
+  /* === GRID PATTERNS === */
+  .section-grid {
+    @apply grid grid-cols-1 gap-6;
+  }
+  
+  .section-grid-2 {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+  }
+  
+  .section-grid-3 {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+  }
+  
+  .section-grid-4 {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8;
+  }
+  
+  /* === BUTTON PATTERNS === */
+  .btn-base {
+    @apply px-6 py-3 rounded-lg font-normal transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply btn-base bg-neonBlue text-white hover:bg-neonPurple focus:ring-neonBlue;
+  }
+  
+  .btn-secondary {
+    @apply btn-base bg-gray-100 text-gray-700 hover:bg-neonBlue hover:text-white focus:ring-neonBlue;
+  }
+  
+  .btn-outline {
+    @apply btn-base border-2 border-neonBlue text-neonBlue hover:bg-neonBlue hover:text-white focus:ring-neonBlue;
+  }
+  
+  /* === SPECIAL BUTTONS === */
+  .btn-offer {
+    @apply bg-neonPurple bg-opacity-90 text-white px-8 py-1 rounded-l-lg rounded-r-none shadow-[0_0_20px_rgba(192,132,252,0.5)] hover:bg-neonPurple/90 transition-colors duration-300 flex items-center;
+  }
+  
+  .btn-section {
+    @apply bg-neonBlue bg-opacity-90 text-white px-8 py-3 rounded-lg shadow-[0_0_20px_rgba(0,153,204,0.5)] hover:bg-neonBlue/90 transition-colors duration-300 flex items-center justify-center font-normal;
+  }
+  
+  .btn-hamburger {
+    @apply md:hidden link-focus-neon ring-offset-darkBg;
+  }
+  
+  .btn-close {
+    @apply text-white hover:text-gray-200 transition-colors;
+  }
+  
+  .btn-nav-arrow {
+    @apply absolute top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-3 transition-all duration-300;
+  }
+  
+  .btn-faq {
+    @apply w-full text-left p-4 flex justify-between items-center hover:bg-gray-50 transition-colors;
+  }
+  
+  /* === FORM PATTERNS === */
+  .form-field {
+    @apply w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .form-label {
+    @apply block text-textDark text-sm font-normal mb-2;
+  }
+  
+  .form-error {
+    @apply text-red-600 text-sm mt-1;
+  }
+  
+  /* === LOADING STATES === */
+  .loading-container {
+    @apply flex flex-col items-center justify-center min-h-[200px] p-8;
+  }
+  
+  .loading-spinner {
+    @apply mb-4;
+  }
+  
+  .spinner {
+    @apply w-10 h-10 border-4 border-gray-300 border-t-neonBlue rounded-full animate-spin;
+  }
+  
+  .loading-text {
+    @apply text-gray-600 text-base m-0;
+  }
+  
+  /* === ERROR STATES === */
+  .error-container {
+    @apply flex items-center justify-center min-h-[400px] p-8 bg-lightBg;
+  }
+  
+  .error-content {
+    @apply text-center max-w-lg p-8 bg-white rounded-lg shadow-lg;
+  }
+  
+  .error-title {
+    @apply text-red-500 mb-4 text-2xl;
+  }
+  
+  .error-text {
+    @apply text-gray-600 mb-8 leading-relaxed;
+  }
+  
+  .error-actions {
+    @apply flex gap-4 justify-center flex-wrap;
+  }
+  
+  .retry-button {
+    @apply btn-primary;
+  }
+  
+  .home-link {
+    @apply btn-secondary;
+  }
+  
+  /* === NOT FOUND STATES === */
+  .not-found-container {
+    @apply flex items-center justify-center min-h-[400px] p-8 bg-lightBg;
+  }
+  
+  .not-found-content {
+    @apply text-center max-w-lg p-8 bg-white rounded-lg shadow-lg;
+  }
+  
+  .not-found-title {
+    @apply text-6xl text-neonBlue m-0 font-normal;
+  }
+  
+  .not-found-subtitle {
+    @apply text-gray-700 my-4 text-2xl;
+  }
+  
+  .not-found-text {
+    @apply text-gray-600 mb-8 leading-relaxed;
+  }
+  
+  .not-found-actions {
+    @apply flex gap-4 justify-center flex-wrap;
+  }
+  
+  .contact-link {
+    @apply btn-primary bg-neonPurple hover:bg-neonPurple;
+  }
+  
+  /* === ANIMATIONS === */
+  .neon-glow {
+    animation: neon-pulse 3s ease-in-out infinite;
+  }
+  
+  .color-cycle {
+    animation: colorCycle 4s ease-in-out infinite;
+  }
+  
+  @keyframes neon-pulse {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(0, 224, 255, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(0, 224, 255, 0.5);
+    }
+  }
+  
+  @keyframes colorCycle {
+    0% { color: #FFFFFF; }
+    25% { color: var(--color-neon-blue); }
+    50% { color: #FFFFFF; }
+    75% { color: #C084FC; }
+    100% { color: #FFFFFF; }
+  }
+  
+  /* === ACCESSIBILITY === */
+  .visually-hidden {
+    @apply sr-only;
+  }
+  
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-neonBlue focus:ring-offset-2;
+  }
+  
+  /* === HEADER/FOOTER BASE STYLES === */
+  .header-footer-base {
+    @apply fixed z-50 bg-black/95 border-neonBlue/20 shadow-[0_0_20px_rgba(0,224,255,0.3)];
+  }
+  
+  .header-base {
+    @apply header-footer-base top-0 left-0 right-0 border-b;
+  }
+  
+  .footer-base {
+    @apply header-footer-base bottom-0 left-0 right-0 border-t;
+  }
+  
+  /* === LINK PATTERNS === */
+  .link-hover-neon {
+    @apply text-textLight hover:text-neonBlue transition-colors duration-300;
+  }
+  
+  .link-focus-neon {
+    @apply link-hover-neon focus-ring;
+  }
+  
+  /* === RESPONSIVE UTILITIES === */
+  .text-responsive {
+    @apply text-lg md:text-xl lg:text-2xl;
+  }
+  
+  .heading-responsive {
+    @apply text-2xl md:text-3xl lg:text-4xl xl:text-5xl;
+  }
+  
+  .spacing-responsive {
+    @apply py-8 md:py-12 lg:py-16;
+  }
+  
+  /* === FONT UTILITIES === */
+  .font-yantramanav {
+    @apply font-yantramanav font-normal leading-none tracking-normal;
+  }
+  
+  /* === SECTION CONTRACT UTILITIES === */
+  .section-contract-mobile {
+    @apply min-h-[calc(100dvh-var(--header-h)-var(--footer-h))] pt-[calc(var(--header-h)+2rem)] pb-[calc(var(--footer-h)+2rem)];
+  }
+  
+  .section-contract-tablet {
+    @apply md:h-[calc(100dvh-var(--header-h)-var(--footer-h))] md:pt-[calc(var(--header-h)+1rem)] md:pb-[calc(var(--footer-h)+1rem)];
+  }
+  
+  .section-contract-desktop {
+    @apply lg:h-[calc(100dvh-var(--header-h)-var(--footer-h))] lg:pt-[calc(var(--header-h)+1rem)] lg:pb-[calc(var(--footer-h)+1rem)];
+  }
+  
+  .section-contract-auto {
+    @apply section-contract-mobile section-contract-tablet section-contract-desktop;
+  }
+  
+  /* === SECTION GRID CONTAINER === */
+  .sections-grid-mobile {
+    @apply flex flex-col;
+  }
+  
+  .sections-grid-tablet {
+    @apply md:grid md:grid-cols-2 md:gap-0;
+  }
+  
+  .sections-grid-desktop {
+    @apply lg:grid-cols-3 lg:gap-0;
+  }
+  
+  .sections-grid-auto {
+    @apply sections-grid-mobile sections-grid-tablet sections-grid-desktop;
+  }
+  
+  /* === REDUCED MOTION SUPPORT === */
+  @media (prefers-reduced-motion: reduce) {
+    .spinner {
+      animation: none;
+    }
+    
+    .neon-glow {
+      animation: none;
+    }
+    
+    .color-cycle {
+      animation: none;
+    }
+    
+    /* Disable smooth scrolling for reduced motion */
+    html {
+      scroll-behavior: auto;
+    }
+    
+    /* Disable transitions for reduced motion */
+    * {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
+  }
+
   /* Hamburger menu animation - uzasadnione jako utility */
   .hamburger-active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
@@ -67,5 +389,4 @@ html {
   button span {
     transition: all 0.3s ease;
   }
-
 }

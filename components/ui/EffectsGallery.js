@@ -51,7 +51,7 @@ export default function EffectsGallery() {
           {/* PRZYCISK ZAMKNIĘCIA */}
           <button
             onClick={close}
-            className="absolute top-4 right-4 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-2 transition-all duration-300"
+            className="absolute top-4 right-4 btn-close bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-2"
             aria-label="Zamknij"
           >
             <FaTimes className="w-6 h-6 text-gray-800" />
@@ -63,7 +63,7 @@ export default function EffectsGallery() {
               e.stopPropagation();
               prev();
             }}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-3 transition-all duration-300"
+            className="absolute left-4 btn-nav-arrow"
             aria-label="Poprzednie zdjęcie"
           >
             <FaChevronLeft className="w-6 h-6 text-gray-800" />
@@ -74,7 +74,7 @@ export default function EffectsGallery() {
               e.stopPropagation();
               next();
             }}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-3 transition-all duration-300"
+            className="absolute right-4 btn-nav-arrow"
             aria-label="Następne zdjęcie"
           >
             <FaChevronRight className="w-6 h-6 text-gray-800" />

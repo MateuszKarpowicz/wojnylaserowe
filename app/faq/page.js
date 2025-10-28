@@ -14,13 +14,13 @@ export default function FAQ() {
   };
 
   return (
-    <main className="min-h-screen bg-lightBg text-textDark px-4 py-8 mx-auto max-w-screen-lg">
+    <main className="min-h-screen bg-lightBg text-textDark container-lg">
       {/* NAGŁÓWEK */}
       <div className="text-center mb-12">
-        <h1 className="text-3xl md:text-4xl font-bold text-textDark mb-4">
+        <h1 className="text-3xl md:text-4xl font-normal text-textDark mb-4">
           {faqData.header.title}
         </h1>
-        <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-700">
           {faqData.header.subtitle}
         </p>
       </div>
@@ -29,7 +29,7 @@ export default function FAQ() {
       <div className="space-y-8">
         {faqData.categories.map((category, categoryIndex) => (
           <section key={categoryIndex} className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-2xl font-bold text-textDark mb-6 text-center">
+            <h2 className="text-2xl font-normal text-textDark mb-6 text-center">
               {category.category}
             </h2>
             
@@ -42,9 +42,9 @@ export default function FAQ() {
                   <div key={itemIndex} className="border border-gray-200 rounded-lg">
                     <button
                       onClick={() => toggleItem(globalIndex)}
-                      className="w-full text-left p-4 flex justify-between items-center hover:bg-gray-50 transition-colors"
+                      className="btn-faq"
                     >
-                      <h3 className="font-semibold text-textDark pr-4">
+                      <h3 className="font-normal text-textDark pr-4">
                         {item.question}
                       </h3>
                       {isOpen ? (
@@ -73,7 +73,7 @@ export default function FAQ() {
 
       {/* KONTAKT */}
       <section className="mt-12 text-center bg-white rounded-lg shadow-sm p-8">
-        <h2 className="text-2xl font-bold text-textDark mb-4">
+        <h2 className="text-2xl font-normal text-textDark mb-4">
           {faqData.footer.title}
         </h2>
         <p className="text-gray-700 mb-6">
@@ -81,7 +81,7 @@ export default function FAQ() {
         </p>
         <a
           href={faqData.footer.href}
-          className="inline-block bg-neonBlue text-white px-8 py-3 rounded-lg hover:bg-neonPurple transition-colors duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
+          className="inline-block bg-neonBlue text-white px-8 py-3 rounded-lg hover:bg-neonPurple transition-colors duration-300 font-normal shadow-lg hover:shadow-xl transform hover:scale-105"
         >
           {faqData.footer.button}
         </a>

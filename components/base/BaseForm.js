@@ -88,7 +88,7 @@ export default function BaseForm({
       <button
         type="submit"
         disabled={isLoading}
-        className="w-full bg-neonBlue text-white font-semibold py-3 rounded-lg hover:bg-neonPurple transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        className="btn-section"
       >
         {isLoading ? (
           <>

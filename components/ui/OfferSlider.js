@@ -64,7 +64,7 @@ export default function OfferSlider() {
       <div className="fixed top-[calc(var(--header-h)-1rem)] right-0 z-[9999]">
         <button
           onClick={toggleSlider}
-          className="bg-neonPurple bg-opacity-90 text-white px-8 py-1 rounded-l-lg rounded-r-none shadow-[0_0_20px_rgba(192,132,252,0.5)] hover:bg-neonPurple/90 transition-colors duration-300 flex items-center"
+          className="btn-offer"
         >
           {offerSliderData.button.text}
         </button>
@@ -85,7 +85,7 @@ export default function OfferSlider() {
             </h2>
             <button
               onClick={toggleSlider}
-              className="text-white hover:text-gray-200 transition-colors"
+              className="btn-close"
             >
               ✕
             </button>

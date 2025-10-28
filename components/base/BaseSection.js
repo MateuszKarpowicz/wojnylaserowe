@@ -15,7 +15,7 @@
  * 
  * @param {string} id - ID sekcji (wymagane)
  * @param {string} className - Dodatkowe klasy CSS (domyślnie: "py-8 bg-white")
- * @param {string} maxWidth - Maksymalna szerokość kontenera (domyślnie: "max-w-screen-lg")
+ * @param {string} maxWidth - Maksymalna szerokość kontenera (domyślnie: null - sekcje używają utility classes)
  * @param {string} variant - Wariant sekcji: "mobile", "tablet", "desktop", "auto" (domyślnie: "auto")
  * @param {boolean} useSplit - Czy używać struktury 20/80 (domyślnie: false)
  * @param {React.ReactNode} children - Zawartość sekcji (lub header gdy useSplit=true)
@@ -26,7 +26,7 @@
 export default function BaseSection({ 
   id, 
   className = "py-8 bg-white", 
-  maxWidth = "max-w-screen-lg",
+  maxWidth = null,
   variant = "auto",
   useSplit = false,
   children,
@@ -65,7 +65,7 @@ export default function BaseSection({
   if (useSplit) {
     return (
       <section id={id} className={finalClassName}>
-        <div className={`${maxWidth} mx-auto px-4 h-full flex flex-col`}>
+        <div className={`${maxWidth ? `${maxWidth} mx-auto px-4` : ''} h-full flex flex-col`}>
           {/* HEADER - 20% wysokości */}
           <div className="h-[20vh] flex items-center justify-center">
             <div className="w-full">
@@ -87,7 +87,7 @@ export default function BaseSection({
   // Standardowa struktura bez split
   return (
     <section id={id} className={finalClassName}>
-      <div className={`${maxWidth} mx-auto px-4`}>
+      <div className={maxWidth ? `${maxWidth} mx-auto px-4` : ''}>
         {children}
       </div>
     </section>

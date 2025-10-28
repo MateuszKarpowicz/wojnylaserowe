@@ -51,12 +51,12 @@ export default function BaseCarousel({
         </div>
       </div>
 
-      {/* NAWIGACJA STRZAŁKAMI */}
+      {/* NAWIGACJA STRZAŁKAMI - tylko na desktop */}
       {showArrows && (
         <>
           <button
             onClick={onPrev}
-            className={`absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-3 shadow-lg transition-all duration-300 ${arrowClassName}`}
+            className={`hidden md:block absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-3 shadow-lg transition-all duration-300 ${arrowClassName}`}
             aria-label="Poprzedni element"
           >
             <FaChevronLeft className="text-gray-800 text-xl" />
@@ -64,7 +64,7 @@ export default function BaseCarousel({
 
           <button
             onClick={onNext}
-            className={`absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-3 shadow-lg transition-all duration-300 ${arrowClassName}`}
+            className={`hidden md:block absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-3 shadow-lg transition-all duration-300 ${arrowClassName}`}
             aria-label="Następny element"
           >
             <FaChevronRight className="text-gray-800 text-xl" />
@@ -72,9 +72,9 @@ export default function BaseCarousel({
         </>
       )}
 
-      {/* KROPKI NAWIGACYJNE */}
+      {/* KROPKI NAWIGACYJNE - tylko na desktop */}
       {showDots && (
-        <div className={`flex justify-center gap-2 mt-8 ${dotClassName}`}>
+        <div className={`hidden md:flex justify-center gap-2 mt-8 ${dotClassName}`}>
           {items.map((_, index) => (
             <button
               key={index}

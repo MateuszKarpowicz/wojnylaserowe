@@ -1,8 +1,5 @@
 'use client';
-import { FaMapMarkerAlt } from 'react-icons/fa';
 import ContactForm from '@/components/ui/ContactForm';
-import MapComponent from '@/components/ui/MapComponent';
-import SocialMediaIcons from '@/components/ui/SocialMediaIcons';
 import ErrorMessage from '@/components/ui/ErrorMessage';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { useState } from 'react';
@@ -43,7 +40,7 @@ export default function ContactSection() {
   };
 
   return (
-    <BaseSection id="kontakt" className="py-8 bg-white">
+    <BaseSection id="kontakt" className="section-pad bg-white">
       {/* NAGŁÓWEK */}
       <SectionHeader 
         title={contactData.title}
@@ -62,53 +59,9 @@ export default function ContactSection() {
       {/* ERROR MESSAGE */}
       <ErrorMessage error={error} className="mb-8" />
 
-      {/* FORMULARZ I MAPA */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        {/* FORMULARZ */}
-        <div>
-          <ContactForm onSubmit={handleFormSubmit} />
-        </div>
-
-        {/* MAPA I INFORMACJE */}
-        <div className="space-y-8">
-          {/* MAPA */}
-          <div>
-            <MapComponent />
-          </div>
-
-          {/* INFORMACJE KONTAKTOWE */}
-          <div className="bg-gray-50 rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-textDark mb-4">
-              {contactData.info.title}
-            </h3>
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <FaMapMarkerAlt className="text-neonBlue text-lg" />
-                <span className="text-gray-700">{contactData.info.address}</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-neonBlue text-lg">📞</span>
-                <span className="text-gray-700">{contactData.info.phone}</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-neonBlue text-lg">✉️</span>
-                <span className="text-gray-700">{contactData.info.email}</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-neonBlue text-lg">🕒</span>
-                <span className="text-gray-700">{contactData.info.hours}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* SOCIAL MEDIA */}
-          <div className="text-center">
-            <h3 className="text-lg font-semibold text-textDark mb-4">
-              {contactData.social.title}
-            </h3>
-            <SocialMediaIcons size="text-2xl" />
-          </div>
-        </div>
+      {/* FORMULARZ */}
+      <div className="max-w-2xl mx-auto">
+        <ContactForm onSubmit={handleFormSubmit} />
       </div>
     </BaseSection>
   );

@@ -7,20 +7,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        lightBg: "#F9F9F9",
-        darkBg: "#0D0D0D",
-        neonBlue: "#00E0FF",
-        neonPurple: "#C084FC",
-        textDark: "#111111",
-        textLight: "#FFFFFF",
+        lightBg: "var(--color-light-bg)",
+        darkBg: "var(--color-dark-bg)",
+        neonBlue: "var(--color-neon-blue)",
+        neonPurple: "var(--color-neon-purple)",
+        textDark: "var(--color-text-dark)",
+        textLight: "var(--color-text-light)",
       },
       fontFamily: {
         sans: ["Poppins", "sans-serif"],
         display: ["Orbitron", "sans-serif"],
       },
       spacing: {
-        section: "5rem",
-        container: "1.5rem",
+        section: "var(--spacing-section)",
+        container: "var(--spacing-container)",
       },
     },
   },

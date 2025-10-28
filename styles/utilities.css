@@ -11,6 +11,11 @@
  */
 
 @layer utilities {
+  /* === SMOOTH SCROLLING === */
+  html {
+    scroll-behavior: smooth;
+  }
+  
   /* === CONTAINER PATTERNS === */
   .container {
     @apply max-w-4xl mx-auto px-4;
@@ -187,7 +192,7 @@
   
   @keyframes colorCycle {
     0% { color: #FFFFFF; }
-    25% { color: #00E0FF; }
+    25% { color: var(--color-neon-blue); }
     50% { color: #FFFFFF; }
     75% { color: #C084FC; }
     100% { color: #FFFFFF; }

@@ -6,7 +6,7 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import TestimonialCard from '@/components/ui/TestimonialCard';
 import { useCarousel } from '@/components/hooks/useCarousel';
 import { useAsyncOperation } from '@/components/hooks/useAsyncOperation';
-import { BaseSection, BaseCarousel, BaseCTA } from '@/components/base';
+import { BaseSection, BaseCarousel } from '@/components/base';
 import testimonialsData from '@/content/texts/testimonials.json';
 
 export default function TestimonialsSection() {
@@ -32,7 +32,7 @@ export default function TestimonialsSection() {
 
   if (isLoading) {
     return (
-      <BaseSection className="py-8 bg-gray-50">
+      <BaseSection className="section-pad bg-gray-50">
         <div className="text-center">
           <LoadingSpinner message={testimonialsData.loading.message} />
         </div>
@@ -42,7 +42,7 @@ export default function TestimonialsSection() {
 
   if (error) {
     return (
-      <BaseSection className="py-8 bg-gray-50">
+      <BaseSection className="section-pad bg-gray-50">
         <div className="text-center">
           <ErrorContainer
             error={error}
@@ -54,7 +54,7 @@ export default function TestimonialsSection() {
   }
 
   return (
-    <BaseSection id="opinie" className="py-8 bg-gray-50">
+    <BaseSection id="opinie" className="section-pad bg-gray-50">
       {/* NAGŁÓWEK SEKCJI */}
       <SectionHeader 
         title={testimonialsData.title}
@@ -77,13 +77,6 @@ export default function TestimonialsSection() {
         )}
       </BaseCarousel>
 
-      {/* CTA */}
-      <BaseCTA
-        text={testimonialsData.cta.text}
-        buttonText={testimonialsData.cta.button}
-        buttonHref={testimonialsData.cta.href}
-        variant="default"
-      />
     </BaseSection>
   );
 }

@@ -14,6 +14,4 @@ export { default as BaseCarousel } from './BaseCarousel';
 
 // Nowe komponenty bazowe
 export { default as BaseFormField } from './BaseFormField';
-export { default as BaseAsyncComponent } from './BaseAsyncComponent';
-export { default as BaseCTA } from './BaseCTA';
 export { default as BaseInfoBox } from './BaseInfoBox';

@@ -4,7 +4,7 @@ import whyUsData from '@/content/texts/whyus.json';
 
 export default function WhyUsSection() {
   return (
-    <BaseSection id="dlaczego-my" className="py-8 bg-gray-50">
+    <BaseSection id="dlaczego-my" className="section-pad bg-gray-50">
       {/* NAGŁÓWEK */}
       <SectionHeader title={whyUsData.title} />
 

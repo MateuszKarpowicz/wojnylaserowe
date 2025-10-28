@@ -20,8 +20,8 @@
   --color-text-dark: #111111;      /* textDark */
   --color-text-light: #FFFFFF;     /* textLight */
   
-  /* Kolory neon */
-  --color-neon-blue: #00E0FF;      /* neonBlue */
+  /* Kolory neon - poprawione dla WCAG AA */
+  --color-neon-blue: #0099CC;      /* neonBlue - poprawiony kontrast */
   --color-neon-purple: #C084FC;    /* neonPurple */
   
   /* Kolory z globals.css do przeniesienia */
@@ -31,7 +31,7 @@
   --color-red-500: #e74c3c;        /* error text */
   --color-gray-500: #6c757d;       /* button secondary */
   --color-gray-600-hover: #5a6268; /* button secondary hover */
-  --color-neon-blue-hover: #00b8d4; /* button primary hover */
+  --color-neon-blue-hover: #007AA3; /* button primary hover - poprawiony kontrast */
   --color-neon-purple-hover: #a855f7; /* button secondary hover */
   
   /* === SPACING === */
@@ -69,15 +69,5 @@
   --z-popover: 1060;
   --z-tooltip: 1070;
   --z-toast: 1080;
-}
-
-/* === DARK MODE TOKENS (przygotowanie na przyszłość) === */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-light-bg: #0D0D0D;
-    --color-dark-bg: #F9F9F9;
-    --color-text-dark: #FFFFFF;
-    --color-text-light: #111111;
-  }
 }
 

@@ -6,7 +6,7 @@ import ErrorContainer from '@/components/ui/ErrorContainer';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { useCarousel } from '@/components/hooks/useCarousel';
 import { useAsyncOperation } from '@/components/hooks/useAsyncOperation';
-import { BaseSection, BaseCarousel, BaseCTA } from '@/components/base';
+import { BaseSection, BaseCarousel } from '@/components/base';
 import effectsData from '@/content/texts/effects.json';
 
 export default function EffectsSection() {
@@ -32,7 +32,7 @@ export default function EffectsSection() {
 
   if (isLoading) {
     return (
-      <BaseSection className="py-8 bg-white">
+      <BaseSection className="section-pad bg-white">
         <div className="text-center">
           <LoadingSpinner message={effectsData.loading.message} />
         </div>
@@ -42,7 +42,7 @@ export default function EffectsSection() {
 
   if (error) {
     return (
-      <BaseSection className="py-8 bg-white">
+      <BaseSection className="section-pad bg-white">
         <div className="text-center">
           <ErrorContainer 
             error={error}
@@ -54,7 +54,7 @@ export default function EffectsSection() {
   }
 
   return (
-    <BaseSection id="efekty" className="py-8 bg-white">
+    <BaseSection id="efekty" className="section-pad bg-white">
       {/* NAGŁÓWEK SEKCJI */}
       <SectionHeader 
         title={effectsData.title}
@@ -80,18 +80,12 @@ export default function EffectsSection() {
               width={800}
               height={600}
               className="w-full h-96 md:h-[500px] object-cover"
+              loading="lazy"
             />
           </div>
         )}
       </BaseCarousel>
 
-      {/* CTA */}
-      <BaseCTA
-        text={effectsData.cta.text}
-        buttonText={effectsData.cta.button}
-        buttonHref={effectsData.cta.href}
-        variant="default"
-      />
     </BaseSection>
   );
 }

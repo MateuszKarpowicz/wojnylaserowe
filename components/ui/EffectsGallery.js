@@ -45,6 +45,7 @@ export default function EffectsGallery() {
             width={800}
             height={600}
             className="rounded-lg shadow-2xl max-h-[80vh] w-auto mx-auto"
+            loading="lazy"
           />
           
           {/* PRZYCISK ZAMKNIĘCIA */}

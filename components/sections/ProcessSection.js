@@ -2,7 +2,7 @@ import { BaseSection } from '@/components/base';
 
 export default function ProcessSection() {
   return (
-    <BaseSection id="process" className="py-8 bg-gray-50">
+    <BaseSection id="process" className="section-pad bg-gray-50">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold text-textDark text-center mb-12">
           Proces Zabiegu

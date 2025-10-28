@@ -1,5 +1,5 @@
 'use client';
-import { BaseForm } from '@/components/base';
+import { BaseForm, BaseFormField } from '@/components/base';
 import contactFormData from '@/content/texts/contactform.json';
 
 export default function ContactForm({ onSubmit }) {
@@ -30,107 +30,73 @@ export default function ContactForm({ onSubmit }) {
       {({ formData, handleInputChange, isLoading }) => (
         <>
           {/* IMIĘ I NAZWISKO */}
-          <div>
-            <label className="block text-textDark text-sm font-semibold mb-2">
-              {contactFormData.fields.name.label} *
-            </label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-              disabled={isLoading}
-              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              placeholder={contactFormData.fields.name.placeholder}
-            />
-          </div>
+          <BaseFormField
+            type="text"
+            name="name"
+            label={`${contactFormData.fields.name.label} *`}
+            value={formData.name}
+            onChange={handleInputChange}
+            required
+            disabled={isLoading}
+            placeholder={contactFormData.fields.name.placeholder}
+          />
 
           {/* NUMER TELEFONU */}
-          <div>
-            <label className="block text-textDark text-sm font-semibold mb-2">
-              {contactFormData.fields.phone.label} *
-            </label>
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleInputChange}
-              required
-              disabled={isLoading}
-              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              placeholder={contactFormData.fields.phone.placeholder}
-            />
-          </div>
+          <BaseFormField
+            type="tel"
+            name="phone"
+            label={`${contactFormData.fields.phone.label} *`}
+            value={formData.phone}
+            onChange={handleInputChange}
+            required
+            disabled={isLoading}
+            placeholder={contactFormData.fields.phone.placeholder}
+          />
 
           {/* RODZAJ USŁUGI */}
-          <div>
-            <label className="block text-textDark text-sm font-semibold mb-2">
-              {contactFormData.fields.service.label} *
-            </label>
-            <select
-              name="service"
-              value={formData.service}
-              onChange={handleInputChange}
-              required
-              disabled={isLoading}
-              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <option value="">{contactFormData.fields.service.placeholder}</option>
-              {contactFormData.fields.service.options.map((option, index) => (
-                <option key={index} value={option}>{option}</option>
-              ))}
-            </select>
-          </div>
+          <BaseFormField
+            type="select"
+            name="service"
+            label={`${contactFormData.fields.service.label} *`}
+            value={formData.service}
+            onChange={handleInputChange}
+            required
+            disabled={isLoading}
+            placeholder={contactFormData.fields.service.placeholder}
+            options={contactFormData.fields.service.options}
+          />
 
           {/* OPIS PROBLEMU */}
-          <div>
-            <label className="block text-textDark text-sm font-semibold mb-2">
-              {contactFormData.fields.description.label} *
-            </label>
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleInputChange}
-              required
-              rows="4"
-              disabled={isLoading}
-              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
-              placeholder={contactFormData.fields.description.placeholder}
-            />
-          </div>
+          <BaseFormField
+            type="textarea"
+            name="description"
+            label={`${contactFormData.fields.description.label} *`}
+            value={formData.description}
+            onChange={handleInputChange}
+            required
+            disabled={isLoading}
+            placeholder={contactFormData.fields.description.placeholder}
+          />
 
           {/* PREFEROWANE DATY */}
-          <div>
-            <label className="block text-textDark text-sm font-semibold mb-2">
-              {contactFormData.fields.dates.label}
-            </label>
-            <textarea
-              name="dates"
-              value={formData.dates}
-              onChange={handleInputChange}
-              rows="2"
-              disabled={isLoading}
-              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
-              placeholder={contactFormData.fields.dates.placeholder}
-            />
-          </div>
+          <BaseFormField
+            type="textarea"
+            name="dates"
+            label={contactFormData.fields.dates.label}
+            value={formData.dates}
+            onChange={handleInputChange}
+            disabled={isLoading}
+            placeholder={contactFormData.fields.dates.placeholder}
+          />
 
           {/* ZDJĘCIA */}
-          <div>
-            <label className="block text-textDark text-sm font-semibold mb-2">
-              {contactFormData.fields.photos.label}
-            </label>
-            <input
-              type="file"
-              name="photos"
-              onChange={handleInputChange}
-              multiple
-              accept="image/*"
-              disabled={isLoading}
-              className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            />
-          </div>
+          <BaseFormField
+            type="file"
+            name="photos"
+            label={contactFormData.fields.photos.label}
+            onChange={handleInputChange}
+            disabled={isLoading}
+          />
         </>
       )}
     </BaseForm>

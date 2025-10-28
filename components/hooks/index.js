@@ -9,6 +9,3 @@
 export { useCarousel } from './useCarousel';
 export { useAsyncOperation } from './useAsyncOperation';
 export { useModal } from './useModal';
-
-// Nowe hooks
-export { useActiveSection } from './useActiveSection';

@@ -15,8 +15,8 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-darkBg/95 border-b border-neonBlue/20 shadow-[0_0_20px_rgba(0,224,255,0.3)]">
-      <nav className="max-w-screen-lg mx-auto px-4 h-24 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/95 border-b border-neonBlue/20 shadow-[0_0_20px_rgba(0,224,255,0.3)]">
+      <nav className="container-lg h-24 flex items-center justify-between">
         {/* LOGO - po lewej stronie */}
         <Link href="/" className="flex items-center w-1/3">
           <img
@@ -82,7 +82,7 @@ export default function Header() {
           />
           
           {/* MENU PANEL */}
-          <div className="absolute right-0 top-0 bottom-0 w-64 bg-darkBg shadow-lg">
+          <div className="absolute right-0 top-0 bottom-0 w-64 bg-black shadow-lg">
             <div className="flex justify-between items-center p-4 border-b border-neonBlue/20">
               <h2 className="text-textLight font-semibold">Menu</h2>
               <button
@@ -98,14 +98,14 @@ export default function Header() {
               <Link 
                 href="/o-nas" 
                 onClick={closeMenu}
-                className="text-textLight hover:text-neonBlue transition-colors duration-300 py-2"
+                className="text-textLight hover:text-neonBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonBlue ring-offset-2 ring-offset-darkBg"
               >
                 O nas
               </Link>
               <Link 
                 href="/efekty" 
                 onClick={closeMenu}
-                className="text-textLight hover:text-neonBlue transition-colors duration-300 py-2"
+                className="text-textLight hover:text-neonBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonBlue ring-offset-2 ring-offset-darkBg"
               >
                 Efekty
               </Link>
@@ -119,14 +119,14 @@ export default function Header() {
               <Link 
                 href="/kontakt" 
                 onClick={closeMenu}
-                className="text-textLight hover:text-neonBlue transition-colors duration-300 py-2"
+                className="text-textLight hover:text-neonBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonBlue ring-offset-2 ring-offset-darkBg"
               >
                 Kontakt
               </Link>
               <Link 
                 href="/faq" 
                 onClick={closeMenu}
-                className="text-textLight hover:text-neonBlue transition-colors duration-300 py-2"
+                className="text-textLight hover:text-neonBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonBlue ring-offset-2 ring-offset-darkBg"
               >
                 FAQ
               </Link>

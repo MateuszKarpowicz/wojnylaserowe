@@ -1,92 +1,15 @@
+/* Import design tokens */
+@import '../styles/tokens.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* === DESIGN TOKENS === */
-:root {
-  /* === WYSOKOŚCI KOMPONENTÓW === */
-  --header-h: 6rem;        /* 96px - wysokość header (h-24) */
-  --footer-h: 4rem;         /* 64px - wysokość footer (py-3 + content) */
-  
-  /* === KOLORY (z mapowania hardcoded hex) === */
-  /* Podstawowe kolory */
-  --color-light-bg: #F9F9F9;      /* lightBg */
-  --color-dark-bg: #0D0D0D;        /* darkBg */
-  --color-text-dark: #111111;      /* textDark */
-  --color-text-light: #FFFFFF;     /* textLight */
-  
-  /* Kolory neon */
-  --color-neon-blue: #00E0FF;      /* neonBlue */
-  --color-neon-purple: #C084FC;    /* neonPurple */
-  
-  /* Kolory z globals.css do przeniesienia */
-  --color-gray-300: #f3f3f3;       /* border spinner */
-  --color-gray-600: #666;          /* text secondary */
-  --color-gray-700: #333;          /* text dark */
-  --color-red-500: #e74c3c;        /* error text */
-  --color-gray-500: #6c757d;       /* button secondary */
-  --color-gray-600-hover: #5a6268; /* button secondary hover */
-  --color-neon-blue-hover: #00b8d4; /* button primary hover */
-  --color-neon-purple-hover: #a855f7; /* button secondary hover */
-  
-  /* === SPACING === */
-  --spacing-section: 5rem;          /* section spacing */
-  --spacing-container: 1.5rem;     /* container padding */
-  --spacing-card: 1.5rem;          /* card padding */
-  --spacing-button: 0.75rem 1.5rem; /* button padding */
-  
-  /* === RADIUS === */
-  --radius-sm: 0.25rem;            /* 4px */
-  --radius-md: 0.5rem;             /* 8px */
-  --radius-lg: 0.75rem;            /* 12px */
-  --radius-xl: 1rem;               /* 16px */
-  
-  /* === SHADOWS === */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  --shadow-neon: 0 0 20px rgba(0, 224, 255, 0.3);
-  --shadow-neon-hover: 0 0 30px rgba(0, 224, 255, 0.5);
-  
-  /* === BREAKPOINTS === */
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
-  
-  /* === Z-INDEX === */
-  --z-dropdown: 1000;
-  --z-sticky: 1020;
-  --z-fixed: 1030;
-  --z-modal-backdrop: 1040;
-  --z-modal: 1050;
-  --z-popover: 1060;
-  --z-tooltip: 1070;
-  --z-toast: 1080;
-}
-
-/* === DARK MODE TOKENS (przygotowanie na przyszłość) === */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-light-bg: #0D0D0D;
-    --color-dark-bg: #F9F9F9;
-    --color-text-dark: #FFFFFF;
-    --color-text-light: #111111;
-  }
-}
+/* Tokens przeniesione do styles/tokens.css */
 
 /* === BASE STYLES === */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Respect user's motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}
+/* scroll-behavior przeniesione do utilities.css */
 
 body {
   background-color: var(--color-light-bg);
@@ -121,6 +44,7 @@ h1, h2, h3 {
 }
 
 /* === SMOOTH SCROLLING === */
+/* scroll-behavior przeniesione do utilities.css */
 html {
   scroll-padding-top: var(--header-h);
 }
@@ -144,20 +68,4 @@ html {
     transition: all 0.3s ease;
   }
 
-  /* === SECTION GRID CONTAINER === */
-  .sections-grid-mobile {
-    @apply flex flex-col;
-  }
-  
-  .sections-grid-tablet {
-    @apply md:grid md:grid-cols-2 md:gap-0;
-  }
-  
-  .sections-grid-desktop {
-    @apply lg:grid-cols-3 lg:gap-0;
-  }
-  
-  .sections-grid-auto {
-    @apply flex flex-col md:grid md:grid-cols-2 md:gap-0 lg:grid-cols-3 lg:gap-0;
-  }
 }

@@ -60,13 +60,12 @@ export default function OfferSlider() {
 
   return (
     <>
-      {/* PRZYCISK OFERTA - pod headerem po prawej */}
-      <div className="fixed top-28 right-4 z-50">
+      {/* PRZYCISK OFERTA - na linii dolnej headera, zaczyna się od prawej strony, WYSOKI Z-INDEX */}
+      <div className="fixed top-[calc(var(--header-h)-1rem)] right-0 z-[9999]">
         <button
           onClick={toggleSlider}
-          className="btn-primary px-6 py-3 shadow-lg flex items-center gap-2"
+          className="bg-neonPurple bg-opacity-90 text-white px-8 py-1 rounded-l-lg rounded-r-none shadow-[0_0_20px_rgba(192,132,252,0.5)] hover:bg-neonPurple/90 transition-colors duration-300 flex items-center"
         >
-          <span className="text-xl">{offerSliderData.button.icon}</span>
           {offerSliderData.button.text}
         </button>
       </div>

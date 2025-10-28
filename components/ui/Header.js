@@ -18,7 +18,7 @@ export default function Header() {
     <header className="header-base">
       <nav className="container-lg h-24 flex items-center justify-between">
         {/* LOGO - po lewej stronie */}
-        <Link href="/" className="flex items-center w-1/3">
+        <Link href="/" className="flex items-center w-1/3 relative z-10">
           <img
             src="/images/logo/logo.svg"
             alt="Wojny Laserowe"

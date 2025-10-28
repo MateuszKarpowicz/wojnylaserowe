@@ -13,7 +13,6 @@
 
 'use client';
 import { FaStar } from 'react-icons/fa';
-import { BaseCard } from '@/components/base';
 
 export default function TestimonialCard({ testimonial, className = "" }) {
   const renderStars = (rating) => {
@@ -28,7 +27,7 @@ export default function TestimonialCard({ testimonial, className = "" }) {
   };
 
   return (
-    <BaseCard variant="testimonial" className={className}>
+    <div className={`bg-white rounded-lg shadow-sm p-6 ${className}`}>
       {/* GWIAZDKI I OCENA */}
       <div className="flex items-center gap-2 mb-4">
         <div className="flex items-center gap-1">
@@ -50,6 +49,6 @@ export default function TestimonialCard({ testimonial, className = "" }) {
           — {testimonial.name}
         </cite>
       </div>
-    </BaseCard>
+    </div>
   );
 }

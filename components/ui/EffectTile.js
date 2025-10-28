@@ -1,13 +1,9 @@
 'use client';
 import Image from 'next/image';
-import { BaseCard } from '@/components/base';
 
 export default function EffectTile({ effect, index, onOpenModal }) {
   return (
-    <BaseCard 
-      className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-      hover={false}
-    >
+    <div className="bg-white rounded-lg shadow-sm overflow-hidden group cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-105">
       <div onClick={() => onOpenModal(effect, index)}>
         {/* ZDJĘCIE */}
         <div className="relative aspect-square overflow-hidden">
@@ -31,6 +27,6 @@ export default function EffectTile({ effect, index, onOpenModal }) {
           </div>
         </div>
       </div>
-    </BaseCard>
+    </div>
   );
 }

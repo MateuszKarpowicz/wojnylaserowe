@@ -17,7 +17,6 @@
 
 'use client';
 import { useState } from 'react';
-import ErrorMessage from '@/components/ui/ErrorMessage';
 
 export default function BaseForm({ 
   initialData = {},
@@ -76,7 +75,11 @@ export default function BaseForm({
   return (
     <form onSubmit={handleSubmit} className={`space-y-4 ${className}`} {...props}>
       {/* ERROR MESSAGE */}
-      <ErrorMessage error={error} />
+      {error && (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg">
+          {error}
+        </div>
+      )}
 
       {/* POLA FORMULARZA */}
       {children && typeof children === 'function' 

@@ -1,17 +1,25 @@
 'use client';
 import { useState } from 'react';
-import ContactForm from '@/components/ui/ContactForm';
-import ErrorMessage from '@/components/ui/ErrorMessage';
+import { BaseForm, BaseFormField } from '@/components/base';
 import { simulateAsyncOperation } from '@/utils/asyncSimulator';
 import offerSliderData from '@/content/texts/offerslider.json';
+import contactFormData from '@/content/texts/contactform.json';
 import { BaseModal } from '@/components/base';
 import { useModal } from '@/components/hooks/useModal';
 
 export default function OfferSlider() {
   const { isOpen, open, close } = useModal();
   const [selectedOption, setSelectedOption] = useState(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
+
+  const initialFormData = {
+    name: '',
+    phone: '',
+    service: '',
+    description: '',
+    dates: '',
+    photos: null
+  };
 
   const toggleSlider = () => {
     if (isOpen) {
@@ -34,9 +42,6 @@ export default function OfferSlider() {
   };
 
   const handleFormSubmit = async (formData) => {
-    setIsSubmitting(true);
-    setError(null);
-
     try {
       // Use async simulator instead of direct setTimeout
       await simulateAsyncOperation(1500);
@@ -52,9 +57,7 @@ export default function OfferSlider() {
       
     } catch (err) {
       console.error('Error submitting offer form:', err);
-      setError(offerSliderData.error);
-    } finally {
-      setIsSubmitting(false);
+      throw new Error(offerSliderData.error);
     }
   };
 
@@ -118,8 +121,7 @@ export default function OfferSlider() {
               <div className="flex items-center gap-3 mb-6">
                 <button
                   onClick={goBack}
-                  disabled={isSubmitting}
-                  className="text-textLight hover:text-neonBlue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="text-textLight hover:text-neonBlue transition-colors"
                 >
                   ←
                 </button>
@@ -129,9 +131,91 @@ export default function OfferSlider() {
               </div>
 
               {/* ERROR MESSAGE */}
-              <ErrorMessage error={error} className="mb-6" />
+              {error && (
+                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-6">
+                  {error}
+                </div>
+              )}
 
-              <ContactForm onSubmit={handleFormSubmit} />
+              <BaseForm
+                initialData={initialFormData}
+                onSubmit={handleFormSubmit}
+                submitText={contactFormData.submit.text}
+                loadingText={contactFormData.submit.loading}
+              >
+                {({ formData, handleInputChange, isLoading }) => (
+                  <>
+                    {/* IMIĘ I NAZWISKO */}
+                    <BaseFormField
+                      type="text"
+                      name="name"
+                      label={`${contactFormData.fields.name.label} *`}
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      disabled={isLoading}
+                      placeholder={contactFormData.fields.name.placeholder}
+                    />
+
+                    {/* NUMER TELEFONU */}
+                    <BaseFormField
+                      type="tel"
+                      name="phone"
+                      label={`${contactFormData.fields.phone.label} *`}
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      required
+                      disabled={isLoading}
+                      placeholder={contactFormData.fields.phone.placeholder}
+                    />
+
+                    {/* RODZAJ USŁUGI */}
+                    <BaseFormField
+                      type="select"
+                      name="service"
+                      label={`${contactFormData.fields.service.label} *`}
+                      value={formData.service}
+                      onChange={handleInputChange}
+                      required
+                      disabled={isLoading}
+                      placeholder={contactFormData.fields.service.placeholder}
+                      options={contactFormData.fields.service.options}
+                    />
+
+                    {/* OPIS PROBLEMU */}
+                    <BaseFormField
+                      type="textarea"
+                      name="description"
+                      label={`${contactFormData.fields.description.label} *`}
+                      value={formData.description}
+                      onChange={handleInputChange}
+                      required
+                      disabled={isLoading}
+                      placeholder={contactFormData.fields.description.placeholder}
+                    />
+
+                    {/* PREFEROWANE DATY */}
+                    <BaseFormField
+                      type="textarea"
+                      name="dates"
+                      label={contactFormData.fields.dates.label}
+                      value={formData.dates}
+                      onChange={handleInputChange}
+                      disabled={isLoading}
+                      placeholder={contactFormData.fields.dates.placeholder}
+                    />
+
+                    {/* ZDJĘCIA */}
+                    <BaseFormField
+                      type="file"
+                      name="photos"
+                      label={contactFormData.fields.photos.label}
+                      onChange={handleInputChange}
+                      disabled={isLoading}
+                    />
+                  </>
+                )}
+              </BaseForm>
             </div>
           )}
         </div>

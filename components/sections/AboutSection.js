@@ -1,22 +1,16 @@
-import { BaseSection } from '@/components/base';
-import SectionHeader from '@/components/ui/SectionHeader';
+import { BaseSectionWithHeader, BaseTextCard } from '@/components/base';
 import aboutData from '@/content/texts/about.json';
 
 export default function AboutSection() {
   return (
-    <BaseSection id="o-nas" className="section-pad bg-white container-sm">
-      {/* NAGŁÓWEK */}
-      <SectionHeader 
-        title={aboutData.title}
-        subtitle={aboutData.subtitle}
-      />
-
+    <BaseSectionWithHeader
+      id="o-nas"
+      title={aboutData.title}
+      subtitle={aboutData.subtitle}
+      className="section-pad bg-white container-sm"
+    >
       {/* TREŚĆ - tylko pierwszy akapit */}
-      <div className="text-center">
-        <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-          {aboutData.content[0]}
-        </p>
-      </div>
-    </BaseSection>
+      <BaseTextCard paragraphs={aboutData.content[0]} />
+    </BaseSectionWithHeader>
   );
 }

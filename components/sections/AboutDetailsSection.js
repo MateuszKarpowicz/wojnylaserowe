@@ -1,4 +1,5 @@
-import { BaseTextSection } from '@/components/base';
+import { BaseSection, BaseTextCard } from '@/components/base';
+import SectionHeader from '@/components/ui/SectionHeader';
 
 export default function AboutDetailsSection() {
   const paragraphs = [
@@ -7,13 +8,15 @@ export default function AboutDetailsSection() {
   ];
 
   return (
-    <BaseTextSection
-      id="about-details"
-      title="Szczegóły Metody"
-      subtitle="Nowoczesna technologia laserowa"
-      paragraphs={paragraphs}
-      bgColor="bg-white"
-      containerType="container-sm"
-    />
+    <BaseSection id="about-details" className="section-pad bg-white container-sm">
+      {/* NAGŁÓWEK */}
+      <SectionHeader 
+        title="Szczegóły Metody"
+        subtitle="Nowoczesna technologia laserowa"
+      />
+
+      {/* TREŚĆ */}
+      <BaseTextCard paragraphs={paragraphs} />
+    </BaseSection>
   );
 }

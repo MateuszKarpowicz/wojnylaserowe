@@ -1,4 +1,5 @@
-import { BaseTextSection } from '@/components/base';
+import { BaseSection, BaseTextCard } from '@/components/base';
+import SectionHeader from '@/components/ui/SectionHeader';
 
 export default function AboutExperienceSection() {
   const paragraphs = [
@@ -7,13 +8,15 @@ export default function AboutExperienceSection() {
   ];
 
   return (
-    <BaseTextSection
-      id="about-experience"
-      title="Doświadczenie i Sprzęt"
-      subtitle="Profesjonalne podejście od 2019 roku"
-      paragraphs={paragraphs}
-      bgColor="bg-gray-50"
-      containerType="container-sm"
-    />
+    <BaseSection id="about-experience" className="section-pad bg-gray-50 container-sm">
+      {/* NAGŁÓWEK */}
+      <SectionHeader 
+        title="Doświadczenie i Sprzęt"
+        subtitle="Profesjonalne podejście od 2019 roku"
+      />
+
+      {/* TREŚĆ */}
+      <BaseTextCard paragraphs={paragraphs} />
+    </BaseSection>
   );
 }

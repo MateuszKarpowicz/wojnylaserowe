@@ -18,5 +18,4 @@ export { default as BaseInfoBox } from './BaseInfoBox';
 export { default as BaseStepCard } from './BaseStepCard';
 export { default as BaseFeatureCard } from './BaseFeatureCard';
 export { default as BaseContactInfo } from './BaseContactInfo';
-export { default as BaseTextSection } from './BaseTextSection';
-export { default as BaseListSection } from './BaseListSection';
+export { default as BaseTextCard } from './BaseTextCard';

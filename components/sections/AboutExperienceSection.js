@@ -1,24 +1,19 @@
-import { BaseSection } from '@/components/base';
-import SectionHeader from '@/components/ui/SectionHeader';
+import { BaseTextSection } from '@/components/base';
 
 export default function AboutExperienceSection() {
-  return (
-    <BaseSection id="about-experience" className="section-pad bg-gray-50 container-sm">
-      {/* NAGŁÓWEK */}
-      <SectionHeader 
-        title="Doświadczenie i Sprzęt"
-        subtitle="Profesjonalne podejście od 2019 roku"
-      />
+  const paragraphs = [
+    "W Wojnach Laserowych specjalizuję się w laserowym usuwaniu tatuaży w Krakowie od 2019 roku. Dzięki doświadczeniu i pracy na nowoczesnym laserze pikosekundowym, pomagam bezpiecznie pozbyć się niechcianych wzorów – bez blizn i bez nadmiernego bólu.",
+    "Każdy zabieg wykonuję z pełnym skupieniem na bezpieczeństwie, higienie i komforcie klienta. Dodatkowo, podczas zabiegu korzystam z chłodziarki do skóry, która znacznie zmniejsza dyskomfort, zaczerwienienie i obrzęk."
+  ];
 
-      {/* TREŚĆ */}
-      <div className="text-center">
-        <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-          W Wojnach Laserowych specjalizuję się w laserowym usuwaniu tatuaży w Krakowie od 2019 roku. Dzięki doświadczeniu i pracy na nowoczesnym laserze pikosekundowym, pomagam bezpiecznie pozbyć się niechcianych wzorów – bez blizn i bez nadmiernego bólu.
-        </p>
-        <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-          Każdy zabieg wykonuję z pełnym skupieniem na bezpieczeństwie, higienie i komforcie klienta. Dodatkowo, podczas zabiegu korzystam z chłodziarki do skóry, która znacznie zmniejsza dyskomfort, zaczerwienienie i obrzęk.
-        </p>
-      </div>
-    </BaseSection>
+  return (
+    <BaseTextSection
+      id="about-experience"
+      title="Doświadczenie i Sprzęt"
+      subtitle="Profesjonalne podejście od 2019 roku"
+      paragraphs={paragraphs}
+      bgColor="bg-gray-50"
+      containerType="container-sm"
+    />
   );
 }

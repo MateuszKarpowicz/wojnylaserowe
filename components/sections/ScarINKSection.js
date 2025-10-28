@@ -4,7 +4,7 @@ import scarinkData from '@/content/texts/scarink.json';
 
 export default function ScarINKSection() {
   return (
-    <BaseSection id="scarink" className="section-pad bg-white">
+    <BaseSection id="scarink" className="section-pad bg-white container-sm">
       {/* NAGŁÓWEK */}
       <SectionHeader 
         title={scarinkData.title}

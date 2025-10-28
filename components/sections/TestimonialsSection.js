@@ -32,7 +32,7 @@ export default function TestimonialsSection() {
 
   if (isLoading) {
     return (
-      <BaseSection className="section-pad bg-gray-50 container-sm">
+      <BaseSection className="section-pad bg-gray-50 container">
         <div className="text-center">
           <LoadingSpinner message={testimonialsData.loading.message} />
         </div>
@@ -42,7 +42,7 @@ export default function TestimonialsSection() {
 
   if (error) {
     return (
-      <BaseSection className="section-pad bg-gray-50 container-sm">
+      <BaseSection className="section-pad bg-gray-50 container">
         <div className="text-center">
           <ErrorContainer
             error={error}
@@ -54,7 +54,7 @@ export default function TestimonialsSection() {
   }
 
   return (
-    <BaseSection id="opinie" className="section-pad bg-gray-50 container-sm">
+    <BaseSection id="opinie" className="section-pad bg-gray-50 container">
       {/* NAGŁÓWEK SEKCJI */}
       <SectionHeader 
         title={testimonialsData.title}
@@ -70,6 +70,8 @@ export default function TestimonialsSection() {
         onNext={next}
         onPrev={prev}
         onGoTo={goTo}
+        showArrows={false}
+        showDots={false}
         arrowClassName="bg-white bg-opacity-80 hover:bg-opacity-100"
       >
         {(testimonial) => (

@@ -4,7 +4,7 @@ import scarinkData from '@/content/texts/scarink.json';
 
 export default function ScarINKMethodSection() {
   return (
-    <BaseSection id="scarink-method" className="section-pad bg-gray-50">
+    <BaseSection id="scarink-method" className="section-pad bg-gray-50 container">
       {/* NAGŁÓWEK */}
       <SectionHeader 
         title={scarinkData.method.title}
@@ -12,8 +12,7 @@ export default function ScarINKMethodSection() {
       />
 
       {/* TREŚĆ */}
-      <div className="max-w-4xl mx-auto">
-        <BaseInfoBox
+      <BaseInfoBox
           title=""
           content=""
           variant="default"
@@ -40,7 +39,6 @@ export default function ScarINKMethodSection() {
             {scarinkData.method.additional}
           </p>
         </BaseInfoBox>
-      </div>
     </BaseSection>
   );
 }

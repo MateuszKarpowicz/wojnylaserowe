@@ -1,24 +1,19 @@
-import { BaseSection } from '@/components/base';
-import SectionHeader from '@/components/ui/SectionHeader';
+import { BaseTextSection } from '@/components/base';
 
 export default function AboutDetailsSection() {
-  return (
-    <BaseSection id="about-details" className="section-pad bg-white container-sm">
-      {/* NAGŁÓWEK */}
-      <SectionHeader 
-        title="Szczegóły Metody"
-        subtitle="Nowoczesna technologia laserowa"
-      />
+  const paragraphs = [
+    "Wykorzystuję najnowocześniejszy laser pikosekundowy, który zapewnia najwyższą skuteczność w usuwaniu tatuaży. Ta zaawansowana technologia pozwala na precyzyjne usuwanie pigmentów bez uszkadzania otaczających tkanek.",
+    "Każdy zabieg jest dostosowany do indywidualnych potrzeb klienta, uwzględniając rodzaj tatuażu, jego wiek, lokalizację oraz typ skóry. Dzięki temu mogę zapewnić optymalne rezultaty przy minimalnym ryzyku powikłań."
+  ];
 
-      {/* TREŚĆ */}
-      <div className="text-center">
-        <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-          Wykorzystuję najnowocześniejszy laser pikosekundowy, który zapewnia najwyższą skuteczność w usuwaniu tatuaży. Ta zaawansowana technologia pozwala na precyzyjne usuwanie pigmentów bez uszkadzania otaczających tkanek.
-        </p>
-        <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-          Każdy zabieg jest dostosowany do indywidualnych potrzeb klienta, uwzględniając rodzaj tatuażu, jego wiek, lokalizację oraz typ skóry. Dzięki temu mogę zapewnić optymalne rezultaty przy minimalnym ryzyku powikłań.
-        </p>
-      </div>
-    </BaseSection>
+  return (
+    <BaseTextSection
+      id="about-details"
+      title="Szczegóły Metody"
+      subtitle="Nowoczesna technologia laserowa"
+      paragraphs={paragraphs}
+      bgColor="bg-white"
+      containerType="container-sm"
+    />
   );
 }

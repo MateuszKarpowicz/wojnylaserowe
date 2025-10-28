@@ -1,22 +1,24 @@
 'use client';
-import ContactForm from '@/components/ui/ContactForm';
-import ErrorMessage from '@/components/ui/ErrorMessage';
+import { BaseSection, BaseForm, BaseFormField } from '@/components/base';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { useState } from 'react';
 import { simulateAsyncOperation } from '@/utils/asyncSimulator';
-import { BaseSection } from '@/components/base';
 import contactData from '@/content/texts/contact.json';
+import contactFormData from '@/content/texts/contactform.json';
 
 export default function ContactSection() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
-  const handleFormSubmit = async (formData) => {
-    setIsSubmitting(true);
-    setError(null);
-    setSuccess(false);
+  const initialFormData = {
+    name: '',
+    phone: '',
+    service: '',
+    description: '',
+    dates: '',
+    photos: null
+  };
 
+  const handleFormSubmit = async (formData) => {
     try {
       // Use async simulator instead of direct setTimeout
       await simulateAsyncOperation(2000);
@@ -33,9 +35,7 @@ export default function ContactSection() {
       
     } catch (err) {
       console.error('Error submitting contact form:', err);
-      setError(contactData.form.error);
-    } finally {
-      setIsSubmitting(false);
+      throw new Error(contactData.form.error);
     }
   };
 
@@ -56,12 +56,87 @@ export default function ContactSection() {
         </div>
       )}
 
-      {/* ERROR MESSAGE */}
-      <ErrorMessage error={error} className="mb-8" />
-
       {/* FORMULARZ */}
       <div className="mx-auto">
-        <ContactForm onSubmit={handleFormSubmit} />
+        <BaseForm
+          initialData={initialFormData}
+          onSubmit={handleFormSubmit}
+          submitText={contactFormData.submit.text}
+          loadingText={contactFormData.submit.loading}
+        >
+          {({ formData, handleInputChange, isLoading }) => (
+            <>
+              {/* IMIĘ I NAZWISKO */}
+              <BaseFormField
+                type="text"
+                name="name"
+                label={`${contactFormData.fields.name.label} *`}
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+                disabled={isLoading}
+                placeholder={contactFormData.fields.name.placeholder}
+              />
+
+              {/* NUMER TELEFONU */}
+              <BaseFormField
+                type="tel"
+                name="phone"
+                label={`${contactFormData.fields.phone.label} *`}
+                value={formData.phone}
+                onChange={handleInputChange}
+                required
+                disabled={isLoading}
+                placeholder={contactFormData.fields.phone.placeholder}
+              />
+
+              {/* RODZAJ USŁUGI */}
+              <BaseFormField
+                type="select"
+                name="service"
+                label={`${contactFormData.fields.service.label} *`}
+                value={formData.service}
+                onChange={handleInputChange}
+                required
+                disabled={isLoading}
+                placeholder={contactFormData.fields.service.placeholder}
+                options={contactFormData.fields.service.options}
+              />
+
+              {/* OPIS PROBLEMU */}
+              <BaseFormField
+                type="textarea"
+                name="description"
+                label={`${contactFormData.fields.description.label} *`}
+                value={formData.description}
+                onChange={handleInputChange}
+                required
+                disabled={isLoading}
+                placeholder={contactFormData.fields.description.placeholder}
+              />
+
+              {/* PREFEROWANE DATY */}
+              <BaseFormField
+                type="textarea"
+                name="dates"
+                label={contactFormData.fields.dates.label}
+                value={formData.dates}
+                onChange={handleInputChange}
+                disabled={isLoading}
+                placeholder={contactFormData.fields.dates.placeholder}
+              />
+
+              {/* ZDJĘCIA */}
+              <BaseFormField
+                type="file"
+                name="photos"
+                label={contactFormData.fields.photos.label}
+                onChange={handleInputChange}
+                disabled={isLoading}
+              />
+            </>
+          )}
+        </BaseForm>
       </div>
     </BaseSection>
   );

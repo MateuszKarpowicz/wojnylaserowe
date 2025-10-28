@@ -8,7 +8,7 @@ import contactInfoData from '@/content/texts/contact-info.json';
 
 export default function ContactInfoSection() {
   return (
-    <BaseSection id="kontakt-info" className="section-pad bg-gray-50">
+    <BaseSection id="kontakt-info" className="section-pad bg-gray-50 container">
       {/* NAGŁÓWEK */}
       <SectionHeader 
         title={contactInfoData.title}
@@ -16,7 +16,7 @@ export default function ContactInfoSection() {
       />
 
       {/* MAPA I INFORMACJE */}
-      <div className="max-w-4xl mx-auto space-y-8">
+      <div className="space-y-8">
         {/* MAPA */}
         <div>
           <MapComponent />

@@ -1,5 +1,6 @@
 /* Import design tokens */
 @import '../styles/tokens.css';
+@import '../styles/utilities.css';
 
 @tailwind base;
 @tailwind components;
@@ -12,7 +13,6 @@
 /* scroll-behavior przeniesione do utilities.css */
 
 body {
-  background-color: var(--color-light-bg);
   color: var(--color-text-dark);
   font-family: "Poppins", sans-serif;
   margin: 0;

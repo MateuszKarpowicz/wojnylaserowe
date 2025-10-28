@@ -15,7 +15,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/95 border-b border-neonBlue/20 shadow-[0_0_20px_rgba(0,224,255,0.3)]">
+    <header className="header-base">
       <nav className="container-lg h-24 flex items-center justify-between">
         {/* LOGO - po lewej stronie */}
         <Link href="/" className="flex items-center w-1/3">
@@ -30,7 +30,7 @@ export default function Header() {
         <button 
           onClick={toggleMenu}
           aria-label="Toggle menu"
-          className="md:hidden text-textLight hover:text-neonBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonBlue ring-offset-2 ring-offset-darkBg"
+          className="md:hidden link-focus-neon ring-offset-darkBg"
         >
           <span className="block w-6 h-0.5 bg-current mb-1"></span>
           <span className="block w-6 h-0.5 bg-current mb-1"></span>
@@ -41,13 +41,13 @@ export default function Header() {
         <div className="hidden md:flex items-center gap-6">
           <Link 
             href="/o-nas" 
-            className="text-textLight hover:text-neonBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonBlue ring-offset-2 ring-offset-darkBg"
+            className="link-focus-neon ring-offset-darkBg"
           >
             O nas
           </Link>
           <Link 
             href="/efekty" 
-            className="text-textLight hover:text-neonBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonBlue ring-offset-2 ring-offset-darkBg"
+            className="link-focus-neon ring-offset-darkBg"
           >
             Efekty
           </Link>
@@ -59,13 +59,13 @@ export default function Header() {
           </a>
           <Link 
             href="/kontakt" 
-            className="text-textLight hover:text-neonBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonBlue ring-offset-2 ring-offset-darkBg"
+            className="link-focus-neon ring-offset-darkBg"
           >
             Kontakt
           </Link>
           <Link 
             href="/faq" 
-            className="text-textLight hover:text-neonBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonBlue ring-offset-2 ring-offset-darkBg"
+            className="link-focus-neon ring-offset-darkBg"
           >
             FAQ
           </Link>
@@ -98,35 +98,35 @@ export default function Header() {
               <Link 
                 href="/o-nas" 
                 onClick={closeMenu}
-                className="text-textLight hover:text-neonBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonBlue ring-offset-2 ring-offset-darkBg"
+                className="link-focus-neon ring-offset-darkBg"
               >
                 O nas
               </Link>
               <Link 
                 href="/efekty" 
                 onClick={closeMenu}
-                className="text-textLight hover:text-neonBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonBlue ring-offset-2 ring-offset-darkBg"
+                className="link-focus-neon ring-offset-darkBg"
               >
                 Efekty
               </Link>
               <a 
                 href="#oferta" 
                 onClick={closeMenu}
-                className="text-textLight hover:text-neonPurple transition-colors duration-300 py-2"
+                className="text-textLight hover:text-neonPurple transition-colors duration-300 py-2 focus:outline-none focus:ring-2 focus:ring-neonPurple ring-offset-2 ring-offset-darkBg"
               >
                 Cennik
               </a>
               <Link 
                 href="/kontakt" 
                 onClick={closeMenu}
-                className="text-textLight hover:text-neonBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonBlue ring-offset-2 ring-offset-darkBg"
+                className="link-focus-neon ring-offset-darkBg"
               >
                 Kontakt
               </Link>
               <Link 
                 href="/faq" 
                 onClick={closeMenu}
-                className="text-textLight hover:text-neonBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonBlue ring-offset-2 ring-offset-darkBg"
+                className="link-focus-neon ring-offset-darkBg"
               >
                 FAQ
               </Link>

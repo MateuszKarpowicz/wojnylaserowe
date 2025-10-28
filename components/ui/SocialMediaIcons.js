@@ -30,7 +30,7 @@ export default function SocialMediaIcons({
           key={label}
           href={href}
           aria-label={label}
-          className={`${size} text-gray-600 hover:text-neonBlue transition-colors duration-300`}
+          className={`${size} link-hover-neon`}
         >
           <Icon />
           {showLabels && <span className="sr-only">{label}</span>}

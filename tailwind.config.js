@@ -7,12 +7,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        lightBg: "var(--color-light-bg)",
-        darkBg: "var(--color-dark-bg)",
-        neonBlue: "var(--color-neon-blue)",
-        neonPurple: "var(--color-neon-purple)",
-        textDark: "var(--color-text-dark)",
-        textLight: "var(--color-text-light)",
+        lightBg: "#F9F9F9",
+        darkBg: "#0D0D0D",
+        neonBlue: "#0099CC",
+        neonPurple: "#C084FC",
+        textDark: "#111111",
+        textLight: "#FFFFFF",
+        black: "#000000",
       },
       fontFamily: {
         sans: ["Poppins", "sans-serif"],

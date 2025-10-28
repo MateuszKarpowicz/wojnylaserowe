@@ -10,6 +10,8 @@
  * - Loading/Error patterns (przeniesione z globals.css)
  */
 
+@tailwind utilities;
+
 @layer utilities {
   /* === SMOOTH SCROLLING === */
   html {
@@ -205,6 +207,28 @@
   
   .focus-ring {
     @apply focus:outline-none focus:ring-2 focus:ring-neonBlue focus:ring-offset-2;
+  }
+  
+  /* === HEADER/FOOTER BASE STYLES === */
+  .header-footer-base {
+    @apply fixed z-50 bg-black/95 border-neonBlue/20 shadow-[0_0_20px_rgba(0,224,255,0.3)];
+  }
+  
+  .header-base {
+    @apply header-footer-base top-0 left-0 right-0 border-b;
+  }
+  
+  .footer-base {
+    @apply header-footer-base bottom-0 left-0 right-0 border-t;
+  }
+  
+  /* === LINK PATTERNS === */
+  .link-hover-neon {
+    @apply text-textLight hover:text-neonBlue transition-colors duration-300;
+  }
+  
+  .link-focus-neon {
+    @apply link-hover-neon focus-ring;
   }
   
   /* === RESPONSIVE UTILITIES === */

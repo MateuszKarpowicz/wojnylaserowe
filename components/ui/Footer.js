@@ -10,11 +10,11 @@ export default function Footer() {
         </p>
       </div>
       
-      <footer className="fixed bottom-0 left-0 right-0 z-50 bg-black/95 border-t border-neonBlue/20 shadow-[0_0_20px_rgba(0,224,255,0.3)]">
+      <footer className="footer-base">
         <div className="container-lg py-3 flex flex-col items-center justify-center gap-2">
                 <SocialMediaIcons 
                   size="text-4xl" 
-                  className="text-textLight hover:text-neonBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neonBlue ring-offset-2 ring-offset-darkBg flex-1 flex justify-center"
+                  className="link-focus-neon ring-offset-darkBg flex-1 flex justify-center"
                 />
       </div>
     </footer>

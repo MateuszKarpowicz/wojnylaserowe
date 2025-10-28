@@ -64,7 +64,7 @@ export default function OfferSlider() {
       <div className="fixed top-28 right-4 z-50">
         <button
           onClick={toggleSlider}
-          className="bg-neonBlue text-white px-6 py-3 rounded-lg shadow-lg hover:bg-neonPurple transition-colors duration-300 font-semibold flex items-center gap-2"
+          className="btn-primary px-6 py-3 shadow-lg flex items-center gap-2"
         >
           <span className="text-xl">{offerSliderData.button.icon}</span>
           {offerSliderData.button.text}

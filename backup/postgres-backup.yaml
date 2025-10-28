@@ -1,0 +1,82 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: postgres-backup
+  namespace: production
+spec:
+  schedule: "0 2 * * *"  # Daily at 2 AM
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: postgres-backup
+            image: postgres:15-alpine
+            env:
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: database
+            - name: POSTGRES_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: username
+            - name: POSTGRES_HOST
+              value: "postgres-service"
+            command:
+            - /bin/bash
+            - -c
+            - |
+              # Create backup directory
+              mkdir -p /backup/$(date +%Y%m%d)
+              
+              # Full backup
+              pg_dump -h $POSTGRES_HOST -U $POSTGRES_USER -d $POSTGRES_DB > /backup/$(date +%Y%m%d)/full_backup_$(date +%Y%m%d_%H%M%S).sql
+              
+              # Compress backup
+              gzip /backup/$(date +%Y%m%d)/full_backup_$(date +%Y%m%d_%H%M%S).sql
+              
+              # Upload to S3 (if configured)
+              if [ ! -z "$S3_BUCKET" ]; then
+                aws s3 cp /backup/$(date +%Y%m%d)/full_backup_$(date +%Y%m%d_%H%M%S).sql.gz s3://$S3_BUCKET/postgres-backups/$(date +%Y%m%d)/
+              fi
+              
+              # Cleanup old backups (keep 30 days)
+              find /backup -type d -mtime +30 -exec rm -rf {} \;
+              
+              echo "Backup completed successfully"
+            volumeMounts:
+            - name: backup-storage
+              mountPath: /backup
+            resources:
+              requests:
+                memory: "256Mi"
+                cpu: "100m"
+              limits:
+                memory: "512Mi"
+                cpu: "500m"
+          volumes:
+          - name: backup-storage
+            persistentVolumeClaim:
+              claimName: backup-pvc
+          restartPolicy: OnFailure
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: backup-pvc
+  namespace: production
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: fast-ssd

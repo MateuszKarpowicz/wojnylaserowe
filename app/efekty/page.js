@@ -1,5 +1,4 @@
 import EffectsGallery from '@/components/ui/EffectsGallery';
-import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import effectsPageData from '@/content/texts/effects-page.json';
 
 export default function Efekty() {
@@ -66,8 +65,12 @@ export default function Efekty() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <TestimonialsSection />
+      {/* TESTIMONIALS - USUNIĘTE */}
+      <div className="text-center py-12">
+        <h2 className="text-2xl font-bold text-gray-500">
+          Opinie klientów - w budowie
+        </h2>
+      </div>
 
       {/* CTA */}
       <div className="text-center mt-16">

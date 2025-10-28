@@ -1,0 +1,83 @@
+# Production environment values
+app:
+  name: wojny-laserowe-prod
+
+image:
+  tag: "prod-latest"
+
+env:
+  NODE_ENV: "production"
+  LOG_LEVEL: "info"
+
+features:
+  newGallery: true
+  darkMode: true
+  notifications: true
+  offlineMode: false
+
+deployment:
+  replicas: 3
+
+resources:
+  limits:
+    cpu: 1000m
+    memory: 1Gi
+  requests:
+    cpu: 500m
+    memory: 512Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 20
+  targetCPUUtilizationPercentage: 70
+  targetMemoryUtilizationPercentage: 80
+
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  hosts:
+    - host: wojny-laserowe.pl
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: wojny-laserowe-tls
+      hosts:
+        - wojny-laserowe.pl
+
+postgresql:
+  enabled: true
+  auth:
+    postgresPassword: "CHANGE_IN_PRODUCTION"
+    username: "wojny_laserowe"
+    password: "CHANGE_IN_PRODUCTION"
+    database: "wojny_laserowe_prod"
+  primary:
+    persistence:
+      enabled: true
+      size: 50Gi
+      storageClass: "fast-ssd"
+
+redis:
+  enabled: true
+  auth:
+    enabled: true
+    password: "CHANGE_IN_PRODUCTION"
+  master:
+    persistence:
+      enabled: true
+      size: 10Gi
+      storageClass: "fast-ssd"
+
+secrets:
+  nextAuthSecret: "Q0hBTkdFX0lOX1BST0RVQ1RJT04="
+  jwtSecret: "Q0hBTkdFX0lOX1BST0RVQ1RJT04="
+  encryptionKey: "Q0hBTkdFX0lOX1BST0RVQ1RJT04="
+
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 2

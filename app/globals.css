@@ -90,38 +90,14 @@ html {
   }
   
   /* === GRID PATTERNS === */
-  .section-grid {
-    @apply grid grid-cols-1 gap-6;
-  }
-  
-  .section-grid-2 {
-    @apply grid grid-cols-1 md:grid-cols-2 gap-6;
-  }
-  
-  .section-grid-3 {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
-  }
-  
-  .section-grid-4 {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8;
-  }
+  /* Usunięto nieużywane .section-grid, .section-grid-2, .section-grid-3, .section-grid-4 */
   
   /* === BUTTON PATTERNS === */
   .btn-base {
     @apply px-6 py-3 rounded-lg font-normal transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
   
-  .btn-primary {
-    @apply btn-base bg-neonBlue text-white hover:bg-neonPurple focus:ring-neonBlue;
-  }
-  
-  .btn-secondary {
-    @apply btn-base bg-gray-100 text-gray-700 hover:bg-neonBlue hover:text-white focus:ring-neonBlue;
-  }
-  
-  .btn-outline {
-    @apply btn-base border-2 border-neonBlue text-neonBlue hover:bg-neonBlue hover:text-white focus:ring-neonBlue;
-  }
+  /* Usunięto nieużywane .btn-primary, .btn-secondary, .btn-outline */
   
   /* === SPECIAL BUTTONS === */
   .btn-offer {
@@ -149,17 +125,7 @@ html {
   }
   
   /* === FORM PATTERNS === */
-  .form-field {
-    @apply w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
-  }
-  
-  .form-label {
-    @apply block text-textDark text-sm font-normal mb-2;
-  }
-  
-  .form-error {
-    @apply text-red-600 text-sm mt-1;
-  }
+  /* Usunięto nieużywane .form-field, .form-label, .form-error */
   
   /* === LOADING STATES === */
   .loading-container {
@@ -200,11 +166,11 @@ html {
   }
   
   .retry-button {
-    @apply btn-primary;
+    @apply bg-neonBlue text-white px-6 py-3 rounded-lg font-normal transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 hover:bg-neonPurple focus:ring-neonBlue;
   }
   
   .home-link {
-    @apply btn-secondary;
+    @apply bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-normal transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 hover:bg-neonBlue hover:text-white focus:ring-neonBlue;
   }
   
   /* === NOT FOUND STATES === */
@@ -233,34 +199,11 @@ html {
   }
   
   .contact-link {
-    @apply btn-primary bg-neonPurple hover:bg-neonPurple;
+    @apply bg-neonPurple text-white px-6 py-3 rounded-lg font-normal transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 hover:bg-neonPurple focus:ring-neonBlue;
   }
   
   /* === ANIMATIONS === */
-  .neon-glow {
-    animation: neon-pulse 3s ease-in-out infinite;
-  }
-  
-  .color-cycle {
-    animation: colorCycle 4s ease-in-out infinite;
-  }
-  
-  @keyframes neon-pulse {
-    0%, 100% {
-      box-shadow: 0 0 20px rgba(0, 224, 255, 0.3);
-    }
-    50% {
-      box-shadow: 0 0 30px rgba(0, 224, 255, 0.5);
-    }
-  }
-  
-  @keyframes colorCycle {
-    0% { color: #FFFFFF; }
-    25% { color: var(--color-neon-blue); }
-    50% { color: #FFFFFF; }
-    75% { color: #C084FC; }
-    100% { color: #FFFFFF; }
-  }
+  /* Usunięto nieużywane .neon-glow, .color-cycle, @keyframes */
   
   /* === ACCESSIBILITY === */
   .visually-hidden {
@@ -294,39 +237,13 @@ html {
   }
   
   /* === RESPONSIVE UTILITIES === */
-  .text-responsive {
-    @apply text-lg md:text-xl lg:text-2xl;
-  }
-  
-  .heading-responsive {
-    @apply text-2xl md:text-3xl lg:text-4xl xl:text-5xl;
-  }
-  
-  .spacing-responsive {
-    @apply py-8 md:py-12 lg:py-16;
-  }
+  /* Usunięto nieużywane .text-responsive, .heading-responsive, .spacing-responsive */
   
   /* === FONT UTILITIES === */
-  .font-yantramanav {
-    @apply font-yantramanav font-normal leading-none tracking-normal;
-  }
+  /* Usunięto nieużywane .font-yantramanav */
   
   /* === SECTION CONTRACT UTILITIES === */
-  .section-contract-mobile {
-    @apply min-h-[calc(100dvh-var(--header-h)-var(--footer-h))] pt-[calc(var(--header-h)+2rem)] pb-[calc(var(--footer-h)+2rem)];
-  }
-  
-  .section-contract-tablet {
-    @apply md:h-[calc(100dvh-var(--header-h)-var(--footer-h))] md:pt-[calc(var(--header-h)+1rem)] md:pb-[calc(var(--footer-h)+1rem)];
-  }
-  
-  .section-contract-desktop {
-    @apply lg:h-[calc(100dvh-var(--header-h)-var(--footer-h))] lg:pt-[calc(var(--header-h)+1rem)] lg:pb-[calc(var(--footer-h)+1rem)];
-  }
-  
-  .section-contract-auto {
-    @apply section-contract-mobile section-contract-tablet section-contract-desktop;
-  }
+  /* Usunięto nieużywane .section-contract-* */
   
   /* === SECTION GRID CONTAINER === */
   .sections-grid-mobile {

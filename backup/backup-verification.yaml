@@ -1,0 +1,87 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: backup-verification
+  namespace: production
+spec:
+  schedule: "0 5 * * *"  # Daily at 5 AM
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: backup-verification
+            image: postgres:15-alpine
+            env:
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: database
+            - name: POSTGRES_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: username
+            - name: POSTGRES_HOST
+              value: "postgres-service"
+            command:
+            - /bin/bash
+            - -c
+            - |
+              # Find latest backup
+              LATEST_BACKUP=$(find /backup -name "full_backup_*.sql.gz" -type f -printf '%T@ %p\n' | sort -n | tail -1 | cut -d' ' -f2-)
+              
+              if [ -z "$LATEST_BACKUP" ]; then
+                echo "ERROR: No backup found"
+                exit 1
+              fi
+              
+              echo "Verifying backup: $LATEST_BACKUP"
+              
+              # Create test database
+              TEST_DB="backup_test_$(date +%Y%m%d_%H%M%S)"
+              createdb -h $POSTGRES_HOST -U $POSTGRES_USER $TEST_DB
+              
+              # Restore backup to test database
+              gunzip -c "$LATEST_BACKUP" | psql -h $POSTGRES_HOST -U $POSTGRES_USER -d $TEST_DB
+              
+              # Verify data integrity
+              TABLES_COUNT=$(psql -h $POSTGRES_HOST -U $POSTGRES_USER -d $TEST_DB -t -c "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'public';")
+              
+              if [ "$TABLES_COUNT" -gt 0 ]; then
+                echo "SUCCESS: Backup verification passed. Tables count: $TABLES_COUNT"
+                
+                # Test critical queries
+                psql -h $POSTGRES_HOST -U $POSTGRES_USER -d $TEST_DB -c "SELECT COUNT(*) FROM users;" || echo "WARNING: Users table not found"
+                psql -h $POSTGRES_HOST -U $POSTGRES_USER -d $TEST_DB -c "SELECT COUNT(*) FROM effects;" || echo "WARNING: Effects table not found"
+                
+                # Cleanup test database
+                dropdb -h $POSTGRES_HOST -U $POSTGRES_USER $TEST_DB
+                
+                echo "Backup verification completed successfully"
+              else
+                echo "ERROR: Backup verification failed - no tables found"
+                dropdb -h $POSTGRES_HOST -U $POSTGRES_USER $TEST_DB
+                exit 1
+              fi
+            volumeMounts:
+            - name: backup-storage
+              mountPath: /backup
+            resources:
+              requests:
+                memory: "256Mi"
+                cpu: "100m"
+              limits:
+                memory: "512Mi"
+                cpu: "500m"
+          volumes:
+          - name: backup-storage
+            persistentVolumeClaim:
+              claimName: backup-pvc
+          restartPolicy: OnFailure

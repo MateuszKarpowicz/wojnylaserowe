@@ -1,0 +1,64 @@
+# Development environment values
+app:
+  name: wojny-laserowe-dev
+
+image:
+  tag: "dev-latest"
+
+env:
+  NODE_ENV: "development"
+  LOG_LEVEL: "debug"
+
+features:
+  newGallery: true
+  darkMode: false
+  notifications: true
+  offlineMode: false
+
+deployment:
+  replicas: 1
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+autoscaling:
+  enabled: false
+
+ingress:
+  enabled: true
+  hosts:
+    - host: wojny-laserowe-dev.local
+      paths:
+        - path: /
+          pathType: Prefix
+
+postgresql:
+  enabled: true
+  auth:
+    postgresPassword: "postgres"
+    username: "postgres"
+    password: "postgres"
+    database: "wojny_laserowe_dev"
+  primary:
+    persistence:
+      enabled: true
+      size: 5Gi
+
+redis:
+  enabled: true
+  auth:
+    enabled: false
+  master:
+    persistence:
+      enabled: true
+      size: 2Gi
+
+secrets:
+  nextAuthSecret: "ZGV2LXNlY3JldC1rZXktY2hhbmdlLWluLXByb2R1Y3Rpb24="
+  jwtSecret: "ZGV2LWp3dC1zZWNyZXQtY2hhbmdlLWluLXByb2R1Y3Rpb24="
+  encryptionKey: "ZGV2LWVuY3J5cHRpb24ta2V5LWNoYW5nZS1pbi1wcm9kdWN0aW9u"

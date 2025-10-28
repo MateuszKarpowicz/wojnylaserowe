@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-cache-config
+  namespace: production
+data:
+  redis.conf: |
+    # Memory optimization
+    maxmemory 512mb
+    maxmemory-policy allkeys-lru
+    
+    # Persistence optimization
+    save 900 1
+    save 300 10
+    save 60 10000
+    
+    # Network optimization
+    tcp-keepalive 300
+    timeout 0
+    
+    # Logging
+    loglevel notice
+    logfile ""
+    
+    # Security
+    requirepass ${REDIS_PASSWORD}
+    
+    # Performance tuning
+    hz 10
+    dynamic-hz yes
+    
+    # Memory optimization
+    hash-max-ziplist-entries 512
+    hash-max-ziplist-value 64
+    list-max-ziplist-size -2
+    list-compress-depth 0
+    set-max-intset-entries 512
+    zset-max-ziplist-entries 128
+    zset-max-ziplist-value 64
+    
+    # Slow log
+    slowlog-log-slower-than 10000
+    slowlog-max-len 128
+    
+    # Client output buffer limits
+    client-output-buffer-limit normal 0 0 0
+    client-output-buffer-limit replica 256mb 64mb 60
+    client-output-buffer-limit pubsub 32mb 8mb 60

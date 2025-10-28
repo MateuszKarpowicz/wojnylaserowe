@@ -1,6 +1,6 @@
-import ContactSection from '@/components/sections/ContactSection';
 import { FaMapMarkerAlt, FaClock, FaPhone, FaEnvelope } from 'react-icons/fa';
 import contactPageData from '@/content/texts/contact-page.json';
+import ContactForm from '@/components/ui/ContactForm';
 
 export default function Kontakt() {
   return (
@@ -16,7 +16,9 @@ export default function Kontakt() {
       </div>
 
       {/* FORMULARZ KONTAKTOWY */}
-      <ContactSection />
+      <section className="py-8">
+        <ContactForm />
+      </section>
 
       {/* DODATKOWE INFORMACJE KONTAKTOWE */}
       <section className="py-8 bg-white">

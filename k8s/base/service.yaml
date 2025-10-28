@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wojny-laserowe-service
+  namespace: wojny-laserowe-dev
+  labels:
+    app: wojny-laserowe
+    component: app
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  selector:
+    app: wojny-laserowe
+    component: app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+  namespace: wojny-laserowe-dev
+  labels:
+    app: wojny-laserowe
+    component: database
+spec:
+  type: ClusterIP
+  ports:
+  - port: 5432
+    targetPort: 5432
+    protocol: TCP
+    name: postgres
+  selector:
+    app: wojny-laserowe
+    component: database
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-service
+  namespace: wojny-laserowe-dev
+  labels:
+    app: wojny-laserowe
+    component: cache
+spec:
+  type: ClusterIP
+  ports:
+  - port: 6379
+    targetPort: 6379
+    protocol: TCP
+    name: redis
+  selector:
+    app: wojny-laserowe
+    component: cache

@@ -1,0 +1,26 @@
+apiVersion: v2
+name: wojny-laserowe
+description: Wojny Laserowe - Next.js Application Helm Chart
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+keywords:
+  - nextjs
+  - react
+  - web
+  - application
+home: https://wojny-laserowe.pl
+sources:
+  - https://github.com/wojny-laserowe/wojny-laserowe
+maintainers:
+  - name: DevOps Team
+    email: devops@wojny-laserowe.pl
+dependencies:
+  - name: postgresql
+    version: "12.x.x"
+    repository: "https://charts.bitnami.com/bitnami"
+    condition: postgresql.enabled
+  - name: redis
+    version: "17.x.x"
+    repository: "https://charts.bitnami.com/bitnami"
+    condition: redis.enabled

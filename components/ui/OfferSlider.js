@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import { BaseForm, BaseFormField } from '@/components/base';
-import { simulateAsyncOperation } from '@/utils/asyncSimulator';
 import offerSliderData from '@/content/texts/offerslider.json';
 import contactFormData from '@/content/texts/contactform.json';
 import { BaseModal } from '@/components/base';
@@ -44,7 +43,7 @@ export default function OfferSlider() {
   const handleFormSubmit = async (formData) => {
     try {
       // Use async simulator instead of direct setTimeout
-      await simulateAsyncOperation(1500);
+      await new Promise(resolve => setTimeout(resolve, 1500));
       
       console.log('Formularz z rozsuwaka wysłany:', formData);
       

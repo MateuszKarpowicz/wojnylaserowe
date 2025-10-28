@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: wojny-laserowe-dev
+  labels:
+    name: wojny-laserowe-dev
+    environment: development
+    app: wojny-laserowe
+  annotations:
+    description: "Development namespace for Wojny Laserowe application"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: wojny-laserowe-staging
+  labels:
+    name: wojny-laserowe-staging
+    environment: staging
+    app: wojny-laserowe
+  annotations:
+    description: "Staging namespace for Wojny Laserowe application"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: wojny-laserowe-prod
+  labels:
+    name: wojny-laserowe-prod
+    environment: production
+    app: wojny-laserowe
+  annotations:
+    description: "Production namespace for Wojny Laserowe application"

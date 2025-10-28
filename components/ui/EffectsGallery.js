@@ -4,18 +4,20 @@ import { useState } from 'react';
 import { FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { BaseModal } from '@/components/base';
 import { useModal } from '@/components/hooks/useModal';
-import { useCarousel } from '@/components/hooks/useCarousel';
 import EffectTile from '@/components/ui/EffectTile';
 import effectsData from '@/content/texts/effects.json';
 
 export default function EffectsGallery() {
   const { isOpen, open, close } = useModal();
-  const { currentIndex, next, prev } = useCarousel(
-    effectsData.images,
-    null, // brak auto-scroll
-    false, // nie loading
-    false // nie error
-  );
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const next = () => {
+    setCurrentIndex((prev) => (prev + 1) % effectsData.images.length);
+  };
+
+  const prev = () => {
+    setCurrentIndex((prev) => (prev - 1 + effectsData.images.length) % effectsData.images.length);
+  };
 
   const openModal = (image, index) => {
     open();

@@ -1,0 +1,59 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: redis-backup
+  namespace: production
+spec:
+  schedule: "0 3 * * *"  # Daily at 3 AM
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: redis-backup
+            image: redis:7-alpine
+            command:
+            - /bin/sh
+            - -c
+            - |
+              # Create backup directory
+              mkdir -p /backup/$(date +%Y%m%d)
+              
+              # Redis backup using BGSAVE
+              redis-cli -h redis-service -p 6379 BGSAVE
+              
+              # Wait for background save to complete
+              while [ $(redis-cli -h redis-service -p 6379 LASTSAVE) -eq $(redis-cli -h redis-service -p 6379 LASTSAVE) ]; do
+                sleep 1
+              done
+              
+              # Copy RDB file
+              redis-cli -h redis-service -p 6379 --rdb /backup/$(date +%Y%m%d)/redis_backup_$(date +%Y%m%d_%H%M%S).rdb
+              
+              # Compress backup
+              gzip /backup/$(date +%Y%m%d)/redis_backup_$(date +%Y%m%d_%H%M%S).rdb
+              
+              # Upload to S3 (if configured)
+              if [ ! -z "$S3_BUCKET" ]; then
+                aws s3 cp /backup/$(date +%Y%m%d)/redis_backup_$(date +%Y%m%d_%H%M%S).rdb.gz s3://$S3_BUCKET/redis-backups/$(date +%Y%m%d)/
+              fi
+              
+              # Cleanup old backups (keep 30 days)
+              find /backup -type d -mtime +30 -exec rm -rf {} \;
+              
+              echo "Redis backup completed successfully"
+            volumeMounts:
+            - name: backup-storage
+              mountPath: /backup
+            resources:
+              requests:
+                memory: "128Mi"
+                cpu: "100m"
+              limits:
+                memory: "256Mi"
+                cpu: "200m"
+          volumes:
+          - name: backup-storage
+            persistentVolumeClaim:
+              claimName: backup-pvc
+          restartPolicy: OnFailure

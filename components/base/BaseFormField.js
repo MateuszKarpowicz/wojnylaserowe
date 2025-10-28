@@ -23,9 +23,6 @@
  */
 
 'use client';
-import { classNames } from '@/lib/classNames';
-import { getFormFieldAria } from '@/lib/a11y';
-import { utilityClasses } from '@/styles/utilityClasses';
 
 export default function BaseFormField({
   type = 'text',
@@ -44,19 +41,25 @@ export default function BaseFormField({
   const fieldId = `${name}-field`;
   const errorId = `${name}-error`;
   
-  const ariaProps = getFormFieldAria(fieldId, label, required, error);
+  const ariaProps = {
+    id: fieldId,
+    'aria-label': label,
+    'aria-required': required,
+    'aria-invalid': !!error,
+    'aria-describedby': error ? `${fieldId}-error` : undefined,
+  };
   
-  const fieldClasses = classNames(
-    utilityClasses.form.field,
-    utilityClasses.form.fieldDisabled,
+  const fieldClasses = [
+    'w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors',
+    'disabled:opacity-50 disabled:cursor-not-allowed',
     error && 'border-red-500',
     className
-  );
+  ].filter(Boolean).join(' ');
   
-  const labelClasses = classNames(
-    utilityClasses.form.label,
+  const labelClasses = [
+    'block text-textDark text-sm font-semibold mb-2',
     required && 'after:content-["*"] after:text-red-500 after:ml-1'
-  );
+  ].filter(Boolean).join(' ');
 
   const renderField = () => {
     switch (type) {
@@ -147,7 +150,7 @@ export default function BaseFormField({
       
       {/* ERROR MESSAGE */}
       {error && (
-        <div id={errorId} className={utilityClasses.form.error} role="alert">
+        <div id={errorId} className="text-red-600 text-sm mt-1" role="alert">
           {error}
         </div>
       )}

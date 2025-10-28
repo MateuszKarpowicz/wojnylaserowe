@@ -1,0 +1,152 @@
+'use client';
+import BaseForm from '@/components/base/BaseForm';
+import BaseFormField from '@/components/base/BaseFormField';
+import { useSecureFormSubmit } from '@/components/hooks';
+import { contactFormSchema } from '@/lib/validation';
+import { useState } from 'react';
+
+export default function ContactForm() {
+  const { submitForm, isSubmitting, submitError } = useSecureFormSubmit();
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleSubmit = async formData => {
+    const result = await submitForm(formData, '/api/contact');
+
+    if (result.success) {
+      setIsSuccess(true);
+      // Reset form after success
+      setTimeout(() => {
+        setIsSuccess(false);
+      }, 5000);
+    }
+  };
+
+  if (isSuccess) {
+    return (
+      <div className='bg-green-100 border border-green-400 text-green-700 px-6 py-8 rounded-lg text-center'>
+        <h3 className='text-xl font-semibold mb-2'>✅ Formularz wysłany!</h3>
+        <p>Dziękujemy za kontakt. Odpowiemy w ciągu 24 godzin.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className='bg-white p-8 rounded-lg shadow-lg'>
+      <h2 className='text-2xl font-semibold text-textDark mb-6'>
+        Skontaktuj się z nami
+      </h2>
+
+      <BaseForm
+        validationSchema={contactFormSchema}
+        onSubmit={handleSubmit}
+        submitText='Wyślij wiadomość'
+        loadingText='Wysyłanie...'
+      >
+        {({ formData, handleInputChange, isLoading, fieldErrors }) => (
+          <div className='space-y-6'>
+            {/* Imię i nazwisko */}
+            <BaseFormField
+              type='text'
+              name='name'
+              label='Imię i nazwisko'
+              value={formData.name || ''}
+              onChange={handleInputChange}
+              required
+              placeholder='Wprowadź swoje imię i nazwisko'
+              error={fieldErrors?.name}
+              disabled={isLoading}
+            />
+
+            {/* Email */}
+            <BaseFormField
+              type='email'
+              name='email'
+              label='Adres email'
+              value={formData.email || ''}
+              onChange={handleInputChange}
+              required
+              placeholder='twoj@email.com'
+              error={fieldErrors?.email}
+              disabled={isLoading}
+            />
+
+            {/* Telefon */}
+            <BaseFormField
+              type='tel'
+              name='phone'
+              label='Numer telefonu'
+              value={formData.phone || ''}
+              onChange={handleInputChange}
+              placeholder='+48 123 456 789'
+              error={fieldErrors?.phone}
+              disabled={isLoading}
+            />
+
+            {/* Rodzaj usługi */}
+            <BaseFormField
+              type='select'
+              name='service'
+              label='Rodzaj usługi'
+              value={formData.service || ''}
+              onChange={handleInputChange}
+              required
+              placeholder='Wybierz rodzaj usługi'
+              options={[
+                'Usunięcie tatuażu',
+                'Usunięcie blizny',
+                'Konsultacja',
+                'Inne',
+              ]}
+              error={fieldErrors?.service}
+              disabled={isLoading}
+            />
+
+            {/* Opis */}
+            <BaseFormField
+              type='textarea'
+              name='description'
+              label='Opis'
+              value={formData.description || ''}
+              onChange={handleInputChange}
+              required
+              placeholder='Opisz szczegółowo czego potrzebujesz...'
+              error={fieldErrors?.description}
+              disabled={isLoading}
+            />
+
+            {/* Preferowane terminy */}
+            <BaseFormField
+              type='textarea'
+              name='dates'
+              label='Preferowane terminy'
+              value={formData.dates || ''}
+              onChange={handleInputChange}
+              placeholder='Kiedy chciałbyś się spotkać? (opcjonalne)'
+              error={fieldErrors?.dates}
+              disabled={isLoading}
+            />
+
+            {/* Zdjęcia */}
+            <BaseFormField
+              type='file'
+              name='photos'
+              label='Zdjęcia (opcjonalne)'
+              onChange={handleInputChange}
+              disabled={isLoading}
+            />
+            <p className='text-sm text-gray-600'>
+              Możesz załączyć maksymalnie 5 zdjęć w formacie JPG, PNG lub WebP
+            </p>
+
+            {/* Error message */}
+            {submitError && (
+              <div className='bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg'>
+                {submitError}
+              </div>
+            )}
+          </div>
+        )}
+      </BaseForm>
+    </div>
+  );
+}

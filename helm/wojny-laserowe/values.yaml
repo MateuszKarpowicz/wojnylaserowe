@@ -1,0 +1,173 @@
+# Default values for wojny-laserowe
+# This is a YAML-formatted file
+
+# Global settings
+global:
+  imageRegistry: ""
+  imagePullSecrets: []
+  storageClass: ""
+
+# Application settings
+app:
+  name: wojny-laserowe
+  fullnameOverride: ""
+  namespaceOverride: ""
+
+# Image settings
+image:
+  registry: docker.io
+  repository: wojny-laserowe
+  tag: "latest"
+  pullPolicy: IfNotPresent
+  pullSecrets: []
+
+# Service settings
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3000
+  annotations: {}
+
+# Ingress settings
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    nginx.ingress.kubernetes.io/rate-limit: "100"
+    nginx.ingress.kubernetes.io/rate-limit-window: "1m"
+  hosts:
+    - host: wojny-laserowe.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+# Deployment settings
+deployment:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+
+# Resource settings
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+# Autoscaling settings
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 70
+  targetMemoryUtilizationPercentage: 80
+
+# Security settings
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 1001
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop:
+      - ALL
+
+podSecurityContext:
+  fsGroup: 1001
+
+# Environment variables
+env:
+  NODE_ENV: "development"
+  PORT: "3000"
+  HOSTNAME: "0.0.0.0"
+  NEXT_TELEMETRY_DISABLED: "1"
+  LOG_LEVEL: "debug"
+
+# Feature flags
+features:
+  newGallery: true
+  darkMode: false
+  notifications: true
+  offlineMode: false
+
+# Upload settings
+upload:
+  maxSize: "10485760"
+  allowedTypes: "image/jpeg,image/png,image/webp"
+
+# Monitoring settings
+monitoring:
+  prometheusPort: 9090
+  grafanaPort: 3001
+
+# Cache settings
+cache:
+  ttl: "3600"
+  maxSize: "100"
+
+# PostgreSQL settings
+postgresql:
+  enabled: true
+  auth:
+    postgresPassword: "postgres"
+    username: "postgres"
+    password: "postgres"
+    database: "wojny_laserowe_dev"
+  primary:
+    persistence:
+      enabled: true
+      size: 10Gi
+      storageClass: ""
+  metrics:
+    enabled: true
+
+# Redis settings
+redis:
+  enabled: true
+  auth:
+    enabled: false
+  master:
+    persistence:
+      enabled: true
+      size: 5Gi
+      storageClass: ""
+  metrics:
+    enabled: true
+
+# Secrets (base64 encoded)
+secrets:
+  nextAuthSecret: "ZGV2LXNlY3JldC1rZXktY2hhbmdlLWluLXByb2R1Y3Rpb24="
+  jwtSecret: "ZGV2LWp3dC1zZWNyZXQtY2hhbmdlLWluLXByb2R1Y3Rpb24="
+  encryptionKey: "ZGV2LWVuY3J5cHRpb24ta2V5LWNoYW5nZS1pbi1wcm9kdWN0aW9u"
+
+# Health checks
+healthCheck:
+  enabled: true
+  path: "/api/health"
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+# Node selector
+nodeSelector: {}
+
+# Tolerations
+tolerations: []
+
+# Affinity
+affinity: {}
+
+# Pod disruption budget
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1

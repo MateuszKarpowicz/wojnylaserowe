@@ -17,11 +17,12 @@
 
 'use client';
 import { useState } from 'react';
+import { z } from 'zod';
 
 export default function BaseForm({ 
   initialData = {},
   onSubmit,
-  onValidation,
+  validationSchema,
   className = "",
   children,
   submitText = "Wyślij",
@@ -31,6 +32,7 @@ export default function BaseForm({
   const [formData, setFormData] = useState(initialData);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [fieldErrors, setFieldErrors] = useState({});
 
   const handleInputChange = (e) => {
     const { name, value, type, files } = e.target;
@@ -40,21 +42,33 @@ export default function BaseForm({
       [name]: type === 'file' ? files : value
     }));
     
-    // Clear error when user starts typing
+    // Clear errors when user starts typing
     if (error) setError(null);
+    if (fieldErrors[name]) {
+      setFieldErrors(prev => ({
+        ...prev,
+        [name]: null
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
+    setFieldErrors({});
 
     try {
-      // Walidacja (jeśli podana)
-      if (onValidation) {
-        const validationError = onValidation(formData);
-        if (validationError) {
-          setError(validationError);
+      // Walidacja Zod (jeśli podana)
+      if (validationSchema) {
+        const result = validationSchema.safeParse(formData);
+        if (!result.success) {
+          const errors = {};
+          result.error.errors.forEach(err => {
+            const field = err.path[0];
+            errors[field] = err.message;
+          });
+          setFieldErrors(errors);
           return;
         }
       }
@@ -83,7 +97,7 @@ export default function BaseForm({
 
       {/* POLA FORMULARZA */}
       {children && typeof children === 'function' 
-        ? children({ formData, handleInputChange, isLoading })
+        ? children({ formData, handleInputChange, isLoading, fieldErrors })
         : children
       }
 

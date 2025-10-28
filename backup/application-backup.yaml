@@ -1,0 +1,61 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: application-backup
+  namespace: production
+spec:
+  schedule: "0 4 * * *"  # Daily at 4 AM
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: application-backup
+            image: alpine:latest
+            command:
+            - /bin/sh
+            - -c
+            - |
+              # Install required tools
+              apk add --no-cache curl tar gzip
+              
+              # Create backup directory
+              mkdir -p /backup/$(date +%Y%m%d)
+              
+              # Backup application files (if using persistent volumes)
+              if [ -d "/app/uploads" ]; then
+                tar -czf /backup/$(date +%Y%m%d)/uploads_backup_$(date +%Y%m%d_%H%M%S).tar.gz /app/uploads
+              fi
+              
+              # Backup configuration files
+              if [ -d "/app/config" ]; then
+                tar -czf /backup/$(date +%Y%m%d)/config_backup_$(date +%Y%m%d_%H%M%S).tar.gz /app/config
+              fi
+              
+              # Backup environment variables (sanitized)
+              env | grep -E '^(NEXT_PUBLIC_|DATABASE_|REDIS_)' > /backup/$(date +%Y%m%d)/env_backup_$(date +%Y%m%d_%H%M%S).txt
+              
+              # Upload to S3 (if configured)
+              if [ ! -z "$S3_BUCKET" ]; then
+                aws s3 cp /backup/$(date +%Y%m%d)/ s3://$S3_BUCKET/app-backups/$(date +%Y%m%d)/ --recursive
+              fi
+              
+              # Cleanup old backups (keep 30 days)
+              find /backup -type d -mtime +30 -exec rm -rf {} \;
+              
+              echo "Application backup completed successfully"
+            volumeMounts:
+            - name: backup-storage
+              mountPath: /backup
+            resources:
+              requests:
+                memory: "128Mi"
+                cpu: "100m"
+              limits:
+                memory: "256Mi"
+                cpu: "200m"
+          volumes:
+          - name: backup-storage
+            persistentVolumeClaim:
+              claimName: backup-pvc
+          restartPolicy: OnFailure

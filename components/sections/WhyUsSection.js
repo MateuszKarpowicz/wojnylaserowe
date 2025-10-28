@@ -4,12 +4,15 @@ import whyUsData from '@/content/texts/whyus.json';
 
 export default function WhyUsSection() {
   return (
-    <BaseSection id="dlaczego-my" className="section-pad bg-gray-50">
+    <BaseSection id="dlaczego-my" className="section-pad bg-gray-50 container">
       {/* NAGŁÓWEK */}
-      <SectionHeader title={whyUsData.title} />
+      <SectionHeader 
+        title={whyUsData.title}
+        className="text-center mb-12"
+      />
 
       {/* ZALETY */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {whyUsData.features.map((feature, index) => (
           <BaseCard key={index} variant="feature">
             <div className="flex-shrink-0">

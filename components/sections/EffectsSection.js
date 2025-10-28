@@ -32,7 +32,7 @@ export default function EffectsSection() {
 
   if (isLoading) {
     return (
-      <BaseSection className="section-pad bg-white container">
+      <BaseSection className="section-pad bg-white container-sm">
         <div className="text-center">
           <LoadingSpinner message={effectsData.loading.message} />
         </div>
@@ -42,7 +42,7 @@ export default function EffectsSection() {
 
   if (error) {
     return (
-      <BaseSection className="section-pad bg-white container">
+      <BaseSection className="section-pad bg-white container-sm">
         <div className="text-center">
           <ErrorContainer 
             error={error}
@@ -54,7 +54,7 @@ export default function EffectsSection() {
   }
 
   return (
-    <BaseSection id="efekty" className="section-pad bg-white container">
+    <BaseSection id="efekty" className="section-pad bg-white container-sm">
       {/* NAGŁÓWEK SEKCJI */}
       <SectionHeader 
         title={effectsData.title}

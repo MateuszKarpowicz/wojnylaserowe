@@ -1,0 +1,76 @@
+{
+  "hero": {
+    "title": "O mnie – Wojny Laserowe Kraków",
+    "subtitle": "Doświadczenie, precyzja i pasja do skóry",
+    "intro": "Nazywam się Piotr Hryniów i od 2019 roku zajmuję się profesjonalnym usuwaniem tatuaży oraz regeneracją skóry. Swoją przygodę z laserem zaczynałam na technologii nanosekundowej, a wraz z rozwojem branży przeszłam na nowoczesny laser pikosekundowy, który pozwala osiągać lepsze efekty przy większym bezpieczeństwie i komforcie klientów.",
+    "intro2": "Od początku moim celem było stworzenie miejsca, w którym ludzie mogą bezpiecznie, świadomie i z szacunkiem do swojego ciała pozbyć się tego, co im już nie służy – czy to tatuażu, czy blizny.",
+    "image": "/images/about/piotr.jpg"
+  },
+  "qualifications": {
+    "title": "Moje kwalifikacje i doświadczenie",
+    "items": [
+      {
+        "icon": "FaCertificate",
+        "title": "Certyfikat laserów",
+        "description": "Certyfikat z zakresu obsługi laserów kosmetycznych i medycznych"
+      },
+      {
+        "icon": "FaGraduationCap",
+        "title": "Certyfikat ScarINK",
+        "description": "Ukończone szkolenie oraz certyfikat ScarINK Concept (praca z bliznami metodą mikropunktury)"
+      },
+      {
+        "icon": "FaFlask",
+        "title": "Szkolenie Remover",
+        "description": "Szkolenie z zakresu usuwania tatuaży metodą chemiczną (Remover) – dla pełnego zrozumienia metod pracy ze skórą"
+      },
+      {
+        "icon": "FaCalendarCheck",
+        "title": "Doświadczenie od 2019",
+        "description": "Doświadczenie od 2019 roku – setki wykonanych zabiegów i indywidualnych konsultacji"
+      },
+      {
+        "icon": "FaHandshake",
+        "title": "Współpraca z KULT",
+        "description": "Stała współpraca z największym w Krakowie studiem tatuażu „KULT\", co pozwala mi łączyć doświadczenie branży tatuażu i usuwania w jednym miejscu"
+      }
+    ]
+  },
+  "approach": {
+    "title": "Moje podejście",
+    "quote": "W pracy stawiam na świadomość, wiedzę i bezpieczeństwo. Nie obiecuję cudów – obiecuję realne, mierzalne efekty i uczciwą komunikację z klientem.",
+    "points": [
+      {
+        "icon": "FaUserMd",
+        "title": "Konsultacja i analiza",
+        "text": "Zawsze zaczynam od konsultacji, podczas której analizuję skórę, typ pigmentu i dobieram odpowiednią metodę."
+      },
+      {
+        "icon": "FaShieldAlt",
+        "title": "Bezpieczeństwo",
+        "text": "Każdy zabieg wykonuję w sterylnych warunkach, z zachowaniem wszystkich zasad higieny, a także z pełnym zrozumieniem, że za każdą decyzją o usunięciu tatuażu stoi osobista historia."
+      },
+      {
+        "icon": "FaHeart",
+        "title": "Indywidualne podejście",
+        "text": "Każdy klient jest inny, więc każdy zabieg musi być dostosowany do jego potrzeb i możliwości skóry."
+      }
+    ]
+  },
+  "location": {
+    "title": "Moje miejsce",
+    "image": "/images/about/kult-gabinet.jpg",
+    "text": "Gabinet Wojny Laserowe znajduje się w sercu Krakowa – w przestrzeni studia tatuażu KULT, największego i jednego z najbardziej rozpoznawalnych miejsc w mieście. To bezpieczna, profesjonalna przestrzeń, gdzie możesz czuć się swobodnie i komfortowo.",
+    "text2": "Wojny Laserowe to nie tylko zabiegi. To miejsce, w którym Twoja skóra odzyskuje swobodę, a Ty – pewność siebie.",
+    "cta": {
+      "text": "Zobacz lokalizację",
+      "href": "/kontakt"
+    }
+  },
+  "cta": {
+    "title": "Gotowy na pierwszy krok?",
+    "text": "Umów się na konsultację i zacznij swoją drogę do usunięcia tatuażu.",
+    "button": "Umów konsultację",
+    "href": "/kontakt"
+  }
+}

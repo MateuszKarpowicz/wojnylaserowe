@@ -80,6 +80,25 @@
   .sections-grid-auto {
     @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
   }
+
+  /* About Page - Komponenty */
+  .about-card {
+    @apply rounded-lg shadow-sm p-6 border hover:shadow-md hover:border-neon-blue/30 transition-all duration-300;
+    background-color: #ffffff; /* bg-surface */
+    border-color: #f3f3f3; /* border-border-light */
+  }
+
+  .about-quote {
+    @apply rounded-lg p-8 shadow-2xl border-l-4;
+    background-color: rgba(0, 0, 0, 0.9); /* bg-modal */
+    color: #fafafa; /* text-text-light */
+    border-left-color: #0099cc; /* neon-blue */
+  }
+
+  .about-icon {
+    @apply text-3xl mb-4;
+    color: #0099cc; /* neon-blue */
+  }
 }
 
 /* UTILITIES – dostępność i skróty */

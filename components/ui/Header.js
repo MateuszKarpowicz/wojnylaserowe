@@ -82,6 +82,14 @@ export default function Header() {
           role='menu'
         >
           <Link
+            href='/o-nas'
+            onClick={() => setIsMenuOpen(false)}
+            className='text-text-light hover:text-neon-blue transition-colors duration-300 py-3 px-4 focus-ring rounded-lg border border-transparent hover:border-neon-blue/30'
+            role='menuitem'
+          >
+            O nas
+          </Link>
+          <Link
             href='/kontakt#oferta'
             onClick={() => setIsMenuOpen(false)}
             className='text-text-light hover:text-neon-blue transition-colors duration-300 py-3 px-4 focus-ring rounded-lg border border-transparent hover:border-neon-blue/30'

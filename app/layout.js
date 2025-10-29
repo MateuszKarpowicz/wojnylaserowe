@@ -38,7 +38,11 @@ export default function RootLayout({ children }) {
           <Header />
 
           {/* Placeholder dla sticky header - zapobiega CLS */}
-          <div aria-hidden='true' className='h-header' />
+          <div
+            aria-hidden='true'
+            className='h-header'
+            style={{ height: '4.5rem', minHeight: '4.5rem' }}
+          />
 
           <OfferSlider />
 

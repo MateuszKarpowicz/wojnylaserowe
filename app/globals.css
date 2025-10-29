@@ -5,12 +5,14 @@
 /* BASE – minimalne korekty */
 @layer base {
   html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 4.5rem; /* h-header */
+    /* USUNIĘTO: scroll-behavior: smooth - powodowało baunsowanie */
+    scroll-padding-top: calc(4.5rem + 1rem); /* h-header + dodatkowy padding */
   }
 
   body {
     @apply bg-bg-light text-text-dark dark:bg-bg-dark dark:text-text-light font-sans;
+    /* ZAPOBIEGANIE LAYOUT SHIFT */
+    overflow-x: hidden;
   }
 
   h1,

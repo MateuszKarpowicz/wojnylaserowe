@@ -71,6 +71,7 @@ export default function OfferSlider() {
         position='left'
         width='w-1/2'
         className='bg-modal shadow-2xl'
+        closeOnOverlayClick={true}
       >
         <div className='h-full flex flex-col bg-modal'>
           {/* OPCJE */}

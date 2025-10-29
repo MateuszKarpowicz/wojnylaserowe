@@ -16,8 +16,9 @@ export default function Header() {
 
   return (
     <header
-      className='sticky top-0 z-header bg-header-footer backdrop-blur-sm border-b border-neon-blue/20 shadow-glow'
+      className='sticky top-0 z-header bg-header-footer backdrop-blur-sm border-b border-neon-blue/20 shadow-glow will-change-transform'
       role='banner'
+      style={{ transform: 'translateZ(0)' }} // Hardware acceleration
     >
       <nav
         className='container mx-auto px-4 h-header flex items-center justify-center relative'
@@ -44,6 +45,9 @@ export default function Header() {
         createPortal(
           <button
             onClick={openOferta}
+            aria-label={isOfertaOpen ? 'Zamknij ofertę' : 'Otwórz ofertę'}
+            aria-expanded={isOfertaOpen}
+            aria-controls='oferta-modal'
             className='fixed top-[calc(4.5rem-1rem)] left-0 z-button bg-neon-purple bg-opacity-90 text-white w-24 py-0.5 rounded-r-lg rounded-l-none shadow-glow-purple hover:bg-neon-purple/90 transition-colors duration-300 flex items-center justify-center focus-ring'
           >
             OFERTA
@@ -74,62 +78,73 @@ export default function Header() {
         position='right'
         width='w-1/2'
         className='bg-modal shadow-2xl'
+        closeOnOverlayClick={true}
         ariaLabelledBy='mobile-menu-title'
       >
-        {/* MENU */}
-        <nav
-          className='h-full flex flex-col p-6 gap-4 overflow-y-auto'
-          role='menu'
-        >
-          <Link
-            href='/o-nas'
-            onClick={() => setIsMenuOpen(false)}
-            className='text-text-light hover:text-neon-blue transition-colors duration-300 py-3 px-4 focus-ring rounded-lg border border-transparent hover:border-neon-blue/30'
-            role='menuitem'
-          >
-            O nas
-          </Link>
-          <Link
-            href='/laserowe-usuwanie-tatuazu'
-            onClick={() => setIsMenuOpen(false)}
-            className='text-text-light hover:text-neon-blue transition-colors duration-300 py-3 px-4 focus-ring rounded-lg border border-transparent hover:border-neon-blue/30'
-            role='menuitem'
-          >
-            Laserowe usuwanie tatuażu
-          </Link>
-          <Link
-            href='/scarink-regeneracja-blizn'
-            onClick={() => setIsMenuOpen(false)}
-            className='text-text-light hover:text-neon-blue transition-colors duration-300 py-3 px-4 focus-ring rounded-lg border border-transparent hover:border-neon-blue/30'
-            role='menuitem'
-          >
-            ScarINK – regeneracja blizn
-          </Link>
-          <Link
-            href='/efekty'
-            onClick={() => setIsMenuOpen(false)}
-            className='text-text-light hover:text-neon-blue transition-colors duration-300 py-3 px-4 focus-ring rounded-lg border border-transparent hover:border-neon-blue/30'
-            role='menuitem'
-          >
-            Efekty
-          </Link>
-          <Link
-            href='/faq'
-            onClick={() => setIsMenuOpen(false)}
-            className='text-text-light hover:text-neon-blue transition-colors duration-300 py-3 px-4 focus-ring rounded-lg border border-transparent hover:border-neon-blue/30'
-            role='menuitem'
-          >
-            FAQ
-          </Link>
-          <Link
-            href='/kontakt'
-            onClick={() => setIsMenuOpen(false)}
-            className='text-text-light hover:text-neon-blue transition-colors duration-300 py-3 px-4 focus-ring rounded-lg border border-transparent hover:border-neon-blue/30'
-            role='menuitem'
-          >
-            Kontakt
-          </Link>
-        </nav>
+        <div className='h-full flex flex-col bg-modal'>
+          <div className='flex-1 p-6 overflow-y-auto'>
+            <h3
+              id='mobile-menu-title'
+              className='text-lg font-semibold text-text-light mb-6 font-display'
+            >
+              Wybierz stronę:
+            </h3>
+            <nav className='space-y-4' role='menu'>
+              <Link
+                href='/o-nas'
+                onClick={() => setIsMenuOpen(false)}
+                className='w-full bg-button-dark hover:bg-button-dark-hover border border-neon-blue/30 hover:border-neon-blue/50 rounded-lg p-4 text-left transition-all duration-200 shadow-glow/20 hover:shadow-glow/40 block'
+                role='menuitem'
+              >
+                <span className='text-text-light font-medium'>O nas</span>
+              </Link>
+              <Link
+                href='/laserowe-usuwanie-tatuazu'
+                onClick={() => setIsMenuOpen(false)}
+                className='w-full bg-button-dark hover:bg-button-dark-hover border border-neon-blue/30 hover:border-neon-blue/50 rounded-lg p-4 text-left transition-all duration-200 shadow-glow/20 hover:shadow-glow/40 block'
+                role='menuitem'
+              >
+                <span className='text-text-light font-medium'>
+                  Laserowe usuwanie tatuażu
+                </span>
+              </Link>
+              <Link
+                href='/scarink-regeneracja-blizn'
+                onClick={() => setIsMenuOpen(false)}
+                className='w-full bg-button-dark hover:bg-button-dark-hover border border-neon-blue/30 hover:border-neon-blue/50 rounded-lg p-4 text-left transition-all duration-200 shadow-glow/20 hover:shadow-glow/40 block'
+                role='menuitem'
+              >
+                <span className='text-text-light font-medium'>
+                  ScarINK – regeneracja blizn
+                </span>
+              </Link>
+              <Link
+                href='/efekty'
+                onClick={() => setIsMenuOpen(false)}
+                className='w-full bg-button-dark hover:bg-button-dark-hover border border-neon-blue/30 hover:border-neon-blue/50 rounded-lg p-4 text-left transition-all duration-200 shadow-glow/20 hover:shadow-glow/40 block'
+                role='menuitem'
+              >
+                <span className='text-text-light font-medium'>Efekty</span>
+              </Link>
+              <Link
+                href='/faq'
+                onClick={() => setIsMenuOpen(false)}
+                className='w-full bg-button-dark hover:bg-button-dark-hover border border-neon-blue/30 hover:border-neon-blue/50 rounded-lg p-4 text-left transition-all duration-200 shadow-glow/20 hover:shadow-glow/40 block'
+                role='menuitem'
+              >
+                <span className='text-text-light font-medium'>FAQ</span>
+              </Link>
+              <Link
+                href='/kontakt'
+                onClick={() => setIsMenuOpen(false)}
+                className='w-full bg-button-dark hover:bg-button-dark-hover border border-neon-blue/30 hover:border-neon-blue/50 rounded-lg p-4 text-left transition-all duration-200 shadow-glow/20 hover:shadow-glow/40 block'
+                role='menuitem'
+              >
+                <span className='text-text-light font-medium'>Kontakt</span>
+              </Link>
+            </nav>
+          </div>
+        </div>
       </Modal>
     </header>
   );

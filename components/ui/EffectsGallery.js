@@ -53,12 +53,8 @@ export default function EffectsGallery() {
           />
 
           {/* PRZYCISK ZAMKNIĘCIA */}
-          <button
-            onClick={close}
-            className='absolute top-4 right-4 btn-close bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-2'
-            aria-label='Zamknij'
-          >
-            <FaTimes className='w-6 h-6 text-gray-800' />
+          <button onClick={close} className='btn-close' aria-label='Zamknij'>
+            <FaTimes className='w-6 h-6 text-text-dark' />
           </button>
 
           {/* NAWIGACJA STRZAŁKAMI */}
@@ -70,7 +66,7 @@ export default function EffectsGallery() {
             className='absolute left-4 btn-nav-arrow'
             aria-label='Poprzednie zdjęcie'
           >
-            <FaChevronLeft className='w-6 h-6 text-gray-800' />
+            <FaChevronLeft className='w-6 h-6 text-text-dark' />
           </button>
 
           <button
@@ -81,13 +77,13 @@ export default function EffectsGallery() {
             className='absolute right-4 btn-nav-arrow'
             aria-label='Następne zdjęcie'
           >
-            <FaChevronRight className='w-6 h-6 text-gray-800' />
+            <FaChevronRight className='w-6 h-6 text-text-dark' />
           </button>
         </div>
 
         {/* NUMER ZDJĘCIA */}
         <div className='mt-4 text-center text-white'>
-          <p className='text-sm text-gray-400'>
+          <p className='text-sm text-muted'>
             {currentIndex + 1} z {effectsData.images.length}
           </p>
         </div>

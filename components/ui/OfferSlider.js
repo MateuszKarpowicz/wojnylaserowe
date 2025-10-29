@@ -63,7 +63,7 @@ export default function OfferSlider() {
   return (
     <>
       {/* PRZYCISK OFERTA - na linii dolnej headera, zaczyna się od prawej strony, WYSOKI Z-INDEX */}
-      <div className='fixed top-[calc(var(--header-h)-1rem)] right-0 z-[9999]'>
+      <div className='fixed top-[calc(4.5rem-1rem)] right-0 z-modal'>
         <button onClick={toggleSlider} className='btn-offer'>
           {offerSliderData.button.text}
         </button>
@@ -78,9 +78,12 @@ export default function OfferSlider() {
       >
         <div className='h-full flex flex-col bg-white rounded-lg shadow-2xl'>
           {/* HEADER */}
-          <div className='bg-neonBlue text-white p-6 flex items-center justify-between rounded-t-lg'>
+          <div className='bg-neon-blue text-white p-6 flex items-center justify-between rounded-t-lg'>
             <h2 className='text-xl font-bold'>{offerSliderData.button.text}</h2>
-            <button onClick={toggleSlider} className='btn-close'>
+            <button
+              onClick={toggleSlider}
+              className='text-white hover:opacity-75 transition-colors p-2 rounded'
+            >
               ✕
             </button>
           </div>
@@ -88,7 +91,7 @@ export default function OfferSlider() {
           {/* OPCJE */}
           {!selectedOption && (
             <div className='flex-1 p-6 overflow-y-auto'>
-              <h3 className='text-lg font-semibold text-textDark mb-6'>
+              <h3 className='text-lg font-semibold text-text-dark mb-6'>
                 Wybierz rodzaj usługi:
               </h3>
               <div className='space-y-4'>
@@ -96,10 +99,10 @@ export default function OfferSlider() {
                   <button
                     key={option.id}
                     onClick={() => selectOption(option.id)}
-                    className='w-full bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg p-4 text-left transition-colors duration-200 flex items-center gap-3'
+                    className='w-full bg-surface-light hover:bg-surface border border-border-light rounded-lg p-4 text-left transition-colors duration-200 flex items-center gap-3'
                   >
                     <span className='text-2xl'>{option.icon}</span>
-                    <span className='text-textDark font-medium'>
+                    <span className='text-text-dark font-medium'>
                       {option.title}
                     </span>
                   </button>
@@ -114,11 +117,11 @@ export default function OfferSlider() {
               <div className='flex items-center gap-3 mb-6'>
                 <button
                   onClick={goBack}
-                  className='text-textLight hover:text-neonBlue transition-colors'
+                  className='text-text-light hover:text-neon-blue transition-colors'
                 >
                   ←
                 </button>
-                <h2 className='text-textLight font-display text-xl font-bold'>
+                <h2 className='text-text-light font-display text-xl font-bold'>
                   {
                     offerSliderData.options.find(
                       opt => opt.id === selectedOption

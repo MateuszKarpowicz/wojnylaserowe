@@ -1,309 +1,126 @@
-/* Import design tokens */
-@import '../styles/tokens.css';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* === DESIGN TOKENS === */
-/* Tokens przeniesione do styles/tokens.css */
-
-/* === BASE STYLES === */
-/* scroll-behavior przeniesione do utilities.css */
-
-body {
-  color: var(--color-text-dark);
-  font-family: "Yantramanav", sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-h1, h2, h3 {
-  font-family: "Yantramanav", sans-serif;
-  font-weight: 400;
-}
-
-/* === ACCESSIBILITY === */
-/* Focus styles for better accessibility */
-:focus-visible {
-  outline: 2px solid var(--color-neon-blue);
-  outline-offset: 2px;
-}
-
-/* Skip link for screen readers */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* === SMOOTH SCROLLING === */
-/* scroll-behavior przeniesione do utilities.css */
-html {
-  scroll-padding-top: var(--header-h);
-}
-
-@layer utilities {
-  /* === SMOOTH SCROLLING === */
+/* BASE – minimalne korekty */
+@layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem; /* h-header */
   }
-  
-  /* === CONTAINER PATTERNS === */
-  .container {
-    @apply max-w-4xl mx-auto px-4;
+
+  body {
+    @apply bg-bg-light text-text-dark dark:bg-bg-dark dark:text-text-light font-sans;
   }
-  
-  .container-sm {
-    @apply max-w-screen-md mx-auto px-4;
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
   }
-  
-  .container-lg {
-    @apply max-w-screen-lg mx-auto px-4;
-  }
-  
-  .container-xl {
-    @apply max-w-6xl mx-auto px-4;
-  }
-  
-  /* === SECTION PATTERNS === */
+}
+
+/* COMPONENTS – tylko powtarzalne wzorce */
+@layer components {
+  /* Sekcje */
   .section-pad {
-    @apply py-8;
+    @apply py-10 md:py-14;
   }
-  
-  .section-pad-sm {
-    @apply py-4;
+
+  .section-wrap {
+    @apply container mx-auto px-4;
   }
-  
-  .section-pad-lg {
-    @apply py-12;
+
+  /* Przyciski */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 font-medium transition-colors duration-300;
   }
-  
-  .section-pad-xl {
-    @apply py-16;
+
+  .btn-primary {
+    @apply bg-neon-blue text-white hover:opacity-90 focus-ring;
   }
-  
-  /* === GRID PATTERNS === */
-  /* Usunięto nieużywane .section-grid, .section-grid-2, .section-grid-3, .section-grid-4 */
-  
-  /* === BUTTON PATTERNS === */
-  .btn-base {
-    @apply px-6 py-3 rounded-lg font-normal transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2;
+
+  .btn-secondary {
+    @apply bg-neon-purple text-white hover:opacity-90 focus-ring;
   }
-  
-  /* Usunięto nieużywane .btn-primary, .btn-secondary, .btn-outline */
-  
-  /* === SPECIAL BUTTONS === */
+
+  /* Przyciski specjalne (OfferSlider) */
   .btn-offer {
-    @apply bg-neonPurple bg-opacity-90 text-white px-8 py-1 rounded-l-lg rounded-r-none shadow-[0_0_20px_rgba(192,132,252,0.5)] hover:bg-neonPurple/90 transition-colors duration-300 flex items-center;
+    @apply bg-neon-purple bg-opacity-90 text-white px-8 py-1 rounded-l-lg rounded-r-none shadow-glow-purple hover:bg-neon-purple/90 transition-colors duration-300 flex items-center;
   }
-  
+
   .btn-section {
-    @apply bg-neonBlue bg-opacity-90 text-white px-8 py-3 rounded-lg shadow-[0_0_20px_rgba(0,153,204,0.5)] hover:bg-neonBlue/90 transition-colors duration-300 flex items-center justify-center font-normal;
+    @apply bg-neon-blue bg-opacity-90 text-white px-8 py-3 rounded-lg shadow-glow hover:bg-neon-blue/90 transition-colors duration-300 flex items-center justify-center font-normal;
   }
-  
-  .btn-hamburger {
-    @apply md:hidden link-focus-neon ring-offset-darkBg;
+
+  /* Formularze */
+  .input {
+    @apply w-full rounded-lg border px-4 py-3 text-text-dark focus:outline-none focus:border-neon-blue transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+    border-color: #e5e5e5; /* border-border */
+    background-color: #ffffff; /* bg-surface */
   }
-  
-  .btn-close {
-    @apply text-white hover:text-gray-200 transition-colors;
+
+  .input-error {
+    @apply border;
+    border-color: #e74c3c; /* error */
   }
-  
-  .btn-nav-arrow {
-    @apply absolute top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-3 transition-all duration-300;
+
+  /* Grid dla strony głównej */
+  .sections-grid-auto {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
   }
-  
-  .btn-faq {
-    @apply w-full text-left p-4 flex justify-between items-center hover:bg-gray-50 transition-colors;
-  }
-  
-  /* === FORM PATTERNS === */
-  /* Usunięto nieużywane .form-field, .form-label, .form-error */
-  
-  /* === LOADING STATES === */
-  .loading-container {
-    @apply flex flex-col items-center justify-center min-h-[200px] p-8;
-  }
-  
-  .loading-spinner {
-    @apply mb-4;
-  }
-  
-  .spinner {
-    @apply w-10 h-10 border-4 border-gray-300 border-t-neonBlue rounded-full animate-spin;
-  }
-  
-  .loading-text {
-    @apply text-gray-600 text-base m-0;
-  }
-  
-  /* === ERROR STATES === */
-  .error-container {
-    @apply flex items-center justify-center min-h-[400px] p-8 bg-lightBg;
-  }
-  
-  .error-content {
-    @apply text-center max-w-lg p-8 bg-white rounded-lg shadow-lg;
-  }
-  
-  .error-title {
-    @apply text-red-500 mb-4 text-2xl;
-  }
-  
-  .error-text {
-    @apply text-gray-600 mb-8 leading-relaxed;
-  }
-  
-  .error-actions {
-    @apply flex gap-4 justify-center flex-wrap;
-  }
-  
-  .retry-button {
-    @apply bg-neonBlue text-white px-6 py-3 rounded-lg font-normal transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 hover:bg-neonPurple focus:ring-neonBlue;
-  }
-  
-  .home-link {
-    @apply bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-normal transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 hover:bg-neonBlue hover:text-white focus:ring-neonBlue;
-  }
-  
-  /* === NOT FOUND STATES === */
-  .not-found-container {
-    @apply flex items-center justify-center min-h-[400px] p-8 bg-lightBg;
-  }
-  
-  .not-found-content {
-    @apply text-center max-w-lg p-8 bg-white rounded-lg shadow-lg;
-  }
-  
-  .not-found-title {
-    @apply text-6xl text-neonBlue m-0 font-normal;
-  }
-  
-  .not-found-subtitle {
-    @apply text-gray-700 my-4 text-2xl;
-  }
-  
-  .not-found-text {
-    @apply text-gray-600 mb-8 leading-relaxed;
-  }
-  
-  .not-found-actions {
-    @apply flex gap-4 justify-center flex-wrap;
-  }
-  
-  .contact-link {
-    @apply bg-neonPurple text-white px-6 py-3 rounded-lg font-normal transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 hover:bg-neonPurple focus:ring-neonBlue;
-  }
-  
-  /* === ANIMATIONS === */
-  /* Usunięto nieużywane .neon-glow, .color-cycle, @keyframes */
-  
-  /* === ACCESSIBILITY === */
-  .visually-hidden {
-    @apply sr-only;
-  }
-  
+}
+
+/* UTILITIES – dostępność i skróty */
+@layer utilities {
   .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-neonBlue focus:ring-offset-2;
+    @apply focus:outline-none focus:ring-2 focus:ring-neon-blue focus:ring-offset-2;
   }
-  
-  /* === HEADER/FOOTER BASE STYLES === */
-  .header-footer-base {
-    @apply fixed z-50 bg-black/95 border-neonBlue/20 shadow-[0_0_20px_rgba(0,224,255,0.3)];
+
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
   }
-  
-  .header-base {
-    @apply header-footer-base top-0 left-0 right-0 border-b;
-  }
-  
-  .footer-base {
-    @apply header-footer-base bottom-0 left-0 right-0 border-t;
-  }
-  
-  /* === LINK PATTERNS === */
+
+  /* Link patterns */
   .link-hover-neon {
-    @apply text-textLight hover:text-neonBlue transition-colors duration-300;
+    @apply text-text-light hover:text-neon-blue transition-colors duration-300;
   }
-  
+
   .link-focus-neon {
     @apply link-hover-neon focus-ring;
   }
-  
-  /* === RESPONSIVE UTILITIES === */
-  /* Usunięto nieużywane .text-responsive, .heading-responsive, .spacing-responsive */
-  
-  /* === FONT UTILITIES === */
-  /* Usunięto nieużywane .font-yantramanav */
-  
-  /* === SECTION CONTRACT UTILITIES === */
-  /* Usunięto nieużywane .section-contract-* */
-  
-  /* === SECTION GRID CONTAINER === */
-  .sections-grid-mobile {
-    @apply flex flex-col;
-  }
-  
-  .sections-grid-tablet {
-    @apply md:grid md:grid-cols-2 md:gap-0;
-  }
-  
-  .sections-grid-desktop {
-    @apply lg:grid-cols-3 lg:gap-0;
-  }
-  
-  .sections-grid-auto {
-    @apply sections-grid-mobile sections-grid-tablet sections-grid-desktop;
-  }
-  
-  /* === REDUCED MOTION SUPPORT === */
-  @media (prefers-reduced-motion: reduce) {
-    .spinner {
-      animation: none;
-    }
-    
-    .neon-glow {
-      animation: none;
-    }
-    
-    .color-cycle {
-      animation: none;
-    }
-    
-    /* Disable smooth scrolling for reduced motion */
-    html {
-      scroll-behavior: auto;
-    }
-    
-    /* Disable transitions for reduced motion */
-    * {
-      transition-duration: 0.01ms !important;
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-    }
+
+  /* Przyciski w galerii */
+  .btn-close {
+    @apply absolute top-4 right-4 bg-opacity-90 hover:bg-opacity-100 rounded-full p-2 focus-ring;
+    background-color: #ffffff; /* bg-surface */
   }
 
-  /* Hamburger menu animation - uzasadnione jako utility */
-  .hamburger-active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+  .btn-nav-arrow {
+    @apply absolute top-1/2 -translate-y-1/2 bg-opacity-90 hover:bg-opacity-100 rounded-full p-2 focus-ring;
+    background-color: #ffffff; /* bg-surface */
   }
-  
-  .hamburger-active span:nth-child(2) {
-    opacity: 0;
+
+  /* Loading spinner */
+  .spinner {
+    @apply w-10 h-10 border-4 border-t-neon-blue rounded-full animate-spin;
+    border-color: #e5e5e5; /* border-border */
   }
-  
-  .hamburger-active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* REDUCED MOTION – jedna implementacja */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
-  
-  /* Smooth transitions for hamburger animation */
-  button span {
-    transition: all 0.3s ease;
+
+  html {
+    scroll-behavior: auto !important;
   }
 }

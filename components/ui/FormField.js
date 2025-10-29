@@ -49,18 +49,13 @@ export default function FormField({
     'aria-describedby': error ? `${fieldId}-error` : undefined,
   };
 
-  const fieldClasses = [
-    'w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors',
-    'disabled:opacity-50 disabled:cursor-not-allowed',
-    error && 'border-red-500',
-    className,
-  ]
+  const fieldClasses = ['input', error && 'input-error', className]
     .filter(Boolean)
     .join(' ');
 
   const labelClasses = [
-    'block text-textDark text-sm font-semibold mb-2',
-    required && 'after:content-["*"] after:text-red-500 after:ml-1',
+    'block text-text-dark text-sm font-semibold mb-2',
+    required && 'after:content-["*"] after:text-error after:ml-1',
   ]
     .filter(Boolean)
     .join(' ');
@@ -154,7 +149,7 @@ export default function FormField({
 
       {/* ERROR MESSAGE */}
       {error && (
-        <div id={errorId} className='text-red-600 text-sm mt-1' role='alert'>
+        <div id={errorId} className='text-error text-sm mt-1' role='alert'>
           {error}
         </div>
       )}

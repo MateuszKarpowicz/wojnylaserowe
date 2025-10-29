@@ -31,8 +31,8 @@ export default function ContactForm() {
   }
 
   return (
-    <div className='bg-white p-8 rounded-lg shadow-lg'>
-      <h2 className='text-2xl font-semibold text-textDark mb-6'>
+    <div className='bg-surface p-8 rounded-lg shadow-lg'>
+      <h2 className='text-2xl font-semibold text-text-dark mb-6'>
         Skontaktuj się z nami
       </h2>
 
@@ -134,7 +134,7 @@ export default function ContactForm() {
               onChange={handleInputChange}
               disabled={isLoading}
             />
-            <p className='text-sm text-gray-600'>
+            <p className='text-sm text-muted'>
               Możesz załączyć maksymalnie 5 zdjęć w formacie JPG, PNG lub WebP
             </p>
 

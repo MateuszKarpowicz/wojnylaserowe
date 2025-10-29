@@ -63,30 +63,20 @@ export default function OfferSlider() {
 
   return (
     <>
-      {/* MODAL - przycisk jest teraz w Header */}
+      {/* MODAL - drawer połowa ekranu od lewej */}
       <Modal
         isOpen={isOpen}
         onClose={toggleSlider}
-        variant='fullscreen'
-        className='overflow-y-auto'
-        overlayClassName='bg-black/50'
+        variant='drawer'
+        position='left'
+        width='w-1/2'
+        className='bg-modal shadow-2xl'
       >
-        <div className='h-full flex flex-col bg-surface rounded-lg shadow-2xl'>
-          {/* HEADER */}
-          <div className='bg-neon-blue text-white p-6 flex items-center justify-between rounded-t-lg'>
-            <h2 className='text-xl font-bold'>{offerSliderData.button.text}</h2>
-            <button
-              onClick={toggleSlider}
-              className='text-white hover:opacity-75 transition-colors p-2 rounded'
-            >
-              ✕
-            </button>
-          </div>
-
+        <div className='h-full flex flex-col bg-modal'>
           {/* OPCJE */}
           {!selectedOption && (
             <div className='flex-1 p-6 overflow-y-auto'>
-              <h3 className='text-lg font-semibold text-text-dark mb-6'>
+              <h3 className='text-lg font-semibold text-text-light mb-6 font-display'>
                 Wybierz rodzaj usługi:
               </h3>
               <div className='space-y-4'>
@@ -94,10 +84,9 @@ export default function OfferSlider() {
                   <button
                     key={option.id}
                     onClick={() => selectOption(option.id)}
-                    className='w-full bg-surface-light hover:bg-surface border border-border-light rounded-lg p-4 text-left transition-colors duration-200 flex items-center gap-3'
+                    className='w-full bg-button-dark hover:bg-button-dark-hover border border-neon-purple/30 hover:border-neon-purple/50 rounded-lg p-4 text-left transition-all duration-200 shadow-glow-purple/20 hover:shadow-glow-purple/40'
                   >
-                    <span className='text-2xl'>{option.icon}</span>
-                    <span className='text-text-dark font-medium'>
+                    <span className='text-text-light font-medium'>
                       {option.title}
                     </span>
                   </button>
@@ -108,11 +97,12 @@ export default function OfferSlider() {
 
           {/* FORMULARZE */}
           {selectedOption && (
-            <div className='max-w-md mx-auto h-screen p-6 pb-24 overflow-y-auto'>
+            <div className='max-w-md mx-auto flex-1 p-6 pb-24 overflow-y-auto'>
               <div className='flex items-center gap-3 mb-6'>
                 <button
                   onClick={goBack}
-                  className='text-text-light hover:text-neon-blue transition-colors'
+                  className='text-text-light hover:text-neon-purple transition-colors p-2 rounded focus-ring'
+                  aria-label='Wróć do wyboru usługi'
                 >
                   ←
                 </button>
@@ -127,7 +117,7 @@ export default function OfferSlider() {
 
               {/* ERROR MESSAGE */}
               {error && (
-                <div className='bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-6'>
+                <div className='bg-error/20 border border-error/50 text-error px-4 py-3 rounded-lg mb-6'>
                   {error}
                 </div>
               )}
@@ -150,6 +140,7 @@ export default function OfferSlider() {
                       required
                       disabled={isLoading}
                       placeholder={contactFormData.fields.name.placeholder}
+                      dark={true}
                     />
 
                     {/* NUMER TELEFONU */}
@@ -162,6 +153,7 @@ export default function OfferSlider() {
                       required
                       disabled={isLoading}
                       placeholder={contactFormData.fields.phone.placeholder}
+                      dark={true}
                     />
 
                     {/* RODZAJ USŁUGI */}
@@ -175,6 +167,7 @@ export default function OfferSlider() {
                       disabled={isLoading}
                       placeholder={contactFormData.fields.service.placeholder}
                       options={contactFormData.fields.service.options}
+                      dark={true}
                     />
 
                     {/* OPIS PROBLEMU */}
@@ -189,6 +182,7 @@ export default function OfferSlider() {
                       placeholder={
                         contactFormData.fields.description.placeholder
                       }
+                      dark={true}
                     />
 
                     {/* PREFEROWANE DATY */}
@@ -200,6 +194,7 @@ export default function OfferSlider() {
                       onChange={handleInputChange}
                       disabled={isLoading}
                       placeholder={contactFormData.fields.dates.placeholder}
+                      dark={true}
                     />
 
                     {/* ZDJĘCIA */}
@@ -209,6 +204,7 @@ export default function OfferSlider() {
                       label={contactFormData.fields.photos.label}
                       onChange={handleInputChange}
                       disabled={isLoading}
+                      dark={true}
                     />
                   </>
                 )}

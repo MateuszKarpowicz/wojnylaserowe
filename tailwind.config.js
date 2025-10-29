@@ -28,6 +28,15 @@ module.exports = {
         // Status
         error: '#E74C3C',
         success: '#27AE60',
+
+        // Tła z przezroczystością (zamiast bg-black/*)
+        // Uwaga: bez prefiksu bg- bo Tailwind dodaje go automatycznie
+        overlay: 'rgba(0, 0, 0, 0.5)', // bg-black/50
+        'overlay-dark': 'rgba(0, 0, 0, 0.9)', // bg-black/90
+        'header-footer': 'rgba(0, 0, 0, 0.95)', // bg-black/95
+        modal: 'rgba(0, 0, 0, 0.9)', // bg-black/90 (dla modali)
+        'button-dark': 'rgba(0, 0, 0, 0.5)', // bg-black/50
+        'button-dark-hover': 'rgba(0, 0, 0, 0.7)', // bg-black/70
       },
       fontFamily: {
         sans: ['Poppins', 'ui-sans-serif', 'system-ui'],
@@ -47,6 +56,7 @@ module.exports = {
         modal: 70,
         popover: 80,
         tooltip: 90,
+        button: 100, // przyciski zawsze nad wszystkim
       },
     },
   },

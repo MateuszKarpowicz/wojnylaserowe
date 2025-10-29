@@ -19,7 +19,7 @@ export default function Footer() {
 
   return (
     <footer
-      className='fixed bottom-0 left-0 right-0 z-header border-t border-neon-blue/20 bg-black/95 shadow-glow'
+      className='fixed bottom-0 left-0 right-0 z-header border-t border-neon-blue/20 bg-header-footer shadow-glow'
       role='contentinfo'
     >
       <div className='container mx-auto px-4 py-0.5 flex flex-col items-center gap-0.5'>

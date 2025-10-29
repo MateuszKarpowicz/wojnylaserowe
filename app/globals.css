@@ -60,9 +60,20 @@
     background-color: #ffffff; /* bg-surface */
   }
 
+  /* Input dla ciemnego tła (w modalu Oferty) */
+  .input-dark {
+    @apply w-full rounded-lg border px-4 py-3 text-text-light focus:outline-none focus:border-neon-purple transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+    border-color: #4a4a4a; /* border dla ciemnego tła */
+    background-color: #1a1a1a; /* ciemne tło */
+  }
+
   .input-error {
     @apply border;
     border-color: #e74c3c; /* error */
+  }
+
+  .input-dark:focus {
+    box-shadow: 0 0 0 2px rgba(192, 132, 252, 0.2); /* glow-purple focus */
   }
 
   /* Grid dla strony głównej */

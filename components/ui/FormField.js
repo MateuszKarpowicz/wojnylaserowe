@@ -17,6 +17,7 @@
  * @param {string} error - Komunikat błędu
  * @param {boolean} disabled - Czy pole jest wyłączone
  * @param {Array} options - Opcje dla select
+ * @param {boolean} dark - Czy użyć ciemnego wariantu (dla ciemnego tła)
  * @param {string} className - Dodatkowe klasy CSS
  * @param {object} ...props - Dodatkowe props
  * @returns {JSX.Element} Pole formularza z obsługą błędów
@@ -35,6 +36,7 @@ export default function FormField({
   error = null,
   disabled = false,
   options = [],
+  dark = false,
   className = '',
   ...props
 }) {
@@ -49,12 +51,15 @@ export default function FormField({
     'aria-describedby': error ? `${fieldId}-error` : undefined,
   };
 
-  const fieldClasses = ['input', error && 'input-error', className]
+  const inputBaseClass = dark ? 'input-dark' : 'input';
+  const fieldClasses = [inputBaseClass, error && 'input-error', className]
     .filter(Boolean)
     .join(' ');
 
   const labelClasses = [
-    'block text-text-dark text-sm font-semibold mb-2',
+    `block ${
+      dark ? 'text-text-light' : 'text-text-dark'
+    } text-sm font-semibold mb-2`,
     required && 'after:content-["*"] after:text-error after:ml-1',
   ]
     .filter(Boolean)

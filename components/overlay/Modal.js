@@ -4,13 +4,14 @@
  * Warianty:
  * - 'centered' (default) - wyśrodkowany modal z overlay
  * - 'fullscreen' - pełnoekranowy między header a footer
- * - 'drawer' - sidebar z prawej/lewej strony
+ * - 'drawer' - sidebar z prawej/lewej strony (może być fullscreen)
  *
  * @param {boolean} isOpen - Czy modal jest otwarty
  * @param {Function} onClose - Funkcja zamykania modala
  * @param {string} variant - Typ modala: 'centered' | 'fullscreen' | 'drawer'
  * @param {string} position - Pozycja dla drawer: 'left' | 'right' | 'top' | 'bottom'
- * @param {string} width - Szerokość dla drawer (np. 'w-64', 'w-80')
+ * @param {string} width - Szerokość dla drawer (np. 'w-64', 'w-80') - ignorowane gdy fullscreen=true
+ * @param {boolean} fullscreen - Czy drawer ma być pełnoekranowy (tylko dla drawer variant)
  * @param {boolean} closeOnOverlayClick - Czy zamykać przy kliknięciu overlay
  * @param {string} className - Dodatkowe klasy CSS dla kontenera
  * @param {string} overlayClassName - Dodatkowe klasy CSS dla overlay
@@ -28,6 +29,7 @@ export default function Modal({
   variant = 'centered',
   position = 'right',
   width = 'w-64',
+  fullscreen = false,
   closeOnOverlayClick = true,
   className = '',
   overlayClassName = '',
@@ -35,8 +37,6 @@ export default function Modal({
   children,
 }) {
   const modalRef = useRef(null);
-  // Usunięto animację drawer - powodowała problemy z przesuwaniem strony
-  // Drawer renderuje się natychmiast (jak w oryginalnym kodzie)
 
   // ESC handler i body scroll lock (centralnie dla wszystkich wariantów)
   // Uwaga: drawer NIE blokuje scroll body (oryginalny kod też nie blokował)
@@ -49,20 +49,20 @@ export default function Modal({
 
     if (isOpen) {
       document.addEventListener('keydown', handleKeyDown);
-      // Blokuj scroll body tylko dla centered i fullscreen, NIE dla drawer
-      // Drawer nie blokuje scroll (jak w oryginalnym kodzie)
-      if (variant !== 'drawer') {
+      // Blokuj scroll body dla centered, fullscreen i fullscreen drawer
+      // Zwykły drawer (nie-fullscreen) nie blokuje scroll
+      if (variant !== 'drawer' || fullscreen) {
         document.body.style.overflow = 'hidden';
       }
     }
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
-      if (variant !== 'drawer') {
+      if (variant !== 'drawer' || fullscreen) {
         document.body.style.overflow = 'unset';
       }
     };
-  }, [isOpen, onClose, variant]);
+  }, [isOpen, onClose, variant, fullscreen]);
 
   // Focus trap dla drawer i fullscreen (centered może mieć własny)
   useEffect(() => {
@@ -103,20 +103,22 @@ export default function Modal({
   if (!isOpen) return null;
 
   // Style dla overlay - różne dla każdego wariantu
+  // UWAGA: overlay dla drawer ma z-overlay (60), który jest niższy niż przyciski (z-button=100)
   const getOverlayClasses = () => {
     const base = 'fixed z-overlay';
 
     if (variant === 'centered') {
-      return `${base} inset-0 bg-black/90 flex items-center justify-center p-4 ${overlayClassName}`;
+      return `${base} inset-0 bg-overlay-dark flex items-center justify-center p-4 ${overlayClassName}`;
     }
 
     if (variant === 'fullscreen') {
-      return `${base} left-0 right-0 bg-black/50 ${overlayClassName}`;
+      return `${base} left-0 right-0 bg-overlay ${overlayClassName}`;
     }
 
     if (variant === 'drawer') {
-      // Usunięto transition - prostsza implementacja jak w oryginalnym kodzie
-      return `${base} inset-0 bg-black/50 ${overlayClassName}`;
+      // Overlay dla drawer - NIŻSZY z-index niż przyciski (60 < 100)
+      // pointer-events: none pozwala na kliknięcia przez overlay (przyciski mają wyższy z-index)
+      return `${base} inset-0 bg-overlay ${overlayClassName} transition-opacity duration-300 pointer-events-none`;
     }
 
     return base;
@@ -134,44 +136,80 @@ export default function Modal({
 
     if (variant === 'drawer') {
       const borderClass = position === 'right' ? 'border-l' : 'border-r';
-      // Drawer - transparentne tło, dzieci mogą mieć własne tło (jak w fullscreen)
-      // Usunięto bg-black/95 - dzieci mają własne tło (np. bg-surface)
-      return `fixed ${position}-0 top-0 bottom-0 ${width} ${borderClass} border-neon-blue/20 shadow-xl z-modal ${className}`;
+      const borderColor =
+        position === 'right' ? 'border-neon-blue/30' : 'border-neon-purple/30';
+      const widthClass = fullscreen ? 'w-full' : width;
+      // Drawer - fullscreen między header a footer lub zwykły sidebar
+      if (fullscreen) {
+        // Fullscreen drawer - top/bottom offset (header/footer)
+        return `fixed ${position}-0 z-modal ${borderClass} ${borderColor} shadow-2xl ${className}`;
+      }
+      // Zwykły drawer - z offsetem od footer (bottom: 3rem)
+      return `fixed ${position}-0 ${widthClass} ${borderClass} ${borderColor} shadow-xl z-modal ${className}`;
     }
 
     return className;
   };
 
-  // Style inline dla fullscreen (top/bottom offset)
+  // Style inline dla fullscreen i fullscreen drawer (top/bottom offset)
+  // Footer ma około 2.25rem wysokości, ale używamy 4rem dla bezpieczeństwa
   const fullscreenStyle =
     variant === 'fullscreen'
       ? {
           top: '4.5rem', // h-header
-          bottom: '0', // footer jest fixed bottom
+          bottom: '4rem', // wysokość footera z marginesem bezpieczeństwa
+        }
+      : variant === 'drawer' && fullscreen
+      ? {
+          top: '4.5rem', // h-header
+          bottom: '4rem', // wysokość footera z marginesem bezpieczeństwa
+        }
+      : variant === 'drawer' && !fullscreen
+      ? {
+          top: '4.5rem', // h-header
+          bottom: '4rem', // wysokość footera z marginesem bezpieczeństwa
         }
       : {};
 
   const overlayClasses = getOverlayClasses();
   const containerClasses = getContainerClasses();
 
+  // Klasa animacji dla drawer (slide-in od odpowiedniej strony)
+  const getDrawerAnimationClass = () => {
+    if (variant !== 'drawer') return '';
+    if (position === 'right') {
+      return 'translate-x-0'; // drawer jest już widoczny (isOpen = true), więc translate-x-0
+    }
+    return 'translate-x-0'; // drawer jest już widoczny (isOpen = true), więc translate-x-0
+  };
+
   // Dla drawer - overlay i panel są rodzeństwami (jak oryginalny kod)
   // Używamy Portal żeby renderować drawer poza Header (naprawia problem z sticky header)
+  // UWAGA: Overlay ma pointer-events, ale przyciski (z-button=100) są wyżej niż overlay (z-overlay=60)
   if (variant === 'drawer') {
     const drawerContent = (
       <>
-        {/* Overlay - oddzielny element */}
+        {/* Overlay - oddzielny element z niższym z-index niż przyciski */}
+        {/* pointer-events-none w klasie CSS - pozwala przyciskom (z-button=100) być klikalne nad overlay */}
+        {/* pointer-events-auto w style tylko dla zamykania overlay */}
         <div
           className={overlayClasses}
           onClick={closeOnOverlayClick ? onClose : undefined}
           aria-hidden='true'
+          style={
+            closeOnOverlayClick
+              ? { pointerEvents: 'auto' }
+              : { pointerEvents: 'none' }
+          }
         />
-        {/* Panel - oddzielny element */}
+        {/* Panel - oddzielny element z animacją slide-in */}
         <div
           ref={modalRef}
-          className={containerClasses}
+          className={`${containerClasses} ${getDrawerAnimationClass()} transition-transform duration-300 ease-out`}
           role='dialog'
           aria-modal='true'
           aria-labelledby={ariaLabelledBy || 'modal-title'}
+          style={fullscreenStyle}
         >
           {children}
         </div>
@@ -179,6 +217,7 @@ export default function Modal({
     );
 
     // Render drawer przez Portal bezpośrednio w body (poza Header)
+    // Portal renderuje po przyciskach, więc ważny jest z-index
     if (typeof window !== 'undefined') {
       return createPortal(drawerContent, document.body);
     }

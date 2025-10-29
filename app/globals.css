@@ -53,6 +53,20 @@
     @apply bg-neon-blue bg-opacity-90 text-white px-8 py-3 rounded-lg shadow-glow hover:bg-neon-blue/90 transition-colors duration-300 flex items-center justify-center font-normal;
   }
 
+  /* Przyciski CTA na stronie O nas */
+  .btn-cta-purple {
+    @apply bg-neon-purple bg-opacity-90 text-white py-0.5 rounded-lg shadow-glow-purple hover:bg-neon-purple/90 transition-colors duration-300 flex items-center justify-center focus-ring max-w-md mx-auto w-full;
+  }
+
+  .btn-cta-blue {
+    @apply bg-neon-blue bg-opacity-90 text-white py-0.5 rounded-lg shadow-glow hover:bg-neon-blue/90 transition-colors duration-300 flex items-center justify-center focus-ring max-w-md mx-auto w-full;
+  }
+
+  /* Hero title offset */
+  .hero-title-offset {
+    @apply -mt-8;
+  }
+
   /* Formularze */
   .input {
     @apply w-full rounded-lg border px-4 py-3 text-text-dark focus:outline-none focus:border-neon-blue transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
@@ -98,6 +112,57 @@
   .about-icon {
     @apply text-3xl mb-4;
     color: #0099cc; /* neon-blue */
+  }
+
+  /* Qualification Cards - Dark Variant (Variant E) */
+  .qualification-card-dark {
+    @apply rounded-xl border-2 shadow-md p-6 relative overflow-hidden transition-all duration-300;
+    border-color: rgba(
+      0,
+      153,
+      204,
+      0.3
+    ); /* neon-blue with low opacity for subtle glow */
+    background-color: #ffffff; /* bg-surface */
+    box-shadow: 0 0 20px rgba(0, 153, 204, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1); /* subtle neon glow + shadow */
+  }
+
+  .qualification-card-dark:hover {
+    @apply shadow-lg;
+    transform: translateY(-4px);
+    border-color: rgba(0, 153, 204, 0.6); /* stronger border on hover */
+    box-shadow: 0 0 30px rgba(0, 153, 204, 0.3), 0 8px 12px rgba(0, 0, 0, 0.15); /* stronger glow on hover */
+  }
+
+  .qualification-icon {
+    @apply text-3xl;
+    color: #0099cc; /* neon-blue */
+  }
+
+  /* Approach Cards - Dark Variant z fioletową obwódką */
+  .approach-card-dark {
+    @apply rounded-xl border-2 shadow-md p-6 relative overflow-hidden transition-all duration-300;
+    border-color: rgba(
+      192,
+      132,
+      252,
+      0.3
+    ); /* neon-purple with low opacity for subtle glow */
+    background-color: rgba(0, 0, 0, 0.9); /* bg-modal - ciemne tło */
+    color: #fafafa; /* text-text-light */
+    box-shadow: 0 0 20px rgba(192, 132, 252, 0.15), 0 4px 6px rgba(0, 0, 0, 0.3); /* subtle purple glow + shadow */
+  }
+
+  .approach-card-dark:hover {
+    @apply shadow-lg;
+    transform: translateY(-4px);
+    border-color: rgba(192, 132, 252, 0.6); /* stronger border on hover */
+    box-shadow: 0 0 30px rgba(192, 132, 252, 0.3), 0 8px 12px rgba(0, 0, 0, 0.4); /* stronger glow on hover */
+  }
+
+  .approach-icon {
+    @apply text-3xl;
+    color: #c084fc; /* neon-purple */
   }
 }
 

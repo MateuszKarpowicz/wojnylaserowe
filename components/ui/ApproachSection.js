@@ -13,8 +13,8 @@ export default function ApproachSection() {
   return (
     <div className='space-y-12'>
       {/* Wyróżniony cytat */}
-      <div className='about-quote border-neon-blue'>
-        <p className='text-xl md:text-2xl leading-relaxed italic'>
+      <div className='approach-card-dark'>
+        <p className='text-xl md:text-2xl leading-relaxed italic text-text-light'>
           {approach.quote}
         </p>
       </div>
@@ -24,13 +24,22 @@ export default function ApproachSection() {
         {approach.points.map((point, index) => {
           const IconComponent = iconMap[point.icon] || FaUserMd;
           return (
-            <div key={index} className='about-card'>
-              <div className='flex flex-col items-center text-center'>
-                <IconComponent className='about-icon text-neon-purple' />
-                <h3 className='text-xl font-semibold text-text-dark mb-3'>
-                  {point.title}
-                </h3>
-                <p className='text-secondary leading-relaxed'>{point.text}</p>
+            <div key={index} className='approach-card-dark'>
+              <div className='flex gap-4'>
+                {/* Ikona */}
+                <div className='flex-shrink-0'>
+                  <IconComponent className='approach-icon' />
+                </div>
+
+                {/* Tekst */}
+                <div className='flex-1'>
+                  <h3 className='text-lg font-semibold text-text-light mb-2'>
+                    {point.title}
+                  </h3>
+                  <p className='text-sm text-text-light/80 leading-relaxed'>
+                    {point.text}
+                  </p>
+                </div>
               </div>
             </div>
           );

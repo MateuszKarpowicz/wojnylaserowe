@@ -14,14 +14,16 @@ export default function ONas() {
       <AboutHero />
 
       {/* KWALIFIKACJE */}
-      <section className='section-pad section-wrap bg-surface-light'>
-        <h2 className='text-3xl md:text-4xl font-display text-center mb-12'>
-          {qualifications.title}
-        </h2>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-          {qualifications.items.map((item, index) => (
-            <QualificationCard key={index} {...item} />
-          ))}
+      <section className='section-pad bg-bg-dark'>
+        <div className='section-wrap'>
+          <h2 className='text-3xl md:text-4xl font-display font-bold mb-12 text-center text-text-light'>
+            {qualifications.title}
+          </h2>
+          <div className='sections-grid-auto'>
+            {qualifications.items.map((item, index) => (
+              <QualificationCard key={index} {...item} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -34,7 +36,7 @@ export default function ONas() {
       </section>
 
       {/* MIEJSCE */}
-      <section className='section-pad section-wrap bg-surface-light'>
+      <section className='section-pad bg-bg-dark'>
         <LocationSection />
       </section>
 
@@ -42,7 +44,7 @@ export default function ONas() {
       <section className='section-pad section-wrap bg-surface text-center'>
         <h2 className='text-2xl md:text-3xl font-display mb-4'>{cta.title}</h2>
         <p className='text-secondary mb-8 max-w-2xl mx-auto'>{cta.text}</p>
-        <Link href={cta.href} className='btn-primary'>
+        <Link href={cta.href} className='btn-cta-blue'>
           {cta.button}
         </Link>
       </section>

@@ -1,6 +1,6 @@
 'use client';
+import { useOferta } from '@/components/context/OfertaContext';
 import FormCore from '@/components/forms/FormCore';
-import { useModal } from '@/components/hooks/useModal';
 import Modal from '@/components/overlay/Modal';
 import FormField from '@/components/ui/FormField';
 import contactFormData from '@/content/texts/contactform.json';
@@ -8,7 +8,7 @@ import offerSliderData from '@/content/texts/offerslider.json';
 import { useState } from 'react';
 
 export default function OfferSlider() {
-  const { isOpen, open, close } = useModal();
+  const { isOpen, close } = useOferta();
   const [selectedOption, setSelectedOption] = useState(null);
   const [error, setError] = useState(null);
 
@@ -27,7 +27,8 @@ export default function OfferSlider() {
       setSelectedOption(null);
       setError(null);
     } else {
-      open();
+      // Modal otwierany przez Header - tu tylko zamykamy
+      close();
     }
   };
 
@@ -62,21 +63,15 @@ export default function OfferSlider() {
 
   return (
     <>
-      {/* PRZYCISK OFERTA - na linii dolnej headera, zaczyna się od prawej strony, WYSOKI Z-INDEX */}
-      <div className='fixed top-[calc(4.5rem-1rem)] right-0 z-modal'>
-        <button onClick={toggleSlider} className='btn-offer'>
-          {offerSliderData.button.text}
-        </button>
-      </div>
-
-      {/* MODAL */}
+      {/* MODAL - przycisk jest teraz w Header */}
       <Modal
         isOpen={isOpen}
         onClose={toggleSlider}
-        className='max-w-md mx-auto'
-        overlayClassName='bg-black bg-opacity-50'
+        variant='fullscreen'
+        className='overflow-y-auto'
+        overlayClassName='bg-black/50'
       >
-        <div className='h-full flex flex-col bg-white rounded-lg shadow-2xl'>
+        <div className='h-full flex flex-col bg-surface rounded-lg shadow-2xl'>
           {/* HEADER */}
           <div className='bg-neon-blue text-white p-6 flex items-center justify-between rounded-t-lg'>
             <h2 className='text-xl font-bold'>{offerSliderData.button.text}</h2>

@@ -1,3 +1,4 @@
+import { OfertaProvider } from '@/components/context/OfertaContext';
 import Footer from '@/components/ui/Footer';
 import Header from '@/components/ui/Header';
 import OfferSlider from '@/components/ui/OfferSlider';
@@ -25,26 +26,28 @@ export default function RootLayout({ children }) {
         <link rel='preload' href='/images/logo/logo.svg' as='image' />
       </head>
       <body className='min-h-dvh bg-bg-light text-text-dark dark:bg-bg-dark dark:text-text-light'>
-        {/* Skip link */}
-        <a
-          href='#main'
-          className='sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-tooltip focus:px-4 focus:py-2 focus:bg-neon-blue focus:text-white focus:rounded'
-        >
-          Przejdź do treści
-        </a>
+        <OfertaProvider>
+          {/* Skip link */}
+          <a
+            href='#main'
+            className='sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-tooltip focus:px-4 focus:py-2 focus:bg-neon-blue focus:text-white focus:rounded'
+          >
+            Przejdź do treści
+          </a>
 
-        <Header />
+          <Header />
 
-        {/* Placeholder dla sticky header - zapobiega CLS */}
-        <div aria-hidden='true' className='h-header' />
+          {/* Placeholder dla sticky header - zapobiega CLS */}
+          <div aria-hidden='true' className='h-header' />
 
-        <OfferSlider />
+          <OfferSlider />
 
-        <main id='main' className='min-h-screen pb-20'>
-          {children}
-        </main>
+          <main id='main' className='min-h-screen pb-20'>
+            {children}
+          </main>
 
-        <Footer />
+          <Footer />
+        </OfertaProvider>
       </body>
     </html>
   );

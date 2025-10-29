@@ -1,7 +1,7 @@
 'use client';
-import BaseForm from '@/components/base/BaseForm';
-import BaseFormField from '@/components/base/BaseFormField';
+import FormCore from '@/components/forms/FormCore';
 import { useSecureFormSubmit } from '@/components/hooks';
+import FormField from '@/components/ui/FormField';
 import { contactFormSchema } from '@/lib/validation';
 import { useState } from 'react';
 
@@ -36,7 +36,7 @@ export default function ContactForm() {
         Skontaktuj się z nami
       </h2>
 
-      <BaseForm
+      <FormCore
         validationSchema={contactFormSchema}
         onSubmit={handleSubmit}
         submitText='Wyślij wiadomość'
@@ -45,7 +45,7 @@ export default function ContactForm() {
         {({ formData, handleInputChange, isLoading, fieldErrors }) => (
           <div className='space-y-6'>
             {/* Imię i nazwisko */}
-            <BaseFormField
+            <FormField
               type='text'
               name='name'
               label='Imię i nazwisko'
@@ -58,7 +58,7 @@ export default function ContactForm() {
             />
 
             {/* Email */}
-            <BaseFormField
+            <FormField
               type='email'
               name='email'
               label='Adres email'
@@ -71,7 +71,7 @@ export default function ContactForm() {
             />
 
             {/* Telefon */}
-            <BaseFormField
+            <FormField
               type='tel'
               name='phone'
               label='Numer telefonu'
@@ -83,7 +83,7 @@ export default function ContactForm() {
             />
 
             {/* Rodzaj usługi */}
-            <BaseFormField
+            <FormField
               type='select'
               name='service'
               label='Rodzaj usługi'
@@ -102,7 +102,7 @@ export default function ContactForm() {
             />
 
             {/* Opis */}
-            <BaseFormField
+            <FormField
               type='textarea'
               name='description'
               label='Opis'
@@ -115,7 +115,7 @@ export default function ContactForm() {
             />
 
             {/* Preferowane terminy */}
-            <BaseFormField
+            <FormField
               type='textarea'
               name='dates'
               label='Preferowane terminy'
@@ -127,7 +127,7 @@ export default function ContactForm() {
             />
 
             {/* Zdjęcia */}
-            <BaseFormField
+            <FormField
               type='file'
               name='photos'
               label='Zdjęcia (opcjonalne)'
@@ -146,7 +146,7 @@ export default function ContactForm() {
             )}
           </div>
         )}
-      </BaseForm>
+      </FormCore>
     </div>
   );
 }

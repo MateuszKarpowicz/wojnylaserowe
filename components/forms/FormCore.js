@@ -1,12 +1,12 @@
 /**
- * BaseForm - Komponent bazowy dla wszystkich formularzy
- * 
+ * FormCore - Komponent bazowy dla wszystkich formularzy
+ *
  * Eliminuje duplikację logiki formularza poprzez:
  * - Jednolitą obsługę stanów (loading, error, success)
  * - Spójne style pól formularza
  * - Elastyczne opcje konfiguracji
  * - Accessibility (aria, focus, validation)
- * 
+ *
  * @param {Object} initialData - Początkowe dane formularza
  * @param {Function} onSubmit - Funkcja wysyłania formularza
  * @param {Function} onValidation - Funkcja walidacji (opcjonalna)
@@ -17,16 +17,15 @@
 
 'use client';
 import { useState } from 'react';
-import { z } from 'zod';
 
-export default function BaseForm({ 
+export default function FormCore({
   initialData = {},
   onSubmit,
   validationSchema,
-  className = "",
+  className = '',
   children,
-  submitText = "Wyślij",
-  loadingText = "Wysyłanie...",
+  submitText = 'Wyślij',
+  loadingText = 'Wysyłanie...',
   ...props
 }) {
   const [formData, setFormData] = useState(initialData);
@@ -34,25 +33,25 @@ export default function BaseForm({
   const [error, setError] = useState(null);
   const [fieldErrors, setFieldErrors] = useState({});
 
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     const { name, value, type, files } = e.target;
-    
+
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'file' ? files : value
+      [name]: type === 'file' ? files : value,
     }));
-    
+
     // Clear errors when user starts typing
     if (error) setError(null);
     if (fieldErrors[name]) {
       setFieldErrors(prev => ({
         ...prev,
-        [name]: null
+        [name]: null,
       }));
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
@@ -77,7 +76,6 @@ export default function BaseForm({
       if (onSubmit) {
         await onSubmit(formData);
       }
-      
     } catch (err) {
       console.error('Error submitting form:', err);
       setError('Wystąpił błąd podczas wysyłania formularza');
@@ -87,29 +85,28 @@ export default function BaseForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className={`space-y-4 ${className}`} {...props}>
+    <form
+      onSubmit={handleSubmit}
+      className={`space-y-4 ${className}`}
+      {...props}
+    >
       {/* ERROR MESSAGE */}
       {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg">
+        <div className='bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg'>
           {error}
         </div>
       )}
 
       {/* POLA FORMULARZA */}
-      {children && typeof children === 'function' 
+      {children && typeof children === 'function'
         ? children({ formData, handleInputChange, isLoading, fieldErrors })
-        : children
-      }
+        : children}
 
       {/* PRZYCISK WYŚLIJ */}
-      <button
-        type="submit"
-        disabled={isLoading}
-        className="btn-section"
-      >
+      <button type='submit' disabled={isLoading} className='btn-section'>
         {isLoading ? (
           <>
-            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+            <div className='w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin'></div>
             {loadingText}
           </>
         ) : (

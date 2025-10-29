@@ -1,12 +1,12 @@
 /**
- * BaseFormField - Komponent bazowy dla pól formularza
- * 
+ * FormField - Komponent dla pól formularza
+ *
  * Eliminuje duplikację stylów pól formularza poprzez:
  * - Jednolite style dla wszystkich typów pól
  * - Spójną obsługę błędów
  * - Accessibility (aria, focus, validation)
  * - Elastyczne opcje konfiguracji
- * 
+ *
  * @param {string} type - Typ pola (text, email, tel, textarea, select, file)
  * @param {string} name - Nazwa pola
  * @param {string} label - Etykieta pola
@@ -24,7 +24,7 @@
 
 'use client';
 
-export default function BaseFormField({
+export default function FormField({
   type = 'text',
   name,
   label,
@@ -40,7 +40,7 @@ export default function BaseFormField({
 }) {
   const fieldId = `${name}-field`;
   const errorId = `${name}-error`;
-  
+
   const ariaProps = {
     id: fieldId,
     'aria-label': label,
@@ -48,18 +48,22 @@ export default function BaseFormField({
     'aria-invalid': !!error,
     'aria-describedby': error ? `${fieldId}-error` : undefined,
   };
-  
+
   const fieldClasses = [
     'w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-textDark focus:outline-none focus:border-neonBlue transition-colors',
     'disabled:opacity-50 disabled:cursor-not-allowed',
     error && 'border-red-500',
-    className
-  ].filter(Boolean).join(' ');
-  
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
+
   const labelClasses = [
     'block text-textDark text-sm font-semibold mb-2',
-    required && 'after:content-["*"] after:text-red-500 after:ml-1'
-  ].filter(Boolean).join(' ');
+    required && 'after:content-["*"] after:text-red-500 after:ml-1',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   const renderField = () => {
     switch (type) {
@@ -74,12 +78,12 @@ export default function BaseFormField({
             disabled={disabled}
             placeholder={placeholder}
             className={fieldClasses}
-            rows="4"
+            rows='4'
             {...ariaProps}
             {...props}
           />
         );
-        
+
       case 'select':
         return (
           <select
@@ -93,7 +97,7 @@ export default function BaseFormField({
             {...ariaProps}
             {...props}
           >
-            <option value="">{placeholder}</option>
+            <option value=''>{placeholder}</option>
             {options.map((option, index) => (
               <option key={index} value={option}>
                 {option}
@@ -101,24 +105,24 @@ export default function BaseFormField({
             ))}
           </select>
         );
-        
+
       case 'file':
         return (
           <input
-            type="file"
+            type='file'
             id={fieldId}
             name={name}
             onChange={onChange}
             required={required}
             disabled={disabled}
-            accept="image/*"
+            accept='image/*'
             multiple
             className={fieldClasses}
             {...ariaProps}
             {...props}
           />
         );
-        
+
       default:
         return (
           <input
@@ -139,18 +143,18 @@ export default function BaseFormField({
   };
 
   return (
-    <div className="space-y-2">
+    <div className='space-y-2'>
       {/* LABEL */}
       <label htmlFor={fieldId} className={labelClasses}>
         {label}
       </label>
-      
+
       {/* FIELD */}
       {renderField()}
-      
+
       {/* ERROR MESSAGE */}
       {error && (
-        <div id={errorId} className="text-red-600 text-sm mt-1" role="alert">
+        <div id={errorId} className='text-red-600 text-sm mt-1' role='alert'>
           {error}
         </div>
       )}

@@ -5,12 +5,7 @@ export default function AftercareSection() {
   const { aftercare } = removalPageData;
 
   return (
-    <div className='section-wrap'>
-      {/* Header nad zdjęciem */}
-      <h2 className='text-3xl md:text-4xl font-display font-bold mb-12 text-center text-text-light'>
-        {aftercare.title}
-      </h2>
-
+    <>
       <div className='mb-8'>
         <p className='text-text-light/90 leading-relaxed text-lg mb-6 max-w-3xl mx-auto text-center'>
           {aftercare.intro}
@@ -20,11 +15,7 @@ export default function AftercareSection() {
         </p>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mb-8'>
           {aftercare.points.map((point, index) => (
-            <CardWithIcon
-              key={index}
-              text={point.text}
-              borderColor='purple'
-            />
+            <CardWithIcon key={index} text={point.text} borderColor='purple' />
           ))}
         </div>
         <p className='text-text-light/80 leading-relaxed text-center max-w-3xl mx-auto mb-8'>
@@ -46,6 +37,6 @@ export default function AftercareSection() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

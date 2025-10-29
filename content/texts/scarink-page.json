@@ -1,0 +1,107 @@
+{
+  "hero": {
+    "title": "ScarINK – regeneracja i redukcja blizn Kraków",
+    "subtitle": "Naturalna regeneracja skóry i poprawa wyglądu blizn",
+    "intro": "Blizny pooperacyjne, potrądzikowe, po tatuażu czy innych urazach nie muszą być trwałym problemem.",
+    "intro2": "W Wojnach Laserowych w Krakowie oferuję profesjonalne zabiegi ScarINK – metodę, która stymuluje naturalne procesy naprawcze skóry i pomaga poprawić jej strukturę, elastyczność oraz koloryt.",
+    "intro3": "Zabiegi wykonuję z najwyższą precyzją i dbałością o bezpieczeństwo, opierając się na technice mikropunktury, która pobudza skórę do samoregeneracji.",
+    "image": "/images/scarink/hero.jpg"
+  },
+  "method": {
+    "title": "Na czym polega metoda ScarINK?",
+    "intro": "ScarINK to nowoczesna technika pracy ze skórą polegająca na mikropunkturze – czyli wykonywaniu bardzo drobnych, kontrolowanych nakłuć w obrębie blizny.",
+    "subtitle": "W wyniku tego procesu skóra zostaje pobudzona do produkcji kolagenu i elastyny, co poprawia jej strukturę i wygląd.",
+    "effects": [
+      {
+        "text": "gładsza"
+      },
+      {
+        "text": "mniej widoczna"
+      },
+      {
+        "text": "bardziej zbliżona kolorem do otaczającej skóry"
+      }
+    ],
+    "footer": "Metoda nie usuwa blizny całkowicie, ale znacznie poprawia jej estetykę i wygląd skóry. ScarINK może być również skutecznie łączony z innymi terapiami (np. masażem blizny lub terapią manualną), co często wzmacnia efekty, choć sam zabieg tego nie obejmuje."
+  },
+  "target": {
+    "title": "Dla kogo jest ScarINK?",
+    "quote": "Zabieg ScarINK rekomenduję osobom, które chcą poprawić wygląd skóry w przypadku:",
+    "points": [
+      {
+        "text": "blizn pooperacyjnych"
+      },
+      {
+        "text": "blizn potrądzikowych"
+      },
+      {
+        "text": "blizn po tatuażu lub urazach"
+      },
+      {
+        "text": "rozstępów"
+      },
+      {
+        "text": "nierówności skóry po wcześniejszych zabiegach"
+      }
+    ],
+    "footer": "Efekty zależą od rodzaju i wieku blizny oraz indywidualnych predyspozycji skóry. Zazwyczaj potrzeba kilku zabiegów w odstępach 4–6 tygodni, aby osiągnąć najlepsze rezultaty."
+  },
+  "process": {
+    "title": "Jak wygląda zabieg?",
+    "steps": [
+      {
+        "title": "Konsultacja i ocena skóry",
+        "text": "omawiamy rodzaj blizny, stan skóry i możliwe efekty"
+      },
+      {
+        "title": "Zabieg mikropunktury",
+        "text": "bardzo drobne nakłucia, które uruchamiają proces regeneracji"
+      },
+      {
+        "title": "Zakończenie i zalecenia",
+        "text": "omawiam pielęgnację pozabiegową, by przyspieszyć regenerację i wzmocnić efekt"
+      }
+    ],
+    "aftercare": {
+      "intro": "Po zabiegu skóra może być lekko zaczerwieniona lub delikatnie obrzęknięta – to naturalna reakcja.",
+      "subtitle": "Zalecam:",
+      "points": [
+        {
+          "icon": "☀️",
+          "text": "unikanie słońca i opalania przez 2–3 tygodnie"
+        },
+        {
+          "icon": "🧴",
+          "text": "stosowanie delikatnych kremów regenerujących"
+        },
+        {
+          "icon": "✋",
+          "text": "nie drapanie i nie zdrapywanie skóry w miejscu zabiegu"
+        }
+      ]
+    }
+  },
+  "whyChoose": {
+    "title": "Dlaczego warto wybrać Wojny Laserowe Kraków?",
+    "points": [
+      {
+        "text": "Od 2019 roku zajmuję się specjalistyczną pracą ze skórą – doświadczenie, precyzja i bezpieczeństwo to podstawa każdego zabiegu"
+      },
+      {
+        "text": "Pracuję wyłącznie na certyfikowanych urządzeniach i jednorazowych igłach"
+      },
+      {
+        "text": "Każdy zabieg poprzedzam indywidualną konsultacją, by dobrać odpowiedni plan działania"
+      },
+      {
+        "text": "Realne efekty i transparentne podejście – bez fałszywych obietnic, z pełnym szacunkiem do skóry"
+      }
+    ]
+  },
+  "cta": {
+    "title": "ScarINK Kraków – umów konsultację",
+    "text": "Zrób pierwszy krok do gładszej, zdrowszej skóry. Zapraszam na konsultację ScarINK, podczas której ocenię Twoją bliznę i zaproponuję indywidualny plan zabiegów.",
+    "button": "Umów konsultację ScarINK",
+    "href": "/kontakt"
+  }
+}

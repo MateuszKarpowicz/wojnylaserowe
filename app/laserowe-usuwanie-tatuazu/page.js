@@ -1,13 +1,13 @@
-import AftercareSection from '@/components/ui/AftercareSection';
+import AftercareSectionWithHeader from '@/components/ui/AftercareSectionWithHeader';
+import CTASection from '@/components/ui/CTASection';
 import CoolingSection from '@/components/ui/CoolingSection';
-import HowItWorksSection from '@/components/ui/HowItWorksSection';
+import HowItWorksSectionWithHeader from '@/components/ui/HowItWorksSectionWithHeader';
 import RemovalHero from '@/components/ui/RemovalHero';
-import WhyChooseSection from '@/components/ui/WhyChooseSection';
+import WhyChooseSectionWithHeader from '@/components/ui/WhyChooseSectionWithHeader';
 import removalPageData from '@/content/texts/removal-page.json';
-import Link from 'next/link';
 
 export default function LaseroweUsuwanieTatuazu() {
-  const { cta } = removalPageData;
+  const { howItWorks, cooling, aftercare, whyChoose, cta } = removalPageData;
 
   return (
     <main className='min-h-screen bg-bg-light text-text-dark'>
@@ -15,33 +15,32 @@ export default function LaseroweUsuwanieTatuazu() {
       <RemovalHero />
 
       {/* JAK DZIAŁA */}
-      <section className='section-pad bg-bg-dark'>
-        <HowItWorksSection />
-      </section>
+      <HowItWorksSectionWithHeader
+        data={{ howItWorks, title: howItWorks.title }}
+      />
 
       {/* CHŁODZENIE */}
-      <section className='section-pad section-wrap bg-surface'>
-        <CoolingSection />
-      </section>
+      <CoolingSection data={{ cooling }} />
 
       {/* PIELĘGNACJA */}
-      <section className='section-pad bg-bg-dark'>
-        <AftercareSection />
-      </section>
+      <AftercareSectionWithHeader
+        data={{ aftercare, title: aftercare.title }}
+      />
 
       {/* DLACZEGO WARTO */}
-      <section className='section-pad bg-bg-dark'>
-        <WhyChooseSection />
-      </section>
+      <WhyChooseSectionWithHeader
+        data={{ whyChoose, title: whyChoose.title }}
+      />
 
       {/* CTA */}
-      <section className='section-pad section-wrap bg-surface text-center'>
-        <h2 className='text-2xl md:text-3xl font-display mb-4'>{cta.title}</h2>
-        <p className='text-secondary mb-8 max-w-2xl mx-auto'>{cta.text}</p>
-        <Link href={cta.href} className='btn-cta-blue'>
-          {cta.button}
-        </Link>
-      </section>
+      <CTASection
+        title={cta.title}
+        text={cta.text}
+        href={cta.href}
+        button={cta.button}
+        variant='blue'
+        bgColor='surface'
+      />
     </main>
   );
 }

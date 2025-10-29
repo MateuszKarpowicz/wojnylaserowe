@@ -16,7 +16,7 @@ export default function EffectTile({ effect, index, onOpenModal }) {
           />
 
           {/* OVERLAY NA HOVER */}
-          <div className='absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center'>
+          <div className='absolute inset-0 bg-overlay opacity-0 group-hover:opacity-30 transition-all duration-300 flex items-center justify-center'>
             <div className='opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
               <div className='bg-surface bg-opacity-90 rounded-full p-3'>
                 <svg

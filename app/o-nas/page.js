@@ -1,12 +1,12 @@
 import AboutHero from '@/components/ui/AboutHero';
 import ApproachSection from '@/components/ui/ApproachSection';
+import CTASection from '@/components/ui/CTASection';
 import LocationSection from '@/components/ui/LocationSection';
-import QualificationCard from '@/components/ui/QualificationCard';
+import QualificationsSection from '@/components/ui/QualificationsSection';
 import aboutPageData from '@/content/texts/about-page.json';
-import Link from 'next/link';
 
 export default function ONas() {
-  const { qualifications, cta } = aboutPageData;
+  const { qualifications, approach, location, cta } = aboutPageData;
 
   return (
     <main className='min-h-screen bg-bg-light text-text-dark'>
@@ -14,40 +14,23 @@ export default function ONas() {
       <AboutHero />
 
       {/* KWALIFIKACJE */}
-      <section className='section-pad bg-bg-dark'>
-        <div className='section-wrap'>
-          <h2 className='text-3xl md:text-4xl font-display font-bold mb-12 text-center text-text-light'>
-            {qualifications.title}
-          </h2>
-          <div className='sections-grid-auto'>
-            {qualifications.items.map((item, index) => (
-              <QualificationCard key={index} {...item} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <QualificationsSection data={qualifications} />
 
       {/* PODEJŚCIE */}
-      <section className='section-pad section-wrap bg-surface'>
-        <h2 className='text-3xl md:text-4xl font-display text-center mb-12'>
-          {aboutPageData.approach.title}
-        </h2>
-        <ApproachSection />
-      </section>
+      <ApproachSection data={{ approach, title: approach.title }} />
 
       {/* MIEJSCE */}
-      <section className='section-pad bg-bg-dark'>
-        <LocationSection />
-      </section>
+      <LocationSection data={{ location }} />
 
       {/* CTA */}
-      <section className='section-pad section-wrap bg-surface text-center'>
-        <h2 className='text-2xl md:text-3xl font-display mb-4'>{cta.title}</h2>
-        <p className='text-secondary mb-8 max-w-2xl mx-auto'>{cta.text}</p>
-        <Link href={cta.href} className='btn-cta-blue'>
-          {cta.button}
-        </Link>
-      </section>
+      <CTASection
+        title={cta.title}
+        text={cta.text}
+        href={cta.href}
+        button={cta.button}
+        variant='blue'
+        bgColor='surface'
+      />
     </main>
   );
 }

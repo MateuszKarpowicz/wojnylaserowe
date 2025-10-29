@@ -31,8 +31,8 @@ export default function ContactForm() {
   }
 
   return (
-    <div className='bg-surface p-8 rounded-lg shadow-lg'>
-      <h2 className='text-2xl font-semibold text-text-dark mb-6'>
+    <div className='bg-surface p-8 md:p-12 rounded-xl shadow-lg border-2 border-neon-purple/30 hover:border-neon-purple/50 transition-all duration-300'>
+      <h2 className='text-2xl md:text-3xl font-display font-bold text-text-dark mb-8 text-center'>
         Skontaktuj się z nami
       </h2>
 
@@ -43,7 +43,7 @@ export default function ContactForm() {
         loadingText='Wysyłanie...'
       >
         {({ formData, handleInputChange, isLoading, fieldErrors }) => (
-          <div className='space-y-6'>
+          <div className='space-y-6 md:space-y-8'>
             {/* Imię i nazwisko */}
             <FormField
               type='text'
@@ -55,6 +55,7 @@ export default function ContactForm() {
               placeholder='Wprowadź swoje imię i nazwisko'
               error={fieldErrors?.name}
               disabled={isLoading}
+              className='border-neon-purple/50 focus:border-neon-purple focus:ring-2 focus:ring-neon-purple/20'
             />
 
             {/* Email */}
@@ -68,6 +69,7 @@ export default function ContactForm() {
               placeholder='twoj@email.com'
               error={fieldErrors?.email}
               disabled={isLoading}
+              className='border-neon-purple/50 focus:border-neon-purple focus:ring-2 focus:ring-neon-purple/20'
             />
 
             {/* Telefon */}
@@ -80,6 +82,7 @@ export default function ContactForm() {
               placeholder='+48 123 456 789'
               error={fieldErrors?.phone}
               disabled={isLoading}
+              className='border-neon-purple/50 focus:border-neon-purple focus:ring-2 focus:ring-neon-purple/20'
             />
 
             {/* Rodzaj usługi */}
@@ -99,6 +102,7 @@ export default function ContactForm() {
               ]}
               error={fieldErrors?.service}
               disabled={isLoading}
+              className='border-neon-purple/50 focus:border-neon-purple focus:ring-2 focus:ring-neon-purple/20'
             />
 
             {/* Opis */}
@@ -112,6 +116,7 @@ export default function ContactForm() {
               placeholder='Opisz szczegółowo czego potrzebujesz...'
               error={fieldErrors?.description}
               disabled={isLoading}
+              className='border-neon-purple/50 focus:border-neon-purple focus:ring-2 focus:ring-neon-purple/20'
             />
 
             {/* Preferowane terminy */}
@@ -124,6 +129,7 @@ export default function ContactForm() {
               placeholder='Kiedy chciałbyś się spotkać? (opcjonalne)'
               error={fieldErrors?.dates}
               disabled={isLoading}
+              className='border-neon-purple/50 focus:border-neon-purple focus:ring-2 focus:ring-neon-purple/20'
             />
 
             {/* Zdjęcia */}
@@ -133,14 +139,15 @@ export default function ContactForm() {
               label='Zdjęcia (opcjonalne)'
               onChange={handleInputChange}
               disabled={isLoading}
+              className='border-neon-purple/50 focus:border-neon-purple focus:ring-2 focus:ring-neon-purple/20'
             />
-            <p className='text-sm text-muted'>
+            <p className='text-sm text-secondary'>
               Możesz załączyć maksymalnie 5 zdjęć w formacie JPG, PNG lub WebP
             </p>
 
             {/* Error message */}
             {submitError && (
-              <div className='bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg'>
+              <div className='bg-red-100 border-2 border-red-400 text-red-700 px-4 py-3 rounded-lg'>
                 {submitError}
               </div>
             )}

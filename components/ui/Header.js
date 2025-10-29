@@ -98,12 +98,36 @@ export default function Header() {
             Laserowe usuwanie tatuażu
           </Link>
           <Link
-            href='/kontakt#oferta'
+            href='/scarink-regeneracja-blizn'
             onClick={() => setIsMenuOpen(false)}
             className='text-text-light hover:text-neon-blue transition-colors duration-300 py-3 px-4 focus-ring rounded-lg border border-transparent hover:border-neon-blue/30'
             role='menuitem'
           >
-            Oferta
+            ScarINK – regeneracja blizn
+          </Link>
+          <Link
+            href='/efekty'
+            onClick={() => setIsMenuOpen(false)}
+            className='text-text-light hover:text-neon-blue transition-colors duration-300 py-3 px-4 focus-ring rounded-lg border border-transparent hover:border-neon-blue/30'
+            role='menuitem'
+          >
+            Efekty
+          </Link>
+          <Link
+            href='/faq'
+            onClick={() => setIsMenuOpen(false)}
+            className='text-text-light hover:text-neon-blue transition-colors duration-300 py-3 px-4 focus-ring rounded-lg border border-transparent hover:border-neon-blue/30'
+            role='menuitem'
+          >
+            FAQ
+          </Link>
+          <Link
+            href='/kontakt'
+            onClick={() => setIsMenuOpen(false)}
+            className='text-text-light hover:text-neon-blue transition-colors duration-300 py-3 px-4 focus-ring rounded-lg border border-transparent hover:border-neon-blue/30'
+            role='menuitem'
+          >
+            Kontakt
           </Link>
         </nav>
       </Modal>

@@ -115,7 +115,13 @@
   }
 
   /* Universal Card Components - z neon ramkami */
-  /* Karta z niebieską ramką (używana wszędzie) */
+  /*
+   * REGUŁY:
+   * - Jasne tło (bg-surface) → ciemny kafelek + niebieski neon
+   * - Ciemne tło (bg-bg-dark) → biały kafelek + fioletowy neon
+   */
+
+  /* Karta z niebieską ramką - dla JASNEGO tła (karta CIEMNA) */
   .card-border-blue {
     @apply rounded-xl border-2 shadow-md p-6 relative overflow-hidden transition-all duration-300;
     border-color: rgba(
@@ -124,18 +130,19 @@
       204,
       0.3
     ); /* neon-blue with low opacity for subtle glow */
-    background-color: #ffffff; /* bg-surface */
-    box-shadow: 0 0 20px rgba(0, 153, 204, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1); /* subtle neon glow + shadow */
+    background-color: rgba(0, 0, 0, 0.9); /* bg-modal - CIEMNE tło karty */
+    color: #fafafa; /* text-text-light */
+    box-shadow: 0 0 20px rgba(0, 153, 204, 0.15), 0 4px 6px rgba(0, 0, 0, 0.3); /* subtle neon glow + shadow */
   }
 
   .card-border-blue:hover {
     @apply shadow-lg;
     transform: translateY(-4px);
     border-color: rgba(0, 153, 204, 0.6); /* stronger border on hover */
-    box-shadow: 0 0 30px rgba(0, 153, 204, 0.3), 0 8px 12px rgba(0, 0, 0, 0.15); /* stronger glow on hover */
+    box-shadow: 0 0 30px rgba(0, 153, 204, 0.3), 0 8px 12px rgba(0, 0, 0, 0.4); /* stronger glow on hover */
   }
 
-  /* Karta z fioletową ramką (używana wszędzie) */
+  /* Karta z fioletową ramką - dla CIEMNEGO tła (karta BIAŁA) */
   .card-border-purple {
     @apply rounded-xl border-2 shadow-md p-6 relative overflow-hidden transition-all duration-300;
     border-color: rgba(
@@ -144,7 +151,7 @@
       252,
       0.3
     ); /* neon-purple with low opacity for subtle glow */
-    background-color: #ffffff; /* bg-surface */
+    background-color: #ffffff; /* bg-surface - BIAŁE tło karty */
     box-shadow: 0 0 20px rgba(192, 132, 252, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1); /* subtle purple glow + shadow */
   }
 

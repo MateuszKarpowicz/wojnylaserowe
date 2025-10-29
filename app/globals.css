@@ -114,8 +114,9 @@
     color: #0099cc; /* neon-blue */
   }
 
-  /* Qualification Cards - Dark Variant (Variant E) */
-  .qualification-card-dark {
+  /* Universal Card Components - z neon ramkami */
+  /* Karta z niebieską ramką (używana wszędzie) */
+  .card-border-blue {
     @apply rounded-xl border-2 shadow-md p-6 relative overflow-hidden transition-all duration-300;
     border-color: rgba(
       0,
@@ -127,19 +128,35 @@
     box-shadow: 0 0 20px rgba(0, 153, 204, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1); /* subtle neon glow + shadow */
   }
 
-  .qualification-card-dark:hover {
+  .card-border-blue:hover {
     @apply shadow-lg;
     transform: translateY(-4px);
     border-color: rgba(0, 153, 204, 0.6); /* stronger border on hover */
     box-shadow: 0 0 30px rgba(0, 153, 204, 0.3), 0 8px 12px rgba(0, 0, 0, 0.15); /* stronger glow on hover */
   }
 
-  .qualification-icon {
-    @apply text-3xl;
-    color: #0099cc; /* neon-blue */
+  /* Karta z fioletową ramką (używana wszędzie) */
+  .card-border-purple {
+    @apply rounded-xl border-2 shadow-md p-6 relative overflow-hidden transition-all duration-300;
+    border-color: rgba(
+      192,
+      132,
+      252,
+      0.3
+    ); /* neon-purple with low opacity for subtle glow */
+    background-color: #ffffff; /* bg-surface */
+    box-shadow: 0 0 20px rgba(192, 132, 252, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1); /* subtle purple glow + shadow */
   }
 
-  /* Approach Cards - Dark Variant z fioletową obwódką */
+  .card-border-purple:hover {
+    @apply shadow-lg;
+    transform: translateY(-4px);
+    border-color: rgba(192, 132, 252, 0.6); /* stronger border on hover */
+    box-shadow: 0 0 30px rgba(192, 132, 252, 0.3),
+      0 8px 12px rgba(0, 0, 0, 0.15); /* stronger glow on hover */
+  }
+
+  /* Approach Cards - Dark Variant z fioletową obwódką (ciemne tło) */
   .approach-card-dark {
     @apply rounded-xl border-2 shadow-md p-6 relative overflow-hidden transition-all duration-300;
     border-color: rgba(
@@ -158,6 +175,11 @@
     transform: translateY(-4px);
     border-color: rgba(192, 132, 252, 0.6); /* stronger border on hover */
     box-shadow: 0 0 30px rgba(192, 132, 252, 0.3), 0 8px 12px rgba(0, 0, 0, 0.4); /* stronger glow on hover */
+  }
+
+  .qualification-icon {
+    @apply text-3xl;
+    color: #0099cc; /* neon-blue */
   }
 
   .approach-icon {

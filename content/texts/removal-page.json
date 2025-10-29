@@ -1,0 +1,98 @@
+{
+  "hero": {
+    "title": "Usuwanie tatuażu laserem – Kraków",
+    "subtitle": "Skutecznie, bezpiecznie i profesjonalnie – od 2019 roku",
+    "intro": "Niechciany tatuaż nie musi zostać z Tobą na zawsze.",
+    "intro2": "W Wojnach Laserowe specjalizuję się w laserowym usuwaniu tatuaży w Krakowie od 2019 roku.",
+    "intro3": "Dzięki doświadczeniu i pracy na nowoczesnym laserze pikosekundowym, pomagam bezpiecznie pozbyć się niechcianych wzorów – bez blizn i bez nadmiernego bólu.",
+    "intro4": "Każdy zabieg wykonuję z pełnym skupieniem na bezpieczeństwie, higienie i komforcie klienta.",
+    "intro5": "Dodatkowo, podczas zabiegu korzystam z chłodziarki do skóry, która znacznie zmniejsza dyskomfort, zaczerwienienie i obrzęk.",
+    "image": "/images/removal/hero.jpg"
+  },
+  "howItWorks": {
+    "title": "Jak działa laserowe usuwanie tatuażu?",
+    "intro": "Laser pikosekundowy emituje ultrakrótkie impulsy światła, które rozbijają pigment tatuażu na mikroskopijne cząsteczki. Organizm stopniowo usuwa je poprzez układ limfatyczny.",
+    "subtitle": "To jedna z najbezpieczniejszych i najskuteczniejszych metod na świecie, która:",
+    "points": [
+      {
+        "text": "działa precyzyjnie tylko w miejscu pigmentu, nie naruszając zdrowej skóry"
+      },
+      {
+        "text": "usuwa zarówno czarne, jak i kolorowe tatuaże"
+      },
+      {
+        "text": "nie pozostawia blizn"
+      },
+      {
+        "text": "pozwala na szybki powrót do codziennych aktywności"
+      }
+    ],
+    "footer": "W zależności od wielkości, koloru i głębokości tatuażu, potrzeba zazwyczaj od 2 do 8 zabiegów wykonywanych w odstępach 5–8 tygodni.",
+    "image": "/images/removal/laser.jpg"
+  },
+  "cooling": {
+    "title": "Komfort dzięki chłodzeniu skóry",
+    "intro": "Podczas każdego zabiegu stosuję chłodziarkę do skóry, która znacząco obniża temperaturę w miejscu działania lasera.",
+    "subtitle": "Dzięki temu:",
+    "points": [
+      {
+        "text": "zabieg jest dużo mniej bolesny"
+      },
+      {
+        "text": "minimalizowane jest ryzyko podrażnień"
+      },
+      {
+        "text": "proces gojenia przebiega szybciej i łagodniej"
+      }
+    ],
+    "footer": "To prosta, ale ogromnie skuteczna różnica, którą doceniają wszyscy moi klienci.",
+    "image": "/images/removal/cooling.jpg"
+  },
+  "aftercare": {
+    "title": "Regeneracja i pielęgnacja po zabiegu",
+    "intro": "Po sesji skóra może być lekko zaczerwieniona lub opuchnięta – to całkowicie normalne.",
+    "subtitle": "Zalecam:",
+    "points": [
+      {
+        "text": "unikanie słońca i solarium przez minimum 4 tygodnie"
+      },
+      {
+        "text": "delikatne natłuszczanie skóry"
+      },
+      {
+        "text": "nie zdrapywanie strupków – skóra potrzebuje czasu, by się odbudować"
+      }
+    ],
+    "footer": "Każdy klient otrzymuje spersonalizowane zalecenia pielęgnacyjne dopasowane do typu skóry i stopnia pigmentacji.",
+    "image": "/images/removal/aftercare.jpg"
+  },
+  "whyChoose": {
+    "title": "Dlaczego warto wybrać Wojny Laserowe Kraków?",
+    "points": [
+      {
+        "text": "Usuwam tatuaże od 2019 roku – setki udanych zabiegów i zadowolonych klientów"
+      },
+      {
+        "text": "Pracuję na laserze pikosekundowym – jednej z najskuteczniejszych technologii na rynku"
+      },
+      {
+        "text": "Używam profesjonalnej chłodziarki do skóry, by zminimalizować ból i obrzęk"
+      },
+      {
+        "text": "Zachowuję pełną sterylność i indywidualne podejście"
+      },
+      {
+        "text": "Przed każdym zabiegiem przeprowadzam konsultację i analizę skóry"
+      },
+      {
+        "text": "Realne efekty bez obiecywania cudów – tylko sprawdzone metody i uczciwe podejście"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Usuwanie tatuażu Kraków – umów konsultację",
+    "text": "Zrób pierwszy krok do czystej skóry. Umów się na bezpłatną konsultację, podczas której ocenię Twój tatuaż, zaproponuję plan zabiegów i odpowiem na wszystkie pytania.",
+    "button": "Umów konsultację",
+    "href": "/kontakt"
+  }
+}

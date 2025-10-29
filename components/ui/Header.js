@@ -90,6 +90,14 @@ export default function Header() {
             O nas
           </Link>
           <Link
+            href='/laserowe-usuwanie-tatuazu'
+            onClick={() => setIsMenuOpen(false)}
+            className='text-text-light hover:text-neon-blue transition-colors duration-300 py-3 px-4 focus-ring rounded-lg border border-transparent hover:border-neon-blue/30'
+            role='menuitem'
+          >
+            Laserowe usuwanie tatuażu
+          </Link>
+          <Link
             href='/kontakt#oferta'
             onClick={() => setIsMenuOpen(false)}
             className='text-text-light hover:text-neon-blue transition-colors duration-300 py-3 px-4 focus-ring rounded-lg border border-transparent hover:border-neon-blue/30'

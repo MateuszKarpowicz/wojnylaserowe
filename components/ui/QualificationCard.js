@@ -18,12 +18,12 @@ export default function QualificationCard({ icon, title, description }) {
   const IconComponent = iconMap[icon] || FaCertificate;
 
   return (
-    <div className='qualification-card-dark'>
+    <div className='card-border-purple'>
       {/* Content */}
       <div className='flex gap-4'>
         {/* Ikona */}
         <div className='flex-shrink-0'>
-          <IconComponent className='qualification-icon' />
+          <IconComponent className='qualification-icon text-neon-purple' />
         </div>
 
         {/* Tekst */}

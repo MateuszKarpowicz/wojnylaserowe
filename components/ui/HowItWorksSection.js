@@ -1,9 +1,10 @@
 import CardWithIcon from '@/components/ui/CardWithIcon';
-import removalPageData from '@/content/texts/removal-page.json';
 
-export default function HowItWorksSection() {
-  const { howItWorks } = removalPageData;
-
+/**
+ * Sekcja "Jak działa"
+ * @param {Object} howItWorks - Dane z intro, subtitle, points, footer
+ */
+export default function HowItWorksSection({ howItWorks }) {
   return (
     <>
       <div className='mb-8'>

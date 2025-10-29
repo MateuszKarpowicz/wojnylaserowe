@@ -73,11 +73,14 @@ export default function OfferSlider() {
         className='bg-modal shadow-2xl'
         closeOnOverlayClick={true}
       >
-        <div className='h-full flex flex-col bg-modal'>
+        <div
+          className='h-full flex flex-col bg-modal'
+          onClick={e => e.stopPropagation()}
+        >
           {/* OPCJE */}
           {!selectedOption && (
             <div className='flex-1 p-6 overflow-y-auto'>
-              <h3 className='text-lg font-semibold text-text-light mb-6 font-display'>
+              <h3 className='text-lg font-semibold text-text-light mb-6'>
                 Wybierz rodzaj usługi:
               </h3>
               <div className='space-y-4'>

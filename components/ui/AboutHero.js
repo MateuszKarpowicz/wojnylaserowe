@@ -7,7 +7,7 @@ export default function AboutHero() {
     <section className='bg-surface pt-0 pb-10 md:pb-14'>
       <div className='section-wrap'>
         {/* Nagłówek nad zdjęciem */}
-        <h1 className='text-4xl md:text-5xl font-display font-bold text-text-dark mb-12 text-center hero-title-offset'>
+        <h1 className='text-hero text-text-dark mb-12 text-center hero-title-offset'>
           {hero.title}
         </h1>
 

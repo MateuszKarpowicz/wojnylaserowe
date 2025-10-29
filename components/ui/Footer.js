@@ -1,3 +1,4 @@
+import contactPageData from '@/content/texts/contact-page.json';
 import { FaFacebook, FaInstagram, FaPhone } from 'react-icons/fa';
 
 function IconLink({ href, label, icon: Icon, ariaLabel }) {
@@ -16,6 +17,9 @@ function IconLink({ href, label, icon: Icon, ariaLabel }) {
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const phoneNumber =
+    contactPageData.contactInfo?.phone?.number || '+48 123 456 789';
+  const phoneHref = `tel:${phoneNumber.replace(/\s/g, '')}`;
 
   return (
     <footer
@@ -35,7 +39,7 @@ export default function Footer() {
             icon={FaInstagram}
           />
           <IconLink
-            href='tel:+48XXXXXXXXX'
+            href={phoneHref}
             label='Zadzwoń'
             icon={FaPhone}
             ariaLabel='Zadzwoń do nas'

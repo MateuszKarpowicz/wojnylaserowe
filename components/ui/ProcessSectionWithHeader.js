@@ -8,9 +8,7 @@ export default function ProcessSectionWithHeader({ data }) {
   return (
     <section className='section-pad bg-bg-dark'>
       <div className='section-wrap'>
-        <h2 className='text-3xl md:text-4xl font-display font-bold mb-12 text-center text-text-light'>
-          {data.title}
-        </h2>
+        <h2 className='section-title-light'>{data.title}</h2>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mb-8'>
           {process.steps.map((step, index) => (
             <div key={index} className='card-border-purple'>

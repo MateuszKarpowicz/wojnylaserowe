@@ -1,4 +1,4 @@
-import CardWithIcon from '@/components/ui/CardWithIcon';
+import WhyChooseSection from '@/components/ui/WhyChooseSection';
 
 /**
  * Sekcja "Dlaczego warto" z nagłówkiem i wrapperem
@@ -10,14 +10,8 @@ export default function WhyChooseSectionWithHeader({ data }) {
   return (
     <section className='section-pad bg-surface'>
       <div className='section-wrap'>
-        <h2 className='text-3xl md:text-4xl font-display font-bold mb-12 text-center text-text-dark'>
-          {data.title}
-        </h2>
-        <div className='sections-grid-auto'>
-          {whyChoose.points.map((point, index) => (
-            <CardWithIcon key={index} text={point.text} borderColor='blue' />
-          ))}
-        </div>
+        <h2 className='section-title-dark'>{data.title}</h2>
+        <WhyChooseSection points={whyChoose.points} />
       </div>
     </section>
   );

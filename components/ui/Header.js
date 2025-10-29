@@ -27,7 +27,7 @@ export default function Header() {
         {/* Logo - NA ŚRODKU */}
         <Link
           href='/'
-          className='flex items-center z-10 focus:outline-none focus:ring-2 focus:ring-neon-blue focus:ring-offset-2 rounded'
+          className='flex items-center relative z-header focus:outline-none focus:ring-2 focus:ring-neon-blue focus:ring-offset-2 rounded'
           aria-label='Strona główna - Wojny Laserowe'
         >
           <img
@@ -81,7 +81,10 @@ export default function Header() {
         closeOnOverlayClick={true}
         ariaLabelledBy='mobile-menu-title'
       >
-        <div className='h-full flex flex-col bg-modal'>
+        <div
+          className='h-full flex flex-col bg-modal'
+          onClick={e => e.stopPropagation()}
+        >
           <div className='flex-1 p-6 overflow-y-auto'>
             <h3
               id='mobile-menu-title'

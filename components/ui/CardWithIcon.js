@@ -13,21 +13,8 @@ export default function CardWithIcon({
   text,
   borderColor = 'blue',
 }) {
-  // Domyślna ikona to checkmark
-  let IconComponent = FaCheckCircle;
-
-  // Jeśli icon jest stringiem, próbuj użyć jako ikony z react-icons
-  if (typeof icon === 'string') {
-    try {
-      // Dynamiczny import ikony - wymaga listy dostępnych ikon
-      // Na razie używamy domyślnej ikony
-      IconComponent = FaCheckCircle;
-    } catch {
-      IconComponent = FaCheckCircle;
-    }
-  } else if (icon) {
-    IconComponent = icon;
-  }
+  // Domyślna ikona to checkmark, jeśli przekazano komponent ikony - użyj go
+  const IconComponent = icon || FaCheckCircle;
 
   const borderClass =
     borderColor === 'purple' ? 'card-border-purple' : 'card-border-blue';

@@ -1,9 +1,10 @@
 import CardWithIcon from '@/components/ui/CardWithIcon';
-import removalPageData from '@/content/texts/removal-page.json';
 
-export default function AftercareSection() {
-  const { aftercare } = removalPageData;
-
+/**
+ * Sekcja pielęgnacji
+ * @param {Object} aftercare - Dane z intro, subtitle, points, footer
+ */
+export default function AftercareSection({ aftercare }) {
   return (
     <>
       <div className='mb-8'>

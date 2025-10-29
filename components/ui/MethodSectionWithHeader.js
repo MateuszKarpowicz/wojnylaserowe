@@ -8,9 +8,7 @@ export default function MethodSectionWithHeader({ data }) {
   return (
     <section className='section-pad bg-bg-dark'>
       <div className='section-wrap'>
-        <h2 className='text-3xl md:text-4xl font-display font-bold mb-12 text-center text-text-light'>
-          {data.title}
-        </h2>
+        <h2 className='section-title-light'>{data.title}</h2>
         <div className='mb-8'>
           <p className='text-text-light/90 leading-relaxed text-lg mb-6 max-w-3xl mx-auto text-center'>
             {method.intro}

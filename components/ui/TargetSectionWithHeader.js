@@ -8,9 +8,7 @@ export default function TargetSectionWithHeader({ data }) {
   return (
     <section className='section-pad bg-surface'>
       <div className='section-wrap'>
-        <h2 className='text-3xl md:text-4xl font-display font-bold text-center mb-12 text-text-dark'>
-          {data.title}
-        </h2>
+        <h2 className='section-title-dark'>{data.title}</h2>
         <div className='space-y-12'>
           <div className='card-border-blue'>
             <p className='text-xl md:text-2xl leading-relaxed italic text-text-light'>

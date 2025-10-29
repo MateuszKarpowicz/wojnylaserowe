@@ -10,9 +10,7 @@ export default function ContactInfoSection({ data }) {
   return (
     <section className='section-pad bg-surface'>
       <div className='section-wrap'>
-        <h2 className='text-3xl md:text-4xl font-display font-bold mb-12 text-center text-text-dark'>
-          {data.title}
-        </h2>
+        <h2 className='section-title-dark'>{data.title}</h2>
 
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
           {/* ADRES I GODZINY */}

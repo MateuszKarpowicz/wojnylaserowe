@@ -8,9 +8,7 @@ export default function StagesSection({ data }) {
   return (
     <section id='etapy-usuwania' className='section-pad bg-surface'>
       <div className='section-wrap'>
-        <h2 className='text-3xl md:text-4xl font-display font-bold mb-12 text-center text-text-dark'>
-          {stages.title}
-        </h2>
+        <h2 className='section-title-dark'>{stages.title}</h2>
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
           {stages.items.map(stage => (

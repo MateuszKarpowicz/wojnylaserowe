@@ -11,9 +11,7 @@ export default function CoolingSection({ data }) {
     <section className='section-pad bg-surface'>
       <div className='section-wrap'>
         {/* Header nad zdjęciem */}
-        <h2 className='text-3xl md:text-4xl font-display font-bold mb-12 text-center text-text-dark'>
-          {cooling.title}
-        </h2>
+        <h2 className='section-title-dark'>{cooling.title}</h2>
 
         <div className='md:grid md:grid-cols-2 gap-8 items-center'>
           {/* Zdjęcie - na mobile pierwsze */}

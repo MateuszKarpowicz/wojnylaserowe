@@ -40,7 +40,7 @@ export default function RootLayout({ children }) {
 
         <OfferSlider />
 
-        <main id='main' className='min-h-screen'>
+        <main id='main' className='min-h-screen pb-20'>
           {children}
         </main>
 

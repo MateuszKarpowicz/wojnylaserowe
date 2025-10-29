@@ -8,7 +8,7 @@ function IconLink({ href, label, icon: Icon, ariaLabel }) {
       className='text-text-light hover:text-neon-blue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neon-blue focus:ring-offset-2 rounded p-2'
       rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
     >
-      <Icon className='text-2xl' />
+      <Icon className='text-3xl' />
       <span className='sr-only'>{label}</span>
     </a>
   );
@@ -19,15 +19,11 @@ export default function Footer() {
 
   return (
     <footer
-      className='border-t border-neon-blue/20 mt-10 bg-black/95 shadow-glow'
+      className='fixed bottom-0 left-0 right-0 z-header border-t border-neon-blue/20 bg-black/95 shadow-glow'
       role='contentinfo'
     >
-      <div className='container mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4'>
-        <p className='text-sm text-text-light opacity-70'>
-          © {currentYear} Wojny Laserowe. Wszelkie prawa zastrzeżone.
-        </p>
-
-        <div className='flex items-center gap-4'>
+      <div className='container mx-auto px-4 py-0.5 flex flex-col items-center gap-0.5'>
+        <div className='flex items-center gap-10'>
           <IconLink
             href='https://facebook.com'
             label='Facebook'
@@ -45,6 +41,10 @@ export default function Footer() {
             ariaLabel='Zadzwoń do nas'
           />
         </div>
+
+        <p className='text-[0.6rem] text-text-light opacity-70'>
+          © {currentYear} Wojny Laserowe. Wszelkie prawa zastrzeżone.
+        </p>
       </div>
     </footer>
   );

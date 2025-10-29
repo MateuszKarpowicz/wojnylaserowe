@@ -24,6 +24,8 @@ module.exports = {
         'bg-surface-light': '#F5F5F5', // dla bg-gray-50
         'border-border': '#E5E5E5', // dla border-gray-300
         'border-border-light': '#F3F3F3', // dla border-gray-200
+        'border-dark-input': '#4A4A4A', // border dla input-dark (ciemne tło)
+        'bg-input-dark': '#1A1A1A', // tło dla input-dark (ciemne tło)
 
         // Status
         error: '#E74C3C',

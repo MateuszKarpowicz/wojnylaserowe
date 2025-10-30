@@ -2,6 +2,7 @@
 import { getCsrfToken, verifyCsrfToken } from '@/lib/csrf';
 import { contactFormSchema } from '@/lib/validation';
 import { NextResponse } from 'next/server';
+import { logger } from '@/lib/logger';
 
 export async function POST(request) {
   try {
@@ -55,8 +56,8 @@ export async function POST(request) {
     // TODO: Send email notification
     // await sendEmailNotification(sanitizedData);
 
-    // TODO: Log the submission
-    console.log('Contact form submitted:', {
+    // TODO: Log the submission (wyciszone w produkcji)
+    logger.log('Contact form submitted:', {
       timestamp: new Date().toISOString(),
       ip: request.ip || request.headers.get('x-forwarded-for'),
       userAgent: request.headers.get('user-agent'),
@@ -72,7 +73,7 @@ export async function POST(request) {
       },
     });
   } catch (error) {
-    console.error('Contact form error:', error);
+    logger.error('Contact form error:', error);
 
     return NextResponse.json(
       {
@@ -94,7 +95,7 @@ export async function GET() {
       csrfToken: token,
     });
   } catch (error) {
-    console.error('CSRF token generation error:', error);
+    logger.error('CSRF token generation error:', error);
 
     return NextResponse.json(
       {

@@ -6,6 +6,7 @@ import Modal from '@/components/overlay/Modal';
 import FormField from '@/components/ui/FormField';
 import contactFormData from '@/content/texts/contactform.json';
 import offerSliderData from '@/content/texts/offerslider.json';
+import { logger } from '@/lib/logger';
 
 export default function OfferSlider() {
   const { isOpen, close } = useOferta();
@@ -36,16 +37,16 @@ export default function OfferSlider() {
       // Use async simulator instead of direct setTimeout
       await new Promise(resolve => setTimeout(resolve, 1500));
 
-      console.log('Formularz z rozsuwaka wysłany:', formData);
+      logger.log('Formularz z rozsuwaka wysłany:', formData);
 
       // Close slider after successful submission
       close();
       reset();
 
       // Show success message (could be a toast notification)
-      console.log(offerSliderData.success);
+      logger.log(offerSliderData.success);
     } catch (err) {
-      console.error('Error submitting offer form:', err);
+      logger.error('Error submitting offer form:', err);
       throw new Error(offerSliderData.error);
     }
   };

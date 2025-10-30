@@ -1,0 +1,16 @@
+node_modules/
+.git/
+Dockerfile
+.dockerignore
+Docker*
+docker/
+docker-compose*.yml
+k8s/
+helm/
+monitoring/
+performance/
+scripts/
+backup/
+security/
+RAPORT_NAPRAW_2025.md
+DIAGNOZA_HAMBURGER.md

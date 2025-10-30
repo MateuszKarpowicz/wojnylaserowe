@@ -54,7 +54,7 @@ const nextConfig = {
             value: 'max-age=31536000; includeSubDomains; preload',
           },
           {
-            key: 'Content-Security-Policy',
+            key: 'Content-Security-Policy-Report-Only',
             value:
               "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none';",
           },

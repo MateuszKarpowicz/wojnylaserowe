@@ -47,8 +47,7 @@ export default function RootLayout({ children }) {
             <ErrorBoundary>
               <main
                 id='main'
-                className='min-h-screen pt-header overflow-x-hidden'
-                style={{ paddingBottom: '4rem' }}
+                className='min-h-[100dvh] pt-header pb-16 overflow-x-hidden'
               >
                 {children}
               </main>

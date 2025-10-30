@@ -1,6 +1,7 @@
 // Custom hook for CSRF token management
 'use client';
 import { useCallback, useEffect, useState } from 'react';
+import { logger } from '@/lib/logger';
 
 export function useCsrfToken() {
   const [csrfToken, setCsrfToken] = useState(null);
@@ -32,7 +33,7 @@ export function useCsrfToken() {
         throw new Error(data.message || 'Failed to get CSRF token');
       }
     } catch (err) {
-      console.error('CSRF token fetch error:', err);
+      logger.error('CSRF token fetch error:', err);
       setError(err.message);
     } finally {
       setIsLoading(false);
@@ -98,7 +99,7 @@ export function useSecureFormSubmit() {
 
         return { success: true, data: result.data };
       } catch (err) {
-        console.error('Form submission error:', err);
+        logger.error('Form submission error:', err);
         setSubmitError(err.message);
         return { success: false, error: err.message };
       } finally {

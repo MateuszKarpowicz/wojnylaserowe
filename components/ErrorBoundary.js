@@ -1,6 +1,7 @@
 'use client';
 
 import { Component } from 'react';
+import { logger } from '@/lib/logger';
 
 /**
  * Error Boundary dla obsługi błędów React w aplikacji
@@ -23,8 +24,8 @@ export default class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    // Log błędu do konsoli lub zewnętrznego serwisu
-    console.error('ErrorBoundary caught an error:', error, errorInfo);
+    // Log błędu (wyciszony w produkcji)
+    logger.error('ErrorBoundary caught an error:', error, errorInfo);
 
     // Wywołaj callback jeśli podano
     if (this.props.onError) {

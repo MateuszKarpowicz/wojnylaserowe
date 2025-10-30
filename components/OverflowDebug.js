@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { logger } from '@/lib/logger';
 
 export default function OverflowDebug() {
   useEffect(() => {
@@ -24,8 +25,7 @@ export default function OverflowDebug() {
       });
 
       if (offenders.length) {
-        // eslint-disable-next-line no-console
-        console.warn(
+        logger.warn(
           '[OverflowDebug] Elements causing horizontal overflow:',
           offenders
         );

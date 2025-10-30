@@ -1,6 +1,7 @@
 // Security middleware for Next.js
 
 import { NextResponse } from 'next/server';
+import { logger } from '@/lib/logger';
 
 // Rate limiting store
 // Production: uses Redis via REDIS_URL env var
@@ -41,9 +42,9 @@ async function initRateLimitStore() {
         client: redis,
       };
 
-      console.log('✅ Rate limiting: Using Redis');
+      logger.log('✅ Rate limiting: Using Redis');
     } catch (error) {
-      console.warn(
+      logger.warn(
         '⚠️ Redis connection failed, falling back to Map:',
         error.message
       );
@@ -56,7 +57,7 @@ async function initRateLimitStore() {
     rateLimitStore.type = 'map';
 
     if (isProduction && !redisUrl) {
-      console.warn(
+      logger.warn(
         '⚠️ REDIS_URL not configured in production. Using in-memory Map (NOT RECOMMENDED)'
       );
     }
@@ -174,7 +175,7 @@ async function checkRateLimit(pathname, ip) {
         resetTime: config.window,
       };
     } catch (error) {
-      console.error('Redis rate limit error:', error);
+      logger.error('Redis rate limit error:', error);
       // Fallback to Map on Redis error
       rateLimitStore = new Map();
       rateLimitStore.type = 'map';

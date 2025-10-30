@@ -17,6 +17,7 @@
 
 'use client';
 import { useState } from 'react';
+import { logger } from '@/lib/logger';
 
 export default function FormCore({
   initialData = {},
@@ -77,7 +78,7 @@ export default function FormCore({
         await onSubmit(formData);
       }
     } catch (err) {
-      console.error('Error submitting form:', err);
+      logger.error('Error submitting form:', err);
       setError('Wystąpił błąd podczas wysyłania formularza');
     } finally {
       setIsLoading(false);

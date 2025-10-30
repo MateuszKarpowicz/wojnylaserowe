@@ -65,9 +65,10 @@ function QualificationItem({ item, idx }) {
           }
         }}
         className={[
-          'cursor-pointer transition-all duration-300 focus-ring border-neon-purple/30',
+          'cursor-pointer focus-ring border-neon-purple/30',
+          'transition-[box-shadow,transform,border-color] duration-[var(--dur-slow)] ease-[var(--ease-brand)]',
           open
-            ? 'border-transparent shadow-[0_0_44px_rgba(192,132,252,0.55),0_12px_22px_rgba(0,0,0,0.18)]'
+            ? 'border-neon-purple/70 shadow-[0_0_60px_rgba(192,132,252,0.75),0_16px_28px_rgba(0,0,0,0.28)] scale-[1.01]'
             : 'shadow-md hover:shadow-lg',
         ].join(' ')}
       >

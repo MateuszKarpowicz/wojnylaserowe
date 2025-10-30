@@ -1,12 +1,12 @@
 'use client';
 import Image from 'next/image';
+import ImageFrame from '@/components/primitives/ImageFrame';
 
 export default function EffectTile({ effect, index, onOpenModal }) {
   return (
-    <div className='bg-surface rounded-lg shadow-sm overflow-hidden group cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-105'>
+    <div className='group cursor-pointer transition-all duration-300 transform hover:scale-105 hover:shadow-xl rounded-lg'>
       <div onClick={() => onOpenModal(effect, index)}>
-        {/* ZDJĘCIE */}
-        <div className='relative aspect-square overflow-hidden'>
+        <ImageFrame variant='plain' aspect='square'>
           <Image
             src={effect.src}
             alt={effect.alt}
@@ -14,7 +14,6 @@ export default function EffectTile({ effect, index, onOpenModal }) {
             className='object-cover group-hover:scale-110 transition-transform duration-300'
             loading='lazy'
           />
-
           {/* OVERLAY NA HOVER */}
           <div className='absolute inset-0 bg-overlay opacity-0 group-hover:opacity-30 transition-all duration-300 flex items-center justify-center'>
             <div className='opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
@@ -35,7 +34,7 @@ export default function EffectTile({ effect, index, onOpenModal }) {
               </div>
             </div>
           </div>
-        </div>
+        </ImageFrame>
       </div>
     </div>
   );

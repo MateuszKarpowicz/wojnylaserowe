@@ -12,6 +12,7 @@ const buttonStyles = cva('', {
       ctaBlue: 'btn-cta-blue',
       ctaPurple: 'btn-cta-purple',
       offer: 'btn-offer',
+      link: 'inline-flex items-center gap-1 bg-transparent p-0 link-hover-neon link-focus-neon',
     },
     size: {
       sm: 'px-3 py-1 text-sm',

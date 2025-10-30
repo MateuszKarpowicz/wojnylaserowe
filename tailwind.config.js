@@ -40,6 +40,11 @@ module.exports = {
         modal: 'rgba(0, 0, 0, 0.9)', // bg-black/90 (dla modali)
         'button-dark': 'rgba(0, 0, 0, 0.5)', // bg-black/50
         'button-dark-hover': 'rgba(0, 0, 0, 0.7)', // bg-black/70
+        // Aliasy border neon (dla spójności użycia)
+        'neon-border-blue': 'rgba(0, 153, 204, 0.2)',
+        'neon-border-blue-strong': 'rgba(0, 153, 204, 0.6)',
+        'neon-border-purple': 'rgba(192, 132, 252, 0.2)',
+        'neon-border-purple-strong': 'rgba(192, 132, 252, 0.6)',
       },
       fontFamily: {
         sans: ['var(--font-yantramanav)', 'ui-sans-serif', 'system-ui'],

@@ -26,6 +26,11 @@
   :root {
     /* Domyślnie mapujemy pricedown na orbitron, dopóki nie podłączymy lokalnego fontu */
     --font-pricedown: var(--font-orbitron);
+    /* Animation tokens */
+    --dur-fast: 300ms;
+    --dur-slow: 700ms;
+    --dur-decay: 3000ms;
+    --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   h1,

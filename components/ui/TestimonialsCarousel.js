@@ -78,10 +78,10 @@ export default function TestimonialsCarousel({
               'hover:-translate-y-1 hover:scale-[1.01]',
               // glow: w spoczynku prawie niewidoczny, przy zmianie mocny + puls skali
               flash && !decay
-                ? 'duration-[3000ms] ease-out scale-[1.06] shadow-[0_0_40px_rgba(0,153,204,0.75),0_0_12px_rgba(0,153,204,0.6)] border-2 border-neon-blue/80'
+                ? 'duration-[var(--dur-decay)] ease-[var(--ease-brand)] scale-[1.06] shadow-[0_0_40px_rgba(0,153,204,0.75),0_0_12px_rgba(0,153,204,0.6)] border-2 border-neon-blue/80'
                 : flash && decay
-                ? 'duration-[3000ms] ease-out scale-[1.02] shadow-[0_0_24px_rgba(0,153,204,0.35),0_0_8px_rgba(0,153,204,0.25)] border-2 border-neon-blue/50'
-                : 'duration-300 ease-out shadow-[0_0_6px_rgba(0,153,204,0.15)] border-2 border-neon-blue/30',
+                ? 'duration-[var(--dur-decay)] ease-[var(--ease-brand)] scale-[1.02] shadow-[0_0_24px_rgba(0,153,204,0.35),0_0_8px_rgba(0,153,204,0.25)] border-2 border-neon-blue/50'
+                : 'duration-[var(--dur-fast)] ease-[var(--ease-brand)] shadow-[0_0_6px_rgba(0,153,204,0.15)] border-2 border-neon-blue/30',
             ].join(' ')}
           >
             <figure>

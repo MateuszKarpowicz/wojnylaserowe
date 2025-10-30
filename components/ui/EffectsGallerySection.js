@@ -1,6 +1,7 @@
 'use client';
 import dynamic from 'next/dynamic';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
+import { Section, Container } from '@/components/primitives';
 
 const EffectsGallery = dynamic(() => import('@/components/ui/EffectsGallery'), {
   ssr: false,
@@ -16,10 +17,10 @@ const EffectsGallery = dynamic(() => import('@/components/ui/EffectsGallery'), {
  */
 export default function EffectsGallerySection() {
   return (
-    <section className='section-pad bg-bg-dark'>
-      <div className='section-wrap'>
+    <Section bg='dark'>
+      <Container>
         <EffectsGallery />
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

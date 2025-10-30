@@ -1,4 +1,5 @@
 import CardWithIcon from '@/components/ui/CardWithIcon';
+import { Section, SectionHeader, Card, Container } from '@/components/primitives';
 
 /**
  * Sekcja podejścia z nagłówkiem i wrapperem
@@ -8,16 +9,16 @@ export default function ApproachSection({ data }) {
   const { approach } = data;
 
   return (
-    <section className='section-pad bg-surface'>
-      <div className='section-wrap'>
-        <h2 className='section-title-dark'>{data.title}</h2>
+    <Section bg='surface'>
+      <Container>
+        <SectionHeader title={data.title} variant='dark' />
         <div className='space-y-12'>
           {/* Wyróżniony cytat */}
-          <div className='card-border-blue'>
+          <Card variant='borderBlue'>
             <p className='text-xl md:text-2xl leading-relaxed italic text-text-light'>
               {approach.quote}
             </p>
-          </div>
+          </Card>
 
           {/* 3 cards z punktami */}
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
@@ -32,7 +33,7 @@ export default function ApproachSection({ data }) {
             ))}
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

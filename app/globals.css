@@ -59,14 +59,7 @@
     @apply btn-base bg-neon-purple bg-opacity-90 text-white hover:bg-neon-purple/90 shadow-glow-purple;
   }
 
-  /* Legacy button aliases - deprecated, use btn-neon-blue/btn-neon-purple instead */
-  .btn-primary {
-    @apply btn-neon-blue;
-  }
-
-  .btn-secondary {
-    @apply btn-neon-purple;
-  }
+  /* Legacy button aliases removed after migration */
 
   /* Specialized button variants */
   .btn-offer {
@@ -203,14 +196,7 @@
       0 8px 12px rgba(0, 0, 0, 0.15); /* stronger glow on hover */
   }
 
-  /* Legacy aliases - deprecated, use card-with-border-blue/purple instead */
-  .card-border-blue {
-    @apply card-with-border-blue;
-  }
-
-  .card-border-purple {
-    @apply card-with-border-purple;
-  }
+  /* Legacy card aliases removed after migration */
 
   /* Approach Cards - Dark Variant z fioletową obwódką (ciemne tło) */
   .approach-card-dark {

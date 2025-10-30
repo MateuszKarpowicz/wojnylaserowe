@@ -1,5 +1,6 @@
 import CardWithIcon from '@/components/ui/CardWithIcon';
 import Image from 'next/image';
+import { Section, SectionHeader, Container } from '@/components/primitives';
 
 /**
  * Sekcja chłodzenia z nagłówkiem i wrapperem
@@ -9,10 +10,9 @@ export default function CoolingSection({ data }) {
   const { cooling } = data;
 
   return (
-    <section className='section-pad bg-surface'>
-      <div className='section-wrap'>
-        {/* Header nad zdjęciem */}
-        <h2 className='section-title-dark'>{cooling.title}</h2>
+    <Section bg='surface'>
+      <Container>
+        <SectionHeader title={cooling.title} variant='dark' />
 
         <div className='md:grid md:grid-cols-2 gap-8 items-center'>
           {/* Zdjęcie - na mobile pierwsze */}
@@ -48,7 +48,7 @@ export default function CoolingSection({ data }) {
             <p className='text-secondary leading-relaxed'>{cooling.footer}</p>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

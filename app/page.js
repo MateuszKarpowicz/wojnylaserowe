@@ -1,16 +1,18 @@
 import Image from 'next/image';
+import { Section, SectionHeader, Container } from '@/components/primitives';
 
 export default function Home() {
   return (
     <main className='w-full'>
       {/* Hero heading jak na innych podstronach */}
-      <section className='bg-surface border-b border-border-border pt-10 pb-10 md:pb-14'>
-        <div className='section-wrap'>
-          <h1 className='text-hero text-text-dark mb-12 text-center hero-title-offset'>
-            Zamień Przeszłość Na Nowy Początek!!!
-          </h1>
-        </div>
-      </section>
+      <Section bg='surface' className='border-b border-border-border'>
+        <SectionHeader
+          title='Zamień Przeszłość Na Nowy Początek!!!'
+          variant='dark'
+          align='center'
+          className='hero-title-offset'
+        />
+      </Section>
 
       {/* Pełno-szerokościowe zdjęcie, kadrowane od góry */}
       <section className='w-full mt-0 overflow-x-hidden'>

@@ -1,16 +1,20 @@
 import aboutPageData from '@/content/texts/about-page.json';
 import Image from 'next/image';
+import { Section, SectionHeader, Container } from '@/components/primitives';
 
 export default function AboutHero() {
   const { hero } = aboutPageData;
 
   return (
-    <section className='bg-surface pt-10 pb-10 md:pb-14'>
-      <div className='section-wrap'>
+    <Section bg='surface' className='pt-10 pb-10 md:pb-14'>
+      <Container>
         {/* Nagłówek nad zdjęciem */}
-        <h1 className='text-hero text-text-dark mb-12 text-center hero-title-offset'>
-          {hero.title}
-        </h1>
+        <SectionHeader
+          title={hero.title}
+          variant='dark'
+          align='center'
+          className='hero-title-offset'
+        />
 
         <div className='md:grid md:grid-cols-2 gap-8 items-center'>
           {/* Zdjęcie - na mobile pierwsze, na desktop po lewej */}
@@ -38,7 +42,7 @@ export default function AboutHero() {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

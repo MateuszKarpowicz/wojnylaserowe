@@ -1,4 +1,5 @@
 import FAQCategorySection from '@/components/ui/FAQCategorySection';
+import { Section, Container } from '@/components/primitives';
 
 /**
  * Główna sekcja z kategoriami FAQ
@@ -6,8 +7,8 @@ import FAQCategorySection from '@/components/ui/FAQCategorySection';
  */
 export default function FAQContentSection({ categories }) {
   return (
-    <section className='section-pad bg-bg-dark'>
-      <div className='section-wrap'>
+    <Section bg='dark'>
+      <Container>
         <div className='space-y-8'>
           {categories.map((category, categoryIndex) => (
             <FAQCategorySection
@@ -17,7 +18,7 @@ export default function FAQContentSection({ categories }) {
             />
           ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

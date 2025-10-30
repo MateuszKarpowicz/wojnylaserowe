@@ -1,4 +1,5 @@
 import SocialMediaIcons from '@/components/ui/SocialMediaIcons';
+import { Section, SectionHeader } from '@/components/primitives';
 
 /**
  * Nagłówek strony kontakt z ikonkami social
@@ -7,18 +8,12 @@ import SocialMediaIcons from '@/components/ui/SocialMediaIcons';
  */
 export default function ContactHeader({ title, subtitle }) {
   return (
-    <section className='section-pad bg-surface'>
-      <div className='section-wrap'>
-        <div className='text-center mb-12'>
-          <h1 className='section-title-dark mb-4'>{title}</h1>
-          <p className='text-lg text-secondary mb-8'>{subtitle}</p>
-
+    <Section bg='surface'>
+      <SectionHeader title={title} subtitle={subtitle} variant='dark' align='center' />
           {/* Ikony social media */}
           <div className='flex justify-center'>
             <SocialMediaIcons size='text-2xl' className='gap-8' />
           </div>
-        </div>
-      </div>
-    </section>
+    </Section>
   );
 }

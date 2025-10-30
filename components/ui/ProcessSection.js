@@ -1,4 +1,5 @@
 import scarinkPageData from '@/content/texts/scarink-page.json';
+import { Card } from '@/components/primitives';
 
 export default function ProcessSection() {
   const { process } = scarinkPageData;
@@ -7,7 +8,7 @@ export default function ProcessSection() {
     <>
       <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mb-8'>
         {process.steps.map((step, index) => (
-          <div key={index} className='card-border-purple'>
+          <Card key={index} variant='borderPurple'>
             <div className='flex gap-4'>
               <div className='flex-shrink-0'>
                 <div className='qualification-icon text-neon-purple'>
@@ -23,7 +24,7 @@ export default function ProcessSection() {
                 </p>
               </div>
             </div>
-          </div>
+          </Card>
         ))}
       </div>
       <div className='mb-8'>
@@ -35,7 +36,7 @@ export default function ProcessSection() {
         </p>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
           {process.aftercare.points.map((point, index) => (
-            <div key={index} className='card-border-purple'>
+            <Card key={index} variant='borderPurple'>
               <div className='flex gap-4'>
                 <div className='flex-shrink-0'>
                   <div className='qualification-icon text-neon-purple'>
@@ -48,7 +49,7 @@ export default function ProcessSection() {
                   </p>
                 </div>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

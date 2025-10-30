@@ -3,15 +3,12 @@
  * @param {string} title - Tytuł strony
  * @param {string} subtitle - Podtytuł strony
  */
+import { Section, SectionHeader } from '@/components/primitives';
+
 export default function PageHeader({ title, subtitle }) {
   return (
-    <section className='section-pad bg-surface'>
-      <div className='section-wrap'>
-        <div className='text-center mb-12'>
-          <h1 className='section-title-dark mb-4'>{title}</h1>
-          <p className='text-lg text-secondary'>{subtitle}</p>
-        </div>
-      </div>
-    </section>
+    <Section bg='surface'>
+      <SectionHeader title={title} subtitle={subtitle} variant='dark' align='center' />
+    </Section>
   );
 }

@@ -18,6 +18,7 @@
 'use client';
 import { useState } from 'react';
 import { logger } from '@/lib/logger';
+import { Button } from '@/components/primitives';
 
 export default function FormCore({
   initialData = {},
@@ -104,16 +105,16 @@ export default function FormCore({
         : children}
 
       {/* PRZYCISK WYŚLIJ */}
-      <button type='submit' disabled={isLoading} className='btn-section'>
+      <Button type='submit' disabled={isLoading} variant='section'>
         {isLoading ? (
-          <>
-            <div className='w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin'></div>
+          <span className='inline-flex items-center gap-2'>
+            <span className='w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin' />
             {loadingText}
-          </>
+          </span>
         ) : (
           submitText
         )}
-      </button>
+      </Button>
     </form>
   );
 }

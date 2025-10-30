@@ -1,16 +1,17 @@
 import CardWithIcon from '@/components/ui/CardWithIcon';
 import scarinkPageData from '@/content/texts/scarink-page.json';
+import { Card } from '@/components/primitives';
 
 export default function TargetSection() {
   const { target } = scarinkPageData;
 
   return (
     <div className='space-y-12'>
-      <div className='card-border-blue'>
+      <Card variant='borderBlue'>
         <p className='text-xl md:text-2xl leading-relaxed italic text-text-light'>
           {target.quote}
         </p>
-      </div>
+      </Card>
       <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
         {target.points.map((point, index) => (
           <CardWithIcon key={index} text={point.text} borderColor='blue' />

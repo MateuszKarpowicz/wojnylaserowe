@@ -1,4 +1,5 @@
 import { FaClock, FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
+import { Section, SectionHeader, Container } from '@/components/primitives';
 
 /**
  * Sekcja informacji kontaktowych z nagłówkiem i wrapperem
@@ -8,9 +9,9 @@ export default function ContactInfoSection({ data }) {
   const { contactInfo } = data;
 
   return (
-    <section className='section-pad bg-surface'>
-      <div className='section-wrap'>
-        <h2 className='section-title-dark'>{data.title}</h2>
+    <Section bg='surface'>
+      <Container>
+        <SectionHeader title={data.title} variant='dark' />
 
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
           {/* ADRES I GODZINY */}
@@ -85,7 +86,7 @@ export default function ContactInfoSection({ data }) {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

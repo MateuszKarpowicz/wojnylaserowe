@@ -4,6 +4,7 @@ import FormCore from '@/components/forms/FormCore';
 import { useOfferForm } from '@/components/hooks/useOfferForm';
 import Modal from '@/components/overlay/Modal';
 import FormField from '@/components/ui/FormField';
+import { Button } from '@/components/primitives';
 import contactFormData from '@/content/texts/contactform.json';
 import offerSliderData from '@/content/texts/offerslider.json';
 import { logger } from '@/lib/logger';
@@ -93,13 +94,14 @@ export default function OfferSlider() {
           {selectedOption && (
             <div className='max-w-md mx-auto flex-1 p-6 pb-24 overflow-y-auto'>
               <div className='flex items-center gap-3 mb-6'>
-                <button
+                <Button
                   onClick={goBack}
-                  className='btn-neon-purple px-3 py-1'
+                  variant='neonPurple'
+                  size='sm'
                   aria-label='Wróć do wyboru usługi'
                 >
                   ←
-                </button>
+                </Button>
                 <h2 className='text-text-light font-display text-xl font-bold'>
                   {
                     offerSliderData.options.find(

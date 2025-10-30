@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { Section, SectionHeader, Button, Container } from '@/components/primitives';
 
 /**
  * Sekcja lokalizacji z nagłówkiem i wrapperem
@@ -9,10 +9,9 @@ export default function LocationSection({ data }) {
   const { location } = data;
 
   return (
-    <section className='section-pad bg-bg-dark'>
-      <div className='section-wrap'>
-        {/* Header nad zdjęciem */}
-        <h2 className='section-title-light'>{location.title}</h2>
+    <Section bg='dark'>
+      <Container>
+        <SectionHeader title={location.title} variant='light' />
 
         <div className='md:grid md:grid-cols-2 gap-8 items-center'>
           {/* Zdjęcie - na mobile pierwsze */}
@@ -34,12 +33,12 @@ export default function LocationSection({ data }) {
               <p>{location.text}</p>
               <p>{location.text2}</p>
             </div>
-            <Link href={location.cta.href} className='btn-cta-purple mt-6'>
+            <Button as='a' href={location.cta.href} variant='ctaPurple' className='mt-6'>
               {location.cta.text}
-            </Link>
+            </Button>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

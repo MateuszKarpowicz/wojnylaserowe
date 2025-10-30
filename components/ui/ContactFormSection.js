@@ -1,14 +1,15 @@
 import ContactForm from '@/components/ui/ContactForm';
+import { Section, Container } from '@/components/primitives';
 
 /**
  * Sekcja formularza kontaktowego z wrapperem
  */
 export default function ContactFormSection() {
   return (
-    <section className='section-pad bg-surface'>
-      <div className='section-wrap'>
+    <Section bg='surface'>
+      <Container maxWidth='lg'>
         <ContactForm />
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

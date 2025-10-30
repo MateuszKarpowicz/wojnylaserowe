@@ -1,3 +1,4 @@
+import { Section, SectionHeader, Container } from '@/components/primitives';
 /**
  * Sekcja etapów usuwania tatuażu z nagłówkiem i wrapperem
  * @param {Object} data - Dane stages z title, items i additional
@@ -6,9 +7,9 @@ export default function StagesSection({ data }) {
   const { stages, additional } = data;
 
   return (
-    <section id='etapy-usuwania' className='section-pad bg-surface'>
-      <div className='section-wrap'>
-        <h2 className='section-title-dark'>{stages.title}</h2>
+    <Section id='etapy-usuwania' bg='surface'>
+      <Container>
+        <SectionHeader title={stages.title} variant='dark' />
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
           {stages.items.map(stage => (
@@ -38,7 +39,7 @@ export default function StagesSection({ data }) {
             ))}
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

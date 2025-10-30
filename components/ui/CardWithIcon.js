@@ -6,6 +6,7 @@ import {
   FaGraduationCap,
   FaHandshake,
 } from 'react-icons/fa';
+import { Card } from '@/components/primitives';
 
 // Mapowanie nazw ikon z stringów na komponenty (zgodnie ze wzorcem QualificationCard)
 const iconMap = {
@@ -46,8 +47,7 @@ export default function CardWithIcon({
   // Priorytet: description > text
   const contentText = description || text;
 
-  const borderClass =
-    borderColor === 'purple' ? 'card-border-purple' : 'card-border-blue';
+  const borderVariant = borderColor === 'purple' ? 'borderPurple' : 'borderBlue';
   const iconColorClass =
     borderColor === 'purple' ? 'text-neon-purple' : 'text-neon-blue';
 
@@ -61,11 +61,11 @@ export default function CardWithIcon({
 
   // Jeśli przekazano children, renderuj je zamiast domyślnej struktury
   if (children) {
-    return <div className={borderClass}>{children}</div>;
+    return <Card variant={borderVariant}>{children}</Card>;
   }
 
   return (
-    <div className={borderClass}>
+    <Card variant={borderVariant}>
       <div className='flex gap-4'>
         {/* Ikona */}
         <div className='flex-shrink-0'>
@@ -97,6 +97,6 @@ export default function CardWithIcon({
           )}
         </div>
       </div>
-    </div>
+    </Card>
   );
 }

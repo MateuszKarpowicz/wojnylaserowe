@@ -1,4 +1,5 @@
 import CardWithIcon from '@/components/ui/CardWithIcon';
+import { Section, SectionHeader, Container } from '@/components/primitives';
 
 /**
  * Sekcja kwalifikacji z nagłówkiem i wrapperem
@@ -6,9 +7,9 @@ import CardWithIcon from '@/components/ui/CardWithIcon';
  */
 export default function QualificationsSection({ data }) {
   return (
-    <section className='section-pad bg-bg-dark'>
-      <div className='section-wrap'>
-        <h2 className='section-title-light'>{data.title}</h2>
+    <Section bg='dark'>
+      <Container>
+        <SectionHeader title={data.title} variant='light' />
         <div className='sections-grid-auto'>
           {data.items.map((item, index) => (
             <CardWithIcon
@@ -20,7 +21,7 @@ export default function QualificationsSection({ data }) {
             />
           ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

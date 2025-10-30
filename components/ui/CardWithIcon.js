@@ -1,20 +1,50 @@
-import { FaCheckCircle } from 'react-icons/fa';
+import {
+  FaCalendarCheck,
+  FaCertificate,
+  FaCheckCircle,
+  FaFlask,
+  FaGraduationCap,
+  FaHandshake,
+} from 'react-icons/fa';
+
+// Mapowanie nazw ikon z stringów na komponenty (zgodnie ze wzorcem QualificationCard)
+const iconMap = {
+  FaCertificate: FaCertificate,
+  FaGraduationCap: FaGraduationCap,
+  FaFlask: FaFlask,
+  FaCalendarCheck: FaCalendarCheck,
+  FaHandshake: FaHandshake,
+};
 
 /**
  * Uniwersalny komponent karty z ikonką
- * @param {string|React.Component} icon - Nazwa ikony z react-icons/fa lub komponent ikony
+ * @param {string|React.Component} icon - Nazwa ikony z react-icons/fa (string) lub komponent ikony
  * @param {string} [title] - Opcjonalny tytuł karty
- * @param {string} text - Tekst/opis karty
- * @param {'blue'|'purple'} borderColor - Kolor ramki: 'blue' dla jasnego tła, 'purple' dla ciemnego tła
+ * @param {string} [text] - Tekst/opis karty (używany gdy brak description)
+ * @param {string} [description] - Alternatywny opis karty (ma priorytet nad text)
+ * @param {'blue'|'purple'} borderColor - Kolor ramki: 'blue' dla ciemnego tła, 'purple' dla jasnego tła
+ * @param {React.ReactNode} children - Custom content (opcjonalne, jeśli przekazane, ignoruje icon/title/text)
  */
 export default function CardWithIcon({
   icon,
   title,
   text,
+  description,
   borderColor = 'blue',
+  children,
 }) {
-  // Domyślna ikona to checkmark, jeśli przekazano komponent ikony - użyj go
-  const IconComponent = icon || FaCheckCircle;
+  // Resolwuj ikonę: jeśli string, użyj iconMap; jeśli komponent, użyj go; w przeciwnym razie domyślny
+  let IconComponent = FaCheckCircle;
+  if (icon) {
+    if (typeof icon === 'string' && iconMap[icon]) {
+      IconComponent = iconMap[icon];
+    } else if (typeof icon !== 'string') {
+      IconComponent = icon;
+    }
+  }
+
+  // Priorytet: description > text
+  const contentText = description || text;
 
   const borderClass =
     borderColor === 'purple' ? 'card-border-purple' : 'card-border-blue';
@@ -28,6 +58,11 @@ export default function CardWithIcon({
     borderColor === 'blue' ? 'text-text-light' : 'text-text-dark';
   const descriptionClass =
     borderColor === 'blue' ? 'text-text-light/80' : 'text-secondary';
+
+  // Jeśli przekazano children, renderuj je zamiast domyślnej struktury
+  if (children) {
+    return <div className={borderClass}>{children}</div>;
+  }
 
   return (
     <div className={borderClass}>
@@ -44,9 +79,11 @@ export default function CardWithIcon({
               {title}
             </h3>
           )}
-          <p className={`text-sm ${descriptionClass} leading-relaxed`}>
-            {text}
-          </p>
+          {contentText && (
+            <p className={`text-sm ${descriptionClass} leading-relaxed`}>
+              {contentText}
+            </p>
+          )}
         </div>
       </div>
     </div>

@@ -1,10 +1,4 @@
-import { FaHeart, FaShieldAlt, FaUserMd } from 'react-icons/fa';
-
-const iconMap = {
-  FaUserMd: FaUserMd,
-  FaShieldAlt: FaShieldAlt,
-  FaHeart: FaHeart,
-};
+import CardWithIcon from '@/components/ui/CardWithIcon';
 
 /**
  * Sekcja podejścia z nagłówkiem i wrapperem
@@ -27,29 +21,15 @@ export default function ApproachSection({ data }) {
 
           {/* 3 cards z punktami */}
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-            {approach.points.map((point, index) => {
-              const IconComponent = iconMap[point.icon] || FaUserMd;
-              return (
-                <div key={index} className='card-border-blue'>
-                  <div className='flex gap-4'>
-                    {/* Ikona */}
-                    <div className='flex-shrink-0'>
-                      <IconComponent className='qualification-icon text-neon-blue' />
-                    </div>
-
-                    {/* Tekst */}
-                    <div className='flex-1'>
-                      <h3 className='text-lg font-semibold text-text-light mb-2'>
-                        {point.title}
-                      </h3>
-                      <p className='text-sm text-text-light/80 leading-relaxed'>
-                        {point.text}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            {approach.points.map((point, index) => (
+              <CardWithIcon
+                key={index}
+                icon={point.icon}
+                title={point.title}
+                text={point.text}
+                borderColor='blue'
+              />
+            ))}
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import QualificationCard from '@/components/ui/QualificationCard';
+import CardWithIcon from '@/components/ui/CardWithIcon';
 
 /**
  * Sekcja kwalifikacji z nagłówkiem i wrapperem
@@ -11,7 +11,13 @@ export default function QualificationsSection({ data }) {
         <h2 className='section-title-light'>{data.title}</h2>
         <div className='sections-grid-auto'>
           {data.items.map((item, index) => (
-            <QualificationCard key={index} {...item} />
+            <CardWithIcon
+              key={index}
+              icon={item.icon}
+              title={item.title}
+              description={item.description}
+              borderColor='purple'
+            />
           ))}
         </div>
       </div>

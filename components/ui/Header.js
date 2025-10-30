@@ -9,7 +9,7 @@ import { createPortal } from 'react-dom';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const { open: openOferta, isOpen: isOfertaOpen } = useOferta();
+  const { toggle: toggleOferta, isOpen: isOfertaOpen } = useOferta();
 
   useEffect(() => {
     setMounted(true);
@@ -50,7 +50,7 @@ export default function Header() {
       {mounted &&
         createPortal(
           <button
-            onClick={openOferta}
+            onClick={toggleOferta}
             aria-label={isOfertaOpen ? 'Zamknij ofertę' : 'Otwórz ofertę'}
             aria-expanded={isOfertaOpen}
             aria-controls='oferta-modal'

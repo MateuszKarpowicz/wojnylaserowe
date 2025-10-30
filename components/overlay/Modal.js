@@ -34,6 +34,7 @@ export default function Modal({
   className = '',
   overlayClassName = '',
   ariaLabelledBy,
+  ariaDescribedBy,
   children,
 }) {
   const modalRef = useRef(null);
@@ -117,8 +118,8 @@ export default function Modal({
 
     if (variant === 'drawer') {
       // Overlay dla drawer - NIŻSZY z-index niż przyciski (60 < 100)
-      // pointer-events: none pozwala na kliknięcia przez overlay (przyciski mają wyższy z-index)
-      return `${base} inset-0 bg-overlay ${overlayClassName} transition-opacity duration-300 pointer-events-none`;
+      // pointer-events kontrolowane przez inline style gdy closeOnOverlayClick=true
+      return `${base} inset-0 bg-overlay ${overlayClassName} transition-opacity duration-300`;
     }
 
     return base;
@@ -151,20 +152,10 @@ export default function Modal({
     return className;
   };
 
-  // Style inline dla fullscreen i fullscreen drawer (top/bottom offset)
+  // Style inline dla fullscreen i drawer (top/bottom offset)
   // Footer ma około 2.25rem wysokości, ale używamy 4rem dla bezpieczeństwa
   const fullscreenStyle =
-    variant === 'fullscreen'
-      ? {
-          top: '4.5rem', // h-header
-          bottom: '4rem', // wysokość footera z marginesem bezpieczeństwa
-        }
-      : variant === 'drawer' && fullscreen
-      ? {
-          top: '4.5rem', // h-header
-          bottom: '4rem', // wysokość footera z marginesem bezpieczeństwa
-        }
-      : variant === 'drawer' && !fullscreen
+    variant !== 'centered'
       ? {
           top: '4.5rem', // h-header
           bottom: '4rem', // wysokość footera z marginesem bezpieczeństwa
@@ -174,14 +165,8 @@ export default function Modal({
   const overlayClasses = getOverlayClasses();
   const containerClasses = getContainerClasses();
 
-  // Klasa animacji dla drawer (slide-in od odpowiedniej strony)
-  const getDrawerAnimationClass = () => {
-    if (variant !== 'drawer') return '';
-    if (position === 'right') {
-      return 'translate-x-0'; // drawer jest już widoczny (isOpen = true), więc translate-x-0
-    }
-    return 'translate-x-0'; // drawer jest już widoczny (isOpen = true), więc translate-x-0
-  };
+  // Klasa animacji dla drawer - drawer jest już widoczny (isOpen = true), więc zawsze translate-x-0
+  const drawerAnimationClass = variant === 'drawer' ? 'translate-x-0' : '';
 
   // Dla drawer - overlay i panel są rodzeństwami (jak oryginalny kod)
   // Używamy Portal żeby renderować drawer poza Header (naprawia problem z sticky header)
@@ -198,17 +183,18 @@ export default function Modal({
           aria-hidden='true'
           style={
             closeOnOverlayClick
-              ? { pointerEvents: 'auto' }
+              ? { pointerEvents: 'auto', cursor: 'pointer' }
               : { pointerEvents: 'none' }
           }
         />
         {/* Panel - oddzielny element z animacją slide-in */}
         <div
           ref={modalRef}
-          className={`${containerClasses} ${getDrawerAnimationClass()} transition-transform duration-300 ease-out`}
+          className={`${containerClasses} ${drawerAnimationClass} transition-transform duration-300 ease-out`}
           role='dialog'
           aria-modal='true'
           aria-labelledby={ariaLabelledBy || 'modal-title'}
+          aria-describedby={ariaDescribedBy}
           style={fullscreenStyle}
         >
           {children}

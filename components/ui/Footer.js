@@ -1,4 +1,3 @@
-import contactPageData from '@/content/texts/contact-page.json';
 import { FaFacebook, FaInstagram, FaPhone } from 'react-icons/fa';
 
 function IconLink({ href, label, icon: Icon, ariaLabel }) {
@@ -17,8 +16,13 @@ function IconLink({ href, label, icon: Icon, ariaLabel }) {
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const phoneNumber =
-    contactPageData.contactInfo?.phone?.number || '+48 123 456 789';
+
+  // Pobierz linki z environment variables (fallback do domyślnych wartości)
+  const facebookUrl =
+    process.env.NEXT_PUBLIC_FACEBOOK_URL || 'https://facebook.com';
+  const instagramUrl =
+    process.env.NEXT_PUBLIC_INSTAGRAM_URL || 'https://instagram.com';
+  const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER || '+48 123 456 789';
   const phoneHref = `tel:${phoneNumber.replace(/\s/g, '')}`;
 
   return (
@@ -28,16 +32,8 @@ export default function Footer() {
     >
       <div className='container mx-auto px-4 py-0.5 flex flex-col items-center gap-0.5'>
         <div className='flex items-center gap-10'>
-          <IconLink
-            href='https://facebook.com'
-            label='Facebook'
-            icon={FaFacebook}
-          />
-          <IconLink
-            href='https://instagram.com'
-            label='Instagram'
-            icon={FaInstagram}
-          />
+          <IconLink href={facebookUrl} label='Facebook' icon={FaFacebook} />
+          <IconLink href={instagramUrl} label='Instagram' icon={FaInstagram} />
           <IconLink
             href={phoneHref}
             label='Zadzwoń'

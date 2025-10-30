@@ -18,8 +18,9 @@ module.exports = {
         'text-light': '#FAFAFA',
 
         // Semantyczne (zamiast gray-*)
-        'text-secondary': '#666666', // dla text-gray-700
-        'text-muted': '#999999', // dla text-gray-600
+        // Zaktualizowane dla WCAG AA compliance (min 4.5:1 dla normal text, 3:1 dla large)
+        'text-secondary': '#555555', // poprzednio #666666 - poprawiony kontrast dla AA (4.5:1 na bg-surface)
+        'text-muted': '#707070', // poprzednio #999999 - poprawiony kontrast dla AA (4.5:1 na bg-surface)
         'bg-surface': '#FFFFFF', // dla bg-white
         'bg-surface-light': '#F5F5F5', // dla bg-gray-50
         'border-border': '#E5E5E5', // dla border-gray-300
@@ -41,8 +42,12 @@ module.exports = {
         'button-dark-hover': 'rgba(0, 0, 0, 0.7)', // bg-black/70
       },
       fontFamily: {
-        sans: ['Poppins', 'ui-sans-serif', 'system-ui'],
-        display: ['Orbitron', 'Poppins', 'ui-sans-serif'],
+        sans: ['var(--font-poppins)', 'ui-sans-serif', 'system-ui'],
+        display: [
+          'var(--font-orbitron)',
+          'var(--font-poppins)',
+          'ui-sans-serif',
+        ],
       },
       boxShadow: {
         glow: '0 0 24px rgba(0, 153, 204, 0.35)',

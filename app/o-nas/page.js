@@ -5,24 +5,18 @@ import LocationSection from '@/components/ui/LocationSection';
 import QualificationsSection from '@/components/ui/QualificationsSection';
 import aboutPageData from '@/content/texts/about-page.json';
 
+// ISR - revalidate co godzinę dla stale data
+export const revalidate = 3600;
+
 export default function ONas() {
   const { qualifications, approach, location, cta } = aboutPageData;
 
   return (
     <main className='min-h-screen bg-bg-light text-text-dark'>
-      {/* HERO */}
       <AboutHero />
-
-      {/* KWALIFIKACJE */}
       <QualificationsSection data={qualifications} />
-
-      {/* PODEJŚCIE */}
       <ApproachSection data={{ approach, title: approach.title }} />
-
-      {/* MIEJSCE */}
       <LocationSection data={{ location }} />
-
-      {/* CTA */}
       <CTASection
         title={cta.title}
         text={cta.text}

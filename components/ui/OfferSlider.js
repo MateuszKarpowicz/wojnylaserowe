@@ -1,16 +1,16 @@
 'use client';
 import { useOferta } from '@/components/context/OfertaContext';
 import FormCore from '@/components/forms/FormCore';
+import { useOfferForm } from '@/components/hooks/useOfferForm';
 import Modal from '@/components/overlay/Modal';
 import FormField from '@/components/ui/FormField';
 import contactFormData from '@/content/texts/contactform.json';
 import offerSliderData from '@/content/texts/offerslider.json';
-import { useState } from 'react';
 
 export default function OfferSlider() {
   const { isOpen, close } = useOferta();
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [error, setError] = useState(null);
+  const { selectedOption, error, selectOption, goBack, reset, setError } =
+    useOfferForm();
 
   const initialFormData = {
     name: '',
@@ -24,22 +24,11 @@ export default function OfferSlider() {
   const toggleSlider = () => {
     if (isOpen) {
       close();
-      setSelectedOption(null);
-      setError(null);
+      reset();
     } else {
       // Modal otwierany przez Header - tu tylko zamykamy
       close();
     }
-  };
-
-  const selectOption = optionId => {
-    setSelectedOption(optionId);
-    setError(null);
-  };
-
-  const goBack = () => {
-    setSelectedOption(null);
-    setError(null);
   };
 
   const handleFormSubmit = async formData => {
@@ -51,7 +40,7 @@ export default function OfferSlider() {
 
       // Close slider after successful submission
       close();
-      setSelectedOption(null);
+      reset();
 
       // Show success message (could be a toast notification)
       console.log(offerSliderData.success);

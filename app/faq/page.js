@@ -3,6 +3,9 @@ import FAQContentSection from '@/components/ui/FAQContentSection';
 import PageHeader from '@/components/ui/PageHeader';
 import faqData from '@/content/texts/faq.json';
 
+// ISR - revalidate co godzinę dla stale data
+export const revalidate = 3600;
+
 export default function FAQ() {
   const { header, categories, footer } = faqData;
 

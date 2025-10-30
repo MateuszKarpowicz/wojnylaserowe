@@ -1,6 +1,7 @@
 'use client';
 import { useOferta } from '@/components/context/OfertaContext';
 import Modal from '@/components/overlay/Modal';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -16,7 +17,11 @@ export default function Header() {
 
   return (
     <header
-      className='sticky top-0 z-header bg-header-footer backdrop-blur-sm border-b border-neon-blue/20 shadow-glow will-change-transform'
+      className={`sticky top-0 z-header bg-header-footer backdrop-blur-sm will-change-transform ${
+        isOfertaOpen
+          ? 'border-b border-neon-purple/20 shadow-glow-purple'
+          : 'border-b border-neon-blue/20 shadow-glow'
+      }`}
       role='banner'
       style={{ transform: 'translateZ(0)' }} // Hardware acceleration
     >
@@ -30,12 +35,13 @@ export default function Header() {
           className='flex items-center relative z-header focus:outline-none focus:ring-2 focus:ring-neon-blue focus:ring-offset-2 rounded'
           aria-label='Strona główna - Wojny Laserowe'
         >
-          <img
+          <Image
             src='/images/logo/logo.svg'
             alt='Wojny Laserowe'
+            height={64}
+            width={160}
             className='h-16 w-auto object-contain'
-            height='64'
-            width='160'
+            priority
           />
         </Link>
       </nav>

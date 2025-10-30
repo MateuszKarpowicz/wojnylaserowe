@@ -1,4 +1,5 @@
 import CardWithIcon from '@/components/ui/CardWithIcon';
+import Image from 'next/image';
 
 /**
  * Sekcja "Jak działa"
@@ -27,15 +28,13 @@ export default function HowItWorksSection({ howItWorks }) {
       {/* Zdjęcie */}
       <div className='flex justify-center'>
         <div className='relative w-full aspect-square max-w-md mx-auto rounded-xl shadow-lg overflow-hidden border-2 border-neon-blue/30'>
-          {/* Placeholder zdjęcia - zamokowane */}
-          <div className='absolute inset-0 bg-gradient-to-br from-neon-blue/10 via-neon-purple/10 to-neon-blue/20 flex items-center justify-center'>
-            <div className='text-center p-8'>
-              <p className='text-text-light text-sm mb-2'>
-                Zdjęcie lasera pikosekundowego
-              </p>
-              <p className='text-text-light/60 text-xs'>(Placeholder)</p>
-            </div>
-          </div>
+          <Image
+            src='/images/hero/hero.webp'
+            alt='Laser pikosekundowy'
+            fill
+            className='object-cover'
+            sizes='(max-width: 768px) 100vw, 768px'
+          />
         </div>
       </div>
     </>

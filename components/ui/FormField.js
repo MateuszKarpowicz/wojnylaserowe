@@ -48,7 +48,8 @@ export default function FormField({
     'aria-label': label,
     'aria-required': required,
     'aria-invalid': !!error,
-    'aria-describedby': error ? `${fieldId}-error` : undefined,
+    'aria-describedby': error ? errorId : undefined,
+    'aria-errormessage': error ? errorId : undefined,
   };
 
   const inputBaseClass = dark ? 'input-dark' : 'input';

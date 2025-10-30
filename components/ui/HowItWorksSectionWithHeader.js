@@ -1,4 +1,5 @@
 import HowItWorksSection from '@/components/ui/HowItWorksSection';
+import SectionWrapper from '@/components/ui/SectionWrapper';
 
 /**
  * Sekcja "Jak działa" z nagłówkiem i wrapperem
@@ -8,11 +9,8 @@ export default function HowItWorksSectionWithHeader({ data }) {
   const { howItWorks } = data;
 
   return (
-    <section className='section-pad bg-bg-dark'>
-      <div className='section-wrap'>
-        <h2 className='section-title-light'>{data.title}</h2>
-        <HowItWorksSection howItWorks={howItWorks} />
-      </div>
-    </section>
+    <SectionWrapper title={data.title} bgColor='bg-dark'>
+      <HowItWorksSection howItWorks={howItWorks} />
+    </SectionWrapper>
   );
 }

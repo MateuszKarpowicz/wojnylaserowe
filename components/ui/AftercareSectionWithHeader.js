@@ -1,4 +1,5 @@
 import AftercareSection from '@/components/ui/AftercareSection';
+import SectionWrapper from '@/components/ui/SectionWrapper';
 
 /**
  * Sekcja pielęgnacji z nagłówkiem i wrapperem
@@ -8,11 +9,8 @@ export default function AftercareSectionWithHeader({ data }) {
   const { aftercare } = data;
 
   return (
-    <section className='section-pad bg-bg-dark'>
-      <div className='section-wrap'>
-        <h2 className='section-title-light'>{data.title}</h2>
-        <AftercareSection aftercare={aftercare} />
-      </div>
-    </section>
+    <SectionWrapper title={data.title} bgColor='bg-dark'>
+      <AftercareSection aftercare={aftercare} />
+    </SectionWrapper>
   );
 }

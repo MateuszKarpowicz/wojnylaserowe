@@ -1,9 +1,22 @@
 import CTASection from '@/components/ui/CTASection';
-import EffectsGallerySection from '@/components/ui/EffectsGallerySection';
 import EffectsHeader from '@/components/ui/EffectsHeader';
+import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import StagesSection from '@/components/ui/StagesSection';
 import TestimonialsPlaceholder from '@/components/ui/TestimonialsPlaceholder';
 import effectsPageData from '@/content/texts/effects-page.json';
+import dynamic from 'next/dynamic';
+
+// Lazy load heavy gallery component
+const EffectsGallerySection = dynamic(
+  () => import('@/components/ui/EffectsGallerySection'),
+  {
+    loading: () => <LoadingSpinner />,
+    ssr: true, // Gallery może być SSR
+  }
+);
+
+// ISR - revalidate co godzinę dla stale data
+export const revalidate = 3600;
 
 export default function Efekty() {
   const { header, cta, stages, additional, footer } = effectsPageData;

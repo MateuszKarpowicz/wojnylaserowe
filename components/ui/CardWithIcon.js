@@ -74,15 +74,26 @@ export default function CardWithIcon({
 
         {/* Tekst */}
         <div className='flex-1'>
-          {title && (
-            <h3 className={`text-lg font-semibold ${textClass} mb-2`}>
-              {title}
-            </h3>
-          )}
-          {contentText && (
-            <p className={`text-sm ${descriptionClass} leading-relaxed`}>
-              {contentText}
-            </p>
+          {title ? (
+            <>
+              <h3 className={`text-lg font-semibold ${textClass} mb-2`}>
+                {title}
+              </h3>
+              {contentText && (
+                <p className={`text-sm ${descriptionClass} leading-relaxed`}>
+                  {contentText}
+                </p>
+              )}
+            </>
+          ) : (
+            // Jeśli nie ma tytułu, wyróżnij treść jako pogrubioną linię tytułową
+            contentText && (
+              <p
+                className={`text-base font-semibold ${textClass} leading-relaxed`}
+              >
+                {contentText}
+              </p>
+            )
           )}
         </div>
       </div>

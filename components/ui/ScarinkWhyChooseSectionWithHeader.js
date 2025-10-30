@@ -1,4 +1,5 @@
 import ScarinkWhyChooseSection from '@/components/ui/ScarinkWhyChooseSection';
+import SectionWrapper from '@/components/ui/SectionWrapper';
 
 /**
  * Sekcja "Dlaczego warto" ScarINK z nagłówkiem i wrapperem
@@ -8,11 +9,8 @@ export default function ScarinkWhyChooseSectionWithHeader({ data }) {
   const { whyChoose } = data;
 
   return (
-    <section className='section-pad bg-surface'>
-      <div className='section-wrap'>
-        <h2 className='section-title-dark'>{data.title}</h2>
-        <ScarinkWhyChooseSection points={whyChoose.points} />
-      </div>
-    </section>
+    <SectionWrapper title={data.title} bgColor='surface'>
+      <ScarinkWhyChooseSection points={whyChoose.points} />
+    </SectionWrapper>
   );
 }

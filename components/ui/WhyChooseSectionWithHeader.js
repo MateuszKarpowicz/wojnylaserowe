@@ -1,3 +1,4 @@
+import SectionWrapper from '@/components/ui/SectionWrapper';
 import WhyChooseSection from '@/components/ui/WhyChooseSection';
 
 /**
@@ -8,11 +9,8 @@ export default function WhyChooseSectionWithHeader({ data }) {
   const { whyChoose } = data;
 
   return (
-    <section className='section-pad bg-surface'>
-      <div className='section-wrap'>
-        <h2 className='section-title-dark'>{data.title}</h2>
-        <WhyChooseSection points={whyChoose.points} />
-      </div>
-    </section>
+    <SectionWrapper title={data.title} bgColor='surface'>
+      <WhyChooseSection points={whyChoose.points} />
+    </SectionWrapper>
   );
 }

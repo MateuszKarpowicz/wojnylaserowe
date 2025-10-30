@@ -1,4 +1,5 @@
 import CardWithIcon from '@/components/ui/CardWithIcon';
+import Image from 'next/image';
 
 /**
  * Sekcja chłodzenia z nagłówkiem i wrapperem
@@ -17,15 +18,13 @@ export default function CoolingSection({ data }) {
           {/* Zdjęcie - na mobile pierwsze */}
           <div className='mb-8 md:mb-0 order-1'>
             <div className='relative w-full aspect-square max-w-md mx-auto md:max-w-full rounded-xl shadow-lg overflow-hidden border-2 border-neon-purple/30'>
-              {/* Placeholder zdjęcia - zamokowane */}
-              <div className='absolute inset-0 bg-gradient-to-br from-neon-purple/10 via-neon-blue/10 to-neon-purple/20 flex items-center justify-center'>
-                <div className='text-center p-8'>
-                  <p className='text-secondary text-sm mb-2'>
-                    Zdjęcie chłodziarki do skóry
-                  </p>
-                  <p className='text-muted text-xs'>(Placeholder)</p>
-                </div>
-              </div>
+              <Image
+                src='/images/hero/hero.webp'
+                alt='Chłodzenie skóry podczas zabiegu'
+                fill
+                className='object-cover'
+                sizes='(max-width: 768px) 100vw, 50vw'
+              />
             </div>
           </div>
 

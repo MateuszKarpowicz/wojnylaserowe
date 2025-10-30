@@ -67,7 +67,7 @@ function QualificationItem({ item, idx }) {
         className={[
           'cursor-pointer transition-all duration-300 focus-ring border-neon-purple/30',
           open
-            ? 'border-neon-purple/60 shadow-[0_0_44px_rgba(192,132,252,0.55),0_12px_22px_rgba(0,0,0,0.18)]'
+            ? 'border-transparent shadow-[0_0_44px_rgba(192,132,252,0.55),0_12px_22px_rgba(0,0,0,0.18)]'
             : 'shadow-md hover:shadow-lg',
         ].join(' ')}
       >
@@ -76,7 +76,7 @@ function QualificationItem({ item, idx }) {
           <h3 className='text-lg text-text-dark mb-0'>{item.title}</h3>
           <span
             className={[
-              'ml-3 inline-block text-text-dark/70 transition-transform duration-300',
+              'ml-3 inline-block text-neon-purple transition-transform duration-300',
               open ? 'rotate-180' : 'rotate-0',
             ].join(' ')}
             aria-hidden='true'
@@ -96,7 +96,7 @@ function QualificationItem({ item, idx }) {
           ].join(' ')}
         >
           <div className='min-h-0'>
-            <div className='mt-3 rounded-md border border-neon-purple/20 bg-surface p-4'>
+            <div className='mt-3 rounded-md bg-surface p-4'>
               <p className='text-text-dark/80 leading-relaxed text-sm md:text-base'>
                 {item.description}
               </p>

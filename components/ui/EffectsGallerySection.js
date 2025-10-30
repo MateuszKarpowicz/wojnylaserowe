@@ -1,16 +1,6 @@
-'use client';
-import dynamic from 'next/dynamic';
-import LoadingSpinner from '@/components/ui/LoadingSpinner';
+'use server';
 import { Section, Container } from '@/components/primitives';
-
-const EffectsGallery = dynamic(() => import('@/components/ui/EffectsGallery'), {
-  ssr: false,
-  loading: () => (
-    <div className='py-10 flex justify-center'>
-      <LoadingSpinner />
-    </div>
-  ),
-});
+import EffectsGalleryClient from '@/components/ui/EffectsGalleryClient';
 
 /**
  * Sekcja galerii efektów z wrapperem
@@ -19,7 +9,7 @@ export default function EffectsGallerySection() {
   return (
     <Section bg='dark'>
       <Container>
-        <EffectsGallery />
+        <EffectsGalleryClient />
       </Container>
     </Section>
   );

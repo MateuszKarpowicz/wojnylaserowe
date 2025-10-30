@@ -23,6 +23,11 @@
     text-rendering: optimizeLegibility;
   }
 
+  :root {
+    /* Domyślnie mapujemy pricedown na orbitron, dopóki nie podłączymy lokalnego fontu */
+    --font-pricedown: var(--font-orbitron);
+  }
+
   h1,
   h2,
   h3 {
@@ -87,7 +92,15 @@
 
   /* Typography scale utilities */
   .text-hero {
-    @apply text-4xl md:text-5xl font-display font-bold;
+    @apply text-5xl md:text-6xl font-display font-bold uppercase;
+    font-family: var(--font-bebas), var(--font-orbitron), var(--font-yantramanav), ui-sans-serif, system-ui;
+    letter-spacing: 0.08em;
+  }
+
+  @media (min-width: 768px) {
+    .text-hero {
+      letter-spacing: 0.14em;
+    }
   }
 
   .text-section-title {
@@ -100,11 +113,15 @@
 
   /* Section title utilities - unifikacja dla komponentów *WithHeader */
   .section-title-light {
-    @apply text-section-title text-text-light;
+    @apply text-section-title text-text-light uppercase;
+    font-family: var(--font-bebas), var(--font-orbitron), var(--font-yantramanav), ui-sans-serif, system-ui;
+    letter-spacing: 0.12em;
   }
 
   .section-title-dark {
-    @apply text-section-title text-text-dark;
+    @apply text-section-title text-text-dark uppercase;
+    font-family: var(--font-bebas), var(--font-orbitron), var(--font-yantramanav), ui-sans-serif, system-ui;
+    letter-spacing: 0.12em;
   }
 
   /* Formularze */

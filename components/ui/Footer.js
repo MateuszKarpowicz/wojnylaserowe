@@ -15,7 +15,6 @@ function IconLink({ href, label, icon: Icon, ariaLabel }) {
 }
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
 
   // Pobierz linki z environment variables (fallback do domyślnych wartości)
   const facebookUrl =
@@ -30,8 +29,8 @@ export default function Footer() {
       className='fixed bottom-0 left-0 right-0 z-header border-t border-neon-blue/20 bg-header-footer shadow-glow'
       role='contentinfo'
     >
-      <div className='container mx-auto px-4 py-0.5 flex flex-col items-center gap-0.5'>
-        <div className='flex items-center gap-10'>
+      <div className='container mx-auto px-2 py-1 flex items-center justify-center'>
+        <div className='flex items-center gap-8'>
           <IconLink href={facebookUrl} label='Facebook' icon={FaFacebook} />
           <IconLink href={instagramUrl} label='Instagram' icon={FaInstagram} />
           <IconLink
@@ -41,10 +40,6 @@ export default function Footer() {
             ariaLabel='Zadzwoń do nas'
           />
         </div>
-
-        <p className='text-[0.6rem] text-text-light opacity-70'>
-          © {currentYear} Wojny Laserowe. Wszelkie prawa zastrzeżone.
-        </p>
       </div>
     </footer>
   );

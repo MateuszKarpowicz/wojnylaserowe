@@ -78,7 +78,7 @@ export default function FormField({
             required={required}
             disabled={disabled}
             placeholder={placeholder}
-            className={`${fieldClasses} placeholder:text-text-muted min-h-[140px]`}
+            className={`${fieldClasses} placeholder:text-text-muted min-h-36`}
             rows='6'
             {...ariaProps}
             {...props}
@@ -155,7 +155,7 @@ export default function FormField({
 
       {/* ERROR MESSAGE */}
       {error && (
-        <div id={errorId} className='text-error text-sm mt-1' role='alert'>
+        <div id={errorId} className='text-error text-sm mt-1' role='alert' aria-live='polite'>
           {error}
         </div>
       )}

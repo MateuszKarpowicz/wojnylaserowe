@@ -3,8 +3,9 @@ import OverflowDebug from '@/components/OverflowDebug';
 import { OfertaProvider } from '@/components/context/OfertaContext';
 import Footer from '@/components/ui/Footer';
 import Header from '@/components/ui/Header';
+import LoadingSpinner from '@/components/ui/LoadingSpinner';
+import { bebas, orbitron, yantramanav } from '@/lib/fonts';
 import OfferSlider from '@/components/ui/OfferSlider';
-import { orbitron, poppins } from '@/lib/fonts';
 import './globals.css';
 
 export const metadata = {
@@ -14,7 +15,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='pl' className={`${poppins.variable} ${orbitron.variable}`}>
+    <html
+      lang='pl'
+      className={`${yantramanav.variable} ${orbitron.variable} ${bebas.variable}`}
+    >
       <head>
         <meta
           name='viewport'

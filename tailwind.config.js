@@ -42,10 +42,11 @@ module.exports = {
         'button-dark-hover': 'rgba(0, 0, 0, 0.7)', // bg-black/70
       },
       fontFamily: {
-        sans: ['var(--font-poppins)', 'ui-sans-serif', 'system-ui'],
+        sans: ['var(--font-yantramanav)', 'ui-sans-serif', 'system-ui'],
         display: [
+          'var(--font-bebas)',
           'var(--font-orbitron)',
-          'var(--font-poppins)',
+          'var(--font-yantramanav)',
           'ui-sans-serif',
         ],
       },

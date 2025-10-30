@@ -1,4 +1,5 @@
 // Health check endpoint for monitoring and load balancers
+import { logger } from '@/lib/logger';
 
 export async function GET() {
   try {
@@ -18,8 +19,8 @@ export async function GET() {
 
     return Response.json(healthStatus, { status: 200 });
   } catch (error) {
-    console.error('Health check failed:', error);
-    
+    logger.error('Health check failed:', error);
+
     return Response.json({
       status: 'unhealthy',
       timestamp: new Date().toISOString(),
@@ -28,33 +29,30 @@ export async function GET() {
   }
 }
 
-// Database health check
+// Database health check (placeholder implementation)
 async function checkDatabase() {
   try {
-    // TODO: Implement actual database check when Prisma is set up
-    // const db = await prisma.$queryRaw`SELECT 1`;
+    // Placeholder: return healthy until database client is integrated
     return { status: 'healthy', responseTime: '< 1ms' };
   } catch (error) {
     return { status: 'unhealthy', error: error.message };
   }
 }
 
-// Redis health check
+// Redis health check (placeholder implementation)
 async function checkRedis() {
   try {
-    // TODO: Implement actual Redis check when Redis client is set up
-    // const redis = new Redis(process.env.REDIS_URL);
-    // await redis.ping();
+    // Placeholder: return healthy until Redis client is integrated
     return { status: 'healthy', responseTime: '< 1ms' };
   } catch (error) {
     return { status: 'unhealthy', error: error.message };
   }
 }
 
-// Storage health check
+// Storage health check (placeholder implementation)
 async function checkStorage() {
   try {
-    // TODO: Implement actual storage check when file storage is set up
+    // Placeholder: return healthy until storage provider is integrated
     return { status: 'healthy', available: true };
   } catch (error) {
     return { status: 'unhealthy', error: error.message };

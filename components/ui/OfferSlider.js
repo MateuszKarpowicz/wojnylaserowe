@@ -95,7 +95,7 @@ export default function OfferSlider() {
               <div className='flex items-center gap-3 mb-6'>
                 <button
                   onClick={goBack}
-                  className='text-text-light hover:text-neon-purple transition-colors p-2 rounded focus-ring'
+                  className='btn-neon-purple px-3 py-1'
                   aria-label='Wróć do wyboru usługi'
                 >
                   ←
@@ -122,7 +122,7 @@ export default function OfferSlider() {
                 submitText={contactFormData.submit.text}
                 loadingText={contactFormData.submit.loading}
               >
-                {({ formData, handleInputChange, isLoading }) => (
+                {({ formData, handleInputChange, isLoading, fieldErrors }) => (
                   <>
                     {/* IMIĘ I NAZWISKO */}
                     <FormField
@@ -134,6 +134,7 @@ export default function OfferSlider() {
                       required
                       disabled={isLoading}
                       placeholder={contactFormData.fields.name.placeholder}
+                      error={fieldErrors?.name}
                       dark={true}
                     />
 
@@ -147,6 +148,7 @@ export default function OfferSlider() {
                       required
                       disabled={isLoading}
                       placeholder={contactFormData.fields.phone.placeholder}
+                      error={fieldErrors?.phone}
                       dark={true}
                     />
 
@@ -161,6 +163,7 @@ export default function OfferSlider() {
                       disabled={isLoading}
                       placeholder={contactFormData.fields.service.placeholder}
                       options={contactFormData.fields.service.options}
+                      error={fieldErrors?.service}
                       dark={true}
                     />
 
@@ -176,6 +179,7 @@ export default function OfferSlider() {
                       placeholder={
                         contactFormData.fields.description.placeholder
                       }
+                      error={fieldErrors?.description}
                       dark={true}
                     />
 
@@ -188,6 +192,7 @@ export default function OfferSlider() {
                       onChange={handleInputChange}
                       disabled={isLoading}
                       placeholder={contactFormData.fields.dates.placeholder}
+                      error={fieldErrors?.dates}
                       dark={true}
                     />
 

@@ -50,13 +50,7 @@ export async function POST(request) {
       photos: validatedData.photos || [],
     };
 
-    // TODO: Save to database
-    // await saveContactForm(sanitizedData);
-
-    // TODO: Send email notification
-    // await sendEmailNotification(sanitizedData);
-
-    // TODO: Log the submission (wyciszone w produkcji)
+    // Submission log (wyciszony w produkcji)
     logger.log('Contact form submitted:', {
       timestamp: new Date().toISOString(),
       ip: request.ip || request.headers.get('x-forwarded-for'),

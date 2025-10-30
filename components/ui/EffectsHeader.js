@@ -9,7 +9,7 @@ export default function EffectsHeader({ data }) {
     <section className='section-pad bg-surface'>
       <div className='section-wrap'>
         <div className='text-center mb-12'>
-          <h1 className='text-section-title text-text-dark mb-4'>
+          <h1 className='section-title-dark mb-4'>
             {header.title}
           </h1>
           <p className='text-lg text-secondary'>{header.subtitle}</p>

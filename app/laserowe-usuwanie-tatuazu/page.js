@@ -1,9 +1,10 @@
-import AftercareSectionWithHeader from '@/components/ui/AftercareSectionWithHeader';
+import AftercareSection from '@/components/ui/AftercareSection';
 import CTASection from '@/components/ui/CTASection';
 import CoolingSection from '@/components/ui/CoolingSection';
-import HowItWorksSectionWithHeader from '@/components/ui/HowItWorksSectionWithHeader';
+import HowItWorksSection from '@/components/ui/HowItWorksSection';
 import RemovalHero from '@/components/ui/RemovalHero';
-import WhyChooseSectionWithHeader from '@/components/ui/WhyChooseSectionWithHeader';
+import WhyChooseSection from '@/components/ui/WhyChooseSection';
+import SectionWrapper from '@/components/ui/SectionWrapper';
 import removalPageData from '@/content/texts/removal-page.json';
 
 // ISR - revalidate co godzinę dla stale data
@@ -15,16 +16,16 @@ export default function LaseroweUsuwanieTatuazu() {
   return (
     <main className='min-h-screen bg-bg-light text-text-dark'>
       <RemovalHero />
-      <HowItWorksSectionWithHeader
-        data={{ howItWorks, title: howItWorks.title }}
-      />
+      <SectionWrapper title={howItWorks.title} bgColor='bg-dark'>
+        <HowItWorksSection howItWorks={howItWorks} />
+      </SectionWrapper>
       <CoolingSection data={{ cooling }} />
-      <AftercareSectionWithHeader
-        data={{ aftercare, title: aftercare.title }}
-      />
-      <WhyChooseSectionWithHeader
-        data={{ whyChoose, title: whyChoose.title }}
-      />
+      <SectionWrapper title={aftercare.title} bgColor='bg-dark'>
+        <AftercareSection aftercare={aftercare} />
+      </SectionWrapper>
+      <SectionWrapper title={whyChoose.title} bgColor='surface'>
+        <WhyChooseSection points={whyChoose.points} />
+      </SectionWrapper>
       <CTASection
         title={cta.title}
         text={cta.text}

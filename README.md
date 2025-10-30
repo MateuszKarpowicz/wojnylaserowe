@@ -144,6 +144,19 @@ npm run security:check
 npm run security:fix
 ```
 
+### **Matryca ENV (prod)**
+
+- Wymagane:
+  - `NEXTAUTH_SECRET` (≥32 znaków)
+  - `CSRF_SECRET` (dla formularza kontaktowego)
+  - `REDIS_URL` (produkcyjny rate-limit)
+- Zalecane:
+  - `NEXTAUTH_URL` (pełny URL wdrożenia)
+- Opcjonalne:
+  - `DATABASE_URL`, `SMTP_*`, `GOOGLE_ANALYTICS_ID`, `STRIPE_*`, `FEATURE_*`
+
+Przykładowe wartości w `env.example` — skopiuj do `.env.local`/Vercel.
+
 ## 📁 **STRUKTURA PROJEKTU**
 
 ```

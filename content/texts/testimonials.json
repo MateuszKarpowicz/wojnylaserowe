@@ -1,0 +1,47 @@
+{
+  "title": "Opinie klientów",
+  "external": {
+    "source": "Google",
+    "rating": 5.0,
+    "reviewsCount": 48,
+    "url": "https://www.google.com/search?sca_esv=dc724815bbf34a06&rlz=1C5CHFA_enPL1050PL1051&sxsrf=AE3TifPNF476z-YKCEELshg4EGjlV0-_8A:1761843352146&q=wojny+laserowe+krakow&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-Ext4A-gNaU-3yN-OJB_faJ_sCYMUWWtF97owRVSJGP2iH9qPV5CbL7LyXxLvxU7JhcDSfZM%3D&uds=AOm0WdFBvY2LKXs9H9KYsBlzmzqjaWqp1KPzb90iyDJeXFfEJw32GvM8v4bwBxSh1Wpqw8yK_sfRcFp9aFgExn3S0o13jVPtaIZEnANM0I1-kVvCU7owCGPn1cYeJLZx6UeaTI1cwOQd&sa=X&ved=2ahUKEwio_535scyQAxUFOnoKHWtTE4AQ3PALegQIHBAE&biw=1033&bih=916&dpr=2"
+  },
+  "items": [
+    {
+      "quote": "Profesjonalnie i bezpiecznie. Efekty po 3 wizytach były świetnie widoczne.",
+      "author": "Kasia",
+      "meta": "Usuwanie tatuażu"
+    },
+    {
+      "quote": "Wyjaśnili wszystko krok po kroku. Realne podejście, zero marketingu.",
+      "author": "Marek",
+      "meta": "ScarINK – blizny"
+    },
+    {
+      "quote": "Świetny kontakt i realne wyniki. Polecam!",
+      "author": "Ania",
+      "meta": "Usuwanie tatuażu"
+    }
+    ,
+    {
+      "quote": "Bardzo empatyczne podejście, wszystko jasno wytłumaczone.",
+      "author": "Ola",
+      "meta": "Konsultacja + plan zabiegów"
+    },
+    {
+      "quote": "Po każdej wizycie widziałem progres. Sprzęt robi różnicę.",
+      "author": "Paweł",
+      "meta": "Usuwanie tatuażu – kolor"
+    },
+    {
+      "quote": "Zabiegi wykonywane bardzo dokładnie, dbałość o bezpieczeństwo.",
+      "author": "Ewelina",
+      "meta": "ScarINK – blizny pooperacyjne"
+    },
+    {
+      "quote": "Terminowo, rzeczowo i z efektem. Zdecydowanie polecam.",
+      "author": "Tomek",
+      "meta": "Usuwanie tatuażu – czarny"
+    }
+  ]
+}

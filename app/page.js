@@ -1,5 +1,8 @@
 import Image from 'next/image';
 import { Section, SectionHeader, Container } from '@/components/primitives';
+import TestimonialsCarousel from '@/components/ui/TestimonialsCarousel';
+import testimonialsData from '@/content/texts/testimonials.json';
+import MapSection from '@/components/ui/MapSection';
 
 export default function Home() {
   return (
@@ -26,6 +29,25 @@ export default function Home() {
           className='w-full h-[70vh] md:h-[80vh] object-cover object-top'
         />
       </section>
+
+      {/* Opinie klientów – karuzela */}
+      <TestimonialsCarousel
+        title={testimonialsData.title}
+        items={testimonialsData.items}
+        intervalMs={3000}
+        external={testimonialsData.external}
+      />
+
+      {/* Mapa dojazdu */}
+      <MapSection
+        studioName='STUDIO KULT'
+        addressLines={[
+          'Aleja Zygmunta Krasińskiego 1',
+          '31-111 Kraków',
+          'JUBILAT',
+          'III piętro',
+        ]}
+      />
     </main>
   );
 }

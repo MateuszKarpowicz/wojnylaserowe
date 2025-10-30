@@ -7,12 +7,14 @@
   html {
     /* USUNIĘTO: scroll-behavior: smooth - powodowało baunsowanie */
     scroll-padding-top: calc(4.5rem + 1rem); /* h-header + dodatkowy padding */
+    overscroll-behavior-y: none; /* zapobiega gumkowaniu na osi Y */
   }
 
   body {
     @apply bg-bg-light text-text-dark dark:bg-bg-dark dark:text-text-light font-sans;
     /* ZAPOBIEGANIE LAYOUT SHIFT */
     overflow-x: hidden;
+    overscroll-behavior-y: none;
   }
 
   h1,

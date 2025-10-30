@@ -7,7 +7,7 @@ import FAQAccordion from '@/components/ui/FAQAccordion';
  */
 export default function FAQCategorySection({ category, categoryIndex }) {
   return (
-    <section className='bg-surface rounded-lg shadow-sm p-6'>
+    <section className='card-with-border-purple'>
       <h2 className='text-2xl font-display font-bold text-text-dark mb-6 text-center'>
         {category.category}
       </h2>

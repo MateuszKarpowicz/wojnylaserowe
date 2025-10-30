@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
       <head>
         <link rel='preload' href='/images/logo/logo.svg' as='image' />
       </head>
-      <body className='min-h-dvh bg-bg-light text-text-dark dark:bg-bg-dark dark:text-text-light'>
+      <body className='min-h-dvh bg-bg-light text-text-dark dark:bg-bg-dark dark:text-text-light overflow-x-hidden'>
         <ErrorBoundary>
           <OfertaProvider>
             {/* Skip link */}

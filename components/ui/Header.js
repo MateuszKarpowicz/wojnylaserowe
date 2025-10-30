@@ -17,13 +17,12 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-header bg-header-footer backdrop-blur-sm will-change-transform ${
+      className={`sticky top-0 left-0 right-0 w-full z-header bg-header-footer ${
         isOfertaOpen
           ? 'border-b border-neon-purple/20 shadow-glow-purple'
           : 'border-b border-neon-blue/20 shadow-glow'
       }`}
       role='banner'
-      style={{ transform: 'translateZ(0)' }} // Hardware acceleration
     >
       <nav
         className='container mx-auto px-4 h-header flex items-center justify-center relative'
@@ -42,6 +41,7 @@ export default function Header() {
             width={160}
             className='h-16 w-auto object-contain'
             priority
+            style={{ zIndex: 99999 }}
           />
         </Link>
       </nav>

@@ -58,7 +58,7 @@ module.exports = {
         header: '4.5rem', // 72px - stała wysokość headera
       },
       zIndex: {
-        header: 50,
+        header: 90,
         overlay: 60,
         modal: 70,
         popover: 80,

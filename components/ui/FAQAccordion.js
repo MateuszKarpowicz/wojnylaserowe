@@ -14,13 +14,20 @@ export default function FAQAccordion({ item, index }) {
     setIsOpen(!isOpen);
   };
 
+  const panelId = `faq-panel-${index}`;
+  const triggerId = `faq-trigger-${index}`;
+
   return (
-    <div className='border border-border-light rounded-lg bg-surface'>
+    <div className='border border-border rounded-lg bg-transparent'>
       <button
         onClick={toggleItem}
+        id={triggerId}
+        type='button'
+        aria-expanded={isOpen}
+        aria-controls={panelId}
         className='w-full text-left p-4 flex justify-between items-center hover:bg-surface-light transition-colors rounded-lg'
       >
-        <h3 className='font-normal text-text-dark pr-4'>{item.question}</h3>
+        <h3 className='font-medium text-text-dark pr-4'>{item.question}</h3>
         {isOpen ? (
           <FaChevronUp className='text-neon-blue flex-shrink-0' />
         ) : (
@@ -29,8 +36,13 @@ export default function FAQAccordion({ item, index }) {
       </button>
 
       {isOpen && (
-        <div className='px-4 pb-4'>
-          <div className='border-t border-border-light pt-4'>
+        <div
+          id={panelId}
+          role='region'
+          aria-labelledby={triggerId}
+          className='px-4 pb-4'
+        >
+          <div className='border-t border-border pt-4'>
             <p className='text-secondary leading-relaxed'>{item.answer}</p>
           </div>
         </div>

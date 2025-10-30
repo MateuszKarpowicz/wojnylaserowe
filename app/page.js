@@ -6,6 +6,7 @@ import {
 } from '@/components/primitives';
 import EffectsCarousel from '@/components/ui/EffectsCarousel';
 import FAQAccordion from '@/components/ui/FAQAccordion';
+import InstagramSection from '@/components/ui/InstagramSection';
 import MapSection from '@/components/ui/MapSection';
 import ProcessSection from '@/components/ui/ProcessSection';
 import QualificationsSection from '@/components/ui/QualificationsSection';
@@ -21,12 +22,12 @@ export default function Home() {
     <main className='w-full'>
       {/* Hero heading jak na innych podstronach */}
       <Section bg='surface' className='border-b border-border-border'>
-        <SectionHeader
-          title='Zamień Przeszłość Na Nowy Początek!!!'
-          variant='dark'
-          align='center'
-          className='hero-title-offset'
-        />
+        <Container>
+          <h1 className='font-display uppercase text-center leading-tight tracking-[0.08em] md:tracking-[0.12em] text-4xl md:text-5xl hero-title-offset'>
+            <span className='block'>ZAMIEŃ PRZESZŁOŚĆ</span>
+            <span className='block'>NA NOWY POCZĄTEK!</span>
+          </h1>
+        </Container>
       </Section>
 
       {/* Pełno-szerokościowe zdjęcie, kadrowane od góry */}
@@ -55,20 +56,8 @@ export default function Home() {
         data={require('@/content/texts/about-page.json').qualifications}
       />
 
-      {/* Oferta – CTA do konfiguratora/drawera (globalny slider jest w layout) */}
-      <Section bg='surface'>
-        <Container>
-          <SectionHeader title='Oferta' variant='dark' />
-          <p className='text-center text-text-dark/80 max-w-2xl mx-auto'>
-            Skonfiguruj usługę i umów darmową konsultację.
-          </p>
-          <div className='mt-6 text-center'>
-            <Button as='a' href='/kontakt' variant='ctaBlue' size='md'>
-              Darmowa konsultacja
-            </Button>
-          </div>
-        </Container>
-      </Section>
+      {/* Instagram embed */}
+      <InstagramSection />
 
       {/* Przed/Po – karuzela zdjęć bez nawigacji */}
       <Section bg='dark'>

@@ -71,6 +71,8 @@ export default function TestimonialsCarousel({
             className={[
               'relative',
               'bg-bg-surface text-text-dark',
+              // delikatnie większa wysokość, by sekcja była bardziej stabilna
+              'min-h-[220px]',
               // wejście nowej opinii: fade + lekki slide-up
               entered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2',
               'transition-[opacity,transform,box-shadow] gpu',

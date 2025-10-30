@@ -38,13 +38,14 @@ export default function EffectsCarousel({ intervalMs = 4000, frameSizeClass = 'w
       variant='neonPurple'
       aspect='square'
       sizeClass={frameSizeClass}
+      rounded={true}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
       <div
         key={index}
         className={[
-          'absolute inset-0',
+          'absolute -inset-[2px]',
           'transition-[opacity,transform] duration-[var(--dur-slow)] ease-[var(--ease-brand)]',
           entering ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2',
         ].join(' ')}

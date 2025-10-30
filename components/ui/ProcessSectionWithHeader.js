@@ -20,10 +20,10 @@ export default function ProcessSectionWithHeader({ data }) {
                 </div>
               </div>
               <div className='flex-1'>
-                <h3 className='text-lg font-semibold text-text-light mb-2'>
+                <h3 className='text-lg font-semibold text-text-dark mb-2'>
                   {step.title}
                 </h3>
-                <p className='text-sm text-text-light/80 leading-relaxed'>
+                <p className='text-sm text-secondary leading-relaxed'>
                   {step.text}
                 </p>
               </div>
@@ -48,7 +48,7 @@ export default function ProcessSectionWithHeader({ data }) {
                   </div>
                 </div>
                 <div className='flex-1'>
-                  <p className='text-sm text-text-light/80 leading-relaxed'>
+                  <p className='text-sm text-secondary leading-relaxed'>
                     {point.text}
                   </p>
                 </div>

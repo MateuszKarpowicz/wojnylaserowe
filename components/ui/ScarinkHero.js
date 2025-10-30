@@ -5,7 +5,7 @@ export default function ScarinkHero() {
   const { hero } = scarinkPageData;
 
   return (
-    <section className='bg-surface pt-0 pb-10 md:pb-14'>
+    <section className='bg-surface pt-10 pb-10 md:pb-14'>
       <div className='section-wrap'>
         {/* Nagłówek nad zdjęciem */}
         <h1 className='text-hero text-text-dark mb-12 text-center hero-title-offset'>

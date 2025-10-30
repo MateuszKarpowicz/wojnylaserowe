@@ -31,7 +31,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className='bg-surface p-8 md:p-12 rounded-xl shadow-lg border-2 border-neon-purple/30 hover:border-neon-purple/50 transition-all duration-300'>
+    <div className='bg-surface p-8 md:p-12 rounded-xl shadow-lg border-2 border-neon-purple/30 hover:border-neon-purple/50 transition-all duration-300 max-w-2xl mx-auto'>
       <h2 className='text-2xl md:text-3xl font-display font-bold text-text-dark mb-8 text-center'>
         Skontaktuj się z nami
       </h2>

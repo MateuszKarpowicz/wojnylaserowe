@@ -1,12 +1,29 @@
+import Image from 'next/image';
+
 export default function Home() {
   return (
-    <main className="sections-grid-auto">
-      {/* Strona główna - wszystkie sekcje usunięte */}
-      <div className="min-h-screen flex items-center justify-center">
-        <h1 className="text-4xl font-bold text-center">
-          Strona główna - w budowie
-        </h1>
-      </div>
+    <main className='w-full'>
+      {/* Hero heading jak na innych podstronach */}
+      <section className='bg-surface border-b border-border-border pt-10 pb-10 md:pb-14'>
+        <div className='section-wrap'>
+          <h1 className='text-hero text-text-dark mb-12 text-center hero-title-offset'>
+            Zamień Przeszłość Na Nowy Początek!!!
+          </h1>
+        </div>
+      </section>
+
+      {/* Pełno-szerokościowe zdjęcie, kadrowane od góry */}
+      <section className='w-full mt-0 overflow-x-hidden'>
+        <Image
+          src='/images/main/piter.webp'
+          alt='Wojny Laserowe — główne zdjęcie'
+          width={1920}
+          height={1080}
+          priority
+          sizes='100vw'
+          className='w-full h-[70vh] md:h-[80vh] object-cover object-top'
+        />
+      </section>
     </main>
   );
 }

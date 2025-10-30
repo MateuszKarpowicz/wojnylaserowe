@@ -5,7 +5,7 @@ import ContactForm from '@/components/ui/ContactForm';
  */
 export default function ContactFormSection() {
   return (
-    <section className='section-pad bg-bg-dark'>
+    <section className='section-pad bg-surface'>
       <div className='section-wrap'>
         <ContactForm />
       </div>

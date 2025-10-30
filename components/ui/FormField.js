@@ -61,7 +61,7 @@ export default function FormField({
     `block ${
       dark ? 'text-text-light' : 'text-text-dark'
     } text-sm font-semibold mb-2`,
-    required && 'after:content-["*"] after:text-error after:ml-1',
+    required && 'after:content-["*"] after:text-neon-purple after:opacity-70 after:ml-1',
   ]
     .filter(Boolean)
     .join(' ');
@@ -78,8 +78,8 @@ export default function FormField({
             required={required}
             disabled={disabled}
             placeholder={placeholder}
-            className={fieldClasses}
-            rows='4'
+            className={`${fieldClasses} placeholder:text-text-muted min-h-[140px]`}
+            rows='6'
             {...ariaProps}
             {...props}
           />
@@ -94,7 +94,7 @@ export default function FormField({
             onChange={onChange}
             required={required}
             disabled={disabled}
-            className={fieldClasses}
+            className={`${fieldClasses} appearance-none cursor-pointer pr-10 bg-[length:1.25rem_1.25rem] bg-no-repeat bg-[right_0.75rem_center]`}
             {...ariaProps}
             {...props}
           >
@@ -118,7 +118,7 @@ export default function FormField({
             disabled={disabled}
             accept='image/*'
             multiple
-            className={fieldClasses}
+            className={`${fieldClasses} file:mr-3 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-neon-purple file:text-white file:cursor-pointer`}
             {...ariaProps}
             {...props}
           />
@@ -135,7 +135,7 @@ export default function FormField({
             required={required}
             disabled={disabled}
             placeholder={placeholder}
-            className={fieldClasses}
+            className={`${fieldClasses} placeholder:text-text-muted`}
             {...ariaProps}
             {...props}
           />

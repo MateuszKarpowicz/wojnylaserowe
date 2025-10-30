@@ -1,26 +1,26 @@
 import { FaFacebook, FaInstagram, FaPhone } from 'react-icons/fa';
 
-export default function SocialMediaIcons({ 
-  size = "text-3xl", 
-  className = "",
-  showLabels = false 
+export default function SocialMediaIcons({
+  size = 'text-3xl',
+  className = '',
+  showLabels = false,
 }) {
   const icons = [
-    { 
-      icon: FaFacebook, 
-      label: "Facebook", 
-      href: "#" 
+    {
+      icon: FaFacebook,
+      label: 'Facebook',
+      href: 'https://www.facebook.com/search/top?q=wojny%20laserowe',
     },
-    { 
-      icon: FaInstagram, 
-      label: "Instagram", 
-      href: "#" 
+    {
+      icon: FaInstagram,
+      label: 'Instagram',
+      href: 'https://www.instagram.com/explore/search/keyword/?q=wojny%20laserowe',
     },
-    { 
-      icon: FaPhone, 
-      label: "Telefon", 
-      href: "#" 
-    }
+    {
+      icon: FaPhone,
+      label: 'Telefon',
+      href: '#',
+    },
   ];
 
   return (
@@ -33,7 +33,7 @@ export default function SocialMediaIcons({
           className={`${size} link-hover-neon`}
         >
           <Icon />
-          {showLabels && <span className="sr-only">{label}</span>}
+          {showLabels && <span className='sr-only'>{label}</span>}
         </a>
       ))}
     </div>

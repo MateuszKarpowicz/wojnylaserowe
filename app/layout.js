@@ -1,4 +1,5 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
+import OverflowDebug from '@/components/OverflowDebug';
 import { OfertaProvider } from '@/components/context/OfertaContext';
 import Footer from '@/components/ui/Footer';
 import Header from '@/components/ui/Header';
@@ -15,11 +16,16 @@ export default function RootLayout({ children }) {
   return (
     <html lang='pl' className={`${poppins.variable} ${orbitron.variable}`}>
       <head>
+        <meta
+          name='viewport'
+          content='width=device-width, initial-scale=1, viewport-fit=cover'
+        />
         <link rel='preload' href='/images/logo/logo.svg' as='image' />
       </head>
       <body className='min-h-dvh bg-bg-light text-text-dark dark:bg-bg-dark dark:text-text-light overflow-x-hidden'>
         <ErrorBoundary>
           <OfertaProvider>
+            {process.env.NODE_ENV !== 'production' && <OverflowDebug />}
             {/* Skip link */}
             <a
               href='#main'
@@ -32,12 +38,7 @@ export default function RootLayout({ children }) {
               <Header />
             </ErrorBoundary>
 
-            {/* Placeholder dla sticky header - zapobiega CLS */}
-            <div
-              aria-hidden='true'
-              className='h-header'
-              style={{ height: '4.5rem', minHeight: '4.5rem' }}
-            />
+            {/* Kompensacja fixed header → przeniesiona do main jako pt-header */}
 
             <ErrorBoundary>
               <OfferSlider />
@@ -46,7 +47,7 @@ export default function RootLayout({ children }) {
             <ErrorBoundary>
               <main
                 id='main'
-                className='min-h-screen'
+                className='min-h-screen pt-header overflow-x-hidden'
                 style={{ paddingBottom: '4rem' }}
               >
                 {children}

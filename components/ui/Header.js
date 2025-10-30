@@ -17,7 +17,7 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 left-0 right-0 w-full z-header bg-header-footer ${
+      className={`fixed top-0 left-0 right-0 w-full z-header bg-header-footer gpu ${
         isOfertaOpen
           ? 'border-b border-neon-purple/20 shadow-glow-purple'
           : 'border-b border-neon-blue/20 shadow-glow'
@@ -54,7 +54,7 @@ export default function Header() {
             aria-label={isOfertaOpen ? 'Zamknij ofertę' : 'Otwórz ofertę'}
             aria-expanded={isOfertaOpen}
             aria-controls='oferta-modal'
-            className='fixed top-[calc(4.5rem-1rem)] left-0 z-button bg-neon-purple bg-opacity-90 text-white w-24 py-0.5 rounded-r-lg rounded-l-none shadow-glow-purple hover:bg-neon-purple/90 transition-colors duration-300 flex items-center justify-center focus-ring'
+            className='fixed top-[calc(4.5rem-1rem)] left-0 z-button bg-neon-purple bg-opacity-90 text-white w-24 py-0.5 rounded-r-lg rounded-l-none shadow-glow-purple hover:bg-neon-purple/90 transition-colors duration-300 flex items-center justify-center focus-ring gpu'
           >
             OFERTA
           </button>,
@@ -69,7 +69,7 @@ export default function Header() {
             aria-label={isMenuOpen ? 'Zamknij menu' : 'Otwórz menu'}
             aria-expanded={isMenuOpen}
             aria-controls='mobile-menu'
-            className='fixed top-[calc(4.5rem-1rem)] right-0 z-button bg-neon-blue bg-opacity-90 text-white w-24 py-0.5 rounded-l-lg rounded-r-none shadow-glow hover:bg-neon-blue/90 transition-colors duration-300 flex items-center justify-center focus-ring'
+            className='fixed top-[calc(4.5rem-1rem)] right-0 z-button bg-neon-blue bg-opacity-90 text-white w-24 py-0.5 rounded-l-lg rounded-r-none shadow-glow hover:bg-neon-blue/90 transition-colors duration-300 flex items-center justify-center focus-ring gpu'
           >
             MENU
           </button>,

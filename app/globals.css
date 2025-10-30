@@ -8,13 +8,19 @@
     /* USUNIĘTO: scroll-behavior: smooth - powodowało baunsowanie */
     scroll-padding-top: calc(4.5rem + 1rem); /* h-header + dodatkowy padding */
     overscroll-behavior-y: none; /* zapobiega gumkowaniu na osi Y */
+    overflow-x: hidden; /* unika artefaktu 1px na prawym brzegu w Chrome */
+    width: 100%;
+    background-color: theme('colors.bg-light'); /* tło na root, eliminuje biały szew */
   }
 
   body {
     @apply bg-bg-light text-text-dark dark:bg-bg-dark dark:text-text-light font-sans;
     /* ZAPOBIEGANIE LAYOUT SHIFT */
     overflow-x: hidden;
+    width: 100%;
     overscroll-behavior-y: none;
+    -webkit-font-smoothing: antialiased; /* redukcja shimmeringu tekstu w Chrome */
+    text-rendering: optimizeLegibility;
   }
 
   h1,
@@ -76,7 +82,7 @@
 
   /* Hero title offset */
   .hero-title-offset {
-    @apply -mt-8;
+    @apply mt-0; /* neutralizacja po przejściu headera na fixed */
   }
 
   /* Typography scale utilities */
@@ -213,6 +219,14 @@
 
 /* UTILITIES – dostępność i skróty */
 @layer utilities {
+  /* Utility: padding-top równy wysokości headera (fixed) */
+  .pt-header {
+    padding-top: theme('height.header');
+  }
+  /* Debug (tylko w dev): podświetl elementy wykraczające poza viewport */
+  html[data-debug-overflow='true'] [data-overflow='true'] {
+    box-shadow: inset 0 0 0 2px red !important;
+  }
   .focus-ring {
     @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue focus-visible:ring-offset-2;
   }
@@ -252,6 +266,13 @@
   .spinner {
     @apply w-10 h-10 border-4 border-t-neon-blue rounded-full animate-spin;
     border-color: theme('colors.border-border');
+  }
+
+  /* Wymuszenie akceleracji GPU dla elementów powodujących migotanie w Chrome */
+  .gpu {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
   }
 }
 

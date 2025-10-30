@@ -5,21 +5,18 @@ import { logger } from '@/lib/logger';
 
 export default function OverflowDebug() {
   useEffect(() => {
-    // Włącz tryb debug wizualny tylko w dev poprzez data-atrybut na <html>
-    document.documentElement.setAttribute('data-debug-overflow', 'true');
+    // Tryb debug: tylko logowanie w dev, bez mutowania atrybutów w drzewie (unikamy hydration mismatch)
     const markOverflow = () => {
       const docWidth = document.documentElement.clientWidth;
       const offenders = [];
 
       document.querySelectorAll('*').forEach(el => {
-        el.removeAttribute('data-overflow');
         const rect = el.getBoundingClientRect();
         const scrollW = el.scrollWidth;
         const clientW = el.clientWidth;
         const isWiderThanViewport = rect.right > docWidth + 0.5; // tolerance
         const hasHorizontalOverflow = scrollW > clientW + 1;
         if (isWiderThanViewport || hasHorizontalOverflow) {
-          el.setAttribute('data-overflow', 'true');
           offenders.push({ el, rect, scrollW, clientW });
         }
       });
@@ -38,7 +35,6 @@ export default function OverflowDebug() {
     window.addEventListener('resize', markOverflow);
     window.addEventListener('orientationchange', markOverflow);
     return () => {
-      document.documentElement.removeAttribute('data-debug-overflow');
       ro.disconnect();
       window.removeEventListener('resize', markOverflow);
       window.removeEventListener('orientationchange', markOverflow);

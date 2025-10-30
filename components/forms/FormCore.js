@@ -28,6 +28,7 @@ export default function FormCore({
   children,
   submitText = 'Wyślij',
   loadingText = 'Wysyłanie...',
+  submitFullWidth = false,
   ...props
 }) {
   const [formData, setFormData] = useState(initialData);
@@ -105,7 +106,7 @@ export default function FormCore({
         : children}
 
       {/* PRZYCISK WYŚLIJ */}
-      <Button type='submit' disabled={isLoading} variant='section'>
+      <Button type='submit' disabled={isLoading} variant='section' fullWidth={submitFullWidth}>
         {isLoading ? (
           <span className='inline-flex items-center gap-2'>
             <span className='w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin' />

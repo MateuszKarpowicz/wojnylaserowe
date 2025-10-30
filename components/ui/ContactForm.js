@@ -31,16 +31,15 @@ export default function ContactForm() {
   }
 
   return (
-    <div className='bg-surface p-8 md:p-12 rounded-xl shadow-lg border-2 border-neon-purple/30 hover:border-neon-purple/50 transition-all duration-300 max-w-2xl mx-auto'>
-      <h2 className='text-2xl md:text-3xl font-display font-bold text-text-dark mb-8 text-center'>
-        Skontaktuj się z nami
-      </h2>
+    <div className='bg-surface p-8 md:p-12 rounded-xl shadow-lg transition-all duration-300 max-w-2xl mx-auto'>
+
 
       <FormCore
         validationSchema={contactFormSchema}
         onSubmit={handleSubmit}
         submitText='Wyślij wiadomość'
         loadingText='Wysyłanie...'
+        submitFullWidth={true}
       >
         {({ formData, handleInputChange, isLoading, fieldErrors }) => (
           <div className='space-y-6 md:space-y-8'>
@@ -55,7 +54,7 @@ export default function ContactForm() {
               placeholder='Wprowadź swoje imię i nazwisko'
               error={fieldErrors?.name}
               disabled={isLoading}
-              className='border-neon-purple/50 focus:border-neon-purple focus:ring-2 focus:ring-neon-purple/20'
+              className='border-black/50 focus:border-black focus:ring-2 focus:ring-black/20'
             />
 
             {/* Email */}
@@ -69,7 +68,7 @@ export default function ContactForm() {
               placeholder='twoj@email.com'
               error={fieldErrors?.email}
               disabled={isLoading}
-              className='border-neon-purple/50 focus:border-neon-purple focus:ring-2 focus:ring-neon-purple/20'
+              className='border-black/50 focus:border-black focus:ring-2 focus:ring-black/20'
             />
 
             {/* Telefon */}
@@ -82,7 +81,7 @@ export default function ContactForm() {
               placeholder='+48 123 456 789'
               error={fieldErrors?.phone}
               disabled={isLoading}
-              className='border-neon-purple/50 focus:border-neon-purple focus:ring-2 focus:ring-neon-purple/20'
+              className='border-black/50 focus:border-black focus:ring-2 focus:ring-black/20'
             />
 
             {/* Rodzaj usługi */}
@@ -102,7 +101,7 @@ export default function ContactForm() {
               ]}
               error={fieldErrors?.service}
               disabled={isLoading}
-              className='border-neon-purple/50 focus:border-neon-purple focus:ring-2 focus:ring-neon-purple/20'
+              className='border-black/50 focus:border-black focus:ring-2 focus:ring-black/20'
             />
 
             {/* Opis */}
@@ -116,7 +115,7 @@ export default function ContactForm() {
               placeholder='Opisz szczegółowo czego potrzebujesz...'
               error={fieldErrors?.description}
               disabled={isLoading}
-              className='border-neon-purple/50 focus:border-neon-purple focus:ring-2 focus:ring-neon-purple/20'
+              className='border-black/50 focus:border-black focus:ring-2 focus:ring-black/20'
             />
 
             {/* Preferowane terminy */}
@@ -129,7 +128,7 @@ export default function ContactForm() {
               placeholder='Kiedy chciałbyś się spotkać? (opcjonalne)'
               error={fieldErrors?.dates}
               disabled={isLoading}
-              className='border-neon-purple/50 focus:border-neon-purple focus:ring-2 focus:ring-neon-purple/20'
+              className='border-black/50 focus:border-black focus:ring-2 focus:ring-black/20'
             />
 
             {/* Zdjęcia */}
@@ -139,7 +138,7 @@ export default function ContactForm() {
               label='Zdjęcia (opcjonalne)'
               onChange={handleInputChange}
               disabled={isLoading}
-              className='border-neon-purple/50 focus:border-neon-purple focus:ring-2 focus:ring-neon-purple/20'
+              className='border-black/50 focus:border-black focus:ring-2 focus:ring-black/20 file:bg-neon-blue file:text-white file:rounded-md file:px-4 file:py-2 file:border-0 file:cursor-pointer file:shadow-[0_0_12px_rgba(0,153,204,0.45)] file:hover:bg-neon-blue/90'
             />
             <p className='text-sm text-secondary'>
               Możesz załączyć maksymalnie 5 zdjęć w formacie JPG, PNG lub WebP

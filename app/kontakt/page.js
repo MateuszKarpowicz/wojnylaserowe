@@ -1,6 +1,9 @@
+import { Container, Section } from '@/components/primitives';
+import ContactChannelsColumn from '@/components/ui/ContactChannelsColumn';
 import ContactFormSection from '@/components/ui/ContactFormSection';
 import ContactHeader from '@/components/ui/ContactHeader';
-import ContactInfoSection from '@/components/ui/ContactInfoSection';
+import InstagramSection from '@/components/ui/InstagramSection';
+import MapSection from '@/components/ui/MapSection';
 import contactPageData from '@/content/texts/contact-page.json';
 
 // ISR - revalidate co godzinę dla stale data
@@ -12,8 +15,18 @@ export default function Kontakt() {
   return (
     <main className='min-h-screen bg-bg-light text-text-dark'>
       <ContactHeader title={header.title} subtitle={header.subtitle} />
+
+      <InstagramSection />
+
       <ContactFormSection />
-      <ContactInfoSection data={{ contactInfo, title: contactInfo.title }} />
+
+      <MapSection />
+
+      <Section bg='surface'>
+        <Container>
+          <ContactChannelsColumn />
+        </Container>
+      </Section>
     </main>
   );
 }

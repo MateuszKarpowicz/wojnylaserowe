@@ -16,7 +16,7 @@ export default function CoolingSection({ data }) {
 
         <div className='md:grid md:grid-cols-2 gap-8 items-center'>
           {/* Zdjęcie - na mobile pierwsze */}
-          <div className='mb-8 md:mb-0 order-1'>
+          <div className='mb-8 md:mb-0 order-1 mt-4 md:mt-6'>
             <div className='relative w-full aspect-square max-w-md mx-auto md:max-w-full rounded-xl shadow-lg overflow-hidden border-2 border-neon-purple/30'>
               <Image
                 src='/images/hero/hero.webp'

@@ -26,7 +26,7 @@ export default function HowItWorksSection({ howItWorks }) {
       </div>
 
       {/* Zdjęcie */}
-      <div className='flex justify-center'>
+      <div className='flex justify-center mt-4 md:mt-6'>
         <div className='relative w-full aspect-square max-w-md mx-auto rounded-xl shadow-lg overflow-hidden border-2 border-neon-blue/30'>
           <Image
             src='/images/hero/hero.webp'

@@ -8,7 +8,7 @@ import { Card } from '@/components/primitives';
  */
 export default function FAQCategorySection({ category, categoryIndex }) {
   return (
-    <Card variant='purple' as='section'>
+    <Card variant='purple' as='section' size='md'>
       <h2 className='text-2xl font-display font-bold text-text-dark mb-6 text-center'>
         {category.category}
       </h2>

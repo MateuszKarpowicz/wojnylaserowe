@@ -81,15 +81,17 @@ export default function TestimonialsCarousel({
         {current ? (
           <Card
             variant='blue'
+            hoverable={false}
             className={cn(
               'relative',
+              // Override tła dla blue variant (specjalny przypadek - tło ma być bg-bg-surface)
               'bg-bg-surface text-text-dark',
               // delikatnie większa wysokość, by sekcja była bardziej stabilna
               'min-h-[220px]',
               // wejście nowej opinii: fade + lekki slide-up
               entered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2',
               'transition-[opacity,transform,box-shadow] gpu',
-              // hover
+              // hover (custom dla tego komponentu)
               'hover:-translate-y-1 hover:scale-[1.01]',
               // glow: w spoczynku prawie niewidoczny, przy zmianie mocny + puls skali
               flash && !decay

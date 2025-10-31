@@ -115,6 +115,13 @@ module.exports = {
         message:
           'Nie używaj !important w Tailwind className. Użyj props zamiast tego (np. py={0} px={0} w Section). Wyjątek: prefers-reduced-motion w CSS',
       },
+      {
+        // 5. Zakaz bezpośredniego użycia klas .card-* i .btn-* - używaj komponentów
+        selector:
+          "JSXAttribute[name.name='className'] > Literal[value=/\\b(card-with-border|btn-)(blue|purple|neon-blue|neon-purple|section|cta-blue|cta-purple|offer|base)\\b/]",
+        message:
+          'Nie używaj bezpośrednio klas .card-* i .btn-*. Użyj komponentów: <Card variant="blue"> lub <Button variant="neonBlue"> zamiast className="card-with-border-blue"',
+      },
     ],
     'no-restricted-imports': [
       'warn',
@@ -133,6 +140,9 @@ module.exports = {
               'Używaj index exports: import { CardWithIcon } from "@/components/ui" zamiast "@/components/ui/CardWithIcon"',
           },
         ],
+        // 6. Sprawdzanie struktury warstw - primitives nie mogą importować z ui/features
+        // UWAGA: no-restricted-imports nie obsługuje "from" - używamy patterns z negacją
+        // To będzie warning, ponieważ może być false positives
       },
     ],
     'arrow-spacing': 'error',

@@ -1,15 +1,19 @@
-import AftercareSection from '@/components/features/about/AftercareSection';
-import CoolingSection from '@/components/features/about/CoolingSection';
-import HowItWorksSection from '@/components/features/about/HowItWorksSection';
-import { CTASection, RemovalHero, WhyChooseSection } from '@/components/ui';
+import {
+  AftercareSection,
+  CoolingSection,
+  HowItWorksSection,
+} from '@/components/features/about';
+import { RemovalHero } from '@/components/features/removal';
 import { Section } from '@/components/primitives';
+import { CTASection, WhyChooseSection } from '@/components/ui';
 import removalPageData from '@/content/texts/removal-page.json';
 
 // ISR - revalidate co godzinę dla stale data
 export const revalidate = 3600;
 
 export default function LaseroweUsuwanieTatuazu() {
-  const { hero, howItWorks, cooling, aftercare, whyChoose, cta } = removalPageData;
+  const { hero, howItWorks, cooling, aftercare, whyChoose, cta } =
+    removalPageData;
 
   return (
     <main className='min-h-screen bg-bg-light text-text-dark'>

@@ -49,37 +49,8 @@
 
   /* NOTE: .section-wrap removed - use Container component from primitives instead */
 
-  /* Unified button system */
-  .btn-base {
-    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 font-medium transition-colors duration-300 focus-ring;
-  }
-
-  .btn-neon-blue {
-    @apply btn-base bg-neon-blue bg-opacity-90 text-white hover:bg-neon-blue/90 shadow-glow;
-  }
-
-  .btn-neon-purple {
-    @apply btn-base bg-neon-purple bg-opacity-90 text-white hover:bg-neon-purple/90 shadow-glow-purple;
-  }
-
-  /* Legacy button aliases removed after migration */
-
-  /* Specialized button variants */
-  .btn-offer {
-    @apply btn-neon-purple px-8 py-1 rounded-l-lg rounded-r-none;
-  }
-
-  .btn-section {
-    @apply btn-neon-blue px-8 py-3 font-normal;
-  }
-
-  .btn-cta-purple {
-    @apply btn-neon-purple py-0.5 max-w-md mx-auto w-full;
-  }
-
-  .btn-cta-blue {
-    @apply btn-neon-blue py-0.5 max-w-md mx-auto w-full;
-  }
+  /* Button system przeniesiony do Button.js jako Tailwind classes w cva */
+  /* Używaj komponentu <Button variant="..."> zamiast bezpośrednich klas CSS */
 
   /* Hero title offset */
   .hero-title-offset {
@@ -166,35 +137,11 @@
    * REGUŁY:
    * - Jasne tło (bg-surface) → ciemny kafelek + niebieski neon
    * - Ciemne tło (bg-bg-dark) → biały kafelek + fioletowy neon
+   *
+   * Style kart przeniesione do tailwind.config.js jako shadow tokens (card-blue, card-purple)
+   * oraz do Card.js jako klasy Tailwind zamiast custom CSS classes.
+   * Używaj komponentu <Card variant="blue"> zamiast bezpośrednich klas CSS.
    */
-
-  /* Consolidated card variants - use these going forward */
-  /* Karta z niebieską ramką - dla JASNEGO tła (karta CIEMNA) */
-  .card-with-border-blue {
-    @apply rounded-xl border-2 border-neon-blue/30 text-text-light shadow-md p-6 relative overflow-hidden transition-all duration-300;
-    background-color: theme('colors.modal');
-    box-shadow: 0 0 20px rgba(0, 153, 204, 0.15), 0 4px 6px rgba(0, 0, 0, 0.3); /* subtle neon glow + shadow */
-  }
-
-  .card-with-border-blue:hover {
-    @apply shadow-lg border-neon-blue/60;
-    transform: translateY(-4px);
-    box-shadow: 0 0 30px rgba(0, 153, 204, 0.3), 0 8px 12px rgba(0, 0, 0, 0.4); /* stronger glow on hover */
-  }
-
-  /* Karta z fioletową ramką - dla CIEMNEGO tła (karta BIAŁA) */
-  .card-with-border-purple {
-    @apply rounded-xl border-2 border-neon-purple/30 shadow-md p-6 relative overflow-hidden transition-all duration-300;
-    background-color: theme('colors.bg-surface');
-    box-shadow: 0 0 20px rgba(192, 132, 252, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1); /* subtle purple glow + shadow */
-  }
-
-  .card-with-border-purple:hover {
-    @apply shadow-lg border-neon-purple/60;
-    transform: translateY(-4px);
-    box-shadow: 0 0 30px rgba(192, 132, 252, 0.3),
-      0 8px 12px rgba(0, 0, 0, 0.15); /* stronger glow on hover */
-  }
 
   /* Legacy card aliases removed after migration */
 
@@ -262,40 +209,7 @@
     border-color: theme('colors.border-border');
   }
 
-  /* Shadow utilities dla neon blue glow */
-  .shadow-glow-blue-weak {
-    box-shadow: 0 0 6px rgba(0, 153, 204, 0.15);
-  }
-
-  .shadow-glow-blue-medium {
-    box-shadow: 0 0 20px rgba(0, 153, 204, 0.25);
-  }
-
-  .shadow-glow-blue-strong {
-    box-shadow: 0 0 28px rgba(0, 153, 204, 0.45);
-  }
-
-  .shadow-glow-blue-very-strong {
-    box-shadow: 0 0 40px rgba(0, 153, 204, 0.75), 0 0 12px rgba(0, 153, 204, 0.6);
-  }
-
-  .shadow-glow-blue-decay {
-    box-shadow: 0 0 24px rgba(0, 153, 204, 0.35), 0 0 8px rgba(0, 153, 204, 0.25);
-  }
-
-  /* Drop shadow utilities dla tekstu */
-  .drop-shadow-glow-blue-weak {
-    filter: drop-shadow(0 0 8px rgba(0, 153, 204, 0.35));
-  }
-
-  .drop-shadow-glow-blue-medium {
-    filter: drop-shadow(0 0 10px rgba(0, 153, 204, 0.35));
-  }
-
-  .drop-shadow-glow-blue-strong {
-    filter: drop-shadow(0 0 16px rgba(0, 153, 204, 0.7));
-  }
-
+  /* Shadow utilities przeniesione do tailwind.config.js - używaj shadow-* i drop-shadow-* classes */
   /* Transition duration utilities */
   .transition-dur-fast {
     transition-duration: var(--dur-fast);

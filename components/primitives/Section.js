@@ -10,8 +10,8 @@
  * @param {string} title - Tytuł sekcji (opcjonalny, wyświetla nagłówek gdy podany)
  * @param {string} subtitle - Podtytuł sekcji (opcjonalny, wyświetla się w nagłówku)
  * @param {'center'|'left'|'right'} align - Wyrównanie nagłówka (domyślnie: 'center')
- * @param {number|string} py - Padding vertical (domyślnie: 'default' - używa section-pad)
- * @param {number|string} px - Padding horizontal (domyślnie: 'default' - używa Container px)
+ * @param {number|string|undefined} py - Padding vertical (undefined = default section-pad, 0 = py-0, liczba = py-[wartość], string = custom class)
+ * @param {number|string|undefined} px - Padding horizontal (undefined = default Container px, 0 = px-0, liczba = px-[wartość], string = custom class)
  * @param {string} className - Dodatkowe klasy CSS dla sekcji
  * @param {React.ReactNode} children - Zawartość sekcji
  * @param {string} headerClassName - Dodatkowe klasy CSS dla nagłówka
@@ -28,8 +28,8 @@ export default function Section({
   title,
   subtitle,
   align = 'center',
-  py = 'default',
-  px = 'default',
+  py, // undefined = default, 0 = py-0, liczba = py-[wartość], string = custom class
+  px, // undefined = default, 0 = px-0, liczba = px-[wartość], string = custom class
   className = '',
   children,
   headerClassName = '',
@@ -37,8 +37,9 @@ export default function Section({
 }) {
   const bgClass = bg === 'dark' ? 'bg-bg-dark' : 'bg-surface';
 
-  // Obsługa py: 'default' = section-pad, 0 = py-0, liczba = py-[wartość]
-  const pyClass = py === 'default'
+  // Obsługa py: undefined = section-pad (default), 0 = py-0, liczba = py-[wartość], string = custom
+  const pyClass =
+    py === undefined
     ? 'section-pad'
     : py === 0 || py === '0'
     ? 'py-0'
@@ -49,10 +50,17 @@ export default function Section({
   const classes = cn(pyClass, bgClass, className);
   const headerVariant = bg === 'dark' ? 'light' : 'dark';
 
-  // Obsługa px dla Container - przekaż przez containerProps jeśli px !== 'default'
-  const finalContainerProps = px !== 'default'
-    ? { ...containerProps, className: cn(px === 0 || px === '0' ? 'px-0' : typeof px === 'string' ? px : `px-${px}`, containerProps.className) }
-    : containerProps;
+  // Obsługa px dla Container: undefined = default, 0 = px-0, liczba = px-[wartość], string = custom
+  const finalContainerProps =
+    px === undefined
+      ? containerProps
+      : {
+          ...containerProps,
+          className: cn(
+            px === 0 || px === '0' ? 'px-0' : typeof px === 'string' ? px : `px-${px}`,
+            containerProps.className
+          ),
+        };
 
   return (
     <section id={id} className={classes}>

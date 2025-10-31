@@ -8,10 +8,11 @@ export { default as LocationSection } from './LocationSection';
 export { default as MapSection } from './MapSection';
 export { default as OfferSlider } from './OfferSlider';
 export { default as PageHeader } from './PageHeader';
-export { default as ProcessSectionDefault } from './ProcessSectionDefault';
-export { default as RemovalHero } from './RemovalHero';
-export { default as ScarinkHero } from './ScarinkHero';
+export { default as ProcessSection } from './ProcessSection';
+// ProcessSectionDefault deprecated - use ProcessSection with variant='default' instead
 // ScarinkWhyChooseSection deprecated - use WhyChooseSection with variant='scarink' instead
+// RemovalHero moved to components/features/removal/
+// ScarinkHero moved to components/features/scarink/
 export { default as SocialMediaIcons } from './SocialMediaIcons';
 export { default as StagesSection } from './StagesSection';
 export { default as StatusMessage } from './StatusMessage';

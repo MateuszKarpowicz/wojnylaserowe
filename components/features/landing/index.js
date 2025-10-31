@@ -1,1 +1,1 @@
-export { default as ProcessSectionLanding } from './ProcessSectionLanding';
+export { default as LandingHero } from './LandingHero';

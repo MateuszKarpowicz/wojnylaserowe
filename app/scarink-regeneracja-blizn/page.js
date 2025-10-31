@@ -1,7 +1,7 @@
-import MethodSection from '@/components/features/about/MethodSection';
-import { CTASection, ProcessSectionDefault, ScarinkHero, WhyChooseSection } from '@/components/ui';
-import TargetSection from '@/components/features/about/TargetSection';
+import { MethodSection, TargetSection } from '@/components/features/about';
+import { ScarinkHero } from '@/components/features/scarink';
 import { Section } from '@/components/primitives';
+import { CTASection, ProcessSection, WhyChooseSection } from '@/components/ui';
 import scarinkPageData from '@/content/texts/scarink-page.json';
 
 export const metadata = {
@@ -26,7 +26,7 @@ export default function ScarinkRegeneracjaBlizn() {
         <TargetSection />
       </Section>
       <Section title={process.title} bg='dark'>
-        <ProcessSectionDefault data={process} />
+        <ProcessSection variant='default' data={process} />
       </Section>
       <Section title={whyChoose.title} bg='surface'>
         <WhyChooseSection points={whyChoose.points} variant='scarink' />

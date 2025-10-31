@@ -2,9 +2,8 @@
  * Card - Komponent karty z wariantami ramek neonowych
  *
  * Komponenty kart z automatycznymi stylami neonowymi (niebieskie dla jasnego tła, fioletowe dla ciemnego).
- * Obsługuje legacy aliases dla backward compatibility.
  *
- * @param {'blue'|'purple'|'borderBlue'|'borderPurple'|'aboutCard'|'approachCardDark'} variant - Wariant karty (domyślnie: 'blue')
+ * @param {'blue'|'purple'} variant - Wariant karty (domyślnie: 'blue')
  * @param {string} as - HTML element do renderowania (domyślnie: 'div')
  * @param {string} className - Dodatkowe klasy CSS
  * @param {React.ReactNode} children - Zawartość karty
@@ -20,17 +19,23 @@ export default function Card({
   children,
   ...props
 }) {
-  const VARIANT_TO_CLASS = {
-    blue: 'card-with-border-blue',
-    purple: 'card-with-border-purple',
-    // Legacy aliases for backward compatibility
-    borderBlue: 'card-with-border-blue',
-    borderPurple: 'card-with-border-purple',
-    aboutCard: 'about-card',
-    approachCardDark: 'card-with-border-blue', // Scaled into blue variant (identical styles)
+  // Mapowanie wariantów na klasy Tailwind zamiast custom CSS classes
+  const variantStyles = {
+    blue: cn(
+      'rounded-xl border-2 border-neon-blue/30 text-text-light p-6 relative overflow-hidden',
+      'transition-all duration-300 transform',
+      'shadow-card-blue hover:shadow-card-blue-hover',
+      'bg-modal hover:border-neon-blue/60 hover:-translate-y-1'
+    ),
+    purple: cn(
+      'rounded-xl border-2 border-neon-purple/30 p-6 relative overflow-hidden',
+      'transition-all duration-300 transform',
+      'shadow-card-purple hover:shadow-card-purple-hover',
+      'bg-bg-surface hover:border-neon-purple/60 hover:-translate-y-1'
+    ),
   };
 
-  const variantClass = VARIANT_TO_CLASS[variant] || VARIANT_TO_CLASS.blue;
+  const variantClass = variantStyles[variant] || variantStyles.blue;
   const classes = cn(variantClass, className);
   const As = as;
 

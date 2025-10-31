@@ -1,17 +1,18 @@
-import QualificationsSection from '@/components/features/about/QualificationsSection';
-import EffectsCarousel from '@/components/features/effects/EffectsCarousel';
-import FAQAccordion from '@/components/features/faq/FAQAccordion';
-import { ProcessSectionLanding } from '@/components/features/landing';
+import { QualificationsSection } from '@/components/features/about';
+import { EffectsCarousel } from '@/components/features/effects';
+import { FAQAccordion } from '@/components/features/faq';
+import { LandingHero } from '@/components/features/landing';
 import { Button, Section } from '@/components/primitives';
 import {
   InstagramSection,
   MapSection,
+  ProcessSection,
   TestimonialsCarousel,
 } from '@/components/ui';
 import aboutPageData from '@/content/texts/about-page.json';
 import faqData from '@/content/texts/faq.json';
+import scarinkPageData from '@/content/texts/scarink-page.json';
 import testimonialsData from '@/content/texts/testimonials.json';
-import Image from 'next/image';
 
 export const metadata = {
   title: 'Wojny Laserowe | Profesjonalne usuwanie tatuaży i blizn w Krakowie',
@@ -31,36 +32,15 @@ export default function Home() {
   const topFaqItems = topFaqCategory?.questions?.slice(0, 4) || [];
   return (
     <>
-      {/* Hero heading */}
-      <Section bg='surface' className='border-b border-border-border'>
-        <h1 className='font-display uppercase text-center leading-tight tracking-[0.08em] md:tracking-[0.12em] text-4xl md:text-5xl hero-title-offset'>
-          <span className='block'>ZAMIEŃ PRZESZŁOŚĆ</span>
-          <span className='block'>NA NOWY POCZĄTEK!</span>
-        </h1>
-      </Section>
-
-      {/* Hero image - pełno-szerokościowe */}
-      <Section
-        bg='surface'
-        py={0}
-        px={0}
-        className='overflow-x-hidden'
-        containerProps={{ maxWidth: 'full' }}
-      >
-        <Image
-          src='/images/main/piter.webp'
-          alt='Wojny Laserowe — główne zdjęcie'
-          width={1920}
-          height={1080}
-          priority
-          sizes='100vw'
-          className='w-full h-[70vh] md:h-[80vh] object-cover object-top'
-        />
-      </Section>
+      {/* Hero sekcja */}
+      <LandingHero />
 
       {/* Jak to działa – 3 kroki (ProcessSection) */}
       <Section bg='surface' title='Jak to działa?'>
-        <ProcessSectionLanding />
+        <ProcessSection
+          variant='landing'
+          data={{ steps: scarinkPageData.process.steps }}
+        />
       </Section>
 
       {/* Dlaczego my – kwalifikacje (reuse) */}

@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils';
 import { getIcon } from '@/lib/icons';
+import { getCardTextClasses } from '@/lib/style-utils';
 import { Card } from '@/components/primitives';
 
 /**
@@ -26,19 +27,12 @@ export default function CardWithIcon({
   const contentText = description || text;
 
   const borderVariant = borderColor === 'purple' ? 'purple' : 'blue';
-  const iconColorClass =
-    borderColor === 'purple' ? 'text-neon-purple' : 'text-neon-blue';
 
-  // Kolor tekstu zależy od tła karty:
-  // card-border-blue = ciemna karta → jasny tekst
-  // card-border-purple = biała karta → ciemny tekst
-  const textClass =
-    borderColor === 'blue' ? 'text-text-light' : 'text-text-dark';
-  const descriptionClass =
-    borderColor === 'blue' ? 'text-text-light/80' : 'text-secondary';
+  // Używaj helper functions dla spójności kolorów
+  const { textClass, descriptionClass, iconClass } = getCardTextClasses(borderVariant);
 
   // Helper do budowania klas
-  const iconClasses = cn('text-3xl', iconColorClass);
+  const iconClasses = cn('text-3xl', iconClass);
 
   // Jeśli przekazano children, renderuj je zamiast domyślnej struktury
   if (children) {

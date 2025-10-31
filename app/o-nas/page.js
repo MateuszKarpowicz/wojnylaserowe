@@ -1,7 +1,5 @@
-import AboutHero from '@/components/features/about/AboutHero';
-import ApproachSection from '@/components/features/about/ApproachSection';
+import { AboutHero, ApproachSection, QualificationsSection } from '@/components/features/about';
 import { CTASection, LocationSection } from '@/components/ui';
-import QualificationsSection from '@/components/features/about/QualificationsSection';
 import aboutPageData from '@/content/texts/about-page.json';
 
 // ISR - revalidate co godzinę dla stale data

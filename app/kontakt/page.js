@@ -1,5 +1,4 @@
-import ContactChannelsColumn from '@/components/features/contact/ContactChannelsColumn';
-import ContactHeader from '@/components/features/contact/ContactHeader';
+import { ContactChannelsColumn, ContactHeader } from '@/components/features/contact';
 import { InstagramSection, MapSection } from '@/components/ui';
 import { Section } from '@/components/primitives';
 import contactPageData from '@/content/texts/contact-page.json';

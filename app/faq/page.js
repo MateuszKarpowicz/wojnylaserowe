@@ -1,4 +1,4 @@
-import FAQContentSection from '@/components/features/faq/FAQContentSection';
+import { FAQContentSection } from '@/components/features/faq';
 import { CTASection, PageHeader } from '@/components/ui';
 import faqData from '@/content/texts/faq.json';
 

@@ -1,4 +1,4 @@
-import EffectsHeader from '@/components/features/effects/EffectsHeader';
+import { EffectsHeader } from '@/components/features/effects';
 import { CTASection, LoadingSpinner, StagesSection, TestimonialsPlaceholder } from '@/components/ui';
 import effectsPageData from '@/content/texts/effects-page.json';
 import dynamic from 'next/dynamic';

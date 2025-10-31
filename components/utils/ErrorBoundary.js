@@ -2,7 +2,7 @@
 
 import { Component } from 'react';
 import { logger } from '@/lib/logger';
-import Container from '@/components/primitives/Container';
+import { Container, Button } from '@/components/primitives';
 
 /**
  * Error Boundary dla obsługi błędów React w aplikacji
@@ -54,15 +54,15 @@ export default class ErrorBoundary extends Component {
               <p className='text-secondary mb-6'>
                 Wystąpił nieoczekiwany błąd. Proszę odświeżyć stronę.
               </p>
-              <button
+              <Button
                 onClick={() => {
                   this.setState({ hasError: false, error: null });
                   window.location.reload();
                 }}
-                className='btn-neon-blue'
+                variant='neonBlue'
               >
                 Odśwież stronę
-              </button>
+              </Button>
             </div>
           </Container>
         </div>

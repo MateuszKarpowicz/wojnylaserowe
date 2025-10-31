@@ -79,12 +79,26 @@ module.exports = {
         'glow-purple-medium': '0 0 22px rgba(192, 132, 252, 0.28)',
         'focus-purple': '0 0 0 2px rgba(192, 132, 252, 0.2)',
         'file-button': '0 0 12px rgba(0, 153, 204, 0.45)',
+        // Blue glow variants (migrated from globals.css)
+        'glow-blue-weak': '0 0 6px rgba(0, 153, 204, 0.15)',
+        'glow-blue-medium': '0 0 20px rgba(0, 153, 204, 0.25)',
+        'glow-blue-strong': '0 0 28px rgba(0, 153, 204, 0.45)',
+        'glow-blue-very-strong': '0 0 40px rgba(0, 153, 204, 0.75), 0 0 12px rgba(0, 153, 204, 0.6)',
+        'glow-blue-decay': '0 0 24px rgba(0, 153, 204, 0.35), 0 0 8px rgba(0, 153, 204, 0.25)',
+        // Card shadows (migrated from globals.css card-with-border-* classes)
+        'card-blue': '0 0 20px rgba(0, 153, 204, 0.15), 0 4px 6px rgba(0, 0, 0, 0.3)',
+        'card-blue-hover': '0 0 30px rgba(0, 153, 204, 0.3), 0 8px 12px rgba(0, 0, 0, 0.4)',
+        'card-purple': '0 0 20px rgba(192, 132, 252, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1)',
+        'card-purple-hover': '0 0 30px rgba(192, 132, 252, 0.3), 0 8px 12px rgba(0, 0, 0, 0.15)',
       },
       dropShadow: {
         // Extended drop-shadow utilities for text and icons
         'glow-purple-strong': '0 0 14px rgba(192, 132, 252, 0.60)',
         'glow-purple-weak': '0 0 4px rgba(192, 132, 252, 0.25)',
         'glow-blue-medium': '0 0 10px rgba(0, 153, 204, 0.35)',
+        // Blue drop-shadow variants (migrated from globals.css)
+        'glow-blue-weak': '0 0 8px rgba(0, 153, 204, 0.35)',
+        'glow-blue-strong': '0 0 16px rgba(0, 153, 204, 0.7)',
       },
       height: {
         header: '4.5rem', // 72px - stała wysokość headera

@@ -41,6 +41,7 @@ export default function Modal({
   children,
 }) {
   const modalRef = useRef(null);
+  const scrollYRef = useRef(0); // Zachowaj pozycję scrollowania
   const y = useMotionValue(0);
   const x = useMotionValue(0);
   const vh = useMemo(() => (typeof window !== 'undefined' ? window.innerHeight : 0), []);
@@ -121,7 +122,7 @@ export default function Modal({
   }
 
   // ESC handler i body scroll lock (centralnie dla wszystkich wariantów)
-  // Uwaga: drawer NIE blokuje scroll body (oryginalny kod też nie blokował)
+  // Blokujemy scroll strony w tle dla wszystkich wariantów, gdy modal jest otwarty
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.key === 'Escape' && isOpen) {
@@ -131,19 +132,35 @@ export default function Modal({
 
     if (isOpen) {
       document.addEventListener('keydown', handleKeyDown);
-      // Blokuj scroll body dla centered, fullscreen, fullscreen drawer i bottom drawer
-      if (variant !== 'drawer' || fullscreen || isBottomDrawer) {
-        document.body.style.overflow = 'hidden';
-      }
+
+      // Zachowaj pozycję scrollowania przed blokadą
+      scrollYRef.current = window.scrollY;
+
+      // Blokuj scroll body dla wszystkich wariantów
+      // Używamy position: fixed żeby zachować pozycję scrollowania
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollYRef.current}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.overflow = 'hidden';
     }
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
-      if (variant !== 'drawer' || fullscreen || isBottomDrawer) {
-        document.body.style.overflow = 'unset';
+
+      // Przywróć scroll body po zamknięciu modala
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflow = '';
+
+      // Przywróć pozycję scrollowania
+      if (scrollYRef.current !== undefined) {
+        window.scrollTo(0, scrollYRef.current);
       }
     };
-  }, [isOpen, onClose, variant, fullscreen, isBottomDrawer]);
+  }, [isOpen, onClose]);
 
   // Focus trap dla drawer i fullscreen (centered może mieć własny)
   useEffect(() => {

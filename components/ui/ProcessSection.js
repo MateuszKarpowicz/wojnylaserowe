@@ -41,31 +41,61 @@ export default function ProcessSection({ variant = 'default', data }) {
 
   useEffect(() => {
     if (isLanding) {
-      const id = setInterval(
-        () => setActiveIndex(prev => (prev + 1) % displaySteps.length),
-        3000
-      );
-      return () => clearInterval(id);
+      let timeoutIds = [];
+      let currentIndex = 0;
+
+      const scheduleCard = () => {
+        // Zaświeć aktualną kartę
+        setActiveIndex(currentIndex);
+
+        // Po 1 sekundzie zgaś kartę
+        const turnOffTimeout = setTimeout(() => {
+          setActiveIndex(null);
+
+          // Określ kiedy zaświecić następną kartę:
+          // Po kartach 1 i 2: natychmiast zaświeć następną (opóźnienie 0ms)
+          // Po karcie 3: 2 sekundy przerwy przed kartą 1
+          const delayBeforeNext = currentIndex === 2 ? 2000 : 0;
+
+          const turnOnTimeout = setTimeout(() => {
+            // Przejdź do następnej karty (lub wróć do 0 po karcie 3)
+            currentIndex = (currentIndex + 1) % displaySteps.length;
+            scheduleCard();
+          }, delayBeforeNext);
+
+          timeoutIds.push(turnOnTimeout);
+        }, 1000);
+
+        timeoutIds.push(turnOffTimeout);
+      };
+
+      // Start animacji od karty 1 (index 0)
+      scheduleCard();
+
+      return () => {
+        timeoutIds.forEach(id => clearTimeout(id));
+      };
     }
   }, [isLanding, displaySteps.length]);
 
   return (
     <div className={cn(isLanding ? '' : 'space-y-8')}>
       {/* Grid z krokami procesu */}
-      <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch'>
         {displaySteps.map((step, index) => {
-          const isActive = isLanding && activeIndex === index;
+          const isActive = isLanding && activeIndex === index && activeIndex !== null;
 
           // Klasy dla landing variant (z animacjami)
           const landingClasses = isLanding
             ? cn(
                 'focus-ring',
-                'transition-[opacity,transform,box-shadow] transition-dur-slow ease-[var(--ease-brand)]',
+                'transition-[opacity,transform,box-shadow,border-color] transition-dur-slow ease-[var(--ease-brand)]',
                 'opacity-0 translate-y-3 scale-[0.99]',
                 entered && 'opacity-100 translate-y-0 scale-100',
+                // Animacja aktywnego elementu (tylko glow/shadow, bez efektu hover)
                 isActive
                   ? 'shadow-glow-blue-strong border-neon-border-blue-strong'
-                  : 'shadow-none border-neon-border-blue',
+                  : 'shadow-card-blue border-neon-blue/30',
               )
             : '';
 
@@ -75,28 +105,37 @@ export default function ProcessSection({ variant = 'default', data }) {
               <Card
                 key={index}
                 variant={cardVariant}
-                className={landingClasses}
+                className={cn(
+                  landingClasses,
+                  'h-full flex flex-col',
+                  // Na mobile też równa wysokość - min-height zmniejszony o 1/3 (z 200px na ~133px)
+                  'md:h-full min-h-[133px]',
+                )}
                 style={{ transitionDelay: `${index * 140}ms` }}
               >
-                <div className='grid grid-cols-[auto_1fr] items-start gap-3'>
-                  <div
-                    className={cn(
-                      'text-5xl md:text-6xl',
-                      isActive
-                        ? 'text-neon-blue drop-shadow-glow-blue-strong'
-                        : 'text-neon-blue/70 drop-shadow-glow-blue-weak',
-                    )}
-                    aria-hidden='true'
-                  >
-                    {index + 1}
+                <div className='flex gap-4 items-start flex-grow'>
+                  <div className='flex-shrink-0'>
+                    <div
+                      className={cn(
+                        'text-6xl md:text-7xl',
+                        isActive
+                          ? 'text-neon-blue drop-shadow-glow-blue-strong'
+                          : 'text-neon-blue/70 drop-shadow-glow-blue-weak',
+                      )}
+                      aria-hidden='true'
+                    >
+                      {index + 1}
+                    </div>
                   </div>
-                  <h3 className='text-lg font-semibold text-text-light m-0'>
-                    {step.title}
-                  </h3>
+                  <div className='flex-1 text-left'>
+                    <h3 className='text-xl font-semibold text-text-light m-0 text-left'>
+                      {step.title}
+                    </h3>
+                    <p className='text-sm text-text-light/85 leading-relaxed mt-3 text-left'>
+                      {step.text}
+                    </p>
+                  </div>
                 </div>
-                <p className='text-sm text-text-light/85 leading-relaxed mt-3'>
-                  {step.text}
-                </p>
               </Card>
             );
           }

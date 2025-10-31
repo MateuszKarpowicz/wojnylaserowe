@@ -50,18 +50,20 @@ function QualificationItem({ item, idx }) {
         }}
           className={cn(
           'cursor-pointer focus-ring border-neon-border-purple-medium',
-          'transition-[box-shadow,transform,border-color] duration-[var(--dur-slow)] ease-[var(--ease-brand)]',
+          'transition-[box-shadow,transform,border-color,padding] duration-[var(--dur-slow)] ease-[var(--ease-brand)]',
+          // Nadpisujemy domyślne p-6 z Card.js
+          '!p-0',
           open
-            ? 'border-neon-border-purple-very-strong shadow-glow-purple-expanded scale-[1.01]'
-            : 'shadow-md hover:shadow-lg',
+            ? 'border-neon-border-purple-very-strong shadow-glow-purple-expanded scale-[1.01] !p-6'
+            : 'shadow-md hover:shadow-lg !p-3',
         )}
       >
         {/* GÓRNA LINIA (TYTUŁ + CHEVRON) – TYPOGRAFIA I KOLOR JAK WCZEŚNIEJ */}
         <div className='flex items-center justify-between'>
-          <h3 className='text-lg text-text-dark mb-0'>{item.title}</h3>
+          <h3 className='text-xl md:text-2xl text-text-dark mb-0 ml-4 md:ml-6'>{item.title}</h3>
           <span
             className={cn(
-              'ml-3 inline-block text-neon-purple transition-transform duration-300',
+              'ml-3 inline-block text-neon-purple transition-transform duration-300 text-2xl md:text-3xl',
               open ? 'rotate-180' : 'rotate-0',
             )}
             aria-hidden='true'
@@ -81,7 +83,7 @@ function QualificationItem({ item, idx }) {
           )}
         >
           <div className='min-h-0 mt-3 rounded-md bg-surface p-4'>
-            <p className='text-text-dark/80 leading-relaxed text-sm md:text-base'>
+            <p className='text-text-dark/80 leading-relaxed text-base md:text-lg'>
               {item.description}
             </p>
           </div>

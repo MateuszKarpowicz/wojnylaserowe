@@ -1,6 +1,6 @@
 'use client';
 
-import { FancyDrawer } from '@/components/composed';
+import Modal from '@/components/overlay/Modal';
 import ContactForm from '@/components/features/contact/ContactForm';
 import { Button } from '@/components/primitives';
 import { useState } from 'react';
@@ -18,17 +18,20 @@ export default function ContactDrawer() {
           Napisz wiadomość
         </Button>
       </div>
-      <FancyDrawer
-        open={open}
-        onOpenChange={setOpen}
-        side='bottom'
-        snapPoints={[60, 100]}
-        initialSnap={60}
+      <Modal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        variant='drawer'
+        position='bottom'
+        closeOnOverlayClick={true}
         dragToClose={true}
-        blurOverlay={true}
-        className='px-4'
+        className='bg-white text-neutral-900 rounded-t-2xl shadow-2xl border-t border-neutral-900/10 max-h-[60vh] px-4'
       >
         <div className='h-full flex flex-col'>
+          {/* Grabber handle */}
+          <div className='grid place-items-center pt-2 pb-1'>
+            <div className='h-1.5 w-10 rounded-full bg-neutral-300' />
+          </div>
           <div className='flex-1 p-6 overflow-y-auto'>
             <h3
               id='contact-drawer-title'
@@ -39,7 +42,7 @@ export default function ContactDrawer() {
             <ContactForm />
           </div>
         </div>
-      </FancyDrawer>
+      </Modal>
     </>
   );
 }

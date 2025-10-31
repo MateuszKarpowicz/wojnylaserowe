@@ -20,8 +20,9 @@
  */
 
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import { createPortal } from 'react-dom';
+import { motion, useMotionValue, animate, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 export default function Modal({
@@ -36,9 +37,81 @@ export default function Modal({
   overlayClassName = '',
   ariaLabelledBy,
   ariaDescribedBy,
+  dragToClose = false, // Prop - drag-to-close dla drawer (bottom, left, right)
   children,
 }) {
   const modalRef = useRef(null);
+  const y = useMotionValue(0);
+  const x = useMotionValue(0);
+  const vh = useMemo(() => (typeof window !== 'undefined' ? window.innerHeight : 0), []);
+  const vw = useMemo(() => (typeof window !== 'undefined' ? window.innerWidth : 0), []);
+  const prefersReducedMotion = useReducedMotion();
+  const isBottomDrawer = variant === 'drawer' && position === 'bottom';
+  const isSideDrawer = variant === 'drawer' && (position === 'left' || position === 'right');
+
+  // Dla bottom drawer - ustaw początkową pozycję (60% wysokości)
+  useEffect(() => {
+    if (!isOpen || !isBottomDrawer) return;
+    const initialY = vh * 0.4; // 60% widoczne = 40% poza ekranem
+    y.set(initialY);
+  }, [isOpen, isBottomDrawer, vh, y]);
+
+  // Dla side drawer - reset pozycji przy otwarciu
+  useEffect(() => {
+    if (!isOpen || !isSideDrawer) return;
+    x.set(0);
+  }, [isOpen, isSideDrawer, x]);
+
+  // Drag handler dla bottom drawer
+  function onDragEndBottom(_event, info) {
+    if (!isBottomDrawer || prefersReducedMotion) return;
+
+    const current = y.get();
+    const vy = info.velocity.y;
+
+    // Szybki flick w dół (> 800) i blisko dołu (< 150px) → zamknij
+    if (vy > 800 && current < 150) {
+      onClose();
+      return;
+    }
+
+    // Jeśli przeciągnięto więcej niż 50% w dół → zamknij
+    if (current > vh * 0.5) {
+      animate(y, vh, { type: 'spring', stiffness: 400, damping: 40 });
+      setTimeout(() => onClose(), 200);
+      return;
+    }
+
+    // Wróć do pozycji początkowej (60%)
+    const snapY = vh * 0.4;
+    animate(y, snapY, { type: 'spring', stiffness: 420, damping: 40 });
+  }
+
+  // Drag handler dla side drawers
+  function onDragEndSide(_event, info) {
+    if (!isSideDrawer || !dragToClose || prefersReducedMotion) return;
+
+    const current = x.get();
+    const vx = info.velocity.x;
+    const threshold = vw * 0.3; // 30% szerokości ekranu
+
+    // Left drawer: szybki flick w lewo (< -800) → zamknij
+    if (position === 'left' && (vx < -800 || current < -threshold)) {
+      animate(x, -vw, { type: 'spring', stiffness: 400, damping: 40 });
+      setTimeout(() => onClose(), 200);
+      return;
+    }
+
+    // Right drawer: szybki flick w prawo (> 800) → zamknij
+    if (position === 'right' && (vx > 800 || current > threshold)) {
+      animate(x, vw, { type: 'spring', stiffness: 400, damping: 40 });
+      setTimeout(() => onClose(), 200);
+      return;
+    }
+
+    // Wróć do pozycji początkowej
+    animate(x, 0, { type: 'spring', stiffness: 420, damping: 40 });
+  }
 
   // ESC handler i body scroll lock (centralnie dla wszystkich wariantów)
   // Uwaga: drawer NIE blokuje scroll body (oryginalny kod też nie blokował)
@@ -51,20 +124,19 @@ export default function Modal({
 
     if (isOpen) {
       document.addEventListener('keydown', handleKeyDown);
-      // Blokuj scroll body dla centered, fullscreen i fullscreen drawer
-      // Zwykły drawer (nie-fullscreen) nie blokuje scroll
-      if (variant !== 'drawer' || fullscreen) {
+      // Blokuj scroll body dla centered, fullscreen, fullscreen drawer i bottom drawer
+      if (variant !== 'drawer' || fullscreen || isBottomDrawer) {
         document.body.style.overflow = 'hidden';
       }
     }
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
-      if (variant !== 'drawer' || fullscreen) {
+      if (variant !== 'drawer' || fullscreen || isBottomDrawer) {
         document.body.style.overflow = 'unset';
       }
     };
-  }, [isOpen, onClose, variant, fullscreen]);
+  }, [isOpen, onClose, variant, fullscreen, isBottomDrawer]);
 
   // Focus trap dla drawer i fullscreen (centered może mieć własny)
   useEffect(() => {
@@ -137,6 +209,10 @@ export default function Modal({
     }
 
     if (variant === 'drawer') {
+      if (position === 'bottom') {
+        // Bottom drawer - fullscreen width
+        return `fixed inset-x-0 bottom-0 z-[95] ${className}`;
+      }
       const borderClass = position === 'right' ? 'border-l' : 'border-r';
       const borderColor =
         position === 'right' ? 'border-neon-blue/30' : 'border-neon-purple/30';
@@ -191,17 +267,68 @@ export default function Modal({
           }
         />
         {/* Panel - oddzielny element z animacją slide-in */}
-        <div
-          ref={modalRef}
-          className={cn(containerClasses, drawerAnimationClass, 'transition-transform duration-300 ease-out')}
-          role='dialog'
-          aria-modal='true'
-          aria-labelledby={ariaLabelledBy || 'modal-title'}
-          aria-describedby={ariaDescribedBy}
-          style={fullscreenStyle}
-        >
-          {children}
-        </div>
+        {isBottomDrawer && dragToClose ? (
+          <motion.div
+            ref={modalRef}
+            className={cn(containerClasses)}
+            role='dialog'
+            aria-modal='true'
+            aria-labelledby={ariaLabelledBy || 'modal-title'}
+            aria-describedby={ariaDescribedBy}
+            style={{
+              y,
+              touchAction: prefersReducedMotion ? 'auto' : 'none',
+            }}
+            drag={prefersReducedMotion ? false : 'y'}
+            dragConstraints={{ top: 0, bottom: vh }}
+            dragElastic={0.2}
+            onDragEnd={onDragEndBottom}
+            initial={prefersReducedMotion ? { opacity: 0, y: vh * 0.4 } : false}
+            animate={isOpen ? (prefersReducedMotion ? { opacity: 1, y: vh * 0.4 } : {}) : {}}
+            transition={prefersReducedMotion ? { duration: 0.3 } : { type: 'spring', stiffness: 420, damping: 40 }}
+          >
+            {children}
+          </motion.div>
+        ) : isSideDrawer && dragToClose ? (
+          <motion.div
+            ref={modalRef}
+            className={cn(containerClasses)}
+            role='dialog'
+            aria-modal='true'
+            aria-labelledby={ariaLabelledBy || 'modal-title'}
+            aria-describedby={ariaDescribedBy}
+            style={{
+              x,
+              touchAction: prefersReducedMotion ? 'auto' : 'none',
+              ...fullscreenStyle,
+            }}
+            drag={prefersReducedMotion ? false : 'x'}
+            dragConstraints={
+              position === 'left'
+                ? { left: -vw, right: 0 }
+                : { left: 0, right: vw }
+            }
+            dragElastic={0.2}
+            onDragEnd={onDragEndSide}
+            initial={false}
+            animate={isOpen ? {} : {}}
+            transition={{ type: 'spring', stiffness: 420, damping: 40 }}
+          >
+            {children}
+          </motion.div>
+        ) : (
+          <div
+            ref={modalRef}
+            className={cn(containerClasses, drawerAnimationClass, 'transition-transform duration-300 ease-out')}
+            role='dialog'
+            aria-modal='true'
+            aria-labelledby={ariaLabelledBy || 'modal-title'}
+            aria-describedby={ariaDescribedBy}
+            style={fullscreenStyle}
+          >
+            {children}
+          </div>
+        )}
       </>
     );
 

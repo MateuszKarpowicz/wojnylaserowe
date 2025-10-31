@@ -13,6 +13,7 @@
  */
 'use client';
 import { createPortal } from 'react-dom';
+import { cn } from '@/lib/utils';
 
 export default function HeaderActions({
   isOfertaOpen,
@@ -32,7 +33,12 @@ export default function HeaderActions({
           aria-label={isOfertaOpen ? 'Zamknij ofertę' : 'Otwórz ofertę'}
           aria-expanded={isOfertaOpen}
           aria-controls='oferta-modal'
-          className='fixed top-[calc(4.5rem-1rem)] left-0 z-button bg-neon-purple bg-opacity-90 text-white w-24 py-0.5 rounded-r-lg rounded-l-none shadow-glow-purple hover:bg-neon-purple/90 transition-colors duration-300 flex items-center justify-center focus-ring'
+          className={cn(
+            'fixed top-[calc(4.5rem-1rem)] left-0 z-button bg-neon-purple text-white w-24 py-0.5 rounded-r-lg rounded-l-none transition-all duration-300 flex items-center justify-center focus-ring',
+            isOfertaOpen
+              ? 'bg-opacity-100 shadow-glow-purple-strong shadow-[0_0_40px_rgba(192,132,252,0.8)]'
+              : 'bg-opacity-90 shadow-glow-purple hover:bg-neon-purple/90'
+          )}
         >
           OFERTA
         </button>,
@@ -46,7 +52,12 @@ export default function HeaderActions({
           aria-label={isMenuOpen ? 'Zamknij menu' : 'Otwórz menu'}
           aria-expanded={isMenuOpen}
           aria-controls='mobile-menu'
-          className='fixed top-[calc(4.5rem-1rem)] right-0 z-button bg-neon-blue bg-opacity-90 text-white w-24 py-0.5 rounded-l-lg rounded-r-none shadow-glow hover:bg-neon-blue/90 transition-colors duration-300 flex items-center justify-center focus-ring'
+          className={cn(
+            'fixed top-[calc(4.5rem-1rem)] right-0 z-button bg-neon-blue text-white w-24 py-0.5 rounded-l-lg rounded-r-none transition-all duration-300 flex items-center justify-center focus-ring',
+            isMenuOpen
+              ? 'bg-opacity-100 shadow-[0_0_50px_rgba(0,153,204,1),0_0_80px_rgba(0,153,204,0.6)]'
+              : 'bg-opacity-90 shadow-glow hover:bg-neon-blue/90'
+          )}
         >
           MENU
         </button>,

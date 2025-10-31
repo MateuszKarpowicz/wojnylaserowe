@@ -31,6 +31,7 @@ export default function FormCore({
   submitText = 'Wyślij',
   loadingText = 'Wysyłanie...',
   fullWidth = false,
+  submitVariant = 'section', // Nowy prop - wariant przycisku submit
   ...props
 }) {
   const [formData, setFormData] = useState(initialData);
@@ -108,7 +109,7 @@ export default function FormCore({
         : children}
 
       {/* PRZYCISK WYŚLIJ */}
-      <Button type='submit' disabled={isLoading} variant='section' fullWidth={fullWidth}>
+      <Button type='submit' disabled={isLoading} variant={submitVariant} fullWidth={fullWidth}>
         {isLoading ? (
           <span className='inline-flex items-center gap-2'>
             <span className='w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin' />

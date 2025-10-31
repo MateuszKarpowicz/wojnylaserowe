@@ -2,7 +2,7 @@
 import { useOferta } from '@/components/context/OfertaContext';
 import FormCore from '@/components/forms/FormCore';
 import { useOfferForm } from '@/components/hooks/useOfferForm';
-import { FancyDrawer } from '@/components/composed';
+import Modal from '@/components/overlay/Modal';
 import FormField from '@/components/forms/FormField';
 import { StatusMessage } from '@/components/ui';
 import { Button } from '@/components/primitives';
@@ -20,16 +20,6 @@ export default function OfferSlider() {
     phone: '',
     description: '',
     dates: '',
-  };
-
-  const toggleSlider = () => {
-    if (isOpen) {
-      close();
-      reset();
-    } else {
-      // Modal otwierany przez Header - tu tylko zamykamy
-      close();
-    }
   };
 
   const handleFormSubmit = async formData => {
@@ -53,25 +43,28 @@ export default function OfferSlider() {
 
   return (
     <>
-      {/* FANCY DRAWER - bottom sheet na mobile, side drawer na desktop */}
-      <FancyDrawer
-        open={isOpen}
-        onOpenChange={toggleSlider}
-        side='bottom'
-        snapPoints={[60, 100]}
-        initialSnap={60}
+      {/* MODAL - side drawer jak menu */}
+      <Modal
+        isOpen={isOpen}
+        onClose={() => {
+          close();
+          reset();
+        }}
+        variant='drawer'
+        position='left'
+        width='w-1/2'
+        closeOnOverlayClick={true}
         dragToClose={true}
-        blurOverlay={true}
-        className='px-4'
+        className='bg-modal shadow-2xl transition-all duration-300 ease-out'
       >
         <div
-          className='h-full flex flex-col'
+          className='h-full flex flex-col bg-modal'
           onClick={e => e.stopPropagation()}
         >
           {/* OPCJE */}
           {!selectedOption && (
             <div className='flex-1 p-6 overflow-y-auto'>
-              <h3 className='text-lg font-semibold text-neutral-900 mb-6'>
+              <h3 className='text-lg font-semibold text-text-light mb-6 font-display'>
                 Wybierz rodzaj usługi:
               </h3>
               <div className='space-y-4'>
@@ -79,9 +72,9 @@ export default function OfferSlider() {
                   <button
                     key={option.id}
                     onClick={() => selectOption(option.id)}
-                    className='w-full bg-neutral-100 hover:bg-neutral-200 border border-neutral-300 hover:border-neutral-400 rounded-lg p-4 text-left transition-all duration-200'
+                    className='w-full bg-button-dark hover:bg-button-dark-hover border border-neon-purple/30 hover:border-neon-purple/50 rounded-lg p-4 text-left transition-all duration-200 shadow-glow-purple/20 hover:shadow-glow-purple/40'
                   >
-                    <span className='text-neutral-900 font-medium'>
+                    <span className='text-text-light font-medium'>
                       {option.title}
                     </span>
                   </button>
@@ -94,15 +87,14 @@ export default function OfferSlider() {
           {selectedOption && (
             <div className='max-w-md mx-auto flex-1 p-6 pb-24 overflow-y-auto'>
               <div className='flex items-center gap-3 mb-6'>
-                <Button
+                <button
                   onClick={goBack}
-                  variant='purple'
-                  size='sm'
+                  className='text-text-light hover:text-white transition-colors duration-200 p-1'
                   aria-label='Wróć do wyboru usługi'
                 >
-                  ←
-                </Button>
-                <h2 className='text-neutral-900 font-display text-xl font-bold'>
+                  <span className='text-2xl font-bold'>←</span>
+                </button>
+                <h2 className='text-text-light font-display text-xl font-bold'>
                   {
                     offerSliderData.options.find(
                       opt => opt.id === selectedOption
@@ -123,6 +115,7 @@ export default function OfferSlider() {
                 onSubmit={handleFormSubmit}
                 submitText="WYŚLIJ"
                 loadingText={contactFormData.submit.loading}
+                submitVariant='purple'
               >
                 {({ formData, handleInputChange, isLoading, fieldErrors }) => (
                   <>
@@ -137,7 +130,7 @@ export default function OfferSlider() {
                       disabled={isLoading}
                       placeholder={contactFormData.fields.name.placeholder}
                       error={fieldErrors?.name}
-                      dark={false}
+                      dark={true}
                     />
 
                     {/* NUMER TELEFONU */}
@@ -151,7 +144,7 @@ export default function OfferSlider() {
                       disabled={isLoading}
                       placeholder={contactFormData.fields.phone.placeholder}
                       error={fieldErrors?.phone}
-                      dark={false}
+                      dark={true}
                     />
 
                     {/* OPIS PROBLEMU */}
@@ -167,7 +160,7 @@ export default function OfferSlider() {
                         contactFormData.fields.description.placeholder
                       }
                       error={fieldErrors?.description}
-                      dark={false}
+                      dark={true}
                     />
 
                     {/* PREFEROWANE DATY */}
@@ -180,7 +173,7 @@ export default function OfferSlider() {
                       disabled={isLoading}
                       placeholder={contactFormData.fields.dates.placeholder}
                       error={fieldErrors?.dates}
-                      dark={false}
+                      dark={true}
                     />
                   </>
                 )}
@@ -188,7 +181,7 @@ export default function OfferSlider() {
             </div>
           )}
         </div>
-      </FancyDrawer>
+      </Modal>
     </>
   );
 }

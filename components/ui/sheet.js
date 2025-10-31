@@ -1,6 +1,6 @@
 /**
  * Sheet - prosty wrapper na @radix-ui/react-dialog
- * Używany jako podstawa dla FancyDrawer
+ * Legacy component - użyj Modal z dragToClose
  *
  * Shadcn/ui-style wrapper (bez pełnego setupu shadcn, tylko Radix)
  */

@@ -47,7 +47,11 @@ export default function Section({
     ? py
     : `py-${py}`;
 
-  const classes = cn(pyClass, bgClass, className);
+  // Domyślna wysokość sekcji (jak hero: 70vh mobile, 80vh desktop)
+  // Używamy min-h aby treść nie była obcinana
+  const defaultHeightClass = 'min-h-section-default md:min-h-section-default-md';
+
+  const classes = cn(pyClass, bgClass, defaultHeightClass, className);
   const headerVariant = bg === 'dark' ? 'light' : 'dark';
 
   // Obsługa px dla Container: undefined = default, 0 = px-0, liczba = px-[wartość], string = custom

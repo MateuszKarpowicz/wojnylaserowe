@@ -53,6 +53,7 @@ export default function RootLayout({ children }) {
                 id='main'
                 className='min-h-[100dvh] pt-header pb-16 overflow-x-hidden'
               >
+                {/* Scroll snap tylko na landing page - sprawdzamy czy to homepage */}
                 {children}
               </main>
             </ErrorBoundary>

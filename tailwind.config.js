@@ -102,6 +102,8 @@ module.exports = {
       },
       height: {
         header: '4.5rem', // 72px - stała wysokość headera
+        'section-default': '70vh', // Domyślna wysokość sekcji (mobile)
+        'section-default-md': '80vh', // Domyślna wysokość sekcji (desktop)
       },
       zIndex: {
         header: 90,

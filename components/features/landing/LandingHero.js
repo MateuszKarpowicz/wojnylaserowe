@@ -9,7 +9,7 @@ import Image from 'next/image';
 export default function LandingHero() {
   return (
     <>
-      {/* Hero heading */}
+      {/* Hero heading - też ma scroll snap przez Section component */}
       <Section bg='surface' className='border-b border-border-border'>
         <h1 className='font-display uppercase text-center leading-tight tracking-[0.08em] md:tracking-[0.12em] text-4xl md:text-5xl hero-title-offset'>
           <span className='block'>ZAMIEŃ PRZESZŁOŚĆ</span>
@@ -18,7 +18,6 @@ export default function LandingHero() {
       </Section>
 
       {/* Hero image - pełno-szerokościowe */}
-      {/* PODEJŚCIE 1: Bezpośredni section bez Container - pełna kontrola, bez paddingu */}
       <section className='bg-surface py-0 overflow-x-hidden'>
         <Image
           src='/images/main/piter.webp'

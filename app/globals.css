@@ -31,6 +31,9 @@
     --dur-slow: 700ms;
     --dur-decay: 3000ms;
     --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+    /* Layout tokens - domyślna wysokość sekcji (jak hero) */
+    --section-height-mobile: 70vh;
+    --section-height-desktop: 80vh;
   }
 
   h1,

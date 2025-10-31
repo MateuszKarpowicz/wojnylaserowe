@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import { Section } from '@/components/primitives';
+import Image from 'next/image';
 
 /**
  * LandingHero - Komponent hero dla strony głównej (landing page)
@@ -18,13 +18,8 @@ export default function LandingHero() {
       </Section>
 
       {/* Hero image - pełno-szerokościowe */}
-      <Section
-        bg='surface'
-        py={0}
-        px={0}
-        className='overflow-x-hidden'
-        containerProps={{ maxWidth: 'full' }}
-      >
+      {/* PODEJŚCIE 1: Bezpośredni section bez Container - pełna kontrola, bez paddingu */}
+      <section className='bg-surface py-0 overflow-x-hidden'>
         <Image
           src='/images/main/piter.webp'
           alt='Wojny Laserowe — główne zdjęcie'
@@ -34,7 +29,7 @@ export default function LandingHero() {
           sizes='100vw'
           className='w-full h-[70vh] md:h-[80vh] object-cover object-top'
         />
-      </Section>
+      </section>
     </>
   );
 }

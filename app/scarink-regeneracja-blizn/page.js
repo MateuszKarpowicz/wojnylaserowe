@@ -37,7 +37,7 @@ export default function ScarinkRegeneracjaBlizn() {
         href={cta.href}
         button={cta.button}
         variant='purple'
-        bgColor='dark'
+        bg='dark'
       />
     </main>
   );

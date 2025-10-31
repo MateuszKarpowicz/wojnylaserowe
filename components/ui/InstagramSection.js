@@ -10,6 +10,8 @@ export default function InstagramSection({
 }) {
   useEffect(() => {
     // Załaduj embed.js tylko raz
+    // UWAGA: Instagram embed.js może wyświetlać błędy w konsoli dotyczące @property rules
+    // To normalne i pochodzi z zewnętrznego CSS Instagram - nie możemy tego naprawić
     const existing = document.querySelector('script[src="https://www.instagram.com/embed.js"]');
     if (!existing) {
       const s = document.createElement('script');
@@ -49,7 +51,7 @@ export default function InstagramSection({
         href={profileUrl || '#'}
         target='_blank'
         rel='noopener noreferrer'
-        variant='ctaBlue'
+        variant='cta-blue'
         size='md'
         fullWidth={true}
         className='mt-6'

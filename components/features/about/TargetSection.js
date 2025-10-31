@@ -14,7 +14,7 @@ export default function TargetSection() {
       </Card>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
         {target.points.map((point, index) => (
-          <CardWithIcon key={index} text={point.text} borderColor='blue' />
+          <CardWithIcon key={index} text={point.text} variant='blue' />
         ))}
       </div>
       <p className='text-secondary leading-relaxed text-center max-w-3xl mx-auto'>

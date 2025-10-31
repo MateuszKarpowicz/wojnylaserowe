@@ -59,7 +59,7 @@ export default class ErrorBoundary extends Component {
                   this.setState({ hasError: false, error: null });
                   window.location.reload();
                 }}
-                variant='neonBlue'
+                variant='blue'
               >
                 Odśwież stronę
               </Button>

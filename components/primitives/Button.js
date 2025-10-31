@@ -8,7 +8,7 @@
  * @param {'button'|'a'|string} as - Typ elementu do renderowania (domyślnie: 'button')
  * @param {string} href - URL dla linku (wymagane gdy as='a')
  * @param {'button'|'submit'|'reset'} type - Typ przycisku (domyślnie: 'button')
- * @param {'neonBlue'|'neonPurple'|'section'|'ctaBlue'|'ctaPurple'|'offer'|'link'} variant - Wariant stylu (domyślnie: 'neonBlue')
+ * @param {'blue'|'purple'|'section'|'cta-blue'|'cta-purple'|'offer'|'link'} variant - Wariant stylu (domyślnie: 'blue')
  * @param {'sm'|'md'|'lg'} size - Rozmiar przycisku (domyślnie: 'md')
  * @param {boolean} fullWidth - Czy przycisk ma zajmować pełną szerokość (domyślnie: false)
  * @param {string} className - Dodatkowe klasy CSS
@@ -29,14 +29,14 @@ const buttonStyles = cva(
   {
   variants: {
     variant: {
-        neonBlue:
+        blue:
           'bg-neon-blue bg-opacity-90 text-white hover:bg-neon-blue/90 shadow-glow',
-        neonPurple:
+        purple:
           'bg-neon-purple bg-opacity-90 text-white hover:bg-neon-purple/90 shadow-glow-purple',
         section: 'bg-neon-blue bg-opacity-90 text-white hover:bg-neon-blue/90 shadow-glow px-8 py-3 font-normal',
-        ctaBlue:
+        'cta-blue':
           'bg-neon-blue bg-opacity-90 text-white hover:bg-neon-blue/90 shadow-glow py-0.5 max-w-md mx-auto w-full',
-        ctaPurple:
+        'cta-purple':
           'bg-neon-purple bg-opacity-90 text-white hover:bg-neon-purple/90 shadow-glow-purple py-0.5 max-w-md mx-auto w-full',
         offer:
           'bg-neon-purple bg-opacity-90 text-white hover:bg-neon-purple/90 shadow-glow-purple px-8 py-1 rounded-l-lg rounded-r-none',
@@ -54,7 +54,7 @@ const buttonStyles = cva(
     },
   },
   defaultVariants: {
-    variant: 'neonBlue',
+    variant: 'blue',
     size: 'md',
     fullWidth: false,
   },

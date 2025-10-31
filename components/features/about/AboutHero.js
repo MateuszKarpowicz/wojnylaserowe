@@ -71,7 +71,7 @@ export default function AboutHero() {
                       <Button
                         as='button'
                         type='button'
-                        variant='ctaBlue'
+                        variant='cta-blue'
                         size='md'
                         fullWidth={true}
                         className='mt-3'
@@ -84,7 +84,7 @@ export default function AboutHero() {
                     <Button
                       as='button'
                       type='button'
-                      variant='ctaBlue'
+                      variant='cta-blue'
                       size='md'
                       fullWidth={true}
                       className='mt-3'

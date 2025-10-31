@@ -17,7 +17,7 @@ export default function HowItWorksSection({ howItWorks }) {
         </p>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mb-8'>
           {howItWorks.points.map((point, index) => (
-            <CardWithIcon key={index} text={point.text} borderColor='purple' />
+            <CardWithIcon key={index} text={point.text} variant='purple' />
           ))}
         </div>
         <p className='text-text-light/80 leading-relaxed text-center max-w-3xl mx-auto'>

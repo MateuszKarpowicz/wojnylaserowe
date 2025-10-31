@@ -48,7 +48,7 @@ export default function MapSection({
         href={mapsLink || '#'}
         target='_blank'
         rel='noopener noreferrer'
-        variant='ctaPurple'
+        variant='cta-purple'
         size='md'
         className='mt-4 block mx-auto'
       >

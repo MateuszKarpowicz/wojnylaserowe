@@ -14,7 +14,7 @@ export default function MethodSection() {
         </p>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 max-w-5xl mx-auto'>
           {method.effects.map((effect, index) => (
-            <CardWithIcon key={index} text={effect.text} borderColor='purple' />
+            <CardWithIcon key={index} text={effect.text} variant='purple' />
           ))}
         </div>
         <p className='text-text-light leading-relaxed text-center max-w-3xl mx-auto'>

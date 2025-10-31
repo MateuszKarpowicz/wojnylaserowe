@@ -18,7 +18,7 @@ export default function FAQ() {
         href={footer.href}
         button={footer.button}
         variant='blue'
-        bgColor='surface'
+        bg='surface'
       />
     </main>
   );

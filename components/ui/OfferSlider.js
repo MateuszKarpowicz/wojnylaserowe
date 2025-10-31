@@ -97,7 +97,7 @@ export default function OfferSlider() {
               <div className='flex items-center gap-3 mb-6'>
                 <Button
                   onClick={goBack}
-                  variant='neonPurple'
+                  variant='purple'
                   size='sm'
                   aria-label='Wróć do wyboru usługi'
                 >

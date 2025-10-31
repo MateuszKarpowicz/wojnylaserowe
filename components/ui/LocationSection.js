@@ -30,7 +30,7 @@ export default function LocationSection({ data }) {
             <p>{location.text}</p>
             <p>{location.text2}</p>
           </div>
-          <Button as='a' href={location.cta.href} variant='ctaPurple' className='mt-6'>
+          <Button as='a' href={location.cta.href} variant='cta-purple' className='mt-6'>
             {location.cta.text}
           </Button>
         </div>

@@ -59,7 +59,7 @@ export default function Home() {
         <Button
           as='a'
           href='/efekty'
-          variant='ctaPurple'
+          variant='cta-purple'
           size='md'
           fullWidth={true}
           className='mt-6'

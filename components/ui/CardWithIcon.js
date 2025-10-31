@@ -9,7 +9,7 @@ import { Card } from '@/components/primitives';
  * @param {string} [title] - Opcjonalny tytuł karty
  * @param {string} [text] - Tekst/opis karty (używany gdy brak description)
  * @param {string} [description] - Alternatywny opis karty (ma priorytet nad text)
- * @param {'blue'|'purple'} borderColor - Kolor ramki: 'blue' dla ciemnego tła, 'purple' dla jasnego tła
+ * @param {'blue'|'purple'} variant - Wariant karty (domyślnie: 'blue')
  * @param {React.ReactNode} children - Custom content (opcjonalne, jeśli przekazane, ignoruje icon/title/text)
  */
 export default function CardWithIcon({
@@ -17,7 +17,7 @@ export default function CardWithIcon({
   title,
   text,
   description,
-  borderColor = 'blue',
+  variant = 'blue',
   children,
 }) {
   // Resolwuj ikonę używając shared helpera
@@ -26,21 +26,19 @@ export default function CardWithIcon({
   // Priorytet: description > text
   const contentText = description || text;
 
-  const borderVariant = borderColor === 'purple' ? 'purple' : 'blue';
-
   // Używaj helper functions dla spójności kolorów
-  const { textClass, descriptionClass, iconClass } = getCardTextClasses(borderVariant);
+  const { textClass, descriptionClass, iconClass } = getCardTextClasses(variant);
 
   // Helper do budowania klas
   const iconClasses = cn('text-3xl', iconClass);
 
   // Jeśli przekazano children, renderuj je zamiast domyślnej struktury
   if (children) {
-    return <Card variant={borderVariant}>{children}</Card>;
+    return <Card variant={variant}>{children}</Card>;
   }
 
   return (
-    <Card variant={borderVariant}>
+    <Card variant={variant}>
       <div className='flex gap-4'>
         {/* Ikona */}
         <div className='flex-shrink-0'>

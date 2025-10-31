@@ -1,5 +1,10 @@
 import { EffectsHeader } from '@/components/features/effects';
-import { CTASection, LoadingSpinner, StagesSection, TestimonialsPlaceholder } from '@/components/ui';
+import {
+  CTASection,
+  LoadingSpinner,
+  StagesSection,
+  TestimonialsPlaceholder,
+} from '@/components/ui';
 import effectsPageData from '@/content/texts/effects-page.json';
 import dynamic from 'next/dynamic';
 
@@ -30,7 +35,7 @@ export default function Efekty() {
         href={footer.href}
         button={footer.button}
         variant='blue'
-        bgColor='surface'
+        bg='surface'
       />
     </main>
   );

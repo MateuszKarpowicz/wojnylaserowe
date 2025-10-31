@@ -38,7 +38,7 @@ export default function CoolingSection({ data }) {
                 <CardWithIcon
                   key={index}
                   text={point.text}
-                  borderColor='blue'
+                  variant='blue'
                 />
               ))}
             </div>

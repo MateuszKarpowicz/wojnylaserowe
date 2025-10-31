@@ -23,6 +23,7 @@ export default function RootLayout({ children }) {
           name='viewport'
           content='width=device-width, initial-scale=1, viewport-fit=cover'
         />
+        <link rel='icon' href='/images/favicon.ico' />
         <link rel='preload' href='/images/logo/logo.svg' as='image' />
       </head>
       <body className='min-h-dvh bg-bg-light text-text-dark dark:bg-bg-dark dark:text-text-light overflow-x-hidden'>

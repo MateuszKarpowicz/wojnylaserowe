@@ -61,7 +61,10 @@ const nextConfig = {
           {
             key: 'Permissions-Policy',
             value:
-              'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+              'camera=(), microphone=(), geolocation=(), interest-cohort=(), unload=*',
+            // unload=* - pozwala na unload events dla wszystkich originów
+            // Potrzebne dla Instagram embed, Google Maps iframe i innych zewnętrznych skryptów
+            // które używają unload events (niezalecane, ale konieczne dla kompatybilności)
           },
         ],
       },

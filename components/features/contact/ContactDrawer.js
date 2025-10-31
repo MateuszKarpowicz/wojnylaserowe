@@ -10,7 +10,7 @@ export default function ContactDrawer() {
   return (
     <>
       <div className='max-w-md mx-auto w-full mt-6'>
-        <Button variant='ctaBlue' fullWidth={true} onClick={() => setOpen(true)}>Napisz wiadomość</Button>
+        <Button variant='cta-blue' fullWidth={true} onClick={() => setOpen(true)}>Napisz wiadomość</Button>
       </div>
       <Modal
         isOpen={open}

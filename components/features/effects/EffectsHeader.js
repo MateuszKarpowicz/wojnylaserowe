@@ -11,7 +11,7 @@ export default function EffectsHeader({ data }) {
     <Section bg='surface' title={header.title} subtitle={header.subtitle} align='center'>
       {/* LINK DO ETAPÓW */}
       <div className='text-center mb-8'>
-        <Button as='a' href={cta.href} variant='ctaBlue' fullWidth={false}>
+        <Button as='a' href={cta.href} variant='cta-blue' fullWidth={false}>
           {cta.text}
         </Button>
       </div>

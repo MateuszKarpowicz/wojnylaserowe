@@ -34,7 +34,7 @@ export default function LaseroweUsuwanieTatuazu() {
         href={cta.href}
         button={cta.button}
         variant='blue'
-        bgColor='surface'
+        bg='surface'
       />
     </main>
   );

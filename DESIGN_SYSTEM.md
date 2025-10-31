@@ -107,8 +107,8 @@ Uniwersalny komponent przycisku z wieloma wariantami.
 import { Button } from '@/components/primitives';
 
 // Podstawowe użycie
-<Button variant="neonBlue">Kliknij</Button>
-<Button variant="neonPurple">Wyślij</Button>
+<Button variant="blue">Kliknij</Button>
+<Button variant="purple">Wyślij</Button>
 
 // Jako link
 <Button as="a" href="/kontakt" variant="section">
@@ -116,8 +116,8 @@ import { Button } from '@/components/primitives';
 </Button>
 
 // CTA buttons
-<Button variant="ctaBlue" fullWidth>Zapisz się</Button>
-<Button variant="ctaPurple" fullWidth>Dowiedz się więcej</Button>
+<Button variant="cta-blue" fullWidth>Zapisz się</Button>
+<Button variant="cta-purple" fullWidth>Dowiedz się więcej</Button>
 
 // Rozmiary
 <Button size="sm">Mały</Button>
@@ -127,11 +127,11 @@ import { Button } from '@/components/primitives';
 
 **Warianty:**
 
-- `neonBlue` - podstawowy niebieski (domyślny)
-- `neonPurple` - podstawowy fioletowy
+- `blue` - podstawowy niebieski (domyślny)
+- `purple` - podstawowy fioletowy
 - `section` - dla sekcji (px-8, py-3, font-normal)
-- `ctaBlue` - CTA niebieski (pełna szerokość, max-w-md)
-- `ctaPurple` - CTA fioletowy (pełna szerokość, max-w-md)
+- `cta-blue` - CTA niebieski (pełna szerokość, max-w-md)
+- `cta-purple` - CTA fioletowy (pełna szerokość, max-w-md)
 - `offer` - dla oferty (okrągłe lewe rogi, px-8)
 - `link` - jako link (przezroczysty, tylko hover)
 
@@ -423,11 +423,11 @@ import { CardWithIcon } from '@/components/ui';
   icon="FaCertificate"
   title="Tytuł karty"
   text="Opis karty"
-  borderColor="blue"
+  variant="blue"
 />
 
 // Z custom content
-<CardWithIcon borderColor="purple">
+<CardWithIcon variant="purple">
   <CustomContent />
 </CardWithIcon>
 ```
@@ -460,7 +460,7 @@ import { CTASection } from '@/components/ui';
   href='/kontakt'
   button='Skontaktuj się'
   variant='blue'
-  bgColor='surface'
+  bg='surface'
 />;
 ```
 
@@ -481,7 +481,7 @@ import { WhyChooseSection } from '@/components/ui';
 <WhyChooseSection
   points={[{ text: 'Punkt 1' }, { text: 'Punkt 2' }]}
   variant='default'
-  borderColor='blue'
+  cardVariant='blue'
 />;
 ```
 
@@ -609,7 +609,7 @@ const textClass = cardVariant === 'blue' ? 'text-text-light' : 'text-text-dark';
 
 // ❌ ZŁE
 <div className="card-with-border-blue">...</div>
-<button className="btn-neon-blue">...</button>
+<button className="btn-blue">...</button>
 ```
 
 ### **4. Spójne użycie Section**

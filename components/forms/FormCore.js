@@ -19,6 +19,7 @@
 import { useState } from 'react';
 import { logger } from '@/lib/logger';
 import { Button } from '@/components/primitives';
+import StatusMessage from '@/components/ui/StatusMessage';
 
 export default function FormCore({
   initialData = {},
@@ -95,9 +96,9 @@ export default function FormCore({
     >
       {/* ERROR MESSAGE */}
       {error && (
-        <div className='bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg'>
+        <StatusMessage type='error'>
           {error}
-        </div>
+        </StatusMessage>
       )}
 
       {/* POLA FORMULARZA */}

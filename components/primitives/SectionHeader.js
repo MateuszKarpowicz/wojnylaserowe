@@ -1,3 +1,16 @@
+/**
+ * SectionHeader - Komponent nagłówka sekcji z wariantami kolorów
+ *
+ * Nagłówek sekcji z automatycznym wyborem kolorów (light/dark) i opcjonalnym podtytułem.
+ * Używa CVA do zarządzania wariantami stylów.
+ *
+ * @param {string} title - Tytuł sekcji (wymagany)
+ * @param {string} subtitle - Podtytuł sekcji (opcjonalny)
+ * @param {'light'|'dark'} variant - Wariant kolorów (domyślnie: 'dark')
+ * @param {'left'|'center'} align - Wyrównanie tekstu (domyślnie: 'center')
+ * @param {string} className - Dodatkowe klasy CSS
+ * @returns {JSX.Element} Nagłówek sekcji z opcjonalnym podtytułem
+ */
 import { cva } from 'class-variance-authority';
 
 const headerWrapper = cva('mb-12', {

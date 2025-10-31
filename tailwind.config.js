@@ -29,8 +29,16 @@ module.exports = {
         'bg-input-dark': '#1A1A1A', // tło dla input-dark (ciemne tło)
 
         // Status
-        error: '#E74C3C',
-        success: '#27AE60',
+        error: {
+          light: '#F8D7DA', // bg-error-light
+          DEFAULT: '#E74C3C', // text-error
+          border: '#F5C6CB', // border-error
+        },
+        success: {
+          light: '#D4EDDA', // bg-success-light
+          DEFAULT: '#27AE60', // text-success
+          border: '#C3E6CB', // border-success
+        },
 
         // Tła z przezroczystością (zamiast bg-black/*)
         // Uwaga: bez prefiksu bg- bo Tailwind dodaje go automatycznie

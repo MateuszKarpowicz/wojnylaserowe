@@ -1,7 +1,18 @@
 'use client';
 import Image from 'next/image';
-import ImageFrame from '@/components/primitives/ImageFrame';
+import { ImageFrame } from '@/components/primitives';
 
+/**
+ * EffectTile - Kafelek z efektem zabiegu dla galerii
+ *
+ * Wyświetla pojedyncze zdjęcie efektu zabiegu z overlay na hover.
+ * Obsługuje kliknięcie do otwarcia modala z pełnym zdjęciem.
+ *
+ * @param {Object} effect - Obiekt z danymi efektu (src, alt)
+ * @param {number} index - Indeks efektu w liście
+ * @param {Function} onOpenModal - Callback wywoływany przy kliknięciu
+ * @returns {JSX.Element} Kafelek z ImageFrame i overlay hover
+ */
 export default function EffectTile({ effect, index, onOpenModal }) {
   return (
     <div className='group cursor-pointer transition-all duration-300 transform hover:scale-105 hover:shadow-xl rounded-lg'>

@@ -20,14 +20,14 @@ export default function CopyRow({ icon: Icon, label, value, href }) {
     <div
       className='bg-surface border-2 border-neon-blue/30 rounded-lg p-4 grid grid-cols-[auto_1fr_auto] items-center gap-4 hover:border-neon-blue/50 transition-colors'
     >
-      {Icon && <Icon className='text-neon-blue/80 drop-shadow-[0_0_10px_rgba(0,153,204,0.35)] text-2xl shrink-0' aria-hidden='true' />}
+      {Icon && <Icon className='text-neon-blue/80 drop-shadow-glow-blue-medium text-2xl shrink-0' aria-hidden='true' />}
       <div className='min-w-0'>
         {href ? (
-          <a href={href} target='_blank' rel='noopener noreferrer' className='block font-semibold text-neon-blue break-words hover:text-neon-blue/90 focus-ring rounded drop-shadow-[0_0_8px_rgba(0,153,204,0.35)]'>
+          <a href={href} target='_blank' rel='noopener noreferrer' className='block font-semibold text-neon-blue break-words hover:text-neon-blue/90 focus-ring rounded drop-shadow-glow-blue-weak'>
             {value}
           </a>
         ) : (
-          <div className='font-semibold text-neon-blue break-words drop-shadow-[0_0_8px_rgba(0,153,204,0.35)]'>{value}</div>
+          <div className='font-semibold text-neon-blue break-words drop-shadow-glow-blue-weak'>{value}</div>
         )}
         {copied && (
           <div className='text-neon-blue/80 text-sm mt-1' aria-live='polite'>Skopiowano</div>

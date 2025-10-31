@@ -9,7 +9,7 @@ import {
 import AboutHeroSlider from '@/components/ui/AboutHeroSlider';
 import aboutPageData from '@/content/texts/about-page.json';
 import Image from 'next/image';
-import ImageFrame from '@/components/primitives/ImageFrame';
+import { ImageFrame } from '@/components/primitives';
 import { useState } from 'react';
 
 export default function AboutHero() {
@@ -36,7 +36,7 @@ export default function AboutHero() {
           <div className='md:grid md:grid-cols-2 gap-6 items-center'>
             {/* Zdjęcie - na mobile pierwsze, na desktop po lewej */}
             <div className='mb-6 md:mb-0 order-1 md:order-1 mt-4 md:mt-6'>
-              <ImageFrame variant='neonBlue' aspect='square' sizeClass='max-w-md mx-auto'>
+              <ImageFrame variant='blue' aspect='square' sizeClass='max-w-md mx-auto'>
                 <Image
                   src='/images/hero/hero.webp'
                   alt='O nas - Wojny Laserowe'

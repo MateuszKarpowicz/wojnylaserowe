@@ -7,7 +7,7 @@ export default function TargetSection() {
 
   return (
     <div className='space-y-12'>
-      <Card variant='borderBlue'>
+      <Card variant='blue'>
         <p className='text-xl md:text-2xl leading-relaxed italic text-text-light'>
           {target.quote}
         </p>

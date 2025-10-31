@@ -3,6 +3,18 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Card, Section, SectionHeader, Container } from '@/components/primitives';
 
+/**
+ * TestimonialsCarousel - Karuzela opinii klientów
+ *
+ * Wyświetla opinie klientów w karuzeli z automatyczną zmianą i efektem glow.
+ * Obsługuje animacje flash i decay dla efektów wizualnych.
+ *
+ * @param {string} title - Tytuł sekcji (domyślnie: 'Opinie klientów')
+ * @param {Array} items - Tablica opinii klientów
+ * @param {number} intervalMs - Interwał zmiany opinii w milisekundach (domyślnie: 6000)
+ * @param {boolean} external - Czy opinie pochodzą z zewnętrznego źródła
+ * @returns {JSX.Element} Sekcja z karuzelą opinii
+ */
 export default function TestimonialsCarousel({
   title = 'Opinie klientów',
   items = [],
@@ -67,7 +79,7 @@ export default function TestimonialsCarousel({
         )}
         {current ? (
           <Card
-            variant='borderBlue'
+            variant='blue'
             className={[
               'relative',
               'bg-bg-surface text-text-dark',
@@ -80,10 +92,10 @@ export default function TestimonialsCarousel({
               'hover:-translate-y-1 hover:scale-[1.01]',
               // glow: w spoczynku prawie niewidoczny, przy zmianie mocny + puls skali
               flash && !decay
-                ? 'duration-[var(--dur-decay)] ease-[var(--ease-brand)] scale-[1.06] shadow-[0_0_40px_rgba(0,153,204,0.75),0_0_12px_rgba(0,153,204,0.6)] border-2 border-neon-blue/80'
+                ? 'duration-[var(--dur-decay)] ease-[var(--ease-brand)] scale-[1.06] shadow-glow-blue-very-strong border-2 border-neon-blue/80'
                 : flash && decay
-                ? 'duration-[var(--dur-decay)] ease-[var(--ease-brand)] scale-[1.02] shadow-[0_0_24px_rgba(0,153,204,0.35),0_0_8px_rgba(0,153,204,0.25)] border-2 border-neon-blue/50'
-                : 'duration-[var(--dur-fast)] ease-[var(--ease-brand)] shadow-[0_0_6px_rgba(0,153,204,0.15)] border-2 border-neon-blue/30',
+                ? 'duration-[var(--dur-decay)] ease-[var(--ease-brand)] scale-[1.02] shadow-glow-blue-decay border-2 border-neon-blue/50'
+                : 'duration-[var(--dur-fast)] ease-[var(--ease-brand)] shadow-glow-blue-weak border-2 border-neon-blue/30',
             ].join(' ')}
           >
             <figure>
@@ -100,7 +112,7 @@ export default function TestimonialsCarousel({
 
           </Card>
         ) : (
-          <Card variant='borderBlue' className='bg-bg-surface text-text-dark shadow-glow'>
+          <Card variant='blue' className='bg-bg-surface text-text-dark shadow-glow'>
             <p className='text-text-dark/80'>Brak opinii do wyświetlenia.</p>
           </Card>
         )}

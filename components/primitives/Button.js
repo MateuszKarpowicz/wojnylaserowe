@@ -1,3 +1,22 @@
+/**
+ * Button - Uniwersalny komponent przycisku z wariantami
+ *
+ * Komponent przycisku z wieloma wariantami stylów (neon blue, purple, CTA, link, etc.)
+ * wykorzystujący class-variance-authority do zarządzania wariantami.
+ * Obsługuje renderowanie jako button, link (Next.js Link) lub custom element.
+ *
+ * @param {'button'|'a'|string} as - Typ elementu do renderowania (domyślnie: 'button')
+ * @param {string} href - URL dla linku (wymagane gdy as='a')
+ * @param {'button'|'submit'|'reset'} type - Typ przycisku (domyślnie: 'button')
+ * @param {'neonBlue'|'neonPurple'|'section'|'ctaBlue'|'ctaPurple'|'offer'|'link'} variant - Wariant stylu (domyślnie: 'neonBlue')
+ * @param {'sm'|'md'|'lg'} size - Rozmiar przycisku (domyślnie: 'md')
+ * @param {boolean} fullWidth - Czy przycisk ma zajmować pełną szerokość (domyślnie: false)
+ * @param {string} className - Dodatkowe klasy CSS
+ * @param {React.ReactNode} children - Zawartość przycisku
+ * @param {object} ...props - Pozostałe props przekazywane do elementu
+ * @returns {JSX.Element} Przycisk z odpowiednimi stylami
+ */
+
 "use client";
 
 import Link from 'next/link';

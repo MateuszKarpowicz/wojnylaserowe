@@ -223,6 +223,15 @@
   .approach-icon {
     @apply text-3xl text-neon-purple;
   }
+
+  /* Status messages */
+  .message-success {
+    @apply bg-success-light border border-success-border text-success px-4 py-3 rounded-lg;
+  }
+
+  .message-error {
+    @apply bg-error-light border border-error-border text-error px-4 py-3 rounded-lg;
+  }
 }
 
 /* UTILITIES – dostępność i skróty */
@@ -233,7 +242,7 @@
   }
   /* Debug (tylko w dev): podświetl elementy wykraczające poza viewport */
   html[data-debug-overflow='true'] [data-overflow='true'] {
-    box-shadow: inset 0 0 0 2px red !important;
+    box-shadow: inset 0 0 0 2px red;
   }
   .focus-ring {
     @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue focus-visible:ring-offset-2;
@@ -274,6 +283,53 @@
   .spinner {
     @apply w-10 h-10 border-4 border-t-neon-blue rounded-full animate-spin;
     border-color: theme('colors.border-border');
+  }
+
+  /* Shadow utilities dla neon blue glow */
+  .shadow-glow-blue-weak {
+    box-shadow: 0 0 6px rgba(0, 153, 204, 0.15);
+  }
+
+  .shadow-glow-blue-medium {
+    box-shadow: 0 0 20px rgba(0, 153, 204, 0.25);
+  }
+
+  .shadow-glow-blue-strong {
+    box-shadow: 0 0 28px rgba(0, 153, 204, 0.45);
+  }
+
+  .shadow-glow-blue-very-strong {
+    box-shadow: 0 0 40px rgba(0, 153, 204, 0.75), 0 0 12px rgba(0, 153, 204, 0.6);
+  }
+
+  .shadow-glow-blue-decay {
+    box-shadow: 0 0 24px rgba(0, 153, 204, 0.35), 0 0 8px rgba(0, 153, 204, 0.25);
+  }
+
+  /* Drop shadow utilities dla tekstu */
+  .drop-shadow-glow-blue-weak {
+    filter: drop-shadow(0 0 8px rgba(0, 153, 204, 0.35));
+  }
+
+  .drop-shadow-glow-blue-medium {
+    filter: drop-shadow(0 0 10px rgba(0, 153, 204, 0.35));
+  }
+
+  .drop-shadow-glow-blue-strong {
+    filter: drop-shadow(0 0 16px rgba(0, 153, 204, 0.7));
+  }
+
+  /* Transition duration utilities */
+  .transition-dur-fast {
+    transition-duration: var(--dur-fast);
+  }
+
+  .transition-dur-slow {
+    transition-duration: var(--dur-slow);
+  }
+
+  .transition-dur-decay {
+    transition-duration: var(--dur-decay);
   }
 
   /* Wymuszenie akceleracji GPU dla elementów powodujących migotanie w Chrome */

@@ -2,6 +2,7 @@
 import FormCore from '@/components/forms/FormCore';
 import { useSecureFormSubmit } from '@/components/hooks';
 import FormField from '@/components/ui/FormField';
+import StatusMessage from '@/components/ui/StatusMessage';
 import { contactFormSchema } from '@/lib/validation';
 import { useState } from 'react';
 
@@ -23,10 +24,10 @@ export default function ContactForm() {
 
   if (isSuccess) {
     return (
-      <div className='bg-green-100 border border-green-400 text-green-700 px-6 py-8 rounded-lg text-center'>
+      <StatusMessage type='success' className='px-6 py-8 text-center'>
         <h3 className='text-xl font-semibold mb-2'>✅ Formularz wysłany!</h3>
         <p>Dziękujemy za kontakt. Odpowiemy w ciągu 24 godzin.</p>
-      </div>
+      </StatusMessage>
     );
   }
 
@@ -146,9 +147,9 @@ export default function ContactForm() {
 
             {/* Error message */}
             {submitError && (
-              <div className='bg-red-100 border-2 border-red-400 text-red-700 px-4 py-3 rounded-lg'>
+              <StatusMessage type='error'>
                 {submitError}
-              </div>
+              </StatusMessage>
             )}
           </div>
         )}

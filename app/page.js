@@ -8,7 +8,7 @@ import EffectsCarousel from '@/components/ui/EffectsCarousel';
 import FAQAccordion from '@/components/ui/FAQAccordion';
 import InstagramSection from '@/components/ui/InstagramSection';
 import MapSection from '@/components/ui/MapSection';
-import ProcessSection from '@/components/ui/ProcessSection';
+import ProcessSectionLanding from '@/components/ui/ProcessSectionLanding';
 import QualificationsSection from '@/components/ui/QualificationsSection';
 import TestimonialsCarousel from '@/components/ui/TestimonialsCarousel';
 import faqData from '@/content/texts/faq.json';
@@ -47,7 +47,7 @@ export default function Home() {
       <Section bg='surface'>
         <Container>
           <SectionHeader title='Jak to działa?' variant='dark' />
-          <ProcessSection variant='landing' />
+          <ProcessSectionLanding />
         </Container>
       </Section>
 

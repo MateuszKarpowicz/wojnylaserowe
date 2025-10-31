@@ -52,7 +52,7 @@ function QualificationItem({ item, idx }) {
 
       {/* CAŁA KARTA JAKO KIESZONKA */}
       <Card
-        variant='borderPurple'
+        variant='purple'
         role='button'
         tabIndex={0}
         aria-expanded={open}

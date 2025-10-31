@@ -47,7 +47,7 @@ export default function CardWithIcon({
   // Priorytet: description > text
   const contentText = description || text;
 
-  const borderVariant = borderColor === 'purple' ? 'borderPurple' : 'borderBlue';
+  const borderVariant = borderColor === 'purple' ? 'purple' : 'blue';
   const iconColorClass =
     borderColor === 'purple' ? 'text-neon-purple' : 'text-neon-blue';
 

@@ -1,7 +1,22 @@
+/**
+ * ImageFrame - Komponent ramki dla zdjęć z wariantami stylów
+ *
+ * Ramka dla zdjęć z różnymi wariantami (plain, neon blue, neon purple)
+ * i opcjami aspect ratio. Obsługuje legacy aliases dla backward compatibility.
+ *
+ * @param {'plain'|'blue'|'purple'|'neonBlue'|'neonPurple'} variant - Wariant ramki (domyślnie: 'plain')
+ * @param {'square'|'16:9'} aspect - Proporcje obrazu (domyślnie: 'square')
+ * @param {string} sizeClass - Klasa CSS dla szerokości (np. 'max-w-md')
+ * @param {string} className - Dodatkowe klasy CSS
+ * @param {boolean} rounded - Czy ramka ma zaokrąglone rogi (domyślnie: true)
+ * @param {React.ReactNode} children - Zawartość ramki (zwykle Image component)
+ * @param {object} ...props - Pozostałe props przekazywane do elementu
+ * @returns {JSX.Element} Ramka z odpowiednimi stylami i aspect ratio
+ */
 export default function ImageFrame({
-  variant = 'plain', // 'plain' | 'neonBlue' | 'neonPurple'
-  aspect = 'square', // 'square' | '16:9'
-  sizeClass = '', // e.g. 'max-w-md'
+  variant = 'plain',
+  aspect = 'square',
+  sizeClass = '',
   className = '',
   rounded = true,
   children,
@@ -9,8 +24,13 @@ export default function ImageFrame({
 }) {
   const OUTER_BY_VARIANT = {
     plain: 'bg-surface shadow-sm overflow-hidden',
+    blue:
+      'shadow-xl border-2 border-neon-blue/30 shadow-glow-blue-medium overflow-hidden',
+    purple:
+      'shadow-xl border-2 border-neon-purple/40 shadow-[0_0_22px_rgba(192,132,252,0.28)] overflow-hidden',
+    // Legacy aliases for backward compatibility
     neonBlue:
-      'shadow-xl border-2 border-neon-blue/30 shadow-[0_0_20px_rgba(0,153,204,0.25)] overflow-hidden',
+      'shadow-xl border-2 border-neon-blue/30 shadow-glow-blue-medium overflow-hidden',
     neonPurple:
       'shadow-xl border-2 border-neon-purple/40 shadow-[0_0_22px_rgba(192,132,252,0.28)] overflow-hidden',
   };

@@ -1,10 +1,10 @@
 import CTASection from '@/components/ui/CTASection';
 import MethodSection from '@/components/ui/MethodSection';
-import ProcessSection from '@/components/ui/ProcessSection';
+import ProcessSectionDefault from '@/components/ui/ProcessSectionDefault';
 import ScarinkHero from '@/components/ui/ScarinkHero';
 import ScarinkWhyChooseSection from '@/components/ui/ScarinkWhyChooseSection';
 import TargetSection from '@/components/ui/TargetSection';
-import SectionWrapper from '@/components/ui/SectionWrapper';
+import { Section } from '@/components/primitives';
 import scarinkPageData from '@/content/texts/scarink-page.json';
 
 export const metadata = {
@@ -22,18 +22,18 @@ export default function ScarinkRegeneracjaBlizn() {
   return (
     <main className='min-h-screen bg-bg-light text-text-dark'>
       <ScarinkHero />
-      <SectionWrapper title={method.title} bgColor='bg-dark'>
+      <Section title={method.title} bg='dark'>
         <MethodSection />
-      </SectionWrapper>
-      <SectionWrapper title={target.title} bgColor='surface'>
+      </Section>
+      <Section title={target.title} bg='surface'>
         <TargetSection />
-      </SectionWrapper>
-      <SectionWrapper title={process.title} bgColor='bg-dark'>
-        <ProcessSection />
-      </SectionWrapper>
-      <SectionWrapper title={whyChoose.title} bgColor='surface'>
+      </Section>
+      <Section title={process.title} bg='dark'>
+        <ProcessSectionDefault />
+      </Section>
+      <Section title={whyChoose.title} bg='surface'>
         <ScarinkWhyChooseSection />
-      </SectionWrapper>
+      </Section>
       <CTASection
         title={cta.title}
         text={cta.text}

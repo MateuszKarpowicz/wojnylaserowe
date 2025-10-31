@@ -31,7 +31,7 @@ function ApproachItem({ point, idx }) {
 
   return (
     <Card
-      variant='borderBlue'
+      variant='blue'
       role='button'
       tabIndex={0}
       aria-expanded={open}
@@ -55,7 +55,7 @@ function ApproachItem({ point, idx }) {
         <Icon
           className={[
             'text-2xl md:text-3xl transition-all',
-            open ? 'text-neon-blue drop-shadow-[0_0_10px_rgba(0,153,204,0.55)]' : 'text-neon-blue/80',
+            open ? 'text-neon-blue drop-shadow-glow-blue-medium' : 'text-neon-blue/80',
           ].join(' ')}
           aria-hidden='true'
         />

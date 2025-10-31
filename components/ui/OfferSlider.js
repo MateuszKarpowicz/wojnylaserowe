@@ -4,6 +4,7 @@ import FormCore from '@/components/forms/FormCore';
 import { useOfferForm } from '@/components/hooks/useOfferForm';
 import Modal from '@/components/overlay/Modal';
 import FormField from '@/components/ui/FormField';
+import StatusMessage from '@/components/ui/StatusMessage';
 import { Button } from '@/components/primitives';
 import contactFormData from '@/content/texts/contactform.json';
 import offerSliderData from '@/content/texts/offerslider.json';
@@ -113,9 +114,9 @@ export default function OfferSlider() {
 
               {/* ERROR MESSAGE */}
               {error && (
-                <div className='bg-error/20 border border-error/50 text-error px-4 py-3 rounded-lg mb-6'>
+                <StatusMessage type='error' className='mb-6'>
                   {error}
-                </div>
+                </StatusMessage>
               )}
 
               <FormCore

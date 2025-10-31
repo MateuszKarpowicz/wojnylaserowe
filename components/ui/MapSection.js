@@ -26,7 +26,7 @@ export default function MapSection({
           )}
         </div>
 
-        <Card variant='borderPurple' className='p-0 overflow-hidden'>
+        <Card variant='purple' className='p-0 overflow-hidden'>
           {embedUrl ? (
             <iframe
               title='Mapa dojazdu'

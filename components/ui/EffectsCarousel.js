@@ -3,8 +3,18 @@
 import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import effectsData from '@/content/texts/effects.json';
-import ImageFrame from '@/components/primitives/ImageFrame';
+import { ImageFrame } from '@/components/primitives';
 
+/**
+ * EffectsCarousel - Karuzela zdjęć efektów zabiegów
+ *
+ * Wyświetla zdjęcia efektów zabiegów w karuzeli z automatyczną zmianą.
+ * Obsługuje pauzowanie przy najechaniu myszką oraz prefers-reduced-motion.
+ *
+ * @param {number} intervalMs - Interwał zmiany zdjęć w milisekundach (domyślnie: 4000)
+ * @param {string} frameSizeClass - Klasa CSS dla szerokości ramki (domyślnie: 'w-full')
+ * @returns {JSX.Element|null} Karuzela z ImageFrame lub null jeśli brak zdjęć
+ */
 export default function EffectsCarousel({ intervalMs = 4000, frameSizeClass = 'w-full' }) {
   const images = useMemo(() => effectsData?.images || [], []);
   const total = images.length;
@@ -35,7 +45,7 @@ export default function EffectsCarousel({ intervalMs = 4000, frameSizeClass = 'w
 
   return (
     <ImageFrame
-      variant='neonPurple'
+      variant='purple'
       aspect='square'
       sizeClass={frameSizeClass}
       rounded={true}

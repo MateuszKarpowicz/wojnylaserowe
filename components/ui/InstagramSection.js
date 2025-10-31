@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from 'react';
-import { Section, SectionHeader, Container, Button, ImageFrame } from '@/components/primitives';
+import { Section, Button, ImageFrame } from '@/components/primitives';
 
 export default function InstagramSection({
   title = 'Śledź nas na Instagramie',
@@ -26,10 +26,8 @@ export default function InstagramSection({
   }, [postUrl]);
 
   return (
-    <Section bg='surface'>
-      <Container>
-        <SectionHeader title={title} variant='dark' />
-        <div className='max-w-md mx-auto w-full'>
+    <Section bg='surface' title={title}>
+      <div className='max-w-md mx-auto w-full'>
           <ImageFrame variant='blue' aspect='square' sizeClass='w-full'>
             {postUrl ? (
               <blockquote
@@ -51,7 +49,6 @@ export default function InstagramSection({
             </Button>
           </div>
         </div>
-      </Container>
     </Section>
   );
 }

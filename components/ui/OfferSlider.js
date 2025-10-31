@@ -3,7 +3,7 @@ import { useOferta } from '@/components/context/OfertaContext';
 import FormCore from '@/components/forms/FormCore';
 import { useOfferForm } from '@/components/hooks/useOfferForm';
 import Modal from '@/components/overlay/Modal';
-import FormField from '@/components/ui/FormField';
+import FormField from '@/components/forms/FormField';
 import StatusMessage from '@/components/ui/StatusMessage';
 import { Button } from '@/components/primitives';
 import contactFormData from '@/content/texts/contactform.json';
@@ -80,7 +80,7 @@ export default function OfferSlider() {
                   <button
                     key={option.id}
                     onClick={() => selectOption(option.id)}
-                    className='w-full bg-button-dark hover:bg-button-dark-hover border border-neon-purple/30 hover:border-neon-purple/50 rounded-lg p-4 text-left transition-all duration-200 shadow-glow-purple/20 hover:shadow-glow-purple/40'
+                    className='w-full bg-button-dark hover:bg-button-dark-hover border border-neon-border-purple hover:border-neon-border-purple-strong rounded-lg p-4 text-left transition-all duration-200 shadow-glow-purple/20 hover:shadow-glow-purple/40'
                   >
                     <span className='text-text-light font-medium'>
                       {option.title}

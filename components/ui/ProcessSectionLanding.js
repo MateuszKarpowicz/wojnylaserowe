@@ -44,8 +44,8 @@ export default function ProcessSectionLanding() {
               'opacity-0 translate-y-3 scale-[0.99]',
               entered && 'opacity-100 translate-y-0 scale-100',
               isActive
-                ? 'shadow-glow-blue-strong border-neon-blue/60'
-                : 'shadow-none border-neon-blue/30',
+                ? 'shadow-glow-blue-strong border-neon-border-blue-strong'
+                : 'shadow-none border-neon-border-blue',
             ]
               .filter(Boolean)
               .join(' ')}

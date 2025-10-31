@@ -9,9 +9,9 @@
  */
 'use client';
 import { useOferta } from '@/components/context/OfertaContext';
-import HeaderActions from '@/components/ui/HeaderActions';
-import HeaderLogo from '@/components/ui/HeaderLogo';
-import MobileMenu from '@/components/ui/MobileMenu';
+import HeaderActions from '@/components/layout/HeaderActions';
+import HeaderLogo from '@/components/layout/HeaderLogo';
+import MobileMenu from '@/components/layout/MobileMenu';
 import { useEffect, useState } from 'react';
 
 export default function Header() {

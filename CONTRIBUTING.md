@@ -134,7 +134,7 @@ npm run test:coverage
 ```javascript
 // Przykład testu komponentu
 import { render, screen } from '@testing-library/react';
-import ContactForm from '@/components/ui/ContactForm';
+import ContactForm from '@/components/features/contact/ContactForm';
 
 describe('ContactForm', () => {
   it('renders form fields correctly', () => {
@@ -171,12 +171,15 @@ npm run format:check
 
 ### **Konwencje kodu**
 
-- Używaj funkcji zamiast klas (gdy możliwe)
+- Używaj funkcji zamiast klas (gdy możliwe) - wyjątek: ErrorBoundary (wymaga class component)
 - Preferuj `const` i `let` zamiast `var`
 - Używaj template literals zamiast concatenation
 - Nazywaj zmienne w camelCase
 - Nazywaj komponenty w PascalCase
-- Używaj TypeScript (gdy dostępny)
+- Używaj `clsx` dla dynamicznych klas CSS
+- Zawsze używaj index exports dla importów komponentów
+
+**Szczegółowe konwencje w [STYLE_GUIDE.md](./STYLE_GUIDE.md)**
 
 ## 📁 **STRUKTURA KODU**
 
@@ -184,10 +187,22 @@ npm run format:check
 
 ```
 components/
-├── base/           # Komponenty bazowe (BaseForm, BaseModal)
-├── hooks/          # Custom hooks
-└── ui/             # Komponenty UI (ContactForm, Header)
+├── primitives/     # Komponenty bazowe, niskopoziomowe (Button, Card, Section)
+├── layout/         # Komponenty layoutu (Header, Footer, MobileMenu)
+├── forms/          # Komponenty formularzy (FormCore, FormField)
+├── features/       # Komponenty specyficzne dla feature'ów
+│   ├── contact/   # Komponenty strony kontaktowej
+│   ├── about/      # Komponenty strony "O nas"
+│   ├── effects/    # Komponenty strony efektów
+│   └── faq/        # Komponenty strony FAQ
+├── ui/             # Generic UI components (StatusMessage, LoadingSpinner)
+├── hooks/          # Custom React hooks
+├── context/        # React Context providers
+├── overlay/        # Modals, drawers, popovers
+└── utils/          # Utility components (ErrorBoundary, OverflowDebug)
 ```
+
+**Zobacz [STYLE_GUIDE.md](./STYLE_GUIDE.md) dla szczegółowych informacji o organizacji komponentów.**
 
 ### **Strony**
 
@@ -196,7 +211,8 @@ app/
 ├── api/            # API endpoints
 ├── efekty/         # Strona z efektami
 ├── kontakt/        # Strona kontaktowa
-└── o-nas/          # Strona o firmie
+├── o-nas/          # Strona o firmie
+└── faq/            # Strona FAQ
 ```
 
 ### **Biblioteki**
@@ -205,7 +221,9 @@ app/
 lib/
 ├── validation.js   # Schematy walidacji Zod
 ├── csrf.js         # CSRF protection
-└── env.js          # Environment validation
+├── env.js          # Environment validation
+├── logger.js       # Logging utility
+└── fonts.js        # Font configuration
 ```
 
 ## 🔍 **CODE REVIEW**

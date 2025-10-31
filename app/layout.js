@@ -1,8 +1,8 @@
-import ErrorBoundary from '@/components/ErrorBoundary';
-import OverflowDebug from '@/components/OverflowDebug';
+import ErrorBoundary from '@/components/utils/ErrorBoundary';
+import OverflowDebug from '@/components/utils/OverflowDebug';
 import { OfertaProvider } from '@/components/context/OfertaContext';
-import Footer from '@/components/ui/Footer';
-import Header from '@/components/ui/Header';
+import Footer from '@/components/layout/Footer';
+import Header from '@/components/layout/Header';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import { bebas, orbitron, yantramanav } from '@/lib/fonts';
 import OfferSlider from '@/components/ui/OfferSlider';

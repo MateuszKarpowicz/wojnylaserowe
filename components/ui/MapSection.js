@@ -1,4 +1,4 @@
-import { Section, SectionHeader, Container, Card, Button } from '@/components/primitives';
+import { Section, Card, Button } from '@/components/primitives';
 
 export default function MapSection({
   title = 'Jak do nas trafić',
@@ -9,10 +9,8 @@ export default function MapSection({
   addressLines,
 }) {
   return (
-    <Section bg='dark'>
-      <Container>
-        <SectionHeader title={title} variant='light' />
-        {/* Nagłówek studia i adres nad mapą */}
+    <Section bg='dark' title={title}>
+      {/* Nagłówek studia i adres nad mapą */}
         <div className='mb-4 text-center'>
           <h3 className='text-xl md:text-2xl font-bold text-text-light font-display tracking-wide'>{studioName}</h3>
           {Array.isArray(addressLines) && addressLines.length > 0 ? (
@@ -54,7 +52,6 @@ export default function MapSection({
             PROWADŹ
           </Button>
         </div>
-      </Container>
     </Section>
   );
 }

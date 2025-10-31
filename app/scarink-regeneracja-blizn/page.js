@@ -1,9 +1,9 @@
 import CTASection from '@/components/ui/CTASection';
-import MethodSection from '@/components/ui/MethodSection';
+import MethodSection from '@/components/features/about/MethodSection';
 import ProcessSectionDefault from '@/components/ui/ProcessSectionDefault';
 import ScarinkHero from '@/components/ui/ScarinkHero';
 import ScarinkWhyChooseSection from '@/components/ui/ScarinkWhyChooseSection';
-import TargetSection from '@/components/ui/TargetSection';
+import TargetSection from '@/components/features/about/TargetSection';
 import { Section } from '@/components/primitives';
 import scarinkPageData from '@/content/texts/scarink-page.json';
 
@@ -32,7 +32,7 @@ export default function ScarinkRegeneracjaBlizn() {
         <ProcessSectionDefault />
       </Section>
       <Section title={whyChoose.title} bg='surface'>
-        <ScarinkWhyChooseSection />
+        <ScarinkWhyChooseSection points={whyChoose.points} />
       </Section>
       <CTASection
         title={cta.title}
@@ -40,7 +40,7 @@ export default function ScarinkRegeneracjaBlizn() {
         href={cta.href}
         button={cta.button}
         variant='purple'
-        bgColor='bg-dark'
+        bgColor='dark'
       />
     </main>
   );

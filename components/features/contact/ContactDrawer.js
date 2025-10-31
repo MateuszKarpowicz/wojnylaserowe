@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/primitives';
 import Modal from '@/components/overlay/Modal';
-import ContactForm from '@/components/ui/ContactForm';
+import ContactForm from '@/components/features/contact/ContactForm';
 
 export default function ContactDrawer() {
   const [open, setOpen] = useState(false);

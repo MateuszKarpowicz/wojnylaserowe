@@ -1,5 +1,5 @@
 import CTASection from '@/components/ui/CTASection';
-import EffectsHeader from '@/components/ui/EffectsHeader';
+import EffectsHeader from '@/components/features/effects/EffectsHeader';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import StagesSection from '@/components/ui/StagesSection';
 import TestimonialsPlaceholder from '@/components/ui/TestimonialsPlaceholder';
@@ -8,7 +8,7 @@ import dynamic from 'next/dynamic';
 
 // Lazy load heavy gallery component
 const EffectsGallerySection = dynamic(
-  () => import('@/components/ui/EffectsGallerySection'),
+  () => import('@/components/features/effects/EffectsGallerySection'),
   {
     loading: () => <LoadingSpinner />,
     ssr: true, // Gallery może być SSR

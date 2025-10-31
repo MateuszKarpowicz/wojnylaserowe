@@ -18,7 +18,7 @@ export default function CopyRow({ icon: Icon, label, value, href }) {
 
   return (
     <div
-      className='bg-surface border-2 border-neon-blue/30 rounded-lg p-4 grid grid-cols-[auto_1fr_auto] items-center gap-4 hover:border-neon-blue/50 transition-colors'
+      className='bg-surface border-2 border-neon-border-blue rounded-lg p-4 grid grid-cols-[auto_1fr_auto] items-center gap-4 hover:border-neon-border-blue-strong transition-colors'
     >
       {Icon && <Icon className='text-neon-blue/80 drop-shadow-glow-blue-medium text-2xl shrink-0' aria-hidden='true' />}
       <div className='min-w-0'>

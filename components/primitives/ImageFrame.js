@@ -25,14 +25,14 @@ export default function ImageFrame({
   const OUTER_BY_VARIANT = {
     plain: 'bg-surface shadow-sm overflow-hidden',
     blue:
-      'shadow-xl border-2 border-neon-blue/30 shadow-glow-blue-medium overflow-hidden',
+      'shadow-xl border-2 border-neon-border-blue-medium shadow-glow overflow-hidden',
     purple:
-      'shadow-xl border-2 border-neon-purple/40 shadow-[0_0_22px_rgba(192,132,252,0.28)] overflow-hidden',
+      'shadow-xl border-2 border-neon-border-purple-active shadow-glow-purple-medium overflow-hidden',
     // Legacy aliases for backward compatibility
     neonBlue:
-      'shadow-xl border-2 border-neon-blue/30 shadow-glow-blue-medium overflow-hidden',
+      'shadow-xl border-2 border-neon-border-blue-medium shadow-glow overflow-hidden',
     neonPurple:
-      'shadow-xl border-2 border-neon-purple/40 shadow-[0_0_22px_rgba(192,132,252,0.28)] overflow-hidden',
+      'shadow-xl border-2 border-neon-border-purple-active shadow-glow-purple-medium overflow-hidden',
   };
 
   const ASPECT_CLASS = aspect === '16:9' ? 'aspect-[16/9]' : 'aspect-square';

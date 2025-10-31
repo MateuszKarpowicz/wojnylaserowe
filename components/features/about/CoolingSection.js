@@ -1,6 +1,6 @@
 import CardWithIcon from '@/components/ui/CardWithIcon';
 import Image from 'next/image';
-import { Section, SectionHeader, Container } from '@/components/primitives';
+import { Section } from '@/components/primitives';
 
 /**
  * Sekcja chłodzenia z nagłówkiem i wrapperem
@@ -10,14 +10,11 @@ export default function CoolingSection({ data }) {
   const { cooling } = data;
 
   return (
-    <Section bg='surface'>
-      <Container>
-        <SectionHeader title={cooling.title} variant='dark' />
-
-        <div className='md:grid md:grid-cols-2 gap-8 items-center'>
-          {/* Zdjęcie - na mobile pierwsze */}
-          <div className='mb-8 md:mb-0 order-1 mt-4 md:mt-6'>
-            <div className='relative w-full aspect-square max-w-md mx-auto md:max-w-full rounded-xl shadow-lg overflow-hidden border-2 border-neon-purple/30'>
+    <Section bg='surface' title={cooling.title}>
+      <div className='md:grid md:grid-cols-2 gap-8 items-center'>
+        {/* Zdjęcie - na mobile pierwsze */}
+        <div className='mb-8 md:mb-0 mt-4 md:mt-6'>
+          <div className='relative w-full aspect-square max-w-md mx-auto md:max-w-full rounded-xl shadow-lg overflow-hidden border-2 border-neon-border-purple'>
               <Image
                 src='/images/hero/hero.webp'
                 alt='Chłodzenie skóry podczas zabiegu'
@@ -29,7 +26,7 @@ export default function CoolingSection({ data }) {
           </div>
 
           {/* Tekst - na mobile drugie */}
-          <div className='order-2 space-y-6'>
+          <div className='space-y-6'>
             <p className='text-secondary leading-relaxed text-lg'>
               {cooling.intro}
             </p>
@@ -48,7 +45,6 @@ export default function CoolingSection({ data }) {
             <p className='text-secondary leading-relaxed'>{cooling.footer}</p>
           </div>
         </div>
-      </Container>
     </Section>
   );
 }

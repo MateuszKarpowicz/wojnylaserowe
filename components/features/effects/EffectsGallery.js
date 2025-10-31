@@ -1,7 +1,7 @@
 'use client';
 import { useModal } from '@/components/hooks/useModal';
 import Modal from '@/components/overlay/Modal';
-import EffectTile from '@/components/ui/EffectTile';
+import EffectTile from '@/components/features/effects/EffectTile';
 import effectsData from '@/content/texts/effects.json';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -22,6 +22,7 @@ export default function EffectsGallery() {
   };
 
   const openModal = (image, index) => {
+    setCurrentIndex(index);
     open();
   };
 
@@ -82,8 +83,8 @@ export default function EffectsGallery() {
         </div>
 
         {/* NUMER ZDJĘCIA */}
-        <div className='mt-4 text-center text-white'>
-          <p className='text-sm text-muted'>
+        <div className='mt-4 text-center'>
+          <p className='text-sm text-text-light'>
             {currentIndex + 1} z {effectsData.images.length}
           </p>
         </div>

@@ -1,0 +1,9 @@
+export { default as AboutHero } from './AboutHero';
+export { default as AboutHeroSlider } from './AboutHeroSlider';
+export { default as ApproachSection } from './ApproachSection';
+export { default as AftercareSection } from './AftercareSection';
+export { default as CoolingSection } from './CoolingSection';
+export { default as HowItWorksSection } from './HowItWorksSection';
+export { default as MethodSection } from './MethodSection';
+export { default as QualificationsSection } from './QualificationsSection';
+export { default as TargetSection } from './TargetSection';

@@ -51,8 +51,14 @@ module.exports = {
         // Aliasy border neon (dla spójności użycia)
         'neon-border-blue': 'rgba(0, 153, 204, 0.2)',
         'neon-border-blue-strong': 'rgba(0, 153, 204, 0.6)',
+        'neon-border-blue-medium': 'rgba(0, 153, 204, 0.3)',
+        'neon-border-blue-active': 'rgba(0, 153, 204, 0.5)',
+        'neon-border-blue-very-strong': 'rgba(0, 153, 204, 0.8)',
         'neon-border-purple': 'rgba(192, 132, 252, 0.2)',
         'neon-border-purple-strong': 'rgba(192, 132, 252, 0.6)',
+        'neon-border-purple-medium': 'rgba(192, 132, 252, 0.3)',
+        'neon-border-purple-active': 'rgba(192, 132, 252, 0.4)',
+        'neon-border-purple-very-strong': 'rgba(192, 132, 252, 0.7)',
       },
       fontFamily: {
         sans: ['var(--font-yantramanav)', 'ui-sans-serif', 'system-ui'],
@@ -67,6 +73,18 @@ module.exports = {
         glow: '0 0 24px rgba(0, 153, 204, 0.35)',
         'glow-purple': '0 0 24px rgba(192, 132, 252, 0.35)',
         'glow-strong': '0 0 30px rgba(0, 153, 204, 0.5)',
+        // Extended shadow utilities for cards and components
+        'glow-blue-expanded': '0 0 44px rgba(0, 153, 204, 0.55), 0 12px 22px rgba(0, 0, 0, 0.18)',
+        'glow-purple-expanded': '0 0 60px rgba(192, 132, 252, 0.75), 0 16px 28px rgba(0, 0, 0, 0.28)',
+        'glow-purple-medium': '0 0 22px rgba(192, 132, 252, 0.28)',
+        'focus-purple': '0 0 0 2px rgba(192, 132, 252, 0.2)',
+        'file-button': '0 0 12px rgba(0, 153, 204, 0.45)',
+      },
+      dropShadow: {
+        // Extended drop-shadow utilities for text and icons
+        'glow-purple-strong': '0 0 14px rgba(192, 132, 252, 0.60)',
+        'glow-purple-weak': '0 0 4px rgba(192, 132, 252, 0.25)',
+        'glow-blue-medium': '0 0 10px rgba(0, 153, 204, 0.35)',
       },
       height: {
         header: '4.5rem', // 72px - stała wysokość headera

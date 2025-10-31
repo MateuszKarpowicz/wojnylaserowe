@@ -1,4 +1,5 @@
-import FAQAccordion from '@/components/ui/FAQAccordion';
+import FAQAccordion from '@/components/features/faq/FAQAccordion';
+import { Card } from '@/components/primitives';
 
 /**
  * Sekcja kategorii FAQ z nagłówkiem i rozsuwakami
@@ -7,7 +8,7 @@ import FAQAccordion from '@/components/ui/FAQAccordion';
  */
 export default function FAQCategorySection({ category, categoryIndex }) {
   return (
-    <section className='card-with-border-purple'>
+    <Card variant='purple' as='section'>
       <h2 className='text-2xl font-display font-bold text-text-dark mb-6 text-center'>
         {category.category}
       </h2>
@@ -21,6 +22,6 @@ export default function FAQCategorySection({ category, categoryIndex }) {
           />
         ))}
       </div>
-    </section>
+    </Card>
   );
 }

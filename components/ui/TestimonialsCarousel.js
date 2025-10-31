@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { Card, Section, SectionHeader, Container } from '@/components/primitives';
+import { Card, Section } from '@/components/primitives';
 
 /**
  * TestimonialsCarousel - Karuzela opinii klientów
@@ -61,10 +61,8 @@ export default function TestimonialsCarousel({
   const current = total > 0 ? safeItems[index] : null;
 
   return (
-    <Section bg='surface'>
-      <Container>
-        <SectionHeader title={title} variant='dark' />
-        {external?.rating && external?.reviewsCount && external?.url && (
+    <Section bg='surface' title={title}>
+      {external?.rating && external?.reviewsCount && external?.url && (
           <div className='mb-6 text-center'>
             <a
               href={external.url}
@@ -92,10 +90,10 @@ export default function TestimonialsCarousel({
               'hover:-translate-y-1 hover:scale-[1.01]',
               // glow: w spoczynku prawie niewidoczny, przy zmianie mocny + puls skali
               flash && !decay
-                ? 'duration-[var(--dur-decay)] ease-[var(--ease-brand)] scale-[1.06] shadow-glow-blue-very-strong border-2 border-neon-blue/80'
+                ? 'duration-[var(--dur-decay)] ease-[var(--ease-brand)] scale-[1.06] shadow-glow-blue-very-strong border-2 border-neon-border-blue-very-strong'
                 : flash && decay
-                ? 'duration-[var(--dur-decay)] ease-[var(--ease-brand)] scale-[1.02] shadow-glow-blue-decay border-2 border-neon-blue/50'
-                : 'duration-[var(--dur-fast)] ease-[var(--ease-brand)] shadow-glow-blue-weak border-2 border-neon-blue/30',
+                ? 'duration-[var(--dur-decay)] ease-[var(--ease-brand)] scale-[1.02] shadow-glow-blue-decay border-2 border-neon-border-blue-active'
+                : 'duration-[var(--dur-fast)] ease-[var(--ease-brand)] shadow-glow-blue-weak border-2 border-neon-border-blue-medium',
             ].join(' ')}
           >
             <figure>
@@ -116,7 +114,6 @@ export default function TestimonialsCarousel({
             <p className='text-text-dark/80'>Brak opinii do wyświetlenia.</p>
           </Card>
         )}
-      </Container>
     </Section>
   );
 }

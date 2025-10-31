@@ -25,7 +25,7 @@ export default function Card({
     borderBlue: 'card-with-border-blue',
     borderPurple: 'card-with-border-purple',
     aboutCard: 'about-card',
-    approachCardDark: 'approach-card-dark',
+    approachCardDark: 'card-with-border-blue', // Scaled into blue variant (identical styles)
   };
 
   const variantClass = VARIANT_TO_CLASS[variant] || VARIANT_TO_CLASS.blue;

@@ -18,20 +18,20 @@ export default function FAQAccordion({ item, index }) {
   const triggerId = `faq-trigger-${index}`;
 
   return (
-    <div className='border border-border rounded-lg bg-transparent'>
+    <div className='border border-border rounded-lg bg-surface'>
       <button
         onClick={toggleItem}
         id={triggerId}
         type='button'
         aria-expanded={isOpen}
         aria-controls={panelId}
-        className='w-full text-left p-4 flex justify-between items-center hover:bg-surface-light transition-colors rounded-lg'
+        className='w-full text-left p-4 flex justify-between items-center hover:bg-surface-light transition-colors rounded-lg focus-ring'
       >
         <h3 className='font-medium text-text-dark pr-4'>{item.question}</h3>
         {isOpen ? (
-          <FaChevronUp className='text-neon-blue flex-shrink-0' />
+          <FaChevronUp className='text-neon-purple flex-shrink-0' />
         ) : (
-          <FaChevronDown className='text-neon-blue flex-shrink-0' />
+          <FaChevronDown className='text-neon-purple flex-shrink-0' />
         )}
       </button>
 

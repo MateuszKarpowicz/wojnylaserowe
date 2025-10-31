@@ -1,7 +1,7 @@
 'use client';
 import FormCore from '@/components/forms/FormCore';
 import { useSecureFormSubmit } from '@/components/hooks';
-import FormField from '@/components/ui/FormField';
+import FormField from '@/components/forms/FormField';
 import StatusMessage from '@/components/ui/StatusMessage';
 import { contactFormSchema } from '@/lib/validation';
 import { useState } from 'react';
@@ -32,19 +32,16 @@ export default function ContactForm() {
   }
 
   return (
-    <div className='bg-surface p-8 md:p-12 rounded-xl shadow-lg transition-all duration-300 max-w-2xl mx-auto'>
-
-
-      <FormCore
-        validationSchema={contactFormSchema}
-        onSubmit={handleSubmit}
-        submitText='Wyślij wiadomość'
-        loadingText='Wysyłanie...'
-        submitFullWidth={true}
-      >
-        {({ formData, handleInputChange, isLoading, fieldErrors }) => (
-          <div className='space-y-6 md:space-y-8'>
-            {/* Imię i nazwisko */}
+    <FormCore
+      validationSchema={contactFormSchema}
+      onSubmit={handleSubmit}
+      submitText='Wyślij wiadomość'
+      loadingText='Wysyłanie...'
+      submitFullWidth={true}
+    >
+      {({ formData, handleInputChange, isLoading, fieldErrors }) => (
+        <div className='space-y-4'>
+          {/* Imię i nazwisko */}
             <FormField
               type='text'
               name='name'
@@ -133,7 +130,7 @@ export default function ContactForm() {
               label='Zdjęcia (opcjonalne)'
               onChange={handleInputChange}
               disabled={isLoading}
-              className='border-black/50 focus:border-black focus:ring-2 focus:ring-black/20 file:bg-neon-blue file:text-white file:rounded-md file:px-4 file:py-2 file:border-0 file:cursor-pointer file:shadow-file-button file:hover:bg-neon-blue/90'
+              className='file:bg-neon-blue file:text-white file:rounded-md file:px-4 file:py-2 file:border-0 file:cursor-pointer file:shadow-file-button file:hover:bg-neon-blue/90'
             />
             <p className='text-sm text-secondary'>
               Możesz załączyć maksymalnie 5 zdjęć w formacie JPG, PNG lub WebP
@@ -145,9 +142,8 @@ export default function ContactForm() {
                 {submitError}
               </StatusMessage>
             )}
-          </div>
-        )}
-      </FormCore>
-    </div>
+        </div>
+      )}
+    </FormCore>
   );
 }

@@ -1,7 +1,7 @@
-import AftercareSection from '@/components/ui/AftercareSection';
+import AftercareSection from '@/components/features/about/AftercareSection';
 import CTASection from '@/components/ui/CTASection';
-import CoolingSection from '@/components/ui/CoolingSection';
-import HowItWorksSection from '@/components/ui/HowItWorksSection';
+import CoolingSection from '@/components/features/about/CoolingSection';
+import HowItWorksSection from '@/components/features/about/HowItWorksSection';
 import RemovalHero from '@/components/ui/RemovalHero';
 import WhyChooseSection from '@/components/ui/WhyChooseSection';
 import { Section } from '@/components/primitives';

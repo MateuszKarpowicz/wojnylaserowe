@@ -7,8 +7,8 @@ import Image from 'next/image';
  */
 export default function AftercareSection({ aftercare }) {
   return (
-    <>
-      <div className='mb-8'>
+    <div className='space-y-8'>
+      <div>
         <p className='text-text-light/90 leading-relaxed text-lg mb-6 max-w-3xl mx-auto text-center'>
           {aftercare.intro}
         </p>
@@ -20,14 +20,14 @@ export default function AftercareSection({ aftercare }) {
             <CardWithIcon key={index} text={point.text} borderColor='purple' />
           ))}
         </div>
-        <p className='text-text-light/80 leading-relaxed text-center max-w-3xl mx-auto mb-8'>
+        <p className='text-text-light/80 leading-relaxed text-center max-w-3xl mx-auto'>
           {aftercare.footer}
         </p>
       </div>
 
       {/* Zdjęcie */}
       <div className='flex justify-center'>
-        <div className='relative w-full aspect-square max-w-md mx-auto rounded-xl shadow-lg overflow-hidden border-2 border-neon-purple/30'>
+        <div className='relative w-full aspect-square max-w-md mx-auto rounded-xl shadow-lg overflow-hidden border-2 border-neon-border-purple'>
           <Image
             src='/images/hero/hero.webp'
             alt='Pielęgnacja po zabiegu'
@@ -37,6 +37,6 @@ export default function AftercareSection({ aftercare }) {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 }

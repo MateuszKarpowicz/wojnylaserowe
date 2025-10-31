@@ -1,4 +1,4 @@
-import { Section, SectionHeader, Container } from '@/components/primitives';
+import { Section } from '@/components/primitives';
 /**
  * Sekcja etapów usuwania tatuażu z nagłówkiem i wrapperem
  * @param {Object} data - Dane stages z title, items i additional
@@ -7,11 +7,8 @@ export default function StagesSection({ data }) {
   const { stages, additional } = data;
 
   return (
-    <Section id='etapy-usuwania' bg='surface'>
-      <Container>
-        <SectionHeader title={stages.title} variant='dark' />
-
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
+    <Section id='etapy-usuwania' bg='surface' title={stages.title}>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
           {stages.items.map(stage => (
             <div key={stage.number} className='text-center'>
               <div className='bg-neon-blue text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-normal mx-auto mb-4'>
@@ -39,7 +36,6 @@ export default function StagesSection({ data }) {
             ))}
           </div>
         </div>
-      </Container>
     </Section>
   );
 }

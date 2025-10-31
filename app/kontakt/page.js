@@ -1,16 +1,15 @@
-import { Container, Section } from '@/components/primitives';
-import ContactChannelsColumn from '@/components/ui/ContactChannelsColumn';
-import ContactFormSection from '@/components/ui/ContactFormSection';
-import ContactHeader from '@/components/ui/ContactHeader';
+import ContactChannelsColumn from '@/components/features/contact/ContactChannelsColumn';
+import ContactHeader from '@/components/features/contact/ContactHeader';
 import InstagramSection from '@/components/ui/InstagramSection';
 import MapSection from '@/components/ui/MapSection';
+import { Section } from '@/components/primitives';
 import contactPageData from '@/content/texts/contact-page.json';
 
 // ISR - revalidate co godzinę dla stale data
 export const revalidate = 3600;
 
 export default function Kontakt() {
-  const { header, contactInfo } = contactPageData;
+  const { header } = contactPageData;
 
   return (
     <main className='min-h-screen bg-bg-light text-text-dark'>
@@ -18,14 +17,10 @@ export default function Kontakt() {
 
       <InstagramSection />
 
-      <ContactFormSection />
-
       <MapSection />
 
-      <Section bg='surface'>
-        <Container>
-          <ContactChannelsColumn />
-        </Container>
+      <Section bg='surface' title='Social Media'>
+        <ContactChannelsColumn />
       </Section>
     </main>
   );

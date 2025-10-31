@@ -19,6 +19,7 @@
 
 "use client";
 
+import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { cva } from 'class-variance-authority';
 
@@ -61,9 +62,7 @@ export default function Button({
   children,
   ...props
 }) {
-  const classes = [buttonStyles({ variant, size, fullWidth }), className]
-    .filter(Boolean)
-    .join(' ');
+  const classes = cn(buttonStyles({ variant, size, fullWidth }), className);
 
   if (as === 'a' && href) {
     return (

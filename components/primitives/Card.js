@@ -11,6 +11,8 @@
  * @param {object} ...props - Pozostałe props przekazywane do elementu
  * @returns {JSX.Element} Karta z odpowiednimi stylami neonowymi
  */
+import { cn } from '@/lib/utils';
+
 export default function Card({
   variant = 'blue',
   as = 'div',
@@ -29,7 +31,7 @@ export default function Card({
   };
 
   const variantClass = VARIANT_TO_CLASS[variant] || VARIANT_TO_CLASS.blue;
-  const classes = [variantClass, className].filter(Boolean).join(' ');
+  const classes = cn(variantClass, className);
   const As = as;
 
   return (

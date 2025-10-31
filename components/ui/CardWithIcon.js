@@ -6,6 +6,7 @@ import {
   FaGraduationCap,
   FaHandshake,
 } from 'react-icons/fa';
+import { cn } from '@/lib/utils';
 import { Card } from '@/components/primitives';
 
 // Mapowanie nazw ikon z stringów na komponenty (zgodnie ze wzorcem QualificationCard)
@@ -59,6 +60,9 @@ export default function CardWithIcon({
   const descriptionClass =
     borderColor === 'blue' ? 'text-text-light/80' : 'text-secondary';
 
+  // Helper do budowania klas
+  const iconClasses = cn('text-3xl', iconColorClass);
+
   // Jeśli przekazano children, renderuj je zamiast domyślnej struktury
   if (children) {
     return <Card variant={borderVariant}>{children}</Card>;
@@ -69,7 +73,7 @@ export default function CardWithIcon({
       <div className='flex gap-4'>
         {/* Ikona */}
         <div className='flex-shrink-0'>
-          <IconComponent className={`qualification-icon ${iconColorClass}`} />
+          <IconComponent className={iconClasses} />
         </div>
 
         {/* Tekst */}

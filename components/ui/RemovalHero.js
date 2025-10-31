@@ -1,9 +1,16 @@
-import removalPageData from '@/content/texts/removal-page.json';
 import Image from 'next/image';
 import { Section } from '@/components/primitives';
 
-export default function RemovalHero() {
-  const { hero } = removalPageData;
+/**
+ * RemovalHero - Komponent hero dla strony usuwania tatuażu
+ *
+ * @param {Object} hero - Dane hero z polami: title, subtitle, intro, intro2, intro3, intro4, intro5
+ * @returns {JSX.Element} Sekcja hero
+ */
+export default function RemovalHero({ hero }) {
+  if (!hero) {
+    return null;
+  }
 
   return (
     <Section bg='surface' className='border-b border-border-border'>

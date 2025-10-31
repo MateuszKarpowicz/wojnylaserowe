@@ -1,8 +1,5 @@
-import CTASection from '@/components/ui/CTASection';
 import MethodSection from '@/components/features/about/MethodSection';
-import ProcessSectionDefault from '@/components/ui/ProcessSectionDefault';
-import ScarinkHero from '@/components/ui/ScarinkHero';
-import ScarinkWhyChooseSection from '@/components/ui/ScarinkWhyChooseSection';
+import { CTASection, ProcessSectionDefault, ScarinkHero, WhyChooseSection } from '@/components/ui';
 import TargetSection from '@/components/features/about/TargetSection';
 import { Section } from '@/components/primitives';
 import scarinkPageData from '@/content/texts/scarink-page.json';
@@ -17,11 +14,11 @@ export const metadata = {
 export const revalidate = 3600;
 
 export default function ScarinkRegeneracjaBlizn() {
-  const { method, target, process, whyChoose, cta } = scarinkPageData;
+  const { hero, method, target, process, whyChoose, cta } = scarinkPageData;
 
   return (
     <main className='min-h-screen bg-bg-light text-text-dark'>
-      <ScarinkHero />
+      <ScarinkHero hero={hero} />
       <Section title={method.title} bg='dark'>
         <MethodSection />
       </Section>
@@ -29,10 +26,10 @@ export default function ScarinkRegeneracjaBlizn() {
         <TargetSection />
       </Section>
       <Section title={process.title} bg='dark'>
-        <ProcessSectionDefault />
+        <ProcessSectionDefault data={process} />
       </Section>
       <Section title={whyChoose.title} bg='surface'>
-        <ScarinkWhyChooseSection points={whyChoose.points} />
+        <WhyChooseSection points={whyChoose.points} variant='scarink' />
       </Section>
       <CTASection
         title={cta.title}

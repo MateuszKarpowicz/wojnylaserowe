@@ -1,6 +1,7 @@
 "use client";
 
 import { Section, Card } from '@/components/primitives';
+import { cn } from '@/lib/utils';
 import { useState } from 'react';
 import {
   FaUserMd,
@@ -43,30 +44,30 @@ function ApproachItem({ point, idx }) {
           setOpen(prev => !prev);
         }
       }}
-      className={[
+      className={cn(
         'cursor-pointer transition-all duration-300 focus-ring',
         open
           ? 'border-neon-border-blue-strong shadow-glow-blue-expanded'
           : 'hover:shadow-lg',
-      ].join(' ')}
+      )}
     >
       {/* Header: lewa ikona, środek tytuł, prawa strzałka/chevron */}
       <div className='grid grid-cols-[auto_1fr_auto] items-center gap-3'>
         <Icon
-          className={[
+          className={cn(
             'text-2xl md:text-3xl transition-all',
             open ? 'text-neon-blue drop-shadow-glow-blue-medium' : 'text-neon-blue/80',
-          ].join(' ')}
+          )}
           aria-hidden='true'
         />
         <h3 className='text-base md:text-lg font-semibold text-text-light mb-0 text-center'>
           {point.title}
         </h3>
         <span
-          className={[
+          className={cn(
             'inline-block text-neon-blue transition-transform duration-300',
             open ? 'rotate-180' : 'rotate-0',
-          ].join(' ')}
+          )}
           aria-hidden='true'
         >
           ▾
@@ -78,10 +79,10 @@ function ApproachItem({ point, idx }) {
         id={panelId}
         role='region'
         aria-hidden={!open}
-        className={[
+        className={cn(
           'overflow-hidden transition-[grid-template-rows,opacity] duration-300 grid mt-3',
           open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0',
-        ].join(' ')}
+        )}
       >
         <div className='min-h-0'>
           <p className='text-sm md:text-base text-text-light/85 leading-relaxed'>

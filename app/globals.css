@@ -160,9 +160,6 @@
     background-color: theme('colors.modal');
   }
 
-  .about-icon {
-    @apply text-3xl mb-4 text-neon-blue;
-  }
 
   /* Universal Card Components - z neon ramkami */
   /*
@@ -203,13 +200,6 @@
 
   /* NOTE: .approach-card-dark removed - use .card-with-border-blue instead (identical styles) */
 
-  .qualification-icon {
-    @apply text-3xl text-neon-blue;
-  }
-
-  .approach-icon {
-    @apply text-3xl text-neon-purple;
-  }
 
   /* Status messages */
   .message-success {

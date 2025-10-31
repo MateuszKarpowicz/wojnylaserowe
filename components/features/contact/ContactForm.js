@@ -2,7 +2,7 @@
 import FormCore from '@/components/forms/FormCore';
 import { useSecureFormSubmit } from '@/components/hooks';
 import FormField from '@/components/forms/FormField';
-import StatusMessage from '@/components/ui/StatusMessage';
+import { StatusMessage } from '@/components/ui';
 import { contactFormSchema } from '@/lib/validation';
 import { useState } from 'react';
 
@@ -37,7 +37,7 @@ export default function ContactForm() {
       onSubmit={handleSubmit}
       submitText='Wyślij wiadomość'
       loadingText='Wysyłanie...'
-      submitFullWidth={true}
+      fullWidth={true}
     >
       {({ formData, handleInputChange, isLoading, fieldErrors }) => (
         <div className='space-y-4'>

@@ -1,4 +1,4 @@
-import SocialMediaIcons from '@/components/ui/SocialMediaIcons';
+import { SocialMediaIcons } from '@/components/ui';
 import { Section } from '@/components/primitives';
 
 /**

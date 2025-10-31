@@ -1,9 +1,7 @@
 import AftercareSection from '@/components/features/about/AftercareSection';
-import CTASection from '@/components/ui/CTASection';
 import CoolingSection from '@/components/features/about/CoolingSection';
 import HowItWorksSection from '@/components/features/about/HowItWorksSection';
-import RemovalHero from '@/components/ui/RemovalHero';
-import WhyChooseSection from '@/components/ui/WhyChooseSection';
+import { CTASection, RemovalHero, WhyChooseSection } from '@/components/ui';
 import { Section } from '@/components/primitives';
 import removalPageData from '@/content/texts/removal-page.json';
 
@@ -11,11 +9,11 @@ import removalPageData from '@/content/texts/removal-page.json';
 export const revalidate = 3600;
 
 export default function LaseroweUsuwanieTatuazu() {
-  const { howItWorks, cooling, aftercare, whyChoose, cta } = removalPageData;
+  const { hero, howItWorks, cooling, aftercare, whyChoose, cta } = removalPageData;
 
   return (
     <main className='min-h-screen bg-bg-light text-text-dark'>
-      <RemovalHero />
+      <RemovalHero hero={hero} />
       <Section title={howItWorks.title} bg='dark'>
         <HowItWorksSection howItWorks={howItWorks} />
       </Section>

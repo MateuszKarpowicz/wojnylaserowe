@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 // Props:
 // - items: [{ title }]
@@ -56,15 +57,13 @@ export default function AboutHeroSlider({ items = [], intervalMs = 3000, fullWid
   const holdClass = 'translate-x-0 opacity-100';
   const exitClass = 'translate-x-[-110%] opacity-0 duration-300 ease-in';
 
-  const slideClass = [
+  const slideClass = cn(
     baseClass,
-    phase === 'pre' ? preClass : '',
-    phase === 'enter' ? enterClass : '',
-    phase === 'hold' ? holdClass : '',
-    phase === 'exit' ? exitClass : '',
-  ]
-    .filter(Boolean)
-    .join(' ');
+    phase === 'pre' && preClass,
+    phase === 'enter' && enterClass,
+    phase === 'hold' && holdClass,
+    phase === 'exit' && exitClass,
+  );
 
   // SSR/prekonsolidacja: jeśli nie zamontowano, renderuj bez animacji (środek)
   if (!mounted) {

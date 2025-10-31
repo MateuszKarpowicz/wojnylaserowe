@@ -1,6 +1,9 @@
 /**
  * BaseSectionWithHeader - Komponent bazowy dla sekcji z nagłówkiem
  *
+ * @deprecated Użyj komponentu Section z parametrem title zamiast tego.
+ * Przykład: <Section bg="dark" title="Tytuł sekcji">...</Section>
+ *
  * Eliminuje duplikację kodu poprzez połączenie Section + SectionHeader w jeden komponent.
  * Automatycznie wybiera odpowiedni wariant nagłówka na podstawie tła sekcji.
  *

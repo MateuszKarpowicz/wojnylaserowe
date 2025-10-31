@@ -1,6 +1,7 @@
 "use client";
 import scarinkPageData from '@/content/texts/scarink-page.json';
 import { Card } from '@/components/primitives';
+import { cn } from '@/lib/utils';
 import { useEffect, useState } from 'react';
 
 /**
@@ -38,7 +39,7 @@ export default function ProcessSectionLanding() {
           <Card
             key={index}
             variant='blue'
-            className={[
+            className={cn(
               'focus-ring',
               'transition-[opacity,transform,box-shadow] transition-dur-slow ease-[var(--ease-brand)]',
               'opacity-0 translate-y-3 scale-[0.99]',
@@ -46,16 +47,14 @@ export default function ProcessSectionLanding() {
               isActive
                 ? 'shadow-glow-blue-strong border-neon-border-blue-strong'
                 : 'shadow-none border-neon-border-blue',
-            ]
-              .filter(Boolean)
-              .join(' ')}
+            )}
             style={{ transitionDelay: `${index * 140}ms` }}
           >
             <div className='grid grid-cols-[auto_1fr] items-start gap-3'>
-              <div className={[
+              <div className={cn(
                 'text-5xl md:text-6xl',
                 isActive ? 'text-neon-blue drop-shadow-glow-blue-strong' : 'text-neon-blue/70 drop-shadow-glow-blue-weak',
-              ].join(' ')} aria-hidden='true'>
+              )} aria-hidden='true'>
                 {index + 1}
               </div>
               <h3 className='text-lg font-semibold text-text-light m-0'>{step.title}</h3>

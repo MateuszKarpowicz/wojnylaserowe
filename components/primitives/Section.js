@@ -16,6 +16,7 @@
  * @param {object} containerProps - Dodatkowe props dla Container
  * @returns {JSX.Element} Sekcja z kontenerem i opcjonalnym nagłówkiem
  */
+import { cn } from '@/lib/utils';
 import Container from './Container';
 import SectionHeader from './SectionHeader';
 
@@ -31,7 +32,7 @@ export default function Section({
   containerProps = {},
 }) {
   const bgClass = bg === 'dark' ? 'bg-bg-dark' : 'bg-surface';
-  const classes = ['section-pad', bgClass, className].filter(Boolean).join(' ');
+  const classes = cn('section-pad', bgClass, className);
   const headerVariant = bg === 'dark' ? 'light' : 'dark';
 
   return (

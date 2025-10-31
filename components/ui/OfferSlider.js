@@ -4,7 +4,7 @@ import FormCore from '@/components/forms/FormCore';
 import { useOfferForm } from '@/components/hooks/useOfferForm';
 import Modal from '@/components/overlay/Modal';
 import FormField from '@/components/forms/FormField';
-import StatusMessage from '@/components/ui/StatusMessage';
+import { StatusMessage } from '@/components/ui';
 import { Button } from '@/components/primitives';
 import contactFormData from '@/content/texts/contactform.json';
 import offerSliderData from '@/content/texts/offerslider.json';

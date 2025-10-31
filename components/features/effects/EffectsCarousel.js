@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import effectsData from '@/content/texts/effects.json';
 import { ImageFrame } from '@/components/primitives';
+import { cn } from '@/lib/utils';
 
 /**
  * EffectsCarousel - Karuzela zdjęć efektów zabiegów
@@ -54,11 +55,11 @@ export default function EffectsCarousel({ intervalMs = 4000, frameSizeClass = 'w
     >
       <div
         key={index}
-        className={[
+        className={cn(
           'absolute -inset-[2px]',
           'transition-[opacity,transform] duration-[var(--dur-slow)] ease-[var(--ease-brand)]',
           entering ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2',
-        ].join(' ')}
+        )}
       >
         <Image
           src={current.src}

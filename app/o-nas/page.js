@@ -1,7 +1,6 @@
 import AboutHero from '@/components/features/about/AboutHero';
 import ApproachSection from '@/components/features/about/ApproachSection';
-import CTASection from '@/components/ui/CTASection';
-import LocationSection from '@/components/ui/LocationSection';
+import { CTASection, LocationSection } from '@/components/ui';
 import QualificationsSection from '@/components/features/about/QualificationsSection';
 import aboutPageData from '@/content/texts/about-page.json';
 

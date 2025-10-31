@@ -25,6 +25,8 @@
 
 'use client';
 
+import { cn } from '@/lib/utils';
+
 export default function FormField({
   type = 'text',
   name,
@@ -53,18 +55,14 @@ export default function FormField({
   };
 
   const inputBaseClass = dark ? 'input-dark' : 'input';
-  const fieldClasses = [inputBaseClass, error && 'input-error', className]
-    .filter(Boolean)
-    .join(' ');
+  const fieldClasses = cn(inputBaseClass, error && 'input-error', className);
 
-  const labelClasses = [
-    `block ${
-      dark ? 'text-text-light' : 'text-text-dark'
-    } text-sm font-semibold mb-2`,
+  const labelClasses = cn(
+    'block',
+    dark ? 'text-text-light' : 'text-text-dark',
+    'text-sm font-semibold mb-2',
     required && 'after:content-["*"] after:text-neon-purple after:opacity-70 after:ml-1',
-  ]
-    .filter(Boolean)
-    .join(' ');
+  );
 
   const renderField = () => {
     switch (type) {

@@ -3,9 +3,8 @@ import OverflowDebug from '@/components/utils/OverflowDebug';
 import { OfertaProvider } from '@/components/context/OfertaContext';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
-import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import { bebas, orbitron, yantramanav } from '@/lib/fonts';
-import OfferSlider from '@/components/ui/OfferSlider';
+import { LoadingSpinner, OfferSlider } from '@/components/ui';
 import './globals.css';
 
 export const metadata = {

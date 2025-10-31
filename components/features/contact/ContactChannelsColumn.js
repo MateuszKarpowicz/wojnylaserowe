@@ -1,7 +1,7 @@
 'use client';
 
 import { FaFacebook, FaInstagram, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
-import CopyRow from '@/components/ui/CopyRow';
+import { CopyRow } from '@/components/ui';
 
 export default function ContactChannelsColumn() {
   const phone = process.env.NEXT_PUBLIC_PHONE_NUMBER || '+48 666 666 666';

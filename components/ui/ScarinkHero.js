@@ -1,9 +1,16 @@
-import scarinkPageData from '@/content/texts/scarink-page.json';
 import Image from 'next/image';
 import { Section } from '@/components/primitives';
 
-export default function ScarinkHero() {
-  const { hero } = scarinkPageData;
+/**
+ * ScarinkHero - Komponent hero dla strony ScarINK
+ *
+ * @param {Object} hero - Dane hero z polami: title, subtitle, intro, intro2, intro3
+ * @returns {JSX.Element} Sekcja hero
+ */
+export default function ScarinkHero({ hero }) {
+  if (!hero) {
+    return null;
+  }
 
   return (
     <Section bg='surface' className='border-b border-border-border'>

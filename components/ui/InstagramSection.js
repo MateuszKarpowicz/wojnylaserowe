@@ -26,29 +26,36 @@ export default function InstagramSection({
   }, [postUrl]);
 
   return (
-    <Section bg='surface' title={title}>
-      <div className='max-w-md mx-auto w-full'>
-          <ImageFrame variant='blue' aspect='square' sizeClass='w-full'>
-            {postUrl ? (
-              <blockquote
-                className='instagram-media absolute inset-0 w-full h-full m-0'
-                data-instgrm-permalink={postUrl}
-                data-instgrm-version='14'
-                style={{ background: 'transparent', border: 0 }}
-              />
-            ) : (
-              <div className='absolute inset-0 flex items-center justify-center'>
-                <p className='text-text-dark/70'>Skonfiguruj adres posta w NEXT_PUBLIC_INSTAGRAM_POST_URL</p>
-              </div>
-            )}
-          </ImageFrame>
-
-          <div className='mt-6 text-center'>
-            <Button as='a' href={profileUrl || '#'} target='_blank' rel='noopener noreferrer' variant='ctaBlue' size='md' fullWidth={true}>
-              Otwórz profil na Instagramie
-            </Button>
+    <Section bg='surface' title={title} containerProps={{ maxWidth: 'md' }}>
+      <ImageFrame variant='blue' aspect='square' sizeClass='w-full'>
+        {postUrl ? (
+          <blockquote
+            className='instagram-media absolute inset-0 w-full h-full m-0'
+            data-instgrm-permalink={postUrl}
+            data-instgrm-version='14'
+            style={{ background: 'transparent', border: 0 }}
+          />
+        ) : (
+          <div className='absolute inset-0 flex items-center justify-center'>
+            <p className='text-text-dark/70'>
+              Skonfiguruj adres posta w NEXT_PUBLIC_INSTAGRAM_POST_URL
+            </p>
           </div>
-        </div>
+        )}
+      </ImageFrame>
+
+      <Button
+        as='a'
+        href={profileUrl || '#'}
+        target='_blank'
+        rel='noopener noreferrer'
+        variant='ctaBlue'
+        size='md'
+        fullWidth={true}
+        className='mt-6'
+      >
+        Otwórz profil na Instagramie
+      </Button>
     </Section>
   );
 }

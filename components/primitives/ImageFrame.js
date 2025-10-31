@@ -13,6 +13,8 @@
  * @param {object} ...props - Pozostałe props przekazywane do elementu
  * @returns {JSX.Element} Ramka z odpowiednimi stylami i aspect ratio
  */
+import { cn } from '@/lib/utils';
+
 export default function ImageFrame({
   variant = 'plain',
   aspect = 'square',
@@ -37,19 +39,17 @@ export default function ImageFrame({
 
   const ASPECT_CLASS = aspect === '16:9' ? 'aspect-[16/9]' : 'aspect-square';
 
-  const outer = [
+  const outer = cn(
     'relative w-full',
     sizeClass,
     OUTER_BY_VARIANT[variant] || OUTER_BY_VARIANT.plain,
     rounded ? 'rounded-lg' : 'rounded-none',
     className,
-  ]
-    .filter(Boolean)
-    .join(' ');
+  );
 
   return (
     <div className={outer} {...props}>
-      <div className={['relative', ASPECT_CLASS].join(' ')}>{children}</div>
+      <div className={cn('relative', ASPECT_CLASS)}>{children}</div>
     </div>
   );
 }

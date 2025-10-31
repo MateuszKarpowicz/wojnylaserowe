@@ -4,6 +4,7 @@ import {
   Card,
   Section,
 } from '@/components/primitives';
+import { cn } from '@/lib/utils';
 import { useState } from 'react';
 import {
   FaCalendarCheck,
@@ -38,12 +39,12 @@ function QualificationItem({ item, idx }) {
       {/* IKONA POZA KARTĄ */}
       <div className='flex items-center justify-center'>
         <Icon
-          className={[
+          className={cn(
             'text-4xl md:text-5xl transition-all duration-300',
             open
               ? 'text-neon-purple drop-shadow-glow-purple-strong'
               : 'text-neon-purple/60 drop-shadow-glow-purple-weak',
-          ].join(' ')}
+          )}
           aria-hidden='true'
         />
       </div>
@@ -62,22 +63,22 @@ function QualificationItem({ item, idx }) {
             setOpen(prev => !prev);
           }
         }}
-          className={[
+          className={cn(
           'cursor-pointer focus-ring border-neon-border-purple-medium',
           'transition-[box-shadow,transform,border-color] duration-[var(--dur-slow)] ease-[var(--ease-brand)]',
           open
             ? 'border-neon-border-purple-very-strong shadow-glow-purple-expanded scale-[1.01]'
             : 'shadow-md hover:shadow-lg',
-        ].join(' ')}
+        )}
       >
         {/* GÓRNA LINIA (TYTUŁ + CHEVRON) – TYPOGRAFIA I KOLOR JAK WCZEŚNIEJ */}
         <div className='flex items-center justify-between'>
           <h3 className='text-lg text-text-dark mb-0'>{item.title}</h3>
           <span
-            className={[
+            className={cn(
               'ml-3 inline-block text-neon-purple transition-transform duration-300',
               open ? 'rotate-180' : 'rotate-0',
-            ].join(' ')}
+            )}
             aria-hidden='true'
           >
             ▾
@@ -89,17 +90,15 @@ function QualificationItem({ item, idx }) {
           id={panelId}
           role='region'
           aria-hidden={!open}
-          className={[
+          className={cn(
             'overflow-hidden transition-[grid-template-rows,opacity] duration-300 grid',
             open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0',
-          ].join(' ')}
+          )}
         >
-          <div className='min-h-0'>
-            <div className='mt-3 rounded-md bg-surface p-4'>
-              <p className='text-text-dark/80 leading-relaxed text-sm md:text-base'>
-                {item.description}
-              </p>
-            </div>
+          <div className='min-h-0 mt-3 rounded-md bg-surface p-4'>
+            <p className='text-text-dark/80 leading-relaxed text-sm md:text-base'>
+              {item.description}
+            </p>
           </div>
         </div>
       </Card>

@@ -11,6 +11,8 @@
  * @param {object} ...props - Pozostałe props przekazywane do elementu
  * @returns {JSX.Element} Kontener z ograniczoną szerokością i paddingiem
  */
+import { cn } from '@/lib/utils';
+
 export default function Container({ as = 'div', maxWidth = 'xl', className = '', children, ...props }) {
   const As = as;
   const MAX_TO_CLASS = {
@@ -21,7 +23,7 @@ export default function Container({ as = 'div', maxWidth = 'xl', className = '',
     full: 'max-w-none',
   };
   const maxClass = MAX_TO_CLASS[maxWidth] || MAX_TO_CLASS.xl;
-  const classes = ['container mx-auto px-4', maxClass, className].filter(Boolean).join(' ');
+  const classes = cn('container mx-auto px-4', maxClass, className);
 
   return (
     <As className={classes} {...props}>

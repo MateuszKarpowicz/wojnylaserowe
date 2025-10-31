@@ -1,4 +1,4 @@
-import CardWithIcon from '@/components/ui/CardWithIcon';
+import { CardWithIcon } from '@/components/ui';
 import scarinkPageData from '@/content/texts/scarink-page.json';
 import { Card } from '@/components/primitives';
 

@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { Card, Section } from '@/components/primitives';
+import { cn } from '@/lib/utils';
 
 /**
  * TestimonialsCarousel - Karuzela opinii klientów
@@ -63,22 +64,24 @@ export default function TestimonialsCarousel({
   return (
     <Section bg='surface' title={title}>
       {external?.rating && external?.reviewsCount && external?.url && (
-          <div className='mb-6 text-center'>
-            <a
-              href={external.url}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='inline-flex items-center gap-2 text-text-dark/80 hover:text-neon-blue transition-colors focus-ring rounded px-2'
-            >
-              <span className='font-semibold'>{external.rating.toFixed ? external.rating.toFixed(1) : external.rating}</span>
-              <span className='opacity-80'>({external.reviewsCount} opinii) na {external.source || 'Google'}</span>
-            </a>
-          </div>
-        )}
+        <a
+          href={external.url}
+          target='_blank'
+          rel='noopener noreferrer'
+          className='mb-6 block text-center text-text-dark/80 hover:text-neon-blue transition-colors focus-ring rounded px-2'
+        >
+          <span className='font-semibold'>
+            {external.rating.toFixed ? external.rating.toFixed(1) : external.rating}
+          </span>
+          <span className='opacity-80 ml-2'>
+            ({external.reviewsCount} opinii) na {external.source || 'Google'}
+          </span>
+        </a>
+      )}
         {current ? (
           <Card
             variant='blue'
-            className={[
+            className={cn(
               'relative',
               'bg-bg-surface text-text-dark',
               // delikatnie większa wysokość, by sekcja była bardziej stabilna
@@ -94,7 +97,7 @@ export default function TestimonialsCarousel({
                 : flash && decay
                 ? 'duration-[var(--dur-decay)] ease-[var(--ease-brand)] scale-[1.02] shadow-glow-blue-decay border-2 border-neon-border-blue-active'
                 : 'duration-[var(--dur-fast)] ease-[var(--ease-brand)] shadow-glow-blue-weak border-2 border-neon-border-blue-medium',
-            ].join(' ')}
+            )}
           >
             <figure>
               <blockquote className='text-text-dark/90 leading-relaxed italic'>

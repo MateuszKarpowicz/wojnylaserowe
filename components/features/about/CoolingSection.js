@@ -1,4 +1,4 @@
-import CardWithIcon from '@/components/ui/CardWithIcon';
+import { CardWithIcon } from '@/components/ui';
 import Image from 'next/image';
 import { Section } from '@/components/primitives';
 

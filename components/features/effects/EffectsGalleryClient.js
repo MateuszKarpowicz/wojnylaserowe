@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import LoadingSpinner from '@/components/ui/LoadingSpinner';
+import { LoadingSpinner } from '@/components/ui';
 
 const EffectsGallery = dynamic(() => import('@/components/features/effects/EffectsGallery'), {
   ssr: false,

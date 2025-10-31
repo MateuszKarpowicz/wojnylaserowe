@@ -1,6 +1,5 @@
-import CTASection from '@/components/ui/CTASection';
 import FAQContentSection from '@/components/features/faq/FAQContentSection';
-import PageHeader from '@/components/ui/PageHeader';
+import { CTASection, PageHeader } from '@/components/ui';
 import faqData from '@/content/texts/faq.json';
 
 // ISR - revalidate co godzinę dla stale data

@@ -11,6 +11,7 @@
  * @param {string} className - Dodatkowe klasy CSS
  * @returns {JSX.Element} Nagłówek sekcji z opcjonalnym podtytułem
  */
+import { cn } from '@/lib/utils';
 import { cva } from 'class-variance-authority';
 
 const headerWrapper = cva('mb-12', {
@@ -62,7 +63,7 @@ export default function SectionHeader({
   className = '',
 }) {
   return (
-    <div className={[headerWrapper({ align }), className].filter(Boolean).join(' ')}>
+    <div className={cn(headerWrapper({ align }), className)}>
       <h2 className={titleStyles({ variant })}>{title}</h2>
       {subtitle && <p className={subtitleStyles({ variant, align })}>{subtitle}</p>}
     </div>

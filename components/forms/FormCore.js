@@ -19,7 +19,7 @@
 import { useState } from 'react';
 import { logger } from '@/lib/logger';
 import { Button } from '@/components/primitives';
-import StatusMessage from '@/components/ui/StatusMessage';
+import { StatusMessage } from '@/components/ui';
 
 export default function FormCore({
   initialData = {},
@@ -29,7 +29,7 @@ export default function FormCore({
   children,
   submitText = 'Wyślij',
   loadingText = 'Wysyłanie...',
-  submitFullWidth = false,
+  fullWidth = false,
   ...props
 }) {
   const [formData, setFormData] = useState(initialData);
@@ -107,7 +107,7 @@ export default function FormCore({
         : children}
 
       {/* PRZYCISK WYŚLIJ */}
-      <Button type='submit' disabled={isLoading} variant='section' fullWidth={submitFullWidth}>
+      <Button type='submit' disabled={isLoading} variant='section' fullWidth={fullWidth}>
         {isLoading ? (
           <span className='inline-flex items-center gap-2'>
             <span className='w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin' />

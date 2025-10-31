@@ -167,9 +167,15 @@ wojny-laserowe/
 │   ├── kontakt/           # Strona kontaktowa
 │   └── o-nas/             # Strona o firmie
 ├── components/            # Komponenty React
-│   ├── base/             # Komponenty bazowe
+│   ├── primitives/       # Niskopoziomowe komponenty podstawowe
+│   ├── ui/               # Komponenty UI reużywalne
+│   ├── features/         # Komponenty specyficzne dla funkcjonalności
+│   ├── layout/           # Komponenty układu (Header, Footer)
+│   ├── forms/            # Komponenty formularzy
+│   ├── overlay/          # Komponenty overlay (Modal)
 │   ├── hooks/            # Custom hooks
-│   └── ui/               # Komponenty UI
+│   ├── context/          # React Context providers
+│   └── utils/            # Utility components
 ├── content/              # Dane treściowe (JSON)
 ├── lib/                  # Biblioteki pomocnicze
 ├── public/               # Pliki statyczne
@@ -300,6 +306,10 @@ Konfiguracja w `next.config.js` z security headers i optymalizacjami.
 ## 🤝 **WSPÓŁPRACA**
 
 Zobacz [CONTRIBUTING.md](./CONTRIBUTING.md) dla instrukcji współpracy.
+
+## 🏗️ **ARCHITEKTURA**
+
+Zobacz [ARCHITECTURE.md](./ARCHITECTURE.md) dla szczegółowego opisu architektury projektu, struktury komponentów i zasad importów.
 
 ## 📄 **LICENCJA**
 

@@ -1,48 +1,111 @@
 /**
- * Card - Komponent karty z wariantami ramek neonowych
+ * Card - Neutralna skóra karty jako domyślna
  *
- * Komponenty kart z automatycznymi stylami neonowymi (niebieskie dla jasnego tła, fioletowe dla ciemnego).
- * Hover efekty są domyślnie wyłączone - można je dodać przez className jeśli potrzeba.
+ * Komponent prezentacyjny (bez logiki stanu/ARIA).
+ * Domyślnie neutralny wygląd: białe tło, czarna subtelna obwódka, ciemny tekst.
+ * Warianty brandowe dostępne explicite przez props.
  *
- * @param {'blue'|'purple'} variant - Wariant karty (domyślnie: 'blue')
- * @param {string} as - HTML element do renderowania (domyślnie: 'div')
- * @param {string} className - Dodatkowe klasy CSS (można dodać hover efekty jeśli potrzeba)
+ * @param {string|React.Component} as - HTML element do renderowania (domyślnie: 'div')
+ * @param {'neutral'|'surface'|'inverted'|'blue'|'purple'} variant - Wariant karty (domyślnie: 'neutral')
+ * @param {'none'|'sm'|'md'|'lg'} size - Rozmiar paddingu (domyślnie: 'md')
+ * @param {'none'|'weak'|'medium'|'strong'} elevation - Poziom cienia (domyślnie: 'weak')
+ * @param {boolean} hoverable - Czy karta ma efekt hover (domyślnie: false)
+ * @param {'none'|'subtle'|'bold'} border - Styl obwódki (domyślnie: 'subtle')
+ * @param {string} className - Dodatkowe klasy CSS
  * @param {React.ReactNode} children - Zawartość karty
- * @param {object} ...props - Pozostałe props przekazywane do elementu
- * @returns {JSX.Element} Karta z odpowiednimi stylami neonowymi
+ * @param {object} ...rest - Pozostałe props przekazywane do elementu
+ * @returns {JSX.Element} Karta z odpowiednimi stylami
  */
 import { cn } from '@/lib/utils';
 
 export default function Card({
-  variant = 'blue',
-  as = 'div',
+  as: As = 'div',
+  variant = 'neutral',
+  size = 'md',
+  elevation = 'weak',
+  hoverable = false,
+  border = 'subtle',
   className = '',
   children,
-  ...props
+  ...rest
 }) {
-  // Mapowanie wariantów na klasy Tailwind zamiast custom CSS classes
-  // Hover efekty są domyślnie wyłączone - można je dodać przez className jeśli potrzeba
-  const variantStyles = {
+  // Mapy klas dla wariantów
+  const variantClasses = {
+    neutral: 'bg-white text-neutral-900',
+    surface: 'bg-bg-surface text-text-dark',
+    inverted: 'bg-neutral-900 text-white',
+    // Warianty brandowe (używane explicite gdy potrzebne)
     blue: cn(
-      'rounded-xl border-2 border-neon-blue/30 text-text-light p-6 relative overflow-hidden',
-      'transition-all duration-300',
-      'shadow-card-blue',
-      'bg-modal'
+      'border-2 border-neon-blue/30 text-text-light',
+      'bg-modal', // bg-black/90
+      'shadow-card-blue'
     ),
     purple: cn(
-      'rounded-xl border-2 border-neon-purple/30 p-6 relative overflow-hidden',
-      'transition-all duration-300',
-      'shadow-card-purple',
-      'bg-bg-surface'
+      'border-2 border-neon-purple/30',
+      'bg-bg-surface',
+      'shadow-card-purple'
     ),
   };
 
-  const variantClass = variantStyles[variant] || variantStyles.blue;
-  const classes = cn(variantClass, className);
-  const As = as;
+  const sizeClasses = {
+    none: 'p-0',
+    sm: 'p-3',
+    md: 'p-6',
+    lg: 'p-8',
+  };
+
+  const elevationClasses = {
+    none: '',
+    weak: 'shadow-sm',
+    medium: 'shadow-md',
+    strong: 'shadow-lg',
+  };
+
+  // Dla wariantów brandowych elevation jest kontrolowany przez shadow-card-*
+  // Neutral używa standardowych shadow-sm/md/lg
+  const getElevationClass = () => {
+    if (variant === 'blue' || variant === 'purple') {
+      return ''; // Shadow jest już w variantClasses
+    }
+    return elevationClasses[elevation];
+  };
+
+  const borderClasses = {
+    none: 'border-0',
+    subtle: 'border border-neutral-900/10',
+    bold: 'border-2 border-neutral-900/25',
+  };
+
+  // Dla wariantów brandowych border jest w variantClasses
+  const getBorderClass = () => {
+    if (variant === 'blue' || variant === 'purple') {
+      return ''; // Border jest już w variantClasses
+    }
+    return borderClasses[border];
+  };
+
+  const hoverClass = hoverable
+    ? 'transition-all duration-300 hover:shadow-lg cursor-pointer'
+    : '';
+
+  const variantClass = variantClasses[variant] || variantClasses.neutral;
+  const sizeClass = sizeClasses[size] || sizeClasses.md;
+  const elevationClass = getElevationClass();
+  const borderClass = getBorderClass();
 
   return (
-    <As className={classes} {...props}>
+    <As
+      className={cn(
+        'rounded-xl relative overflow-hidden transition-all duration-300',
+        variantClass,
+        sizeClass,
+        elevationClass,
+        borderClass,
+        hoverClass,
+        className
+      )}
+      {...rest}
+    >
       {children}
     </As>
   );

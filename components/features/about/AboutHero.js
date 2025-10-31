@@ -31,7 +31,7 @@ export default function AboutHero() {
               <ImageFrame variant='blue' aspect='square' sizeClass='max-w-md mx-auto'>
                 <Image
                   src='/images/hero/hero.webp'
-                  alt='O nas - Wojny Laserowe'
+                  alt='O Mnie - Wojny Laserowe'
                   fill
                   className='object-cover'
                   sizes='(max-width: 768px) 100vw, 50vw'

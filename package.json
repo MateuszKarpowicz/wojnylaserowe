@@ -56,8 +56,10 @@
     "production:scale": "kubectl scale deployment wojny-laserowe --replicas=3 -n production"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.15",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.23.24",
     "next": "^16.0.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

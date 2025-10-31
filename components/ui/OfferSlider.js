@@ -2,7 +2,7 @@
 import { useOferta } from '@/components/context/OfertaContext';
 import FormCore from '@/components/forms/FormCore';
 import { useOfferForm } from '@/components/hooks/useOfferForm';
-import Modal from '@/components/overlay/Modal';
+import { FancyDrawer } from '@/components/composed';
 import FormField from '@/components/forms/FormField';
 import { StatusMessage } from '@/components/ui';
 import { Button } from '@/components/primitives';
@@ -18,10 +18,8 @@ export default function OfferSlider() {
   const initialFormData = {
     name: '',
     phone: '',
-    service: '',
     description: '',
     dates: '',
-    photos: null,
   };
 
   const toggleSlider = () => {
@@ -55,24 +53,25 @@ export default function OfferSlider() {
 
   return (
     <>
-      {/* MODAL - drawer połowa ekranu od lewej */}
-      <Modal
-        isOpen={isOpen}
-        onClose={toggleSlider}
-        variant='drawer'
-        position='left'
-        width='w-1/2'
-        className='bg-modal shadow-2xl'
-        closeOnOverlayClick={true}
+      {/* FANCY DRAWER - bottom sheet na mobile, side drawer na desktop */}
+      <FancyDrawer
+        open={isOpen}
+        onOpenChange={toggleSlider}
+        side='bottom'
+        snapPoints={[60, 100]}
+        initialSnap={60}
+        dragToClose={true}
+        blurOverlay={true}
+        className='px-4'
       >
         <div
-          className='h-full flex flex-col bg-modal'
+          className='h-full flex flex-col'
           onClick={e => e.stopPropagation()}
         >
           {/* OPCJE */}
           {!selectedOption && (
             <div className='flex-1 p-6 overflow-y-auto'>
-              <h3 className='text-lg font-semibold text-text-light mb-6'>
+              <h3 className='text-lg font-semibold text-neutral-900 mb-6'>
                 Wybierz rodzaj usługi:
               </h3>
               <div className='space-y-4'>
@@ -80,9 +79,9 @@ export default function OfferSlider() {
                   <button
                     key={option.id}
                     onClick={() => selectOption(option.id)}
-                    className='w-full bg-button-dark hover:bg-button-dark-hover border border-neon-border-purple hover:border-neon-border-purple-strong rounded-lg p-4 text-left transition-all duration-200 shadow-glow-purple/20 hover:shadow-glow-purple/40'
+                    className='w-full bg-neutral-100 hover:bg-neutral-200 border border-neutral-300 hover:border-neutral-400 rounded-lg p-4 text-left transition-all duration-200'
                   >
-                    <span className='text-text-light font-medium'>
+                    <span className='text-neutral-900 font-medium'>
                       {option.title}
                     </span>
                   </button>
@@ -103,7 +102,7 @@ export default function OfferSlider() {
                 >
                   ←
                 </Button>
-                <h2 className='text-text-light font-display text-xl font-bold'>
+                <h2 className='text-neutral-900 font-display text-xl font-bold'>
                   {
                     offerSliderData.options.find(
                       opt => opt.id === selectedOption
@@ -122,7 +121,7 @@ export default function OfferSlider() {
               <FormCore
                 initialData={initialFormData}
                 onSubmit={handleFormSubmit}
-                submitText={contactFormData.submit.text}
+                submitText="WYŚLIJ"
                 loadingText={contactFormData.submit.loading}
               >
                 {({ formData, handleInputChange, isLoading, fieldErrors }) => (
@@ -131,50 +130,35 @@ export default function OfferSlider() {
                     <FormField
                       type='text'
                       name='name'
-                      label={`${contactFormData.fields.name.label} *`}
+                      label={contactFormData.fields.name.label}
                       value={formData.name}
                       onChange={handleInputChange}
                       required
                       disabled={isLoading}
                       placeholder={contactFormData.fields.name.placeholder}
                       error={fieldErrors?.name}
-                      dark={true}
+                      dark={false}
                     />
 
                     {/* NUMER TELEFONU */}
                     <FormField
                       type='tel'
                       name='phone'
-                      label={`${contactFormData.fields.phone.label} *`}
+                      label={contactFormData.fields.phone.label}
                       value={formData.phone}
                       onChange={handleInputChange}
                       required
                       disabled={isLoading}
                       placeholder={contactFormData.fields.phone.placeholder}
                       error={fieldErrors?.phone}
-                      dark={true}
-                    />
-
-                    {/* RODZAJ USŁUGI */}
-                    <FormField
-                      type='select'
-                      name='service'
-                      label={`${contactFormData.fields.service.label} *`}
-                      value={formData.service}
-                      onChange={handleInputChange}
-                      required
-                      disabled={isLoading}
-                      placeholder={contactFormData.fields.service.placeholder}
-                      options={contactFormData.fields.service.options}
-                      error={fieldErrors?.service}
-                      dark={true}
+                      dark={false}
                     />
 
                     {/* OPIS PROBLEMU */}
                     <FormField
                       type='textarea'
                       name='description'
-                      label={`${contactFormData.fields.description.label} *`}
+                      label={contactFormData.fields.description.label}
                       value={formData.description}
                       onChange={handleInputChange}
                       required
@@ -183,7 +167,7 @@ export default function OfferSlider() {
                         contactFormData.fields.description.placeholder
                       }
                       error={fieldErrors?.description}
-                      dark={true}
+                      dark={false}
                     />
 
                     {/* PREFEROWANE DATY */}
@@ -196,17 +180,7 @@ export default function OfferSlider() {
                       disabled={isLoading}
                       placeholder={contactFormData.fields.dates.placeholder}
                       error={fieldErrors?.dates}
-                      dark={true}
-                    />
-
-                    {/* ZDJĘCIA */}
-                    <FormField
-                      type='file'
-                      name='photos'
-                      label={contactFormData.fields.photos.label}
-                      onChange={handleInputChange}
-                      disabled={isLoading}
-                      dark={true}
+                      dark={false}
                     />
                   </>
                 )}
@@ -214,7 +188,7 @@ export default function OfferSlider() {
             </div>
           )}
         </div>
-      </Modal>
+      </FancyDrawer>
     </>
   );
 }

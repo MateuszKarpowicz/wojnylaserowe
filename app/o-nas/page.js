@@ -2,6 +2,12 @@ import { AboutHero, ApproachSection, QualificationsSection } from '@/components/
 import { CTASection, LocationSection } from '@/components/ui';
 import aboutPageData from '@/content/texts/about-page.json';
 
+export const metadata = {
+  title: 'O Mnie | Wojny Laserowe Kraków',
+  description:
+    'Piotr Hryniów - profesjonalne usuwanie tatuaży i redukowanie blizn w Krakowie od 2019 roku. Doświadczenie, precyzja i bezpieczeństwo.',
+};
+
 // ISR - revalidate co godzinę dla stale data
 export const revalidate = 3600;
 

@@ -13,7 +13,7 @@ import Modal from '@/components/overlay/Modal';
 import Link from 'next/link';
 
 const menuItems = [
-  { href: '/o-nas', label: 'O nas' },
+  { href: '/o-nas', label: 'O Mnie' },
   { href: '/laserowe-usuwanie-tatuazu', label: 'Laserowe usuwanie tatuażu' },
   { href: '/scarink-regeneracja-blizn', label: 'ScarINK – regeneracja blizn' },
   { href: '/efekty', label: 'Efekty' },

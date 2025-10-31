@@ -146,20 +146,22 @@ export default function Modal({
         // Fullscreen drawer - top/bottom offset (header/footer)
         return `fixed ${position}-0 z-modal ${borderClass} ${borderColor} shadow-2xl ${className}`;
       }
-      // Zwykły drawer - z offsetem od footer (bottom: 3rem)
-      return `fixed ${position}-0 ${widthClass} ${borderClass} ${borderColor} shadow-xl z-modal ${className}`;
+      // Zwykły drawer - z offsetem od footer, wyższy z-index niż footer
+      // Używamy z-modal (70) ale drawer powinien być nad footer (z-header=90), więc używamy z-[95]
+      return `fixed ${position}-0 ${widthClass} ${borderClass} ${borderColor} shadow-xl z-[95] ${className}`;
     }
 
     return className;
   };
 
   // Style inline dla fullscreen i drawer (top/bottom offset)
-  // Footer ma około 2.25rem wysokości, ale używamy 4rem dla bezpieczeństwa
+  // Footer ma py-0.5 + content (~2.25rem), ale drawer powinien kończyć się na footerze (bottom: 0)
+  // Dla drawer bez fullscreen - ustawiamy bottom na wysokość footera (~2.25rem)
   const fullscreenStyle =
     variant !== 'centered'
       ? {
           top: '4.5rem', // h-header
-          bottom: '4rem', // wysokość footera z marginesem bezpieczeństwa
+          bottom: variant === 'drawer' && !fullscreen ? '2.5rem' : '4rem', // dla drawer = wysokość footera, dla fullscreen = bezpieczny margines
         }
       : {};
 

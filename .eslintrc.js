@@ -84,6 +84,57 @@ module.exports = {
     'prefer-arrow-callback': 'error',
     'prefer-template': 'error',
     'template-curly-spacing': 'error',
+
+    // Custom project conventions
+    'no-restricted-syntax': [
+      'error',
+      {
+        // 1. Template literals w className - wymuszaj użycie cn()
+        selector:
+          "JSXAttribute[name.name='className'] > JSXExpressionContainer > TemplateLiteral",
+        message:
+          'Używaj cn() zamiast template literals dla className. Przykład: className={cn("class1", condition && "class2")}',
+      },
+      {
+        // 2. String concatenation w className
+        selector:
+          "JSXAttribute[name.name='className'] > JSXExpressionContainer > BinaryExpression[operator='+']",
+        message:
+          'Używaj cn() zamiast string concatenation dla className. Przykład: className={cn("class1", condition && "class2")}',
+      },
+      {
+        // 3. Lokalne definicje iconMap - używaj getIcon() z lib/icons.js
+        selector: "VariableDeclarator[id.name='iconMap']",
+        message:
+          'Nie definiuj lokalnego iconMap. Użyj getIcon() z lib/icons.js: import { getIcon } from "@/lib/icons"',
+      },
+      {
+        // 4. !important w className (sprawdzamy tylko stringi z ! ale nie prefers-reduced-motion)
+        selector:
+          "JSXAttribute[name.name='className'] > Literal[value=/!.*$/]",
+        message:
+          'Nie używaj !important w Tailwind className. Użyj props zamiast tego (np. py={0} px={0} w Section). Wyjątek: prefers-reduced-motion w CSS',
+      },
+    ],
+    'no-restricted-imports': [
+      'warn',
+      {
+        // 5. Importy bezpośrednie z komponentów - preferuj index exports
+        // UWAGA: To jest tylko warning, nie error - niektóre importy mogą być potrzebne
+        patterns: [
+          {
+            group: ['@/components/primitives/Button', '@/components/primitives/Card', '@/components/primitives/Section', '@/components/primitives/Container'],
+            message:
+              'Używaj index exports: import { Button } from "@/components/primitives" zamiast "@/components/primitives/Button"',
+          },
+          {
+            group: ['@/components/ui/CardWithIcon', '@/components/ui/StatusMessage'],
+            message:
+              'Używaj index exports: import { CardWithIcon } from "@/components/ui" zamiast "@/components/ui/CardWithIcon"',
+          },
+        ],
+      },
+    ],
     'arrow-spacing': 'error',
     'block-spacing': 'error',
     'brace-style': 'error',
@@ -137,12 +188,42 @@ module.exports = {
       },
     },
     {
-      files: ['**/*.config.js', '**/*.config.mjs'],
+      files: ['**/*.config.js', '**/*.config.mjs', '**/.eslintrc.js'],
       env: {
         node: true,
       },
       rules: {
         'no-console': 'off',
+        // Wyłączamy custom rules dla plików konfiguracyjnych
+        'no-restricted-syntax': 'off',
+        'no-restricted-imports': 'off',
+      },
+    },
+    {
+      // Wyłączamy niektóre reguły dla lib/icons.js (gdzie iconMap jest OK)
+      files: ['**/lib/icons.js'],
+      rules: {
+        'no-restricted-syntax': [
+          'error',
+          {
+            // Pozostawiamy wszystkie reguły oprócz iconMap
+            selector: "JSXAttribute[name.name='className'] > JSXExpressionContainer > TemplateLiteral",
+            message:
+              'Używaj cn() zamiast template literals dla className. Przykład: className={cn("class1", condition && "class2")}',
+          },
+          {
+            selector:
+              "JSXAttribute[name.name='className'] > JSXExpressionContainer > BinaryExpression[operator='+']",
+            message:
+              'Używaj cn() zamiast string concatenation dla className. Przykład: className={cn("class1", condition && "class2")}',
+          },
+          {
+            selector:
+              "JSXAttribute[name.name='className'] > Literal[value=/!.*$/]",
+            message:
+              'Nie używaj !important w Tailwind className. Użyj props zamiast tego (np. py={0} px={0} w Section). Wyjątek: prefers-reduced-motion w CSS',
+          },
+        ],
       },
     },
   ],

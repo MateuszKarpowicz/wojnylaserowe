@@ -1,4 +1,5 @@
 import { FaFacebook, FaInstagram, FaPhone } from 'react-icons/fa';
+import { cn } from '@/lib/utils';
 
 export default function SocialMediaIcons({
   size = 'text-3xl',
@@ -24,13 +25,13 @@ export default function SocialMediaIcons({
   ];
 
   return (
-    <div className={`flex items-center gap-6 ${className}`}>
+    <div className={cn('flex items-center gap-6', className)}>
       {icons.map(({ icon: Icon, label, href }) => (
         <a
           key={label}
           href={href}
           aria-label={label}
-          className={`${size} link-hover-neon`}
+          className={cn(size, 'link-hover-neon')}
         >
           <Icon />
           {showLabels && <span className='sr-only'>{label}</span>}

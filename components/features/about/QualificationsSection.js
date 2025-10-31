@@ -5,33 +5,18 @@ import {
   Section,
 } from '@/components/primitives';
 import { cn } from '@/lib/utils';
+import { getIcon } from '@/lib/icons';
 import { useState } from 'react';
-import {
-  FaCalendarCheck,
-  FaCertificate,
-  FaFlask,
-  FaGraduationCap,
-  FaHandshake,
-} from 'react-icons/fa';
+import { FaCertificate } from 'react-icons/fa';
 
 /**
  * Sekcja kwalifikacji z nagłówkiem i wrapperem
  * @param {Object} data - Dane kwalifikacji z title i items
  */
-const iconMap = {
-  FaCertificate,
-  FaGraduationCap,
-  FaFlask,
-  FaCalendarCheck,
-  FaHandshake,
-};
 
 function QualificationItem({ item, idx }) {
   const [open, setOpen] = useState(false);
-  const Icon =
-    typeof item.icon === 'string'
-      ? iconMap[item.icon] || FaCertificate
-      : item.icon || FaCertificate;
+  const Icon = getIcon(item.icon, FaCertificate);
   const panelId = `qual-desc-${idx}`;
 
   return (

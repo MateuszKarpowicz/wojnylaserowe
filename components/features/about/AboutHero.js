@@ -5,23 +5,19 @@ import {
   Section,
 } from '@/components/primitives';
 import AboutHeroSlider from '@/components/features/about/AboutHeroSlider';
+import { useTextTruncation } from '@/components/hooks';
 import aboutPageData from '@/content/texts/about-page.json';
 import Image from 'next/image';
 import { ImageFrame } from '@/components/primitives';
-import { useState } from 'react';
 
 export default function AboutHero() {
   const { hero } = aboutPageData;
-  const [showMoreMobile, setShowMoreMobile] = useState(false);
   // Mobilny skrót ucinany dokładnie po zdaniu "...regeneracją skóry."
   const cutMarker = 'regeneracją skóry.';
-  const cutIdx = hero.intro.indexOf(cutMarker);
-  const mobileIntroShort =
-    cutIdx !== -1 ? hero.intro.slice(0, cutIdx + cutMarker.length) : hero.intro;
-  const mobileIntroRest =
-    cutIdx !== -1
-      ? hero.intro.slice(cutIdx + cutMarker.length).trimStart()
-      : '';
+  const { mobileText, restText, isExpanded, toggle } = useTextTruncation(
+    hero.intro,
+    cutMarker
+  );
 
   return (
     <Section bg='surface' className='border-b border-border-border'>
@@ -55,7 +51,7 @@ export default function AboutHero() {
               />
               <div className='text-secondary leading-relaxed'>
                 {/* Mobile: pokaż ucięty intro dokładnie po markerze */}
-                <p className='md:hidden'>{mobileIntroShort}</p>
+                <p className='md:hidden'>{mobileText}</p>
                 {/* Desktop: pełny pierwszy akapit */}
                 <p className='hidden md:block'>{hero.intro}</p>
 
@@ -66,10 +62,10 @@ export default function AboutHero() {
 
                 {/* Mobile: skrót + przycisk "czytaj dalej" */}
                 <div className='md:hidden'>
-                  {showMoreMobile ? (
+                  {isExpanded ? (
                     <>
                       <div className='space-y-3'>
-                        {mobileIntroRest && <p>{mobileIntroRest}</p>}
+                        {restText && <p>{restText}</p>}
                         <p>{hero.intro2}</p>
                       </div>
                       <Button
@@ -78,8 +74,8 @@ export default function AboutHero() {
                         variant='ctaBlue'
                         size='md'
                         fullWidth={true}
-                        className='mt-3 !max-w-none'
-                        onClick={() => setShowMoreMobile(false)}
+                        className='mt-3'
+                        onClick={toggle}
                       >
                         ZWIŃ
                       </Button>
@@ -91,8 +87,8 @@ export default function AboutHero() {
                       variant='ctaBlue'
                       size='md'
                       fullWidth={true}
-                      className='mt-3 !max-w-none'
-                      onClick={() => setShowMoreMobile(true)}
+                      className='mt-3'
+                      onClick={toggle}
                     >
                       CZYTAJ DALEJ
                     </Button>

@@ -2,32 +2,13 @@
 
 import { Section, Card } from '@/components/primitives';
 import { cn } from '@/lib/utils';
+import { getIcon } from '@/lib/icons';
 import { useState } from 'react';
-import {
-  FaUserMd,
-  FaShieldAlt,
-  FaHeart,
-  FaCertificate,
-  FaGraduationCap,
-  FaFlask,
-  FaCalendarCheck,
-  FaHandshake,
-} from 'react-icons/fa';
-
-const iconMap = {
-  FaUserMd,
-  FaShieldAlt,
-  FaHeart,
-  FaCertificate,
-  FaGraduationCap,
-  FaFlask,
-  FaCalendarCheck,
-  FaHandshake,
-};
+import { FaUserMd } from 'react-icons/fa';
 
 function ApproachItem({ point, idx }) {
   const [open, setOpen] = useState(false);
-  const Icon = typeof point.icon === 'string' ? iconMap[point.icon] || FaUserMd : point.icon || FaUserMd;
+  const Icon = getIcon(point.icon, FaUserMd);
   const panelId = `approach-desc-${idx}`;
 
   return (

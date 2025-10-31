@@ -76,7 +76,7 @@ export default function FormField({
             required={required}
             disabled={disabled}
             placeholder={placeholder}
-            className={`${fieldClasses} placeholder:text-text-muted min-h-36`}
+            className={cn(fieldClasses, 'placeholder:text-text-muted min-h-36')}
             rows='6'
             {...ariaProps}
             {...props}
@@ -92,7 +92,7 @@ export default function FormField({
             onChange={onChange}
             required={required}
             disabled={disabled}
-            className={`${fieldClasses} appearance-none cursor-pointer pr-10 bg-[length:1.25rem_1.25rem] bg-no-repeat bg-[right_0.75rem_center]`}
+            className={cn(fieldClasses, 'appearance-none cursor-pointer pr-10 bg-[length:1.25rem_1.25rem] bg-no-repeat bg-[right_0.75rem_center]')}
             {...ariaProps}
             {...props}
           >
@@ -116,7 +116,7 @@ export default function FormField({
             disabled={disabled}
             accept='image/*'
             multiple
-            className={`${fieldClasses} file:mr-3 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-neon-purple file:text-white file:cursor-pointer`}
+            className={cn(fieldClasses, 'file:mr-3 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-neon-purple file:text-white file:cursor-pointer')}
             {...ariaProps}
             {...props}
           />
@@ -133,7 +133,7 @@ export default function FormField({
             required={required}
             disabled={disabled}
             placeholder={placeholder}
-            className={`${fieldClasses} placeholder:text-text-muted`}
+            className={cn(fieldClasses, 'placeholder:text-text-muted')}
             {...ariaProps}
             {...props}
           />

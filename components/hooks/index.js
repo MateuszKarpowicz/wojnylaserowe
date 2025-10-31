@@ -8,3 +8,5 @@
 // Hooks dla logiki biznesowej
 export { useCsrfToken, useSecureFormSubmit } from './useCsrf';
 export { useModal } from './useModal';
+export { useColorVariant } from './useColorVariant';
+export { useTextTruncation } from './useTextTruncation';

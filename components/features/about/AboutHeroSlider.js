@@ -69,9 +69,9 @@ export default function AboutHeroSlider({ items = [], intervalMs = 3000, fullWid
   if (!mounted) {
     const textColor = variant === 'light' ? 'text-text-light' : 'text-text-dark';
     return fullWidth ? (
-      <div className={`w-full ${variant === 'light' ? 'bg-bg-dark' : 'bg-bg-light'}`}>
+      <div className={cn('w-full', variant === 'light' ? 'bg-bg-dark' : 'bg-bg-light')}>
         <div className='min-h-[84px] md:min-h-[100px] grid place-items-center px-3 py-4'>
-          <h3 className={`text-3xl md:text-4xl font-display uppercase tracking-[0.14em] ${textColor} text-center`}>
+          <h3 className={cn('text-3xl md:text-4xl font-display uppercase tracking-[0.14em]', textColor, 'text-center')}>
             {items[0]?.title}
           </h3>
         </div>
@@ -79,7 +79,7 @@ export default function AboutHeroSlider({ items = [], intervalMs = 3000, fullWid
     ) : (
       <div className='w-full'>
         <div className='min-h-[84px] md:min-h-[100px] grid place-items-center px-2 py-3'>
-          <h3 className={`text-2xl md:text-3xl font-display uppercase tracking-[0.12em] ${textColor} text-center`}>
+          <h3 className={cn('text-2xl md:text-3xl font-display uppercase tracking-[0.12em]', textColor, 'text-center')}>
             {items[0]?.title}
           </h3>
         </div>
@@ -88,15 +88,12 @@ export default function AboutHeroSlider({ items = [], intervalMs = 3000, fullWid
   }
 
   return fullWidth ? (
-    <div className={`w-full ${variant === 'light' ? 'bg-bg-dark' : 'bg-bg-light'}`}>
+    <div className={cn('w-full', variant === 'light' ? 'bg-bg-dark' : 'bg-bg-light')}>
       <div className='overflow-hidden'>
         <div className='min-h-[84px] md:min-h-[100px] px-3 py-4'>
-          <div className={`grid place-items-center ${phase === 'enter' ? '' : ''}`}>
+          <div className='grid place-items-center'>
             <h3
-              className={`text-3xl md:text-4xl font-display uppercase tracking-[0.14em] ${textColor} text-center ${
-                phase === 'enter' ? '' : ''
-              } ${slideClass}`}
-              style={phase === 'enter' ? {} : {}}
+              className={cn('text-3xl md:text-4xl font-display uppercase tracking-[0.14em]', textColor, 'text-center', slideClass)}
             >
               {items[index].title}
             </h3>
@@ -110,7 +107,7 @@ export default function AboutHeroSlider({ items = [], intervalMs = 3000, fullWid
         <div className='min-h-[84px] md:min-h-[100px] px-2 py-3'>
           <div className='grid place-items-center'>
             <h3
-              className={`text-2xl md:text-3xl font-display uppercase tracking-[0.12em] ${textColor} text-center ${slideClass}`}
+              className={cn('text-2xl md:text-3xl font-display uppercase tracking-[0.12em]', textColor, 'text-center', slideClass)}
             >
               {items[index].title}
             </h3>

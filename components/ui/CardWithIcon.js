@@ -1,22 +1,6 @@
-import {
-  FaCalendarCheck,
-  FaCertificate,
-  FaCheckCircle,
-  FaFlask,
-  FaGraduationCap,
-  FaHandshake,
-} from 'react-icons/fa';
 import { cn } from '@/lib/utils';
+import { getIcon } from '@/lib/icons';
 import { Card } from '@/components/primitives';
-
-// Mapowanie nazw ikon z stringów na komponenty (zgodnie ze wzorcem QualificationCard)
-const iconMap = {
-  FaCertificate: FaCertificate,
-  FaGraduationCap: FaGraduationCap,
-  FaFlask: FaFlask,
-  FaCalendarCheck: FaCalendarCheck,
-  FaHandshake: FaHandshake,
-};
 
 /**
  * Uniwersalny komponent karty z ikonką
@@ -35,15 +19,8 @@ export default function CardWithIcon({
   borderColor = 'blue',
   children,
 }) {
-  // Resolwuj ikonę: jeśli string, użyj iconMap; jeśli komponent, użyj go; w przeciwnym razie domyślny
-  let IconComponent = FaCheckCircle;
-  if (icon) {
-    if (typeof icon === 'string' && iconMap[icon]) {
-      IconComponent = iconMap[icon];
-    } else if (typeof icon !== 'string') {
-      IconComponent = icon;
-    }
-  }
+  // Resolwuj ikonę używając shared helpera
+  const IconComponent = getIcon(icon);
 
   // Priorytet: description > text
   const contentText = description || text;
@@ -80,11 +57,11 @@ export default function CardWithIcon({
         <div className='flex-1'>
           {title ? (
             <>
-              <h3 className={`text-lg font-semibold ${textClass} mb-2`}>
+              <h3 className={cn('text-lg font-semibold', textClass, 'mb-2')}>
                 {title}
               </h3>
               {contentText && (
-                <p className={`text-sm ${descriptionClass} leading-relaxed`}>
+                <p className={cn('text-sm', descriptionClass, 'leading-relaxed')}>
                   {contentText}
                 </p>
               )}
@@ -92,9 +69,7 @@ export default function CardWithIcon({
           ) : (
             // Jeśli nie ma tytułu, wyróżnij treść jako pogrubioną linię tytułową
             contentText && (
-              <p
-                className={`text-base font-semibold ${textClass} leading-relaxed`}
-              >
+              <p className={cn('text-base font-semibold', textClass, 'leading-relaxed')}>
                 {contentText}
               </p>
             )

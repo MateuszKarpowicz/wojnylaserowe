@@ -12,6 +12,7 @@ import { useOferta } from '@/components/context/OfertaContext';
 import HeaderActions from '@/components/layout/HeaderActions';
 import HeaderLogo from '@/components/layout/HeaderLogo';
 import MobileMenu from '@/components/layout/MobileMenu';
+import { cn } from '@/lib/utils';
 import { useEffect, useState } from 'react';
 
 export default function Header() {
@@ -25,11 +26,12 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 w-full z-header bg-header-footer ${
+      className={cn(
+        'fixed top-0 left-0 right-0 w-full z-header bg-header-footer border-b',
         isOfertaOpen
-          ? 'border-b border-neon-purple/20 shadow-glow-purple'
-          : 'border-b border-neon-blue/20 shadow-glow'
-      }`}
+          ? 'border-neon-purple/20 shadow-glow-purple'
+          : 'border-neon-blue/20 shadow-glow'
+      )}
       role='banner'
     >
       <nav

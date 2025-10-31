@@ -42,8 +42,10 @@ export default function Home() {
       {/* Hero image - pełno-szerokościowe */}
       <Section
         bg='surface'
-        className='!py-0 overflow-x-hidden'
-        containerProps={{ maxWidth: 'full', className: '!px-0' }}
+        py={0}
+        px={0}
+        className='overflow-x-hidden'
+        containerProps={{ maxWidth: 'full' }}
       >
         <Image
           src='/images/main/piter.webp'

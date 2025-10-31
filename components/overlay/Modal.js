@@ -22,6 +22,7 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import { cn } from '@/lib/utils';
 
 export default function Modal({
   isOpen,
@@ -190,7 +191,7 @@ export default function Modal({
         {/* Panel - oddzielny element z animacją slide-in */}
         <div
           ref={modalRef}
-          className={`${containerClasses} ${drawerAnimationClass} transition-transform duration-300 ease-out`}
+          className={cn(containerClasses, drawerAnimationClass, 'transition-transform duration-300 ease-out')}
           role='dialog'
           aria-modal='true'
           aria-labelledby={ariaLabelledBy || 'modal-title'}

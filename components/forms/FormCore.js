@@ -18,6 +18,7 @@
 'use client';
 import { useState } from 'react';
 import { logger } from '@/lib/logger';
+import { cn } from '@/lib/utils';
 import { Button } from '@/components/primitives';
 import { StatusMessage } from '@/components/ui';
 
@@ -91,7 +92,7 @@ export default function FormCore({
   return (
     <form
       onSubmit={handleSubmit}
-      className={`space-y-4 ${className}`}
+      className={cn('space-y-4', className)}
       {...props}
     >
       {/* ERROR MESSAGE */}

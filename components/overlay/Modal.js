@@ -49,6 +49,13 @@ export default function Modal({
   const isBottomDrawer = variant === 'drawer' && position === 'bottom';
   const isSideDrawer = variant === 'drawer' && (position === 'left' || position === 'right');
 
+  // Transition variants - zamykanie wolniejsze niż otwieranie
+  const openTransition = { type: 'spring', stiffness: 400, damping: 35, mass: 0.8 };
+  const closeTransition = { type: 'spring', stiffness: 150, damping: 28, mass: 1.4 }; // Wolniejsze zamykanie
+
+  const bottomDrawerOpenTransition = { type: 'spring', stiffness: 420, damping: 40 };
+  const bottomDrawerCloseTransition = { type: 'spring', stiffness: 160, damping: 28, mass: 1.4 }; // Wolniejsze zamykanie
+
   // Dla bottom drawer - ustaw początkową pozycję (60% wysokości)
   useEffect(() => {
     if (!isOpen || !isBottomDrawer) return;
@@ -285,7 +292,13 @@ export default function Modal({
             onDragEnd={onDragEndBottom}
             initial={prefersReducedMotion ? { opacity: 0, y: vh * 0.4 } : false}
             animate={isOpen ? (prefersReducedMotion ? { opacity: 1, y: vh * 0.4 } : {}) : {}}
-            transition={prefersReducedMotion ? { duration: 0.3 } : { type: 'spring', stiffness: 420, damping: 40 }}
+            transition={
+              prefersReducedMotion
+                ? { duration: 0.3 }
+                : isOpen
+                  ? bottomDrawerOpenTransition
+                  : bottomDrawerCloseTransition
+            }
           >
             {children}
           </motion.div>
@@ -310,24 +323,75 @@ export default function Modal({
             }
             dragElastic={0.2}
             onDragEnd={onDragEndSide}
-            initial={false}
-            animate={isOpen ? {} : {}}
-            transition={{ type: 'spring', stiffness: 420, damping: 40 }}
+            initial={
+              prefersReducedMotion
+                ? { opacity: 0 }
+                : position === 'left'
+                  ? { x: '-100%' }
+                  : { x: '100%' }
+            }
+            animate={
+              isOpen
+                ? prefersReducedMotion
+                  ? { opacity: 1, x: 0 }
+                  : { x: 0, opacity: 1 }
+                : prefersReducedMotion
+                  ? { opacity: 0 }
+                  : position === 'left'
+                    ? { x: '-100%', opacity: 0 }
+                    : { x: '100%', opacity: 0 }
+            }
+            transition={
+              prefersReducedMotion
+                ? { duration: 0.2 }
+                : isOpen
+                  ? openTransition
+                  : closeTransition
+            }
           >
             {children}
           </motion.div>
         ) : (
-          <div
+          <motion.div
             ref={modalRef}
-            className={cn(containerClasses, drawerAnimationClass, 'transition-transform duration-300 ease-out')}
+            className={cn(containerClasses)}
             role='dialog'
             aria-modal='true'
             aria-labelledby={ariaLabelledBy || 'modal-title'}
             aria-describedby={ariaDescribedBy}
             style={fullscreenStyle}
+            initial={
+              prefersReducedMotion
+                ? { opacity: 0 }
+                : position === 'left'
+                  ? { x: '-100%' }
+                  : position === 'right'
+                    ? { x: '100%' }
+                    : { opacity: 0 }
+            }
+            animate={
+              isOpen
+                ? prefersReducedMotion
+                  ? { opacity: 1 }
+                  : { x: 0, opacity: 1 }
+                : prefersReducedMotion
+                  ? { opacity: 0 }
+                  : position === 'left'
+                    ? { x: '-100%', opacity: 0 }
+                    : position === 'right'
+                      ? { x: '100%', opacity: 0 }
+                      : { opacity: 0 }
+            }
+            transition={
+              prefersReducedMotion
+                ? { duration: 0.2 }
+                : isOpen
+                  ? openTransition
+                  : closeTransition
+            }
           >
             {children}
-          </div>
+          </motion.div>
         )}
       </>
     );

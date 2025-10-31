@@ -1,7 +1,7 @@
 /**
  * Header - Główny komponent nagłówka strony
  *
- * Header z logo na środku, przyciskami OFERTA i MENU renderowanymi przez Portal,
+ * Header z logo na środku, przyciskami USUŃ i MENU renderowanymi przez Portal,
  * oraz mobile menu drawer. Automatycznie zmienia kolory border/shadow w zależności
  * od stanu modala oferty.
  *

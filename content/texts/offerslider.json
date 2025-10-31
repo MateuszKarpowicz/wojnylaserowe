@@ -1,6 +1,6 @@
 {
   "button": {
-    "text": "OFERTA",
+    "text": "USUŃ",
     "icon": "📋"
   },
   "options": [
@@ -10,7 +10,7 @@
       "icon": "🔧"
     },
     {
-      "id": "tatuaz", 
+      "id": "tatuaz",
       "title": "Chcę usunąć tatuaż",
       "icon": "🎨"
     },

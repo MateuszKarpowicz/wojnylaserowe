@@ -1,11 +1,11 @@
 /**
- * HeaderActions - Przyciski akcji w headerze (OFERTA i MENU)
+ * HeaderActions - Przyciski akcji w headerze (USUŃ i MENU)
  *
  * Przyciski renderowane przez Portal poza headerem, z najwyższym z-index.
- * OFERTA (lewy) - otwiera modal oferty, MENU (prawy) - otwiera mobile menu.
+ * USUŃ (lewy) - otwiera modal usuwania, MENU (prawy) - otwiera mobile menu.
  *
- * @param {boolean} isOfertaOpen - Czy modal oferty jest otwarty
- * @param {Function} onToggleOferta - Funkcja przełączania modala oferty
+ * @param {boolean} isOfertaOpen - Czy modal usuwania jest otwarty
+ * @param {Function} onToggleOferta - Funkcja przełączania modala usuwania
  * @param {boolean} isMenuOpen - Czy menu mobilne jest otwarte
  * @param {Function} onToggleMenu - Funkcja przełączania menu mobilnego
  * @param {boolean} mounted - Czy komponent jest zamontowany (dla SSR)
@@ -26,11 +26,11 @@ export default function HeaderActions({
 
   return (
     <>
-      {/* Oferta Button - lewy */}
+      {/* USUŃ Button - lewy */}
       {createPortal(
         <button
           onClick={onToggleOferta}
-          aria-label={isOfertaOpen ? 'Zamknij ofertę' : 'Otwórz ofertę'}
+          aria-label={isOfertaOpen ? 'Zamknij usuwanie' : 'Otwórz usuwanie'}
           aria-expanded={isOfertaOpen}
           aria-controls='oferta-modal'
           className={cn(
@@ -40,7 +40,7 @@ export default function HeaderActions({
               : 'bg-opacity-90 shadow-glow-purple hover:bg-neon-purple/90'
           )}
         >
-          OFERTA
+          USUŃ
         </button>,
         document.body
       )}

@@ -1,5 +1,5 @@
-import { FAQContentSection } from '@/components/features/faq';
-import { CTASection, PageHeader } from '@/components/ui';
+import { FAQContentSection, FAQCTASection } from '@/components/features/faq';
+import { PageHeader } from '@/components/ui';
 import faqData from '@/content/texts/faq.json';
 
 // ISR - revalidate co godzinę dla stale data
@@ -12,7 +12,7 @@ export default function FAQ() {
     <main className='min-h-screen bg-bg-light text-text-dark'>
       <PageHeader title={header.title} subtitle={header.subtitle} />
       <FAQContentSection categories={categories} />
-      <CTASection
+      <FAQCTASection
         title={footer.title}
         text={footer.text}
         href={footer.href}

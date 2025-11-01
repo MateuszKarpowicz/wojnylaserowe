@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * useTextTruncation - Hook do zarządzania ucinaniem tekstu na mobile
  *

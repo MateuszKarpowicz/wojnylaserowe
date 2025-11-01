@@ -1,6 +1,9 @@
 export { default as EffectsCarousel } from './EffectsCarousel';
+export { default as EffectsCTASection } from './EffectsCTASection';
 export { default as EffectsGallery } from './EffectsGallery';
 export { default as EffectsGalleryClient } from './EffectsGalleryClient';
 export { default as EffectsGallerySection } from './EffectsGallerySection';
 export { default as EffectsHeader } from './EffectsHeader';
 export { default as EffectTile } from './EffectTile';
+export { default as StagesSection } from './StagesSection';
+export { default as TestimonialsPlaceholder } from './TestimonialsPlaceholder';

@@ -1,14 +1,13 @@
 import { QualificationsSection } from '@/components/features/about';
-import { EffectsCarousel } from '@/components/features/effects';
-import { FAQAccordion } from '@/components/features/faq';
-import { LandingHero } from '@/components/features/landing';
-import { Button, Section } from '@/components/primitives';
 import {
-  InstagramSection,
-  MapSection,
-  ProcessSection,
+  LandingEffectsSection,
+  LandingFAQSection,
+  LandingHero,
+  LandingInstagramSection,
+  LandingMapSection,
+  LandingProcessSection,
   TestimonialsCarousel,
-} from '@/components/ui';
+} from '@/components/features/landing';
 import aboutPageData from '@/content/texts/about-page.json';
 import faqData from '@/content/texts/faq.json';
 import scarinkPageData from '@/content/texts/scarink-page.json';
@@ -28,45 +27,22 @@ export const metadata = {
 };
 
 export default function Home() {
-  const topFaqCategory = faqData?.categories?.[0];
-  const topFaqItems = topFaqCategory?.questions?.slice(0, 4) || [];
   return (
     <>
       {/* Hero sekcja */}
       <LandingHero />
 
-      {/* Jak to działa – 3 kroki (ProcessSection) */}
-      <Section bg='surface' title='Jak to działa?'>
-        <ProcessSection
-          variant='landing'
-          data={{ steps: scarinkPageData.process.steps }}
-        />
-      </Section>
+      {/* Jak to działa – 3 kroki */}
+      <LandingProcessSection steps={scarinkPageData.process.steps} />
 
-      {/* Dlaczego my – kwalifikacje (reuse) */}
+      {/* Dlaczego my – kwalifikacje */}
       <QualificationsSection data={aboutPageData.qualifications} />
 
       {/* Instagram embed */}
-      <InstagramSection />
+      <LandingInstagramSection />
 
       {/* Przed/Po – karuzela zdjęć */}
-      <Section
-        bg='dark'
-        title='Efekty naszych zabiegów'
-        containerProps={{ maxWidth: 'md' }}
-      >
-        <EffectsCarousel intervalMs={4000} frameSizeClass='w-full' />
-        <Button
-          as='a'
-          href='/efekty'
-          variant='cta-purple'
-          size='md'
-          fullWidth={true}
-          className='mt-6'
-        >
-          Zobacz pełną galerię
-        </Button>
-      </Section>
+      <LandingEffectsSection />
 
       {/* Opinie klientów – karuzela */}
       <TestimonialsCarousel
@@ -77,7 +53,7 @@ export default function Home() {
       />
 
       {/* Mapa dojazdu */}
-      <MapSection
+      <LandingMapSection
         studioName='STUDIO KULT'
         addressLines={[
           'Aleja Zygmunta Krasińskiego 1',
@@ -88,22 +64,9 @@ export default function Home() {
       />
 
       {/* FAQ – skrót 4 pytania */}
-      <Section bg='surface' title='Najczęstsze pytania'>
-        <div className='space-y-4'>
-          {topFaqItems.map((q, i) => (
-            <FAQAccordion key={q.question || `faq-${i}`} item={q} index={i} />
-          ))}
-        </div>
-        <Button
-          as='a'
-          href='/faq'
-          variant='link'
-          size='md'
-          className='mt-6 block text-center'
-        >
-          Zobacz wszystkie pytania →
-        </Button>
-      </Section>
+      <LandingFAQSection
+        items={faqData?.categories?.[0]?.questions?.slice(0, 4) || []}
+      />
     </>
   );
 }

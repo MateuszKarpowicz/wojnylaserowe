@@ -1,10 +1,5 @@
-import { EffectsHeader } from '@/components/features/effects';
-import {
-  CTASection,
-  LoadingSpinner,
-  StagesSection,
-  TestimonialsPlaceholder,
-} from '@/components/ui';
+import { EffectsCTASection, EffectsHeader, StagesSection, TestimonialsPlaceholder } from '@/components/features/effects';
+import { LoadingSpinner } from '@/components/ui';
 import effectsPageData from '@/content/texts/effects-page.json';
 import dynamic from 'next/dynamic';
 
@@ -29,7 +24,7 @@ export default function Efekty() {
       <EffectsGallerySection />
       <StagesSection data={{ stages, additional }} />
       <TestimonialsPlaceholder />
-      <CTASection
+      <EffectsCTASection
         title={footer.text}
         text=''
         href={footer.href}

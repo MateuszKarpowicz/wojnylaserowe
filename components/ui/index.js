@@ -1,21 +1,22 @@
-// Generic UI components - reusable across features
+// Generic UI components - reusable across features (3+ different pages)
+// NOTE: Sekcje zostały przeniesione do features/ - ui/ zawiera tylko komponenty, nie sekcje
 export { default as CardWithIcon } from './CardWithIcon';
 export { default as CopyRow } from './CopyRow';
-export { default as CTASection } from './CTASection';
-export { default as InstagramSection } from './InstagramSection';
 export { default as LoadingSpinner } from './LoadingSpinner';
-export { default as LocationSection } from './LocationSection';
-export { default as MapSection } from './MapSection';
 export { default as OfferSlider } from './OfferSlider';
 export { default as PageHeader } from './PageHeader';
-export { default as ProcessSection } from './ProcessSection';
-// ProcessSectionDefault deprecated - use ProcessSection with variant='default' instead
-// ScarinkWhyChooseSection deprecated - use WhyChooseSection with variant='scarink' instead
-// RemovalHero moved to components/features/removal/
-// ScarinkHero moved to components/features/scarink/
 export { default as SocialMediaIcons } from './SocialMediaIcons';
-export { default as StagesSection } from './StagesSection';
 export { default as StatusMessage } from './StatusMessage';
-export { default as TestimonialsCarousel } from './TestimonialsCarousel';
-export { default as TestimonialsPlaceholder } from './TestimonialsPlaceholder';
-export { default as WhyChooseSection } from './WhyChooseSection';
+
+// Moved to features:
+// - CTASection → components/features/*/CTASection.js (EffectsCTASection, AboutCTASection, etc.)
+// - InstagramSection → components/features/landing/LandingInstagramSection, components/features/contact/ContactInstagramSection
+// - WhyChooseSection → components/features/removal/RemovalWhyChooseSection, components/features/scarink/ScarinkWhyChooseSection
+// - ProcessSection → components/features/process/
+// - LocationSection → components/features/about/
+// - StagesSection → components/features/effects/
+// - TestimonialsCarousel → components/features/landing/
+// - TestimonialsPlaceholder → components/features/effects/
+// - AftercareSection, HowItWorksSection, CoolingSection → components/features/removal/
+// - MethodSection, TargetSection → components/features/scarink/
+// - MapSection → components/features/landing/LandingMapSection, components/features/contact/ContactMapSection

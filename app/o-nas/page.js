@@ -1,5 +1,4 @@
-import { AboutHero, ApproachSection, QualificationsSection } from '@/components/features/about';
-import { CTASection, LocationSection } from '@/components/ui';
+import { AboutCTASection, AboutHero, ApproachSection, QualificationsSection, LocationSection } from '@/components/features/about';
 import aboutPageData from '@/content/texts/about-page.json';
 
 export const metadata = {
@@ -20,7 +19,7 @@ export default function ONas() {
       <QualificationsSection data={qualifications} />
       <ApproachSection data={{ approach, title: approach.title }} />
       <LocationSection data={{ location }} />
-      <CTASection
+      <AboutCTASection
         title={cta.title}
         text={cta.text}
         href={cta.href}

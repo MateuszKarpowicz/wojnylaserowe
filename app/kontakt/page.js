@@ -1,5 +1,9 @@
-import { ContactChannelsColumn, ContactHeader } from '@/components/features/contact';
-import { InstagramSection, MapSection } from '@/components/ui';
+import {
+  ContactChannelsColumn,
+  ContactHeader,
+  ContactInstagramSection,
+  ContactMapSection,
+} from '@/components/features/contact';
 import { Section } from '@/components/primitives';
 import contactPageData from '@/content/texts/contact-page.json';
 
@@ -13,9 +17,9 @@ export default function Kontakt() {
     <main className='min-h-screen bg-bg-light text-text-dark'>
       <ContactHeader title={header.title} subtitle={header.subtitle} />
 
-      <InstagramSection />
+      <ContactInstagramSection />
 
-      <MapSection />
+      <ContactMapSection />
 
       <Section bg='surface' title='Social Media'>
         <ContactChannelsColumn />
